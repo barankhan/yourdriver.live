@@ -478,6 +478,16 @@ class User extends  baseModel implements JsonSerializable {
         }
     }
 
+
+    public function getUserWithId($id){
+        $q  = "select * from users where id=:id";
+        $params = array("id"=>$id);
+        $rs = $this->executeSelectSingle($q,$params);
+        if($rs!=null){
+            $this->setAllFields($rs);
+        }
+    }
+
     public function getUserWithMobileAndPassword($mobile,$password){
         $q  = "select * from users where mobile=:mobile and password=:password";
         $params = array("mobile"=>$mobile,"password"=>$password);
@@ -530,9 +540,17 @@ class User extends  baseModel implements JsonSerializable {
     }
 
 
+    public function getAllApprovalRequiredDrivers(){
+        $q  = "select * from users where is_driver=0 and driver_steps=2 and is_verified=1";
+        return $this->executeSelect($q);
+    }
 
 
-    private function setAllFields($rs){
+
+
+
+
+    public function setAllFields($rs){
 
         foreach($rs as $key => $val) {
             $key = str_replace("_", " ", $key);
