@@ -7,6 +7,24 @@ class User extends  baseModel implements JsonSerializable {
         $father,$cnic,$cnicFront,$cnicRear,$picture,$licence,$vehicleFront,$vehicleRear,$registration,$route,
         $regAlphabet,$regYear,$regNo;
 
+
+    public function update(){
+        if($this->id!=0) {
+            $q = "update users set driver_steps=:driverSteps,name=:name,email=:email,password=:password,mobile=:mobile,verification_token=:verificationToken,
+        is_deleted=:isDeleted,is_active=:isActive,is_verified=:isVerified,is_driver=:isDriver,father=:father,cnic=:cnic,cnic_front=:cnicFront,
+        cnic_rear=:cnicRear,picture=:picture,licence=:licence,vehicle_front=:vehicleFront,vehicle_rear=:vehicleRear,registration=:registration,
+        route=:route,reg_alphabet=:regAlphabet,reg_year=:regYear,reg_no=:regNo where id=:id";
+            $params = array("id" => $this->id, "driverSteps" => $this->driverSteps, "name" => $this->name, "email" => $this->email, "password" => $this->password,
+                "mobile" => $this->mobile, "verificationToken" => $this->verificationToken,
+                "isDeleted" => $this->isDeleted, "isActive" => $this->isActive, "isVerified" => $this->isVerified, "isDriver" => $this->isDriver,
+                "father" => $this->father, "cnic" => $this->cnic, "cnicFront" => $this->cnicFront, "cnicRear" => $this->cnicRear, "picture" => $this->picture,
+                "licence" => $this->licence, "vehicleFront" => $this->vehicleFront, "vehicleRear" => $this->vehicleRear, "registration" => $this->registration,
+                "route" => $this->route, "regAlphabet" => $this->regAlphabet, "regYear" => $this->regYear, "regNo" => $this->regNo);
+            return $this->executeUpdate($q, $params);
+        }
+    }
+
+
     /**
      * @return mixed
      */

@@ -9,22 +9,16 @@
 class firebaseNotification
 {
 
-     private $firebaseAPIKey ="AIzaSyChw9Prigf-JNQmQoyligFeVQZR3Wvbovk";
+     private $firebaseAPIKey ="AIzaSyDTzHTWNjCuve-ynDUDpZXrv8TCIbwzTtc";
      private $fcmUrl = 'https://fcm.googleapis.com/fcm/send';
 
      public function sendPayloadOnly($token,$payload=null,$notification=null){
-         $fcmNotification = [
-             'to'        => $token, //single token
-         ];
+         $fcmNotification['to'] =  $token;
          if(!empty($notification)){
-             $fcmNotification = [
-                 'notification'=>$notification
-             ];
+             $fcmNotification['notification'] = $notification;
          }
          if(!empty($payload)){
-             $fcmNotification = [
-                 'data'=>$payload
-             ];
+             $fcmNotification['data'] = $payload;
          }
          $headers = [
              'Authorization: key=' . $this->firebaseAPIKey,
