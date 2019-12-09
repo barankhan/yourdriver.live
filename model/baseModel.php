@@ -4,8 +4,8 @@ class baseModel
 {
     private $conn;
     private $my_host = "localhost";
-    private $my_user = "root";
-    private $my_pwd = "password";
+    private $my_user = "truck_driver";
+    private $my_pwd = "!@E#y-S-W%F7h5CHBPh";
     private $db = "driver";
     function __construct()
     {
