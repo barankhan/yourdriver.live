@@ -6,8 +6,17 @@
  * Time: 10:22 AM
  */
 require_once __DIR__."/../../model/sms_devices.php";
+require_once __DIR__."/../../model/LogRequest.php";
+
+
+$lr = new LogRequest();
+$lr->setRequestUri($_SERVER['REQUEST_URI']);
+$lr->setRequestBody(json_encode($_REQUEST));
+$lr->setRequestHeader(json_encode($_SERVER));
+$lr->insertLog();
 
 $sms_devices_obj = new SmsDevices();
+
 $dev = $sms_devices_obj->getCurrentSMSSedingDevice();
 
 $message = $_REQUEST['message'];
@@ -37,3 +46,5 @@ define('API_ACCESS_KEY',"AIzaSyChw9Prigf-JNQmQoyligFeVQZR3Wvbovk");
         curl_close($ch);
         echo $result;
 
+$lr->setResponseBody($result);
+$lr->updateResponse();
