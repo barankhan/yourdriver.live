@@ -5,7 +5,8 @@ class User extends  baseModel implements JsonSerializable {
     private $id=0,$driverSteps=0,$name=null,$email=null,$password=null,$mobile=null,$verificationToken=null,
         $createdAt=null,$updatedAt=null,$isDeleted=0,$isActive=1,$isVerified=0,$isDriver=0,$response,$firebaseToken,
         $father,$cnic,$cnicFront,$cnicRear,$picture,$licence,$vehicleFront,$vehicleRear,$registration,$route,
-        $regAlphabet,$regYear,$regNo;
+        $regAlphabet,$regYear,$regNo,$lat,$lng,$isDriverOnline=0;
+
 
 
     public function update(){
@@ -13,15 +14,64 @@ class User extends  baseModel implements JsonSerializable {
             $q = "update users set driver_steps=:driverSteps,name=:name,email=:email,password=:password,mobile=:mobile,verification_token=:verificationToken,
         is_deleted=:isDeleted,is_active=:isActive,is_verified=:isVerified,is_driver=:isDriver,father=:father,cnic=:cnic,cnic_front=:cnicFront,
         cnic_rear=:cnicRear,picture=:picture,licence=:licence,vehicle_front=:vehicleFront,vehicle_rear=:vehicleRear,registration=:registration,
-        route=:route,reg_alphabet=:regAlphabet,reg_year=:regYear,reg_no=:regNo where id=:id";
+        route=:route,reg_alphabet=:regAlphabet,reg_year=:regYear,reg_no=:regNo,lat=:lat,lng=:lng,is_driver_online=:is_driver_online where id=:id";
             $params = array("id" => $this->id, "driverSteps" => $this->driverSteps, "name" => $this->name, "email" => $this->email, "password" => $this->password,
                 "mobile" => $this->mobile, "verificationToken" => $this->verificationToken,
                 "isDeleted" => $this->isDeleted, "isActive" => $this->isActive, "isVerified" => $this->isVerified, "isDriver" => $this->isDriver,
                 "father" => $this->father, "cnic" => $this->cnic, "cnicFront" => $this->cnicFront, "cnicRear" => $this->cnicRear, "picture" => $this->picture,
                 "licence" => $this->licence, "vehicleFront" => $this->vehicleFront, "vehicleRear" => $this->vehicleRear, "registration" => $this->registration,
-                "route" => $this->route, "regAlphabet" => $this->regAlphabet, "regYear" => $this->regYear, "regNo" => $this->regNo);
+                "route" => $this->route, "regAlphabet" => $this->regAlphabet, "regYear" => $this->regYear, "regNo" => $this->regNo,"lat"=>$this->lat,"lng"=>$this->lng,"is_driver_online"=>$this->isDriverOnline);
             return $this->executeUpdate($q, $params);
         }
+    }
+
+    /**
+     * @return int
+     */
+    public function getIsDriverOnline()
+    {
+        return $this->isDriverOnline;
+    }
+
+    /**
+     * @param int $isDriverOnline
+     */
+    public function setIsDriverOnline($isDriverOnline)
+    {
+        $this->isDriverOnline = $isDriverOnline;
+    }
+
+
+    /**
+     * @return mixed
+     */
+    public function getLat()
+    {
+        return $this->lat;
+    }
+
+    /**
+     * @param mixed $lat
+     */
+    public function setLat($lat)
+    {
+        $this->lat = $lat;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLng()
+    {
+        return $this->lng;
+    }
+
+    /**
+     * @param mixed $lng
+     */
+    public function setLng($lng)
+    {
+        $this->lng = $lng;
     }
 
 
