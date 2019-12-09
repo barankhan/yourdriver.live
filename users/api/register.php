@@ -37,7 +37,7 @@ if($userObj->getId()==0){
 
         $sendSMSObj = new sendSMS();
         $res = $sendSMSObj->sendPayloadOnly($post);
-        $lr->setResponseBody($lr->getRequestBody().$res);
+        $lr->setResponseBody($res);
         $lr->updateResponse();
     }
     else{

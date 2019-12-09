@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dc2e211f-761c-4655-959f-8a09e31a4cb5" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/users/api/register.php" afterPath="$PROJECT_DIR$/users/api/register.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/utils/sendSMS.php" afterPath="$PROJECT_DIR$/utils/sendSMS.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -34,11 +35,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="sendSMS.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="sendSMS.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/utils/sendSMS.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="684">
-              <caret line="38" column="16" lean-forward="false" selection-start-line="38" selection-start-column="16" selection-end-line="38" selection-end-column="16" />
+            <state relative-caret-position="666">
+              <caret line="37" column="34" lean-forward="false" selection-start-line="37" selection-start-column="34" selection-end-line="37" selection-end-column="34" />
               <folding />
             </state>
           </provider>
@@ -98,11 +99,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="register.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="register.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/users/api/register.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="598">
-              <caret line="38" column="8" lean-forward="false" selection-start-line="38" selection-start-column="8" selection-end-line="38" selection-end-column="8" />
+            <state relative-caret-position="526">
+              <caret line="38" column="46" lean-forward="false" selection-start-line="38" selection-start-column="46" selection-end-line="38" selection-end-column="46" />
               <folding />
             </state>
           </provider>
@@ -157,8 +158,8 @@
         <option value="$PROJECT_DIR$/model/baseModel.php" />
         <option value="$PROJECT_DIR$/sendMessagingService/api/registerDeviceToken.php" />
         <option value="$PROJECT_DIR$/sendMessagingService/api/sendSMSRequest.php" />
-        <option value="$PROJECT_DIR$/users/api/register.php" />
         <option value="$PROJECT_DIR$/utils/sendSMS.php" />
+        <option value="$PROJECT_DIR$/users/api/register.php" />
       </list>
     </option>
   </component>
@@ -396,12 +397,12 @@
       <workItem from="1574755483175" duration="38288000" />
       <workItem from="1575016465060" duration="41153000" />
       <workItem from="1575621343095" duration="1973000" />
-      <workItem from="1575696583666" duration="8963000" />
+      <workItem from="1575696583666" duration="9283000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="101914000" />
+    <option name="totallyTimeSpent" value="102234000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="53" y="27" width="1867" height="1053" extended-state="0" />
@@ -885,10 +886,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/users/api/register.php">
+    <entry file="file://$PROJECT_DIR$/utils/sendSMS.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="598">
-          <caret line="38" column="8" lean-forward="false" selection-start-line="38" selection-start-column="8" selection-end-line="38" selection-end-column="8" />
+        <state relative-caret-position="666">
+          <caret line="37" column="34" lean-forward="false" selection-start-line="37" selection-start-column="34" selection-end-line="37" selection-end-column="34" />
           <folding />
         </state>
       </provider>
@@ -903,10 +904,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/utils/sendSMS.php">
+    <entry file="file://$PROJECT_DIR$/users/api/register.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="684">
-          <caret line="38" column="16" lean-forward="false" selection-start-line="38" selection-start-column="16" selection-end-line="38" selection-end-column="16" />
+        <state relative-caret-position="526">
+          <caret line="38" column="46" lean-forward="false" selection-start-line="38" selection-start-column="46" selection-end-line="38" selection-end-column="46" />
           <folding />
         </state>
       </provider>
