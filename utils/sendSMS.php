@@ -28,8 +28,6 @@ class sendSMS
              'Authorization: key=' . $this->firebaseAPIKey,
              'Content-Type: application/json'
          ];
-         var_dump($fcmNotification);
-         die;
          $ch = curl_init();
          curl_setopt($ch, CURLOPT_URL,$this->fcmUrl);
          curl_setopt($ch, CURLOPT_POST, true);
@@ -37,7 +35,8 @@ class sendSMS
          curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
          curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
          curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($fcmNotification));
-         $result = curl_exec($ch);
+            echo $result = curl_exec($ch);
+            die;
          curl_close($ch);
          return $result;
     }
