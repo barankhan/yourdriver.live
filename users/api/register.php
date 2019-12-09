@@ -34,7 +34,7 @@ if($userObj->getId()==0){
             'mobile_number' => $userObj->getMobile(),
         ];
 
-        $curr = new CurlPost('https://yourdriver.live/sendMessagingService/api/sendSMSRequest.php');
+        $curr = new CurlPost('http://yourdriver.live/sendMessagingService/api/sendSMSRequest.php');
 
         try {
             // execute the request

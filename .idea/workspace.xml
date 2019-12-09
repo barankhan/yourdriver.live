@@ -14,10 +14,10 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="sendSMSRequest.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="sendSMSRequest.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/sendMessagingService/api/sendSMSRequest.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="832">
+            <state relative-caret-position="760">
               <caret line="49" column="22" lean-forward="false" selection-start-line="49" selection-start-column="22" selection-end-line="49" selection-end-column="22" />
               <folding />
             </state>
@@ -86,11 +86,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="register.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="register.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/users/api/register.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="558">
-              <caret line="40" column="17" lean-forward="false" selection-start-line="40" selection-start-column="17" selection-end-line="40" selection-end-column="17" />
+            <state relative-caret-position="436">
+              <caret line="36" column="34" lean-forward="false" selection-start-line="36" selection-start-column="34" selection-end-line="36" selection-end-column="34" />
               <folding />
             </state>
           </provider>
@@ -410,12 +410,12 @@
       <workItem from="1574755483175" duration="38288000" />
       <workItem from="1575016465060" duration="41153000" />
       <workItem from="1575621343095" duration="1973000" />
-      <workItem from="1575696583666" duration="6933000" />
+      <workItem from="1575696583666" duration="7210000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="99884000" />
+    <option name="totallyTimeSpent" value="100161000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="53" y="27" width="1867" height="1053" extended-state="0" />
@@ -911,18 +911,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/sendMessagingService/api/sendSMSRequest.php">
+    <entry file="file://$PROJECT_DIR$/users/api/register.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="832">
-          <caret line="49" column="22" lean-forward="false" selection-start-line="49" selection-start-column="22" selection-end-line="49" selection-end-column="22" />
+        <state relative-caret-position="436">
+          <caret line="36" column="34" lean-forward="false" selection-start-line="36" selection-start-column="34" selection-end-line="36" selection-end-column="34" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/users/api/register.php">
+    <entry file="file://$PROJECT_DIR$/sendMessagingService/api/sendSMSRequest.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="558">
-          <caret line="40" column="17" lean-forward="false" selection-start-line="40" selection-start-column="17" selection-end-line="40" selection-end-column="17" />
+        <state relative-caret-position="760">
+          <caret line="49" column="22" lean-forward="false" selection-start-line="49" selection-start-column="22" selection-end-line="49" selection-end-column="22" />
           <folding />
         </state>
       </provider>
