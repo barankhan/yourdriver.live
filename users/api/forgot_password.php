@@ -1,6 +1,18 @@
 <?php
 require_once __DIR__."/../../model/user.php";
 require_once __DIR__."/../../utils/CurlPost.php";
+require_once __DIR__."/../../utils/sendSMS.php";
+require_once __DIR__."/../../model/LogRequest.php";
+
+
+
+$lr = new LogRequest();
+$lr->setRequestUri($_SERVER['REQUEST_URI']);
+$lr->setRequestBody(json_encode($_REQUEST));
+$lr->setRequestHeader(json_encode($_SERVER));
+$lr->setMobileNumber($_REQUEST['mobile']);
+$lr->insertLog();
+
 
 $mobile = $_REQUEST['mobile'];
 $userObj = new User();
@@ -12,15 +24,10 @@ if($userObj->getId()!=0){
         'mobile_number' => $userObj->getMobile(),
     ];
 
-    $curr = new CurlPost('http://10.10.8.19/driver/sendMessagingService/api/sendSMSRequest.php');
-
-    try {
-        // execute the request
-        $curr($post);
-    } catch (RuntimeException $ex) {
-        // catch errors
-        die(sprintf('Http error %s with code %d', $ex->getMessage(), $ex->getCode()));
-    }
+    $sendSMSObj = new sendSMS();
+    $res = $sendSMSObj->sendPayloadOnly($post);
+    $lr->setResponseBody($res);
+    $response = $lr->updateResponse();
 
 
 
@@ -28,6 +35,6 @@ if($userObj->getId()!=0){
     $arr  =    array("response"=>"mobile_number_not_found","message"=>"You are not register with us");
 }
 
-
 header('Content-Type: application/json');
+$lr->setResponseBody(json_encode($arr).json_encode($response));
 echo json_encode($arr);
