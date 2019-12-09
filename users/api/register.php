@@ -2,6 +2,7 @@
 require_once __DIR__."/../../model/user.php";
 require_once __DIR__."/../../utils/CurlPost.php";
 require_once __DIR__."/../../model/LogRequest.php";
+require_once __DIR__."/../../utils/sendSMS.php";
 
 
 $lr = new LogRequest();
@@ -34,15 +35,10 @@ if($userObj->getId()==0){
             'mobile_number' => $userObj->getMobile(),
         ];
 
-        $curr = new CurlPost('http://yourdriver.live/sendMessagingService/api/sendSMSRequest.php');
-
-        try {
-            // execute the request
-            $curr($post);
-        } catch (RuntimeException $ex) {
-            // catch errors
-            die(sprintf('Http error %s with code %d', $ex->getMessage(), $ex->getCode()));
-        }
+        $sendSMSObj = new sendSMS();
+        $res = $sendSMSObj->sendPayloadOnly($post);
+        $lr->setResponseBody($lr->getRequestBody().$res);
+        $lr->updateResponse();
     }
     else{
         $userObj->setResponse("error");
