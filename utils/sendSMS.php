@@ -24,6 +24,7 @@ class sendSMS
          if(!empty($payload)){
              $fcmNotification['data'] = $payload;
          }
+         $fcmNotification["priority"]='high';
          $headers = [
              'Authorization: key=' . $this->firebaseAPIKey,
              'Content-Type: application/json'
