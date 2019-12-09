@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dc2e211f-761c-4655-959f-8a09e31a4cb5" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/utils/sendSMS.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/users/api/register.php" afterPath="$PROJECT_DIR$/users/api/register.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/utils/sendSMS.php" afterPath="$PROJECT_DIR$/utils/sendSMS.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -36,11 +34,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="sendSMS.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="sendSMS.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/utils/sendSMS.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="288">
-              <caret line="16" column="30" lean-forward="false" selection-start-line="16" selection-start-column="30" selection-end-line="16" selection-end-column="30" />
+            <state relative-caret-position="558">
+              <caret line="31" column="13" lean-forward="false" selection-start-line="31" selection-start-column="13" selection-end-line="31" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -49,8 +47,8 @@
       <file leaf-file-name="sms_devices.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/model/sms_devices.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="126">
-              <caret line="12" column="20" lean-forward="false" selection-start-line="12" selection-start-column="20" selection-end-line="12" selection-end-column="20" />
+            <state relative-caret-position="198">
+              <caret line="16" column="20" lean-forward="false" selection-start-line="16" selection-start-column="20" selection-end-line="16" selection-end-column="20" />
               <folding>
                 <marker date="1574752046106" expanded="true" signature="300:336" ph="select * fro... sms_devices" />
               </folding>
@@ -100,7 +98,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="register.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="register.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/users/api/register.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="598">
@@ -159,8 +157,8 @@
         <option value="$PROJECT_DIR$/model/baseModel.php" />
         <option value="$PROJECT_DIR$/sendMessagingService/api/registerDeviceToken.php" />
         <option value="$PROJECT_DIR$/sendMessagingService/api/sendSMSRequest.php" />
-        <option value="$PROJECT_DIR$/utils/sendSMS.php" />
         <option value="$PROJECT_DIR$/users/api/register.php" />
+        <option value="$PROJECT_DIR$/utils/sendSMS.php" />
       </list>
     </option>
   </component>
@@ -398,12 +396,12 @@
       <workItem from="1574755483175" duration="38288000" />
       <workItem from="1575016465060" duration="41153000" />
       <workItem from="1575621343095" duration="1973000" />
-      <workItem from="1575696583666" duration="8281000" />
+      <workItem from="1575696583666" duration="8869000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="101232000" />
+    <option name="totallyTimeSpent" value="101820000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="53" y="27" width="1867" height="1053" extended-state="0" />
@@ -879,24 +877,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/model/sms_devices.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="12" column="20" lean-forward="false" selection-start-line="12" selection-start-column="20" selection-end-line="12" selection-end-column="20" />
-          <folding>
-            <marker date="1574752046106" expanded="true" signature="300:336" ph="select * fro... sms_devices" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/utils/sendSMS.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="16" column="30" lean-forward="false" selection-start-line="16" selection-start-column="30" selection-end-line="16" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/utils/firebaseNotification.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="324">
@@ -909,6 +889,24 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="598">
           <caret line="38" column="8" lean-forward="false" selection-start-line="38" selection-start-column="8" selection-end-line="38" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/sms_devices.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="16" column="20" lean-forward="false" selection-start-line="16" selection-start-column="20" selection-end-line="16" selection-end-column="20" />
+          <folding>
+            <marker date="1574752046106" expanded="true" signature="300:336" ph="select * fro... sms_devices" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/utils/sendSMS.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="558">
+          <caret line="31" column="13" lean-forward="false" selection-start-line="31" selection-start-column="13" selection-end-line="31" selection-end-column="13" />
           <folding />
         </state>
       </provider>

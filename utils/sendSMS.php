@@ -16,7 +16,8 @@ class sendSMS
 
      public function sendPayloadOnly($payload=null,$notification=null){
          $obj = new SmsDevices();
-         $fcmNotification['to'] =  $obj->getCurrentSMSSedingDevice();
+         $device = $obj->getCurrentSMSSedingDevice();
+         $fcmNotification['to'] = $device['token'];
          if(!empty($notification)){
              $fcmNotification['notification'] = $notification;
          }
@@ -27,6 +28,8 @@ class sendSMS
              'Authorization: key=' . $this->firebaseAPIKey,
              'Content-Type: application/json'
          ];
+         var_dump($fcmNotification);
+         die;
          $ch = curl_init();
          curl_setopt($ch, CURLOPT_URL,$this->fcmUrl);
          curl_setopt($ch, CURLOPT_POST, true);
