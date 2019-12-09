@@ -38,7 +38,7 @@ if($userObj->getId()==0){
 
         try {
             // execute the request
-            $curl($post);
+            $curr($post);
         } catch (RuntimeException $ex) {
             // catch errors
             die(sprintf('Http error %s with code %d', $ex->getMessage(), $ex->getCode()));
