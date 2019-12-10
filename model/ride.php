@@ -17,7 +17,7 @@ class ride extends  baseModel implements JsonSerializable
             values(:passenger_id,:pickup_lat,:pickup_lng,:vehicle_type,:dropoff_lat,:dropoff_lng);";
         $params = array("passenger_id"=>$this->passengerId,"pickup_lat"=>$this->pickupLat,"pickup_lng"=>$this->pickupLng
         ,"vehicle_type"=>$this->vehicleType,"dropoff_lat"=>$this->dropoffLat,"dropoff_lng"=>$this->dropoffLng);
-        $this->setId($this->executeUpdate($q,$params));
+        $this->setId($this->executeInsert($q,$params));
     }
 
     public function __construct(){
