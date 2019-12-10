@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dc2e211f-761c-4655-959f-8a09e31a4cb5" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/model/user.php" afterPath="$PROJECT_DIR$/model/user.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rides/api/register_ride.php" afterPath="$PROJECT_DIR$/rides/api/register_ride.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -37,44 +38,44 @@
       <file leaf-file-name="user.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/model/user.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="398">
-              <caret line="39" column="27" lean-forward="false" selection-start-line="39" selection-start-column="27" selection-end-line="39" selection-end-column="27" />
+            <state relative-caret-position="380">
+              <caret line="38" column="124" lean-forward="false" selection-start-line="38" selection-start-column="124" selection-end-line="38" selection-end-column="124" />
               <folding>
-                <marker date="1575981818982" expanded="true" signature="627:643" ph="update users... " />
-                <marker date="1575981818982" expanded="true" signature="627:644" ph="update users... " />
-                <marker date="1575981818982" expanded="true" signature="627:670" ph="update users... " />
-                <marker date="1575981818982" expanded="true" signature="627:747" ph="update users... " />
-                <marker date="1575981818982" expanded="true" signature="627:786" ph="update users... " />
-                <marker date="1575981818982" expanded="true" signature="627:861" ph="update users... " />
-                <marker date="1575981818982" expanded="true" signature="627:869" ph="update users... " />
-                <marker date="1575981818982" expanded="true" signature="627:876" ph="update users... " />
-                <marker date="1575981818982" expanded="true" signature="627:938" ph="update users... " />
-                <marker date="1575981818982" expanded="true" signature="627:1020" ph="update users... " />
-                <marker date="1575981818982" expanded="true" signature="627:1084" ph="update users... " />
-                <marker date="1575981818982" expanded="true" signature="627:1109" ph="update users... " />
-                <marker date="1575981818982" expanded="true" signature="627:1110" ph="update users... " />
-                <marker date="1575981818982" expanded="true" signature="627:1111" ph="update users... " />
-                <marker date="1575981818982" expanded="true" signature="627:1126" ph="update users... " />
-                <marker date="1575981818982" expanded="true" signature="627:1132" ph="update users... " />
-                <marker date="1575981818982" expanded="true" signature="627:1267" ph="update users... " />
-                <marker date="1575981818982" expanded="true" signature="2447:2738" ph="SELECT id, (... markers" />
-                <marker date="1575981818982" expanded="true" signature="2447:2739" ph="SELECT *, (6... users" />
-                <marker date="1575981818982" expanded="true" signature="2447:2745" ph="SELECT *, (6... users" />
-                <marker date="1575981818982" expanded="true" signature="11638:11795" ph="INSERT INTO users... " />
-                <marker date="1575981818982" expanded="true" signature="12340:12380" ph="select * fro... users" />
-                <marker date="1575981818982" expanded="true" signature="12615:12647" ph="select * fro... users" />
-                <marker date="1575981818982" expanded="true" signature="12902:12942" ph="select * fro... users" />
-                <marker date="1575981818982" expanded="true" signature="12902:12965" ph="select * fro... users" />
-                <marker date="1575981818982" expanded="true" signature="13279:13337" ph="update users... " />
-                <marker date="1575981818982" expanded="true" signature="13279:13339" ph="update users... " />
-                <marker date="1575981818982" expanded="true" signature="13556:13647" ph="update users... " />
-                <marker date="1575981818982" expanded="true" signature="13556:13653" ph="update users... " />
-                <marker date="1575981818982" expanded="true" signature="13556:13748" ph="update users... " />
-                <marker date="1575981818982" expanded="true" signature="14143:14365" ph="update users... " />
-                <marker date="1575981818982" expanded="true" signature="14143:14403" ph="update users... " />
-                <marker date="1575981818982" expanded="true" signature="14923:14964" ph="update users... " />
-                <marker date="1575981818982" expanded="true" signature="14923:14966" ph="update users... " />
-                <marker date="1575981818982" expanded="true" signature="15221:15295" ph="select * fro... users" />
+                <marker date="1575982546687" expanded="true" signature="627:643" ph="update users... " />
+                <marker date="1575982546687" expanded="true" signature="627:644" ph="update users... " />
+                <marker date="1575982546687" expanded="true" signature="627:670" ph="update users... " />
+                <marker date="1575982546687" expanded="true" signature="627:747" ph="update users... " />
+                <marker date="1575982546687" expanded="true" signature="627:786" ph="update users... " />
+                <marker date="1575982546687" expanded="true" signature="627:861" ph="update users... " />
+                <marker date="1575982546687" expanded="true" signature="627:869" ph="update users... " />
+                <marker date="1575982546687" expanded="true" signature="627:876" ph="update users... " />
+                <marker date="1575982546687" expanded="true" signature="627:938" ph="update users... " />
+                <marker date="1575982546687" expanded="true" signature="627:1020" ph="update users... " />
+                <marker date="1575982546687" expanded="true" signature="627:1084" ph="update users... " />
+                <marker date="1575982546687" expanded="true" signature="627:1109" ph="update users... " />
+                <marker date="1575982546687" expanded="true" signature="627:1110" ph="update users... " />
+                <marker date="1575982546687" expanded="true" signature="627:1111" ph="update users... " />
+                <marker date="1575982546687" expanded="true" signature="627:1126" ph="update users... " />
+                <marker date="1575982546687" expanded="true" signature="627:1132" ph="update users... " />
+                <marker date="1575982546687" expanded="true" signature="627:1267" ph="update users... " />
+                <marker date="1575982546687" expanded="true" signature="2461:2783" ph="SELECT id, (... markers" />
+                <marker date="1575982546687" expanded="true" signature="2461:2784" ph="SELECT *, (6... users" />
+                <marker date="1575982546687" expanded="true" signature="2461:2790" ph="SELECT *, (6... users" />
+                <marker date="1575982546687" expanded="true" signature="11713:11870" ph="INSERT INTO users... " />
+                <marker date="1575982546687" expanded="true" signature="12415:12455" ph="select * fro... users" />
+                <marker date="1575982546687" expanded="true" signature="12690:12722" ph="select * fro... users" />
+                <marker date="1575982546687" expanded="true" signature="12977:13017" ph="select * fro... users" />
+                <marker date="1575982546687" expanded="true" signature="12977:13040" ph="select * fro... users" />
+                <marker date="1575982546687" expanded="true" signature="13354:13412" ph="update users... " />
+                <marker date="1575982546687" expanded="true" signature="13354:13414" ph="update users... " />
+                <marker date="1575982546687" expanded="true" signature="13631:13722" ph="update users... " />
+                <marker date="1575982546687" expanded="true" signature="13631:13728" ph="update users... " />
+                <marker date="1575982546687" expanded="true" signature="13631:13823" ph="update users... " />
+                <marker date="1575982546687" expanded="true" signature="14218:14440" ph="update users... " />
+                <marker date="1575982546687" expanded="true" signature="14218:14478" ph="update users... " />
+                <marker date="1575982546687" expanded="true" signature="14998:15039" ph="update users... " />
+                <marker date="1575982546687" expanded="true" signature="14998:15041" ph="update users... " />
+                <marker date="1575982546687" expanded="true" signature="15296:15370" ph="select * fro... users" />
               </folding>
             </state>
           </provider>
@@ -84,7 +85,7 @@
         <entry file="file://$PROJECT_DIR$/rides/api/register_ride.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="252">
-              <caret line="23" column="0" lean-forward="true" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+              <caret line="38" column="38" lean-forward="true" selection-start-line="38" selection-start-column="38" selection-end-line="38" selection-end-column="38" />
               <folding />
             </state>
           </provider>
@@ -204,9 +205,9 @@
         <option value="$PROJECT_DIR$/model/rideAlert.php" />
         <option value="$PROJECT_DIR$/model/LogRequest.php" />
         <option value="$PROJECT_DIR$/model/ride.php" />
-        <option value="$PROJECT_DIR$/model/user.php" />
         <option value="$PROJECT_DIR$/model/baseModel.php" />
         <option value="$PROJECT_DIR$/rides/api/register_ride.php" />
+        <option value="$PROJECT_DIR$/model/user.php" />
       </list>
     </option>
   </component>
@@ -465,12 +466,12 @@
       <workItem from="1574755483175" duration="38288000" />
       <workItem from="1575016465060" duration="41153000" />
       <workItem from="1575621343095" duration="1973000" />
-      <workItem from="1575696583666" duration="27206000" />
+      <workItem from="1575696583666" duration="27702000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="120157000" />
+    <option name="totallyTimeSpent" value="120653000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="53" y="25" width="1867" height="1055" extended-state="6" />
@@ -535,41 +536,41 @@
         <state relative-caret-position="4752">
           <caret line="264" column="20" lean-forward="false" selection-start-line="264" selection-start-column="20" selection-end-line="264" selection-end-column="20" />
           <folding>
-            <marker date="1575981818982" expanded="true" signature="627:643" ph="update users... " />
-            <marker date="1575981818982" expanded="true" signature="627:644" ph="update users... " />
-            <marker date="1575981818982" expanded="true" signature="627:670" ph="update users... " />
-            <marker date="1575981818982" expanded="true" signature="627:747" ph="update users... " />
-            <marker date="1575981818982" expanded="true" signature="627:786" ph="update users... " />
-            <marker date="1575981818982" expanded="true" signature="627:861" ph="update users... " />
-            <marker date="1575981818982" expanded="true" signature="627:869" ph="update users... " />
-            <marker date="1575981818982" expanded="true" signature="627:876" ph="update users... " />
-            <marker date="1575981818982" expanded="true" signature="627:938" ph="update users... " />
-            <marker date="1575981818982" expanded="true" signature="627:1020" ph="update users... " />
-            <marker date="1575981818982" expanded="true" signature="627:1084" ph="update users... " />
-            <marker date="1575981818982" expanded="true" signature="627:1109" ph="update users... " />
-            <marker date="1575981818982" expanded="true" signature="627:1110" ph="update users... " />
-            <marker date="1575981818982" expanded="true" signature="627:1111" ph="update users... " />
-            <marker date="1575981818982" expanded="true" signature="627:1126" ph="update users... " />
-            <marker date="1575981818982" expanded="true" signature="627:1132" ph="update users... " />
-            <marker date="1575981818982" expanded="true" signature="627:1267" ph="update users... " />
-            <marker date="1575981818982" expanded="true" signature="2447:2738" ph="SELECT id, (... markers" />
-            <marker date="1575981818982" expanded="true" signature="2447:2739" ph="SELECT *, (6... users" />
-            <marker date="1575981818982" expanded="true" signature="2447:2745" ph="SELECT *, (6... users" />
-            <marker date="1575981818982" expanded="true" signature="11638:11795" ph="INSERT INTO users... " />
-            <marker date="1575981818982" expanded="true" signature="12340:12380" ph="select * fro... users" />
-            <marker date="1575981818982" expanded="true" signature="12615:12647" ph="select * fro... users" />
-            <marker date="1575981818982" expanded="true" signature="12902:12942" ph="select * fro... users" />
-            <marker date="1575981818982" expanded="true" signature="12902:12965" ph="select * fro... users" />
-            <marker date="1575981818982" expanded="true" signature="13279:13337" ph="update users... " />
-            <marker date="1575981818982" expanded="true" signature="13279:13339" ph="update users... " />
-            <marker date="1575981818982" expanded="true" signature="13556:13647" ph="update users... " />
-            <marker date="1575981818982" expanded="true" signature="13556:13653" ph="update users... " />
-            <marker date="1575981818982" expanded="true" signature="13556:13748" ph="update users... " />
-            <marker date="1575981818982" expanded="true" signature="14143:14365" ph="update users... " />
-            <marker date="1575981818982" expanded="true" signature="14143:14403" ph="update users... " />
-            <marker date="1575981818982" expanded="true" signature="14923:14964" ph="update users... " />
-            <marker date="1575981818982" expanded="true" signature="14923:14966" ph="update users... " />
-            <marker date="1575981818982" expanded="true" signature="15221:15295" ph="select * fro... users" />
+            <marker date="1575982546687" expanded="true" signature="627:643" ph="update users... " />
+            <marker date="1575982546687" expanded="true" signature="627:644" ph="update users... " />
+            <marker date="1575982546687" expanded="true" signature="627:670" ph="update users... " />
+            <marker date="1575982546687" expanded="true" signature="627:747" ph="update users... " />
+            <marker date="1575982546687" expanded="true" signature="627:786" ph="update users... " />
+            <marker date="1575982546687" expanded="true" signature="627:861" ph="update users... " />
+            <marker date="1575982546687" expanded="true" signature="627:869" ph="update users... " />
+            <marker date="1575982546687" expanded="true" signature="627:876" ph="update users... " />
+            <marker date="1575982546687" expanded="true" signature="627:938" ph="update users... " />
+            <marker date="1575982546687" expanded="true" signature="627:1020" ph="update users... " />
+            <marker date="1575982546687" expanded="true" signature="627:1084" ph="update users... " />
+            <marker date="1575982546687" expanded="true" signature="627:1109" ph="update users... " />
+            <marker date="1575982546687" expanded="true" signature="627:1110" ph="update users... " />
+            <marker date="1575982546687" expanded="true" signature="627:1111" ph="update users... " />
+            <marker date="1575982546687" expanded="true" signature="627:1126" ph="update users... " />
+            <marker date="1575982546687" expanded="true" signature="627:1132" ph="update users... " />
+            <marker date="1575982546687" expanded="true" signature="627:1267" ph="update users... " />
+            <marker date="1575982546687" expanded="true" signature="2461:2783" ph="SELECT id, (... markers" />
+            <marker date="1575982546687" expanded="true" signature="2461:2784" ph="SELECT *, (6... users" />
+            <marker date="1575982546687" expanded="true" signature="2461:2790" ph="SELECT *, (6... users" />
+            <marker date="1575982546687" expanded="true" signature="11713:11870" ph="INSERT INTO users... " />
+            <marker date="1575982546687" expanded="true" signature="12415:12455" ph="select * fro... users" />
+            <marker date="1575982546687" expanded="true" signature="12690:12722" ph="select * fro... users" />
+            <marker date="1575982546687" expanded="true" signature="12977:13017" ph="select * fro... users" />
+            <marker date="1575982546687" expanded="true" signature="12977:13040" ph="select * fro... users" />
+            <marker date="1575982546687" expanded="true" signature="13354:13412" ph="update users... " />
+            <marker date="1575982546687" expanded="true" signature="13354:13414" ph="update users... " />
+            <marker date="1575982546687" expanded="true" signature="13631:13722" ph="update users... " />
+            <marker date="1575982546687" expanded="true" signature="13631:13728" ph="update users... " />
+            <marker date="1575982546687" expanded="true" signature="13631:13823" ph="update users... " />
+            <marker date="1575982546687" expanded="true" signature="14218:14440" ph="update users... " />
+            <marker date="1575982546687" expanded="true" signature="14218:14478" ph="update users... " />
+            <marker date="1575982546687" expanded="true" signature="14998:15039" ph="update users... " />
+            <marker date="1575982546687" expanded="true" signature="14998:15041" ph="update users... " />
+            <marker date="1575982546687" expanded="true" signature="15296:15370" ph="select * fro... users" />
           </folding>
         </state>
       </provider>
@@ -939,50 +940,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/model/user.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="398">
-          <caret line="39" column="27" lean-forward="false" selection-start-line="39" selection-start-column="27" selection-end-line="39" selection-end-column="27" />
-          <folding>
-            <marker date="1575981818982" expanded="true" signature="627:643" ph="update users... " />
-            <marker date="1575981818982" expanded="true" signature="627:644" ph="update users... " />
-            <marker date="1575981818982" expanded="true" signature="627:670" ph="update users... " />
-            <marker date="1575981818982" expanded="true" signature="627:747" ph="update users... " />
-            <marker date="1575981818982" expanded="true" signature="627:786" ph="update users... " />
-            <marker date="1575981818982" expanded="true" signature="627:861" ph="update users... " />
-            <marker date="1575981818982" expanded="true" signature="627:869" ph="update users... " />
-            <marker date="1575981818982" expanded="true" signature="627:876" ph="update users... " />
-            <marker date="1575981818982" expanded="true" signature="627:938" ph="update users... " />
-            <marker date="1575981818982" expanded="true" signature="627:1020" ph="update users... " />
-            <marker date="1575981818982" expanded="true" signature="627:1084" ph="update users... " />
-            <marker date="1575981818982" expanded="true" signature="627:1109" ph="update users... " />
-            <marker date="1575981818982" expanded="true" signature="627:1110" ph="update users... " />
-            <marker date="1575981818982" expanded="true" signature="627:1111" ph="update users... " />
-            <marker date="1575981818982" expanded="true" signature="627:1126" ph="update users... " />
-            <marker date="1575981818982" expanded="true" signature="627:1132" ph="update users... " />
-            <marker date="1575981818982" expanded="true" signature="627:1267" ph="update users... " />
-            <marker date="1575981818982" expanded="true" signature="2447:2738" ph="SELECT id, (... markers" />
-            <marker date="1575981818982" expanded="true" signature="2447:2739" ph="SELECT *, (6... users" />
-            <marker date="1575981818982" expanded="true" signature="2447:2745" ph="SELECT *, (6... users" />
-            <marker date="1575981818982" expanded="true" signature="11638:11795" ph="INSERT INTO users... " />
-            <marker date="1575981818982" expanded="true" signature="12340:12380" ph="select * fro... users" />
-            <marker date="1575981818982" expanded="true" signature="12615:12647" ph="select * fro... users" />
-            <marker date="1575981818982" expanded="true" signature="12902:12942" ph="select * fro... users" />
-            <marker date="1575981818982" expanded="true" signature="12902:12965" ph="select * fro... users" />
-            <marker date="1575981818982" expanded="true" signature="13279:13337" ph="update users... " />
-            <marker date="1575981818982" expanded="true" signature="13279:13339" ph="update users... " />
-            <marker date="1575981818982" expanded="true" signature="13556:13647" ph="update users... " />
-            <marker date="1575981818982" expanded="true" signature="13556:13653" ph="update users... " />
-            <marker date="1575981818982" expanded="true" signature="13556:13748" ph="update users... " />
-            <marker date="1575981818982" expanded="true" signature="14143:14365" ph="update users... " />
-            <marker date="1575981818982" expanded="true" signature="14143:14403" ph="update users... " />
-            <marker date="1575981818982" expanded="true" signature="14923:14964" ph="update users... " />
-            <marker date="1575981818982" expanded="true" signature="14923:14966" ph="update users... " />
-            <marker date="1575981818982" expanded="true" signature="15221:15295" ph="select * fro... users" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/model/baseModel.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="506">
@@ -991,10 +948,54 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/model/user.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="380">
+          <caret line="38" column="124" lean-forward="false" selection-start-line="38" selection-start-column="124" selection-end-line="38" selection-end-column="124" />
+          <folding>
+            <marker date="1575982546687" expanded="true" signature="627:643" ph="update users... " />
+            <marker date="1575982546687" expanded="true" signature="627:644" ph="update users... " />
+            <marker date="1575982546687" expanded="true" signature="627:670" ph="update users... " />
+            <marker date="1575982546687" expanded="true" signature="627:747" ph="update users... " />
+            <marker date="1575982546687" expanded="true" signature="627:786" ph="update users... " />
+            <marker date="1575982546687" expanded="true" signature="627:861" ph="update users... " />
+            <marker date="1575982546687" expanded="true" signature="627:869" ph="update users... " />
+            <marker date="1575982546687" expanded="true" signature="627:876" ph="update users... " />
+            <marker date="1575982546687" expanded="true" signature="627:938" ph="update users... " />
+            <marker date="1575982546687" expanded="true" signature="627:1020" ph="update users... " />
+            <marker date="1575982546687" expanded="true" signature="627:1084" ph="update users... " />
+            <marker date="1575982546687" expanded="true" signature="627:1109" ph="update users... " />
+            <marker date="1575982546687" expanded="true" signature="627:1110" ph="update users... " />
+            <marker date="1575982546687" expanded="true" signature="627:1111" ph="update users... " />
+            <marker date="1575982546687" expanded="true" signature="627:1126" ph="update users... " />
+            <marker date="1575982546687" expanded="true" signature="627:1132" ph="update users... " />
+            <marker date="1575982546687" expanded="true" signature="627:1267" ph="update users... " />
+            <marker date="1575982546687" expanded="true" signature="2461:2783" ph="SELECT id, (... markers" />
+            <marker date="1575982546687" expanded="true" signature="2461:2784" ph="SELECT *, (6... users" />
+            <marker date="1575982546687" expanded="true" signature="2461:2790" ph="SELECT *, (6... users" />
+            <marker date="1575982546687" expanded="true" signature="11713:11870" ph="INSERT INTO users... " />
+            <marker date="1575982546687" expanded="true" signature="12415:12455" ph="select * fro... users" />
+            <marker date="1575982546687" expanded="true" signature="12690:12722" ph="select * fro... users" />
+            <marker date="1575982546687" expanded="true" signature="12977:13017" ph="select * fro... users" />
+            <marker date="1575982546687" expanded="true" signature="12977:13040" ph="select * fro... users" />
+            <marker date="1575982546687" expanded="true" signature="13354:13412" ph="update users... " />
+            <marker date="1575982546687" expanded="true" signature="13354:13414" ph="update users... " />
+            <marker date="1575982546687" expanded="true" signature="13631:13722" ph="update users... " />
+            <marker date="1575982546687" expanded="true" signature="13631:13728" ph="update users... " />
+            <marker date="1575982546687" expanded="true" signature="13631:13823" ph="update users... " />
+            <marker date="1575982546687" expanded="true" signature="14218:14440" ph="update users... " />
+            <marker date="1575982546687" expanded="true" signature="14218:14478" ph="update users... " />
+            <marker date="1575982546687" expanded="true" signature="14998:15039" ph="update users... " />
+            <marker date="1575982546687" expanded="true" signature="14998:15041" ph="update users... " />
+            <marker date="1575982546687" expanded="true" signature="15296:15370" ph="select * fro... users" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/rides/api/register_ride.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="252">
-          <caret line="23" column="0" lean-forward="true" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+          <caret line="38" column="38" lean-forward="true" selection-start-line="38" selection-start-column="38" selection-end-line="38" selection-end-column="38" />
           <folding />
         </state>
       </provider>

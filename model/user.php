@@ -31,12 +31,12 @@ class User extends  baseModel implements JsonSerializable {
 
 
 
-    public function getAvailableDrivers($lat,$lng,$limit=1,$radius=5){
+    public function getAvailableDrivers($lat,$lng,$vehicle_type,$limit=1,$radius=5){
 
         $q = "SELECT *, (6371*acos(cos(radians(:lat))*cos(radians(lat))*cos(radians(lng)-radians(:lng))
-            + sin(radians(:lat1))*sin(radians(lat)))) AS distance FROM users where is_driver=1 and is_driver_online=1 and is_driver_on_trip=0 HAVING distance < :radius ORDER BY distance
+            + sin(radians(:lat1))*sin(radians(lat)))) AS distance FROM users where is_driver=1 and is_driver_online=1 and is_driver_on_trip=0 and vehicle_type=:vehicle_type HAVING distance < :radius ORDER BY distance
           LIMIT :limit;";
-        $params = array("lat"=>$lat,"lat1"=>$lat,"lng"=>$lng,"limit"=>$limit,"radius"=>$radius);
+        $params = array("lat"=>$lat,"lat1"=>$lat,"lng"=>$lng,"limit"=>$limit,"radius"=>$radius,"vehicle_type"=>$vehicle_type);
         return $this->executeSelect($q,$params);
     }
 
