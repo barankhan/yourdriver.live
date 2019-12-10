@@ -65,9 +65,9 @@ if($userObj->getId()>0){
     $rideObj->setMessage("Sorry Your mobile number is not register with us!");
 }
 $var = json_encode($rideObj);
-$lr->setResponseBody($var);
-$lr->updateResponse();
-echo json_encode($var);
+//$lr->setResponseBody($var);
+//$lr->updateResponse();
+echo $var;
 
 
 
