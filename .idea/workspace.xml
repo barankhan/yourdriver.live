@@ -37,8 +37,8 @@
       <file leaf-file-name="user.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/model/user.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="290">
-              <caret line="603" column="20" lean-forward="false" selection-start-line="603" selection-start-column="20" selection-end-line="603" selection-end-column="20" />
+            <state relative-caret-position="380">
+              <caret line="38" column="28" lean-forward="false" selection-start-line="38" selection-start-column="25" selection-end-line="38" selection-end-column="28" />
               <folding>
                 <marker date="1575975326521" expanded="true" signature="627:643" ph="update users... " />
                 <marker date="1575975326521" expanded="true" signature="627:644" ph="update users... " />
@@ -83,8 +83,8 @@
       <file leaf-file-name="register_ride.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/rides/api/register_ride.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="18">
-              <caret line="1" column="38" lean-forward="false" selection-start-line="1" selection-start-column="38" selection-end-line="1" selection-end-column="38" />
+            <state relative-caret-position="522">
+              <caret line="29" column="33" lean-forward="true" selection-start-line="29" selection-start-column="33" selection-end-line="29" selection-end-column="33" />
               <folding />
             </state>
           </provider>
@@ -106,8 +106,8 @@
       <file leaf-file-name="baseModel.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/model/baseModel.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="414">
-              <caret line="59" column="26" lean-forward="false" selection-start-line="59" selection-start-column="26" selection-end-line="59" selection-end-column="26" />
+            <state relative-caret-position="342">
+              <caret line="25" column="0" lean-forward="false" selection-start-line="25" selection-start-column="0" selection-end-line="29" selection-end-column="25" />
               <folding />
             </state>
           </provider>
@@ -465,12 +465,12 @@
       <workItem from="1574755483175" duration="38288000" />
       <workItem from="1575016465060" duration="41153000" />
       <workItem from="1575621343095" duration="1973000" />
-      <workItem from="1575696583666" duration="26027000" />
+      <workItem from="1575696583666" duration="26188000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="118978000" />
+    <option name="totallyTimeSpent" value="119139000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="53" y="25" width="1867" height="1055" extended-state="6" />
@@ -902,10 +902,55 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/model/rideAlert.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="18" column="30" lean-forward="false" selection-start-line="18" selection-start-column="30" selection-end-line="18" selection-end-column="30" />
+          <folding>
+            <marker date="1575976588792" expanded="true" signature="291:315" ph="insert into ride_alerts... " />
+            <marker date="1575976588792" expanded="true" signature="291:358" ph="insert into ride_alerts... " />
+            <marker date="1575976588792" expanded="true" signature="579:614" ph="update ride_... " />
+            <marker date="1575976588792" expanded="true" signature="579:615" ph="update ride_... " />
+            <marker date="1575976588792" expanded="true" signature="579:625" ph="update ride_... " />
+            <marker date="1575976588792" expanded="true" signature="579:656" ph="update ride_... " />
+            <marker date="1575976588792" expanded="true" signature="585:602" ph="insert into ride_alerts... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/ride.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="218">
+          <caret line="18" column="89" lean-forward="false" selection-start-line="18" selection-start-column="89" selection-end-line="18" selection-end-column="89" />
+          <folding>
+            <marker date="1575980946079" expanded="true" signature="367:555" ph="insert into rides... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/LogRequest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="8" column="33" lean-forward="false" selection-start-line="8" selection-start-column="33" selection-end-line="8" selection-end-column="33" />
+          <folding>
+            <marker date="1575980751482" expanded="true" signature="2432:2653" ph="INSERT INTO `request_log`... " />
+            <marker date="1575980751482" expanded="true" signature="3124:3188" ph="update reque... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rides/api/register_ride.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="522">
+          <caret line="29" column="33" lean-forward="true" selection-start-line="29" selection-start-column="33" selection-end-line="29" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/model/user.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="290">
-          <caret line="603" column="20" lean-forward="false" selection-start-line="603" selection-start-column="20" selection-end-line="603" selection-end-column="20" />
+        <state relative-caret-position="380">
+          <caret line="38" column="28" lean-forward="false" selection-start-line="38" selection-start-column="25" selection-end-line="38" selection-end-column="28" />
           <folding>
             <marker date="1575975326521" expanded="true" signature="627:643" ph="update users... " />
             <marker date="1575975326521" expanded="true" signature="627:644" ph="update users... " />
@@ -946,55 +991,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/model/rideAlert.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="18" column="30" lean-forward="false" selection-start-line="18" selection-start-column="30" selection-end-line="18" selection-end-column="30" />
-          <folding>
-            <marker date="1575976588792" expanded="true" signature="291:315" ph="insert into ride_alerts... " />
-            <marker date="1575976588792" expanded="true" signature="291:358" ph="insert into ride_alerts... " />
-            <marker date="1575976588792" expanded="true" signature="579:614" ph="update ride_... " />
-            <marker date="1575976588792" expanded="true" signature="579:615" ph="update ride_... " />
-            <marker date="1575976588792" expanded="true" signature="579:625" ph="update ride_... " />
-            <marker date="1575976588792" expanded="true" signature="579:656" ph="update ride_... " />
-            <marker date="1575976588792" expanded="true" signature="585:602" ph="insert into ride_alerts... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/model/ride.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="218">
-          <caret line="18" column="89" lean-forward="false" selection-start-line="18" selection-start-column="89" selection-end-line="18" selection-end-column="89" />
-          <folding>
-            <marker date="1575980946079" expanded="true" signature="367:555" ph="insert into rides... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/rides/api/register_ride.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="1" column="38" lean-forward="false" selection-start-line="1" selection-start-column="38" selection-end-line="1" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/model/LogRequest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="8" column="33" lean-forward="false" selection-start-line="8" selection-start-column="33" selection-end-line="8" selection-end-column="33" />
-          <folding>
-            <marker date="1575980751482" expanded="true" signature="2432:2653" ph="INSERT INTO `request_log`... " />
-            <marker date="1575980751482" expanded="true" signature="3124:3188" ph="update reque... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/model/baseModel.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="414">
-          <caret line="59" column="26" lean-forward="false" selection-start-line="59" selection-start-column="26" selection-end-line="59" selection-end-column="26" />
+        <state relative-caret-position="342">
+          <caret line="25" column="0" lean-forward="false" selection-start-line="25" selection-start-column="0" selection-end-line="29" selection-end-column="25" />
           <folding />
         </state>
       </provider>

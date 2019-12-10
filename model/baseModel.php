@@ -23,11 +23,11 @@ class baseModel
         try {
             $stmt = $this->conn->prepare($query);
             $stmt->execute($params);
-//            $arr = $stmt->errorInfo();
-//            print_r($arr);
-//            echo "<hr/>";
-//            echo $stmt->queryString;
-//            echo "<hr/>";
+            $arr = $stmt->errorInfo();
+            print_r($arr);
+            echo "<hr/>";
+            echo $stmt->queryString;
+            echo "<hr/>";
         } catch (PDOException $e) {
             echo $e->getMessage();
             die("in Select");
