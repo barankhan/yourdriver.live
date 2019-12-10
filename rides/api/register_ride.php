@@ -17,12 +17,17 @@ $userObj->getUserWithMobile($mobile);
 
 $rideObj = new ride();
 $fabseRes="";
-$dropoff_lat_lng = explode(",",$_REQUEST["dropoff_lat_lng"]);
+if(!empty($_REQUEST["dropoff_lat_lng"])){
+    $dropoff_lat_lng = explode(",",$_REQUEST["dropoff_lat_lng"]);
+    $rideObj->setDropoffLat($dropoff_lat_lng[0]);
+    $rideObj->setDropoffLng($dropoff_lat_lng[1]);
+
+}
+
+
 $pickup_lat_lng = explode(",",$_REQUEST["pickup_lat_lng"]);
 // if user exists insert ride into the database.
 if($userObj->getId()>0){
-    $rideObj->setDropoffLat($dropoff_lat_lng[0]);
-    $rideObj->setDropoffLng($dropoff_lat_lng[1]);
     $rideObj->setPickupLat($pickup_lat_lng[0]);
     $rideObj->setPickupLng($pickup_lat_lng[1]);
     $rideObj->setVehicleType($_REQUEST["vehicle_type"]);
