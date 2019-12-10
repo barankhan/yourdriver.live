@@ -26,7 +26,7 @@ if($userObj->getId()>0){
     $rideObj->setVehicleType($_REQUEST["vehicle_type"]);
     $rideObj->setPassengerId($userObj->getId());
     $rideObj->insert();
-    die("im here");
+
     $drivers = $userObj->getAvailableDrivers($pickup_lat_lng[0],$pickup_lat_lng[1]);
     if(array_key_exists(0, $drivers)){
         $driver = new User();
@@ -64,7 +64,7 @@ if($userObj->getId()>0){
     $rideObj->setResponse("mobile_number_not_registered");
     $rideObj->setMessage("Sorry Your mobile number is not register with us!");
 }
-$lr->setResponseBody(json_encode($rideObj).$fabseRes);
+$lr->setResponseBody(json_encode($rideObj));
 $lr->updateResponse();
 echo json_encode($rideObj);
 
