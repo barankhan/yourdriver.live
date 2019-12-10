@@ -29,6 +29,7 @@ if($userObj->getId()>0){
 
     $drivers = $userObj->getAvailableDrivers($pickup_lat_lng[0],$pickup_lat_lng[1]);
     if(array_key_exists(0, $drivers)){
+        echo "I'm here";
         $driver = new User();
         $driver->setAllFields($drivers[0]);
         $rideAlertObj = new rideAlert();
