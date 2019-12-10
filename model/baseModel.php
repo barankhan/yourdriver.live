@@ -30,6 +30,7 @@ class baseModel
 //            echo "<hr/>";
         } catch (PDOException $e) {
             echo $e->getMessage();
+            die("in Select");
         }
         $records = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $records;
@@ -56,6 +57,7 @@ class baseModel
 
         } catch (PDOException $e) {
             echo $e->getMessage();
+            die("in insert");
             return false;
         }
         return $this->conn->lastInsertId();
@@ -68,6 +70,7 @@ class baseModel
             $stmt->execute($params);
         } catch (PDOException $e) {
             echo $e->getMessage();
+            die("in update");
             return false;
         }
         return true;
