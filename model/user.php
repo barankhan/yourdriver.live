@@ -608,9 +608,9 @@ class User extends  baseModel implements JsonSerializable {
 
     public function updateDriverStep2(){
         $q = "update users set driver_steps=:driver_steps,vehicle_front=:vehicle_front,vehicle_rear=:vehicle_rear,registration=:registration,
-                    route=:route,reg_alphabet=:reg_alphabet,reg_year=:reg_year,reg_no=:reg_no where id=:id";
+                    route=:route,reg_alphabet=:reg_alphabet,reg_year=:reg_year,reg_no=:reg_no,vehicle_type=:vehicleType where id=:id";
         $params = array("id" => $this->getId(),"driver_steps"=>$this->driverSteps,"vehicle_front"=>$this->vehicleFront,"vehicle_rear"=>$this->vehicleRear,
-            "registration"=>$this->registration,"route"=>$this->route,"reg_alphabet"=>$this->regAlphabet,"reg_year"=>$this->regYear,"reg_no"=>$this->regNo);
+            "vehicleType"=>$this->vehicleType,"registration"=>$this->registration,"route"=>$this->route,"reg_alphabet"=>$this->regAlphabet,"reg_year"=>$this->regYear,"reg_no"=>$this->regNo);
         $this->executeUpdate($q, $params);
     }
 
