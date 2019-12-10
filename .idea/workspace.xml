@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="dc2e211f-761c-4655-959f-8a09e31a4cb5" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/model/baseModel.php" afterPath="$PROJECT_DIR$/model/baseModel.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rides/api/register_ride.php" afterPath="$PROJECT_DIR$/rides/api/register_ride.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -37,8 +38,8 @@
       <file leaf-file-name="user.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/model/user.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="380">
-              <caret line="38" column="28" lean-forward="false" selection-start-line="38" selection-start-column="25" selection-end-line="38" selection-end-column="28" />
+            <state relative-caret-position="326">
+              <caret line="605" column="28" lean-forward="false" selection-start-line="605" selection-start-column="28" selection-end-line="605" selection-end-column="28" />
               <folding>
                 <marker date="1575975326521" expanded="true" signature="627:643" ph="update users... " />
                 <marker date="1575975326521" expanded="true" signature="627:644" ph="update users... " />
@@ -80,11 +81,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="register_ride.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="register_ride.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/rides/api/register_ride.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="522">
-              <caret line="29" column="33" lean-forward="true" selection-start-line="29" selection-start-column="33" selection-end-line="29" selection-end-column="33" />
+            <state relative-caret-position="288">
+              <caret line="16" column="4" lean-forward="false" selection-start-line="16" selection-start-column="4" selection-end-line="16" selection-end-column="4" />
               <folding />
             </state>
           </provider>
@@ -103,11 +104,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="baseModel.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="baseModel.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/model/baseModel.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="342">
-              <caret line="25" column="0" lean-forward="false" selection-start-line="25" selection-start-column="0" selection-end-line="29" selection-end-column="25" />
+            <state relative-caret-position="576">
+              <caret line="32" column="18" lean-forward="false" selection-start-line="32" selection-start-column="18" selection-end-line="32" selection-end-column="18" />
               <folding />
             </state>
           </provider>
@@ -205,8 +206,8 @@
         <option value="$PROJECT_DIR$/model/rideAlert.php" />
         <option value="$PROJECT_DIR$/model/LogRequest.php" />
         <option value="$PROJECT_DIR$/model/ride.php" />
-        <option value="$PROJECT_DIR$/rides/api/register_ride.php" />
         <option value="$PROJECT_DIR$/model/baseModel.php" />
+        <option value="$PROJECT_DIR$/rides/api/register_ride.php" />
       </list>
     </option>
   </component>
@@ -465,12 +466,12 @@
       <workItem from="1574755483175" duration="38288000" />
       <workItem from="1575016465060" duration="41153000" />
       <workItem from="1575621343095" duration="1973000" />
-      <workItem from="1575696583666" duration="26188000" />
+      <workItem from="1575696583666" duration="26659000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="119139000" />
+    <option name="totallyTimeSpent" value="119610000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="53" y="25" width="1867" height="1055" extended-state="6" />
@@ -894,14 +895,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/users/approve_driver.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="8" column="38" lean-forward="true" selection-start-line="8" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/model/rideAlert.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="324">
@@ -939,18 +932,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/rides/api/register_ride.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="522">
-          <caret line="29" column="33" lean-forward="true" selection-start-line="29" selection-start-column="33" selection-end-line="29" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/model/user.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="38" column="28" lean-forward="false" selection-start-line="38" selection-start-column="25" selection-end-line="38" selection-end-column="28" />
+        <state relative-caret-position="326">
+          <caret line="605" column="28" lean-forward="false" selection-start-line="605" selection-start-column="28" selection-end-line="605" selection-end-column="28" />
           <folding>
             <marker date="1575975326521" expanded="true" signature="627:643" ph="update users... " />
             <marker date="1575975326521" expanded="true" signature="627:644" ph="update users... " />
@@ -993,8 +978,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/model/baseModel.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="25" column="0" lean-forward="false" selection-start-line="25" selection-start-column="0" selection-end-line="29" selection-end-column="25" />
+        <state relative-caret-position="576">
+          <caret line="32" column="18" lean-forward="false" selection-start-line="32" selection-start-column="18" selection-end-line="32" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/users/approve_driver.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="8" column="38" lean-forward="true" selection-start-line="8" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rides/api/register_ride.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="16" column="4" lean-forward="false" selection-start-line="16" selection-start-column="4" selection-end-line="16" selection-end-column="4" />
           <folding />
         </state>
       </provider>

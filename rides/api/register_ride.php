@@ -13,6 +13,8 @@ $lr->setMobileNumber($mobile);
 $lr->insertLog();
 $userObj = new User();
 $userObj->getUserWithMobile($mobile);
+
+die;
 $rideObj = new ride();
 $fabseRes="";
 $dropoff_lat_lng = explode(",",$_REQUEST["dropoff_lat_lng"]);

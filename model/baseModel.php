@@ -30,7 +30,7 @@ class baseModel
             echo "<hr/>";
         } catch (PDOException $e) {
             echo $e->getMessage();
-            die("in Select");
+            die(" in Select");
         }
         $records = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $records;
