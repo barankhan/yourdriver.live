@@ -93,8 +93,8 @@
       <file leaf-file-name="register_ride.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/rides/api/register_ride.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="900">
-              <caret line="65" column="1" lean-forward="true" selection-start-line="65" selection-start-column="1" selection-end-line="65" selection-end-column="1" />
+            <state relative-caret-position="636">
+              <caret line="67" column="2" lean-forward="true" selection-start-line="67" selection-start-column="2" selection-end-line="67" selection-end-column="2" />
               <folding />
             </state>
           </provider>
@@ -103,11 +103,11 @@
       <file leaf-file-name="LogRequest.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/model/LogRequest.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="299">
-              <caret line="65" column="20" lean-forward="false" selection-start-line="65" selection-start-column="20" selection-end-line="65" selection-end-column="20" />
+            <state relative-caret-position="344">
+              <caret line="152" column="50" lean-forward="false" selection-start-line="152" selection-start-column="43" selection-end-line="152" selection-end-column="50" />
               <folding>
-                <marker date="1575442457095" expanded="true" signature="2432:2653" ph="INSERT INTO `request_log`... " />
-                <marker date="1575442457095" expanded="true" signature="3124:3188" ph="update reque... " />
+                <marker date="1575980751482" expanded="true" signature="2432:2653" ph="INSERT INTO `request_log`... " />
+                <marker date="1575980751482" expanded="true" signature="3124:3188" ph="update reque... " />
               </folding>
             </state>
           </provider>
@@ -134,8 +134,8 @@
       <file leaf-file-name="ride.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/model/ride.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="164">
-              <caret line="15" column="91" lean-forward="false" selection-start-line="15" selection-start-column="80" selection-end-line="15" selection-end-column="91" />
+            <state relative-caret-position="-3198">
+              <caret line="22" column="20" lean-forward="false" selection-start-line="22" selection-start-column="20" selection-end-line="22" selection-end-column="20" />
               <folding>
                 <marker date="1575972514145" expanded="true" signature="367:555" ph="insert into rides... " />
               </folding>
@@ -189,7 +189,6 @@
         <option value="$PROJECT_DIR$/users/api/login.php" />
         <option value="$PROJECT_DIR$/users/api/update_firebase_token.php" />
         <option value="$PROJECT_DIR$/utils/LogRequest.php" />
-        <option value="$PROJECT_DIR$/model/LogRequest.php" />
         <option value="$PROJECT_DIR$/users/api/upload_driver_reg_step1.php" />
         <option value="$PROJECT_DIR$/users/list_driver_aproval.php" />
         <option value="$PROJECT_DIR$/utils/firebaseNotification.php" />
@@ -207,6 +206,7 @@
         <option value="$PROJECT_DIR$/model/user.php" />
         <option value="$PROJECT_DIR$/model/rideAlert.php" />
         <option value="$PROJECT_DIR$/rides/api/register_ride.php" />
+        <option value="$PROJECT_DIR$/model/LogRequest.php" />
       </list>
     </option>
   </component>
@@ -465,12 +465,12 @@
       <workItem from="1574755483175" duration="38288000" />
       <workItem from="1575016465060" duration="41153000" />
       <workItem from="1575621343095" duration="1973000" />
-      <workItem from="1575696583666" duration="25436000" />
+      <workItem from="1575696583666" duration="25696000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="118387000" />
+    <option name="totallyTimeSpent" value="118647000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="53" y="25" width="1867" height="1055" extended-state="6" />
@@ -910,32 +910,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/model/rideAlert.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="18" column="30" lean-forward="false" selection-start-line="18" selection-start-column="30" selection-end-line="18" selection-end-column="30" />
-          <folding>
-            <marker date="1575976588792" expanded="true" signature="291:315" ph="insert into ride_alerts... " />
-            <marker date="1575976588792" expanded="true" signature="291:358" ph="insert into ride_alerts... " />
-            <marker date="1575976588792" expanded="true" signature="579:614" ph="update ride_... " />
-            <marker date="1575976588792" expanded="true" signature="579:615" ph="update ride_... " />
-            <marker date="1575976588792" expanded="true" signature="579:625" ph="update ride_... " />
-            <marker date="1575976588792" expanded="true" signature="579:656" ph="update ride_... " />
-            <marker date="1575976588792" expanded="true" signature="585:602" ph="insert into ride_alerts... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/model/ride.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="164">
-          <caret line="15" column="91" lean-forward="false" selection-start-line="15" selection-start-column="80" selection-end-line="15" selection-end-column="91" />
-          <folding>
-            <marker date="1575972514145" expanded="true" signature="367:555" ph="insert into rides... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/model/user.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="290">
@@ -980,21 +954,47 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/model/rideAlert.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="18" column="30" lean-forward="false" selection-start-line="18" selection-start-column="30" selection-end-line="18" selection-end-column="30" />
+          <folding>
+            <marker date="1575976588792" expanded="true" signature="291:315" ph="insert into ride_alerts... " />
+            <marker date="1575976588792" expanded="true" signature="291:358" ph="insert into ride_alerts... " />
+            <marker date="1575976588792" expanded="true" signature="579:614" ph="update ride_... " />
+            <marker date="1575976588792" expanded="true" signature="579:615" ph="update ride_... " />
+            <marker date="1575976588792" expanded="true" signature="579:625" ph="update ride_... " />
+            <marker date="1575976588792" expanded="true" signature="579:656" ph="update ride_... " />
+            <marker date="1575976588792" expanded="true" signature="585:602" ph="insert into ride_alerts... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/ride.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3198">
+          <caret line="22" column="20" lean-forward="false" selection-start-line="22" selection-start-column="20" selection-end-line="22" selection-end-column="20" />
+          <folding>
+            <marker date="1575972514145" expanded="true" signature="367:555" ph="insert into rides... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/model/LogRequest.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
-          <caret line="65" column="20" lean-forward="false" selection-start-line="65" selection-start-column="20" selection-end-line="65" selection-end-column="20" />
+        <state relative-caret-position="344">
+          <caret line="152" column="50" lean-forward="false" selection-start-line="152" selection-start-column="43" selection-end-line="152" selection-end-column="50" />
           <folding>
-            <marker date="1575442457095" expanded="true" signature="2432:2653" ph="INSERT INTO `request_log`... " />
-            <marker date="1575442457095" expanded="true" signature="3124:3188" ph="update reque... " />
+            <marker date="1575980751482" expanded="true" signature="2432:2653" ph="INSERT INTO `request_log`... " />
+            <marker date="1575980751482" expanded="true" signature="3124:3188" ph="update reque... " />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/rides/api/register_ride.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="900">
-          <caret line="65" column="1" lean-forward="true" selection-start-line="65" selection-start-column="1" selection-end-line="65" selection-end-column="1" />
+        <state relative-caret-position="636">
+          <caret line="67" column="2" lean-forward="true" selection-start-line="67" selection-start-column="2" selection-end-line="67" selection-end-column="2" />
           <folding />
         </state>
       </provider>
