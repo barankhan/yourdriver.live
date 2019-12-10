@@ -46,6 +46,7 @@ if (isset($_FILES["vehicle_front"])&&isset($_FILES["vehicle_rear"])&&isset($_FIL
         $userObj->setRegAlphabet($_REQUEST['reg_alphabet']);
         $userObj->setRegYear($_REQUEST['reg_year']);
         $userObj->setRegNo($_REQUEST['reg_no']);
+        $userObj->setVehicleType($_REQUEST['vehicle_type']);
         $userObj->setRoute($route_file_name);
         $userObj->setRegistration($registration_file_name);
         $userObj->setVehicleFront($vehicle_front_file_name);
