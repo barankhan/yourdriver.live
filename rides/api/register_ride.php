@@ -14,7 +14,7 @@ $lr->insertLog();
 $userObj = new User();
 $userObj->getUserWithMobile($mobile);
 
-die;
+
 $rideObj = new ride();
 $fabseRes="";
 $dropoff_lat_lng = explode(",",$_REQUEST["dropoff_lat_lng"]);
@@ -30,6 +30,7 @@ if($userObj->getId()>0){
     $rideObj->insert();
 
     $drivers = $userObj->getAvailableDrivers($pickup_lat_lng[0],$pickup_lat_lng[1]);
+
     if(array_key_exists(0, $drivers)){
         $driver = new User();
         $driver->setAllFields($drivers[0]);
