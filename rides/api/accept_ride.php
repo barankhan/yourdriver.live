@@ -16,7 +16,7 @@ $driverObj->getUserWithMobile($mobile);
 $rideObj = new ride();
 $response = $rideObj->assignRideToDriver($_REQUEST['ride_id'],$driverObj->getId());
 if($response=='driver_assigned'){
-    $rideObj->setResponse("you_got_ride");
+    $rideObj->setResponse("you_got_it");
     $rideObj->setMessage("Ride has been assigned to you");
 }else{
     $rideObj->setResponse("some_one_else_got_it");

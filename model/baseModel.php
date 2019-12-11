@@ -3,7 +3,7 @@ error_reporting(E_ERROR);
 class baseModel
 {
     protected $conn;
-    private $my_host = "localhost";
+    private $my_host = "103.86.134.90";
     private $my_user = "truck_driver";
     private $my_pwd = "!@E#y-S-W%F7h5CHBPh";
     private $db = "driver";

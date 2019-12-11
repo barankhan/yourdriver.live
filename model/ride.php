@@ -22,27 +22,37 @@ class ride extends  baseModel implements JsonSerializable
 
 
     public function assignRideToDriver($id,$driver_id){
-        $this->conn->beginTransaction();
-            $q = "select * from rides where id=:id and COALESCE(driver_id,0)=0 for update";
-            $this->conn->prepare(array("id"=>$id));
-            $statement = $this->conn->exec($q);
-            $records = $statement->fetchAll();
-            if(sizeof($records)>0){
+        try {
+            $this->conn->beginTransaction();
+            $q = "select * from rides where id=:id and COALESCE(driver_id,0)=0 FOR UPDATE;";
+            $statement = $this->conn->prepare($q);
+            $statement->execute(array("id" => $id));
+            $records = $statement->fetchAll(PDO::FETCH_ASSOC);
+            if (sizeof($records) > 0) {
                 $this->setAllFields($records[0]);
-                $q2 = "update ride_alerts set is_accepted=1,accepted_at=now() where ride_id=:id and driver_id=:driver_id";
-                $this->conn->prepare(array("id"=>$id,"driver_id"=>$driver_id));
-                $this->conn->exec($q2);
 
-                $q3 = "update ride set driver_id=:driver_id where id=:id";
-                $this->conn->prepare(array("id"=>$id,"driver_id"=>$driver_id));
-                $this->conn->exec($q3);
+                $q3 = "update rides set driver_id=:ddriver_id where id=:idd;";
+                $statement = $this->conn->prepare($q3);
+                $params = array("idd" => $id, "ddriver_id" => $driver_id);
+                $statement->execute($params);
 
+
+                $q2 = "update ride_alerts set is_accepted=1,accepted_at=now() where ride_id=:id and driver_id=:driver_id;";
+                $statement = $this->conn->prepare($q2);
+                $statement->execute(array("id" => $id, "driver_id" => $driver_id));
+
+                $this->conn->commit();
                 return "driver_assigned";
 
-            }else{
+            } else {
+                $this->conn->commit();
                 return "ride_already_assigned";
             }
-        $this->conn->commit();
+
+        }catch (Exception $e){
+            var_dump($e);
+            die("fucked");
+        }
     }
 
 
@@ -269,7 +279,7 @@ class ride extends  baseModel implements JsonSerializable
                 return ! is_null($item);
             }
         );
-
+        unset($vars['conn']);
         return $vars;
     }
 }

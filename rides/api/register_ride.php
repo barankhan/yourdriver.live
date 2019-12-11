@@ -52,6 +52,8 @@ if($userObj->getId()>0){
         $payload['do']="ride_alert";
         $payload['msg']="You have a new ride";
         $payload['key']="ride_alert";
+        $payload['lat']=$pickup_lat_lng[0];
+        $payload['lng']=$pickup_lat_lng[1];
 
         $token = $driver->getFirebaseToken();
 

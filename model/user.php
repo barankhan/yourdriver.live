@@ -705,6 +705,7 @@ class User extends  baseModel implements JsonSerializable {
         );
         unset($vars['password']);
         unset($vars['firbaseToken']);
+        unset($vars['conn']);
 
 
         return $vars;
