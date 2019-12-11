@@ -20,6 +20,38 @@ class ride extends  baseModel implements JsonSerializable
         $this->setId($this->executeInsert($q,$params));
     }
 
+
+    public function assignRideToDriver($id,$driver_id){
+        $this->conn->beginTransaction();
+            $q = "select * from rides where id=:id and COALESCE(driver_id,0)=0 for update";
+            $this->conn->prepare(array("id"=>$id));
+            $statement = $this->conn->exec($q);
+            $records = $statement->fetchAll();
+            if(sizeof($records)>0){
+                $this->setAllFields($records[0]);
+                $q2 = "update ride_alerts set is_accepted=1,accepted_at=now() where ride_id=:id and driver_id=:driver_id";
+                $this->conn->prepare(array("id"=>$id,"driver_id"=>$driver_id));
+                $this->conn->exec($q2);
+
+                $q3 = "update ride set driver_id=:driver_id where id=:id";
+                $this->conn->prepare(array("id"=>$id,"driver_id"=>$driver_id));
+                $this->conn->exec($q3);
+
+                return "driver_assigned";
+
+            }else{
+                return "ride_already_assigned";
+            }
+        $this->conn->commit();
+    }
+
+
+    public function findRideWithId(){
+        $q = "select * from rides where id=:id";
+        $params= array("id"=>$this->id);
+        $this->setAllFields($this->executeSelectSingle($q,$params));
+    }
+
     public function __construct(){
         parent::__construct();
     }

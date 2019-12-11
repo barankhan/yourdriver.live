@@ -2,7 +2,7 @@
 error_reporting(E_ERROR);
 class baseModel
 {
-    private $conn;
+    protected $conn;
     private $my_host = "localhost";
     private $my_user = "truck_driver";
     private $my_pwd = "!@E#y-S-W%F7h5CHBPh";
