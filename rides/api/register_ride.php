@@ -58,7 +58,7 @@ if($userObj->getId()>0){
 
         $token = $driver->getFirebaseToken();
 
-        $fabseRes = $fbaseObj->sendPayloadOnly($token,$payload,$notification);
+        $fabseRes = $fbaseObj->sendPayloadOnly($lr->getId(),$token,$payload,$notification);
 
         $rideObj->setResponse("alert_sent_to_driver");
         $rideObj->setMessage("waiting for driver to accept the ride");

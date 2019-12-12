@@ -36,7 +36,7 @@ if($response=='driver_assigned'){
 
 
     $token = $passengerObj->getFirebaseToken();
-    $fabseRes = $fbaseObj->sendPayloadOnly($token,$payload,$notification);
+    $fabseRes = $fbaseObj->sendPayloadOnly($lr->getId(),$token,$payload,$notification);
 
 }else{
     $rideObj->setResponse("some_one_else_got_it");

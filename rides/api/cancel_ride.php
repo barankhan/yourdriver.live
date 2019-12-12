@@ -56,7 +56,7 @@ if($rideObj->getIsRideStarted()==0 && $rideObj->getIsRideCancelled()==0){
     $payload['key']="ride_cancelled";
     $payload['ride_id'] = $rideObj->getId();
     $token = $driverObj->getFirebaseToken();
-    $fabseRes = $fbaseObj->sendPayloadOnly($token,$payload,$notification);
+    $fabseRes = $fbaseObj->sendPayloadOnly($lr->getId(),$token,$payload,$notification);
 
 
 }else{

@@ -25,4 +25,4 @@ $payload['msg']="Congratulation. Please login now.";
 $payload['key']="driver_successful";
 $token = $userObj->getFirebaseToken();
 
-echo $fbaseObj->sendPayloadOnly($token,$payload,$notification);
+echo $fbaseObj->sendPayloadOnly(0,$token,$payload,$notification);
