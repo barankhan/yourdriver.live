@@ -34,9 +34,10 @@ if($response=='driver_assigned'){
     $payload['lng']=$driverObj->getLng();
     $payload['driver_mobile']=$driverObj->getMobile();
 
+
     $token = $passengerObj->getFirebaseToken();
     $fabseRes = $fbaseObj->sendPayloadOnly($token,$payload,$notification);
-    
+
 }else{
     $rideObj->setResponse("some_one_else_got_it");
     $rideObj->setMessage("Sorry you are late.Someone Picked the Ride");

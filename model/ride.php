@@ -10,7 +10,8 @@ require_once "baseModel.php";
 class ride extends  baseModel implements JsonSerializable
 {
 
-    private $id=0,$passengerId,$driverId,$createdAt,$updatedAt,$pickupLat,$pickupLng,$vehicleType,$dropoffLat,$dropoffLng,$response,$message;
+    private $id=0,$passengerId,$driverId,$createdAt,$updatedAt,$pickupLat,$pickupLng,$vehicleType,$dropoffLat
+    ,$dropoffLng,$response,$message,$isRideStarted=0,$isRideCancelled=0,$rideStartedAt,$rideCancelledAt;
 
     public function insert(){
         $q = "insert into rides(passenger_id,pickup_lat,pickup_lng,vehicle_type,dropoff_lat,dropoff_lng)
@@ -19,6 +20,20 @@ class ride extends  baseModel implements JsonSerializable
         ,"vehicle_type"=>$this->vehicleType,"dropoff_lat"=>$this->dropoffLat,"dropoff_lng"=>$this->dropoffLng);
         $this->setId($this->executeInsert($q,$params));
     }
+
+
+    public function update(){
+        $q = "update rides set is_ride_started=:isRideStarted,is_ride_cancelled=:isRideCancelled,ride_started_at=:rideStartedAt,
+ride_cancelled_at=:rideCancelledAt where id=:id";
+        $params = array("isRideStarted"=>$this->isRideStarted,"isRideCancelled"=>$this->isRideCancelled,
+            "rideStartedAt"=>$this->rideStartedAt,"rideCancelledAt"=>"$this->rideCancelledAt","id"=>$this->id);
+        return $this->executeUpdate($q,$params);
+
+    }
+
+
+
+
 
 
     public function assignRideToDriver($id,$driver_id){
@@ -61,6 +76,72 @@ class ride extends  baseModel implements JsonSerializable
         $params= array("id"=>$this->id);
         $this->setAllFields($this->executeSelectSingle($q,$params));
     }
+
+    /**
+     * @return int
+     */
+    public function getIsRideStarted()
+    {
+        return $this->isRideStarted;
+    }
+
+    /**
+     * @param int $isRideStarted
+     */
+    public function setIsRideStarted($isRideStarted)
+    {
+        $this->isRideStarted = $isRideStarted;
+    }
+
+    /**
+     * @return int
+     */
+    public function getIsRideCancelled()
+    {
+        return $this->isRideCancelled;
+    }
+
+    /**
+     * @param int $isRideCancelled
+     */
+    public function setIsRideCancelled($isRideCancelled)
+    {
+        $this->isRideCancelled = $isRideCancelled;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getRideStartedAt()
+    {
+        return $this->rideStartedAt;
+    }
+
+    /**
+     * @param mixed $rideStartedAt
+     */
+    public function setRideStartedAt($rideStartedAt)
+    {
+        $this->rideStartedAt = $rideStartedAt;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getRideCancelledAt()
+    {
+        return $this->rideCancelledAt;
+    }
+
+    /**
+     * @param mixed $rideCancelledAt
+     */
+    public function setRideCancelledAt($rideCancelledAt)
+    {
+        $this->rideCancelledAt = $rideCancelledAt;
+    }
+
+
 
     public function __construct(){
         parent::__construct();
