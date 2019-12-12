@@ -1,12 +1,15 @@
 <?php
+
 require_once __DIR__."/../../model/LogRequest.php";
-require_once __DIR__."/../../model/transactions.php";
+require_once __DIR__."/../../model/DriverTransaction.php";
 require_once __DIR__."/../../model/user.php";
 require_once __DIR__."/../../model/ride.php";
 require_once __DIR__."/../../model/rideAlert.php";
 require_once __DIR__."/../../utils/firebaseNotification.php";
 require_once __DIR__."/../../utils/basePrice.php";
+
 $mobile= $_REQUEST['mobile'];
+
 $lr = new LogRequest();
 $lr->setRequestUri($_SERVER['REQUEST_URI']);
 $lr->setRequestBody(json_encode($_REQUEST));
@@ -21,6 +24,7 @@ $rideObj->setId($_REQUEST['ride_id']);
 $rideObj->findRideWithId();
 
 if($rideObj->getIsRideStarted()==0 && $rideObj->getIsRideCancelled()==0){
+
     $rideObj->setIsRideCancelled(1);
     $rideObj->setRideCancelledAt(date("Y-m-d H:i:s"));
     $rideObj->update();

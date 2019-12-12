@@ -2,14 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dc2e211f-761c-4655-959f-8a09e31a4cb5" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/model/FirebaseLog.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rides/api/accept_ride.php" afterPath="$PROJECT_DIR$/rides/api/accept_ride.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rides/api/cancel_ride.php" afterPath="$PROJECT_DIR$/rides/api/cancel_ride.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rides/api/register_ride.php" afterPath="$PROJECT_DIR$/rides/api/register_ride.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/temp.php" afterPath="$PROJECT_DIR$/temp.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/users/approve_driver.php" afterPath="$PROJECT_DIR$/users/approve_driver.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/utils/firebaseNotification.php" afterPath="$PROJECT_DIR$/utils/firebaseNotification.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -21,7 +14,7 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="approve_driver.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="approve_driver.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/users/approve_driver.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="288">
@@ -109,25 +102,12 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="cancel_ride.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="cancel_ride.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/rides/api/cancel_ride.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="724">
-              <caret line="58" column="42" lean-forward="false" selection-start-line="58" selection-start-column="27" selection-end-line="58" selection-end-column="42" />
+            <state relative-caret-position="126">
+              <caret line="7" column="61" lean-forward="false" selection-start-line="7" selection-start-column="61" selection-end-line="7" selection-end-column="61" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DriverTransaction.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/model/DriverTransaction.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="299" column="20" lean-forward="false" selection-start-line="299" selection-start-column="20" selection-end-line="299" selection-end-column="20" />
-              <folding>
-                <marker date="1576152695947" expanded="true" signature="516:709" ph="insert into transactions... " />
-                <marker date="1576152695947" expanded="true" signature="516:862" ph="insert into transactions... " />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -189,10 +169,10 @@
         <option value="$PROJECT_DIR$/model/FirebaseLog.php" />
         <option value="$PROJECT_DIR$/temp.php" />
         <option value="$PROJECT_DIR$/utils/firebaseNotification.php" />
-        <option value="$PROJECT_DIR$/rides/api/cancel_ride.php" />
         <option value="$PROJECT_DIR$/rides/api/accept_ride.php" />
         <option value="$PROJECT_DIR$/rides/api/register_ride.php" />
         <option value="$PROJECT_DIR$/users/approve_driver.php" />
+        <option value="$PROJECT_DIR$/rides/api/cancel_ride.php" />
       </list>
     </option>
   </component>
@@ -268,6 +248,20 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="api" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="driver" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="driver" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="model" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -406,12 +400,12 @@
       <workItem from="1575016465060" duration="41153000" />
       <workItem from="1575621343095" duration="1973000" />
       <workItem from="1575696583666" duration="46587000" />
-      <workItem from="1576140030984" duration="11907000" />
+      <workItem from="1576140030984" duration="12475000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="151445000" />
+    <option name="totallyTimeSpent" value="152013000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="53" y="27" width="1867" height="1053" extended-state="0" />
@@ -810,17 +804,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/model/DriverTransaction.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="299" column="20" lean-forward="false" selection-start-line="299" selection-start-column="20" selection-end-line="299" selection-end-column="20" />
-          <folding>
-            <marker date="1576152695947" expanded="true" signature="516:709" ph="insert into transactions... " />
-            <marker date="1576152695947" expanded="true" signature="516:862" ph="insert into transactions... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/model/LogRequest.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="748">
@@ -861,14 +844,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/rides/api/cancel_ride.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="724">
-          <caret line="58" column="42" lean-forward="false" selection-start-line="58" selection-start-column="27" selection-end-line="58" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/rides/api/register_ride.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="594">
@@ -905,6 +880,25 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="288">
           <caret line="16" column="16" lean-forward="false" selection-start-line="16" selection-start-column="16" selection-end-line="16" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/DriverTransaction.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="299" column="20" lean-forward="false" selection-start-line="299" selection-start-column="20" selection-end-line="299" selection-end-column="20" />
+          <folding>
+            <marker date="1576152695947" expanded="true" signature="516:709" ph="insert into transactions... " />
+            <marker date="1576152695947" expanded="true" signature="516:862" ph="insert into transactions... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rides/api/cancel_ride.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="7" column="61" lean-forward="false" selection-start-line="7" selection-start-column="61" selection-end-line="7" selection-end-column="61" />
           <folding />
         </state>
       </provider>
