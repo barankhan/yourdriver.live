@@ -17,7 +17,7 @@ $kmTravelled=0,$kmTravelledRate,$totalFare=0,$amountReceived=0,$createdAt,$updat
     public function insertCanceledRide(){
         $q = "insert into transactions (driver_id,passenger_id,transaction_type,driver_start_up_fare,company_service_charges,total_fare,
       ride_id,total_amount,km_travelled_rate,time_elapsed_rate) value(:driverId,:passengerId,:transactionType,:driverStartUpFare,:companyServiceCharges,:totalFare,
-      :rideId,:totalAmount,kmTravelledRate,timeElapsedRate);";
+      :rideId,:totalAmount,:kmTravelledRate,:timeElapsedRate);";
         $params = array("driverId"=>$this->driverId,"passengerId"=>$this->passengerId,"transactionType"=>$this->transactionType,
             "driverStartUpFare"=>$this->driverStartUpFare,"companyServiceCharges"=>$this->companyServiceCharges,"totalFare"=>$this->totalFare,
       "rideId"=>$this->rideId,"totalAmount"=>$this->totalAmount,"kmTravelledRate"=>$this->kmTravelledRate,"timeElapsedRate"=>$this->timeElapsedRate);
