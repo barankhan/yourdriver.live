@@ -13,7 +13,7 @@ class firebaseNotification
      private $firebaseAPIKey ="AIzaSyDTzHTWNjCuve-ynDUDpZXrv8TCIbwzTtc";
      private $fcmUrl = 'https://fcm.googleapis.com/fcm/send';
 
-     public function sendPayloadOnly($logId,$token,$payload=null,$notification=null){
+     public function sendPayloadOnly($logId,$token,$payload=null,$notification=null,$priority='normal'){
          $fbaseLogObj  = new FirebaseLog();
          $fbaseLogObj->setNotification(json_encode($notification));
          $fbaseLogObj->setPayload(json_encode($payload));
@@ -25,6 +25,7 @@ class firebaseNotification
 
 
          $fcmNotification['to'] =  $token;
+         $fcmNotification['priority'] =  $priority;
          if(!empty($notification)){
              $fcmNotification['notification'] = $notification;
          }
