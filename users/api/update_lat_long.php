@@ -8,6 +8,8 @@
 
 require_once __DIR__."/../../model/user.php";
 require_once __DIR__."/../../model/LogRequest.php";
+require_once __DIR__."/../../utils/firebaseNotification.php";
+
 $lr = new LogRequest();
 $lr->setRequestUri($_SERVER['REQUEST_URI']);
 $lr->setRequestBody(json_encode($_REQUEST));
@@ -25,20 +27,12 @@ $userObj->update();
 if($_REQUEST['passenger_id']!=''){
     $passObj = new User();
     $passObj->getUserWithId($_REQUEST['passenger_id']);
-
-
-
     $fbaseObj = new firebaseNotification();
-
-    $notification['title']='Ride Alert';
-    $notification['body']='Passenger is waiting for you.';
     $payload['do']="driver_location_update";
-    $payload['msg']="You have a new ride";
+    $payload['msg']="LocationUpdated";
     $payload['key']="driver_location_update";
     $payload['lat']=$_REQUEST['lat'];
     $payload['lng']=$_REQUEST['lng'];
-
-
     $token = $passObj->getFirebaseToken();
     $fabseRes = $fbaseObj->sendPayloadOnly($lr->getId(),$token,$payload,null,'normal');
 }
