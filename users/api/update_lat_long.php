@@ -21,3 +21,25 @@ $userObj->setLat($_REQUEST['lat']);
 $userObj->setLng($_REQUEST['lng']);
 $userObj->update();
 
+
+if($_REQUEST['passenger_id']!=''){
+    $passObj = new User();
+    $passObj->getUserWithId($_REQUEST['passenger_id']);
+
+
+
+    $fbaseObj = new firebaseNotification();
+
+    $notification['title']='Ride Alert';
+    $notification['body']='Passenger is waiting for you.';
+    $payload['do']="driver_location_update";
+    $payload['msg']="You have a new ride";
+    $payload['key']="driver_location_update";
+    $payload['lat']=$_REQUEST['lat'];
+    $payload['lng']=$_REQUEST['lng'];
+
+
+    $token = $passObj->getFirebaseToken();
+    $fabseRes = $fbaseObj->sendPayloadOnly($lr->getId(),$token,$payload,null,'normal');
+}
+
