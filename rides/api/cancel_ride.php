@@ -8,6 +8,7 @@ require_once __DIR__."/../../model/rideAlert.php";
 require_once __DIR__."/../../utils/firebaseNotification.php";
 require_once __DIR__."/../../utils/basePrice.php";
 require_once __DIR__."/../../utils/Misc.php";
+require_once __DIR__."/../../utils/CooDistance.php";
 
 $mobile= $_REQUEST['mobile'];
 
@@ -27,14 +28,16 @@ $rideObj->setId($_REQUEST['ride_id']);
 $rideObj->findRideWithId();
 
 
-$rideObj->setIsRideCancelled(1);
-$rideObj->setRideCancelledAt(dat('Y-m-d H:i:s'));
 
 if($rideObj->getDriverId()==0){
     $rideObj->setResponse("ride_cancelled_successfully");
     $rideObj->setCancelledByTypeId(1);
+    $rideObj->setIsRideCancelled(1);
+    $rideObj->setRideCancelledAt(date('Y-m-d H:i:s'));
     Misc::generateCancelledTransaction($rideObj,null);
 }else if($rideObj->getIsRideStarted()==0 && $rideObj->getIsRideCancelled()==0){
+    $rideObj->setIsRideCancelled(1);
+    $rideObj->setRideCancelledAt(date('Y-m-d H:i:s'));
     $cancelledByTypeId = ($userObj->getIsDriver()==1?2:1);
     $rideObj->setCancelledByTypeId($cancelledByTypeId);
     $rideObj->setResponse("ride_cancelled_successfully");
@@ -75,7 +78,7 @@ if($rideObj->getDriverId()==0){
         // Add base fare to the User Balance in case of driver travelled 300 meters. otherwise create a transaction of the ride with 0 balance.
         if($meters>=300){
             $transObj = Misc::generateCancelledTransaction($rideObj,$basePrice);
-            $userObj->setBalance($userObj->getBalance()-$tranObj->getTotalFare());
+            $userObj->setBalance($userObj->getBalance()-$transObj->getTotalFare());
             $userObj->update();
         }else{
             $transObj = Misc::generateCancelledTransaction($rideObj,null);
