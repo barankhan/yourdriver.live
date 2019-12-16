@@ -10,7 +10,8 @@ class FirebaseLog extends  baseModel implements JsonSerializable
 {
 
     private $id,$requestLogId,$notification,$payload,$firebaseMessageId,$firebaseKey,$firebaseConfirmation=0,$firebaseResponse,$createdAt,
-    $updatedAt;
+    $updatedAt,$firebaseConfirmedAt;
+
 
 
     public function insert(){
@@ -25,15 +26,39 @@ firebase_response)values(:requestLogId,:notification,:payload,:firebaseMessageId
     public function update(){
         $q = "update firebase_log set 
       request_log_id=:requestLogId,notification=:notification,payload=:payload,firebase_message_id=:firebaseMessageId,
-      firebase_key=:firebaseKey,firebase_confirmation=:firebaseConfirmation,firebase_response=:firebaseResponse
+      firebase_key=:firebaseKey,firebase_confirmation=:firebaseConfirmation,firebase_response=:firebaseResponse,firebase_confirmed_at=firebaseConfirmedAt:
       where id=:id";
 
         $params = array("requestLogId"=>$this->requestLogId,"notification"=>$this->notification,"payload"=>$this->payload,"firebaseMessageId"=>$this->firebaseMessageId,
-            "firebaseKey"=>$this->firebaseKey,"firebaseConfirmation"=>$this->firebaseConfirmation
+            "firebaseKey"=>$this->firebaseKey,"firebaseConfirmation"=>$this->firebaseConfirmation,"firebaseConfirmedAt"=>$this->firebaseConfirmedAt
         ,"firebaseResponse"=>$this->firebaseResponse,"id"=>$this->id);
         return $this->executeUpdate($q,$params);
     }
 
+
+    public function getByFirebaseId(){
+        $q = "select * from firebase_log where firebase_message_id=:firebaseMessageId";
+        $params = array("firebaseMessageId"=>$this->firebaseMessageId);
+        $this->setAllFields($this->executeSelectSingle($q,$params));
+    }
+
+
+
+    /**
+     * @return mixed
+     */
+    public function getFirebaseConfirmedAt()
+    {
+        return $this->firebaseConfirmedAt;
+    }
+
+    /**
+     * @param mixed $firebaseConfirmedAt
+     */
+    public function setFirebaseConfirmedAt($firebaseConfirmedAt)
+    {
+        $this->firebaseConfirmedAt = $firebaseConfirmedAt;
+    }
 
 
 

@@ -10,9 +10,9 @@ require_once "baseModel.php";
 class ride extends  baseModel implements JsonSerializable
 {
 
-    private $id=0,$passengerId,$driverId,$createdAt,$updatedAt,$pickupLat,$pickupLng,$vehicleType,$dropoffLat
-    ,$dropoffLng,$response,$message,$isRideStarted=0,$isRideCancelled=0,$rideStartedAt,$rideCancelledAt;
-
+    private $id=0,$passengerId,$driverId=0,$createdAt,$updatedAt,$pickupLat,$pickupLng,$vehicleType,$dropoffLat
+    ,$dropoffLng,$response,$message,$isRideStarted=0,$isRideCancelled=0,$rideStartedAt,$rideCancelledAt,$driverLat,$driverLng,
+        $cancelledByTypeId=0,$isDriverArrived=0;
     public function insert(){
         $q = "insert into rides(passenger_id,pickup_lat,pickup_lng,vehicle_type,dropoff_lat,dropoff_lng)
             values(:passenger_id,:pickup_lat,:pickup_lng,:vehicle_type,:dropoff_lat,:dropoff_lng);";
@@ -24,9 +24,14 @@ class ride extends  baseModel implements JsonSerializable
 
     public function update(){
         $q = "update rides set is_ride_started=:isRideStarted,is_ride_cancelled=:isRideCancelled,ride_started_at=:rideStartedAt,
-ride_cancelled_at=:rideCancelledAt where id=:id";
+ride_cancelled_at=:rideCancelledAt,driver_lat=:driverLat,driver_lng=:driverLng,cancelled_by_type_id=:cancelledByTypeId,
+is_driver_arrived=:isDriverArrived where id=:id";
         $params = array("isRideStarted"=>$this->isRideStarted,"isRideCancelled"=>$this->isRideCancelled,
-            "rideStartedAt"=>$this->rideStartedAt,"rideCancelledAt"=>"$this->rideCancelledAt","id"=>$this->id);
+            "rideStartedAt"=>$this->rideStartedAt,"rideCancelledAt"=>$this->rideCancelledAt,"id"=>$this->id,
+            "driverLat"=>$this->driverLat,"driverLng"=>$this->driverLng,"cancelledByTypeId"=>$this->cancelledByTypeId,
+            "isDriverArrived"=>$this->isDriverArrived
+        );
+
         return $this->executeUpdate($q,$params);
 
     }
@@ -36,21 +41,26 @@ ride_cancelled_at=:rideCancelledAt where id=:id";
 
 
 
-    public function assignRideToDriver($id,$driver_id){
+    public function assignRideToDriver($id,$driver_id,$driverLat,$driverLng){
         try {
             $this->conn->beginTransaction();
-            $q = "select * from rides where id=:id and COALESCE(driver_id,0)=0 FOR UPDATE;";
+            $q = "select * from rides where id=:id and COALESCE(driver_id,0)=0 and is_ride_cancelled=0 FOR UPDATE;";
             $statement = $this->conn->prepare($q);
             $statement->execute(array("id" => $id));
             $records = $statement->fetchAll(PDO::FETCH_ASSOC);
             if (sizeof($records) > 0) {
                 $this->setAllFields($records[0]);
 
-                $q3 = "update rides set driver_id=:ddriver_id where id=:idd;";
+                $q3 = "update rides set driver_id=:ddriver_id,driver_lat=:driverLat,driver_lng=:driverLng where id=:idd;";
                 $statement = $this->conn->prepare($q3);
-                $params = array("idd" => $id, "ddriver_id" => $driver_id);
+                $params = array("idd" => $id, "ddriver_id" => $driver_id,"driverLat"=>$driverLat,"driverLng"=>$driverLng);
                 $statement->execute($params);
 
+
+                $q3 = "update users set is_driver_on_trip=1 where id=:ddriver_id;";
+                $statement = $this->conn->prepare($q3);
+                $params = array("ddriver_id" => $driver_id);
+                $statement->execute($params);
 
                 $q2 = "update ride_alerts set is_accepted=1,accepted_at=now() where ride_id=:id and driver_id=:driver_id;";
                 $statement = $this->conn->prepare($q2);
@@ -76,6 +86,73 @@ ride_cancelled_at=:rideCancelledAt where id=:id";
         $params= array("id"=>$this->id);
         $this->setAllFields($this->executeSelectSingle($q,$params));
     }
+
+    /**
+     * @return mixed
+     */
+    public function getDriverLat()
+    {
+        return $this->driverLat;
+    }
+
+    /**
+     * @param mixed $driverLat
+     */
+    public function setDriverLat($driverLat)
+    {
+        $this->driverLat = $driverLat;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDriverLng()
+    {
+        return $this->driverLng;
+    }
+
+    /**
+     * @param mixed $driverLng
+     */
+    public function setDriverLng($driverLng)
+    {
+        $this->driverLng = $driverLng;
+    }
+
+    /**
+     * @return int
+     */
+    public function getCancelledByTypeId()
+    {
+        return $this->cancelledByTypeId;
+    }
+
+    /**
+     * @param int $cancelledByTypeId
+     */
+    public function setCancelledByTypeId($cancelledByTypeId)
+    {
+        $this->cancelledByTypeId = $cancelledByTypeId;
+    }
+
+    /**
+     * @return int
+     */
+    public function getIsDriverArrived()
+    {
+        return $this->isDriverArrived;
+    }
+
+    /**
+     * @param int $isDriverArrived
+     */
+    public function setIsDriverArrived($isDriverArrived)
+    {
+        $this->isDriverArrived = $isDriverArrived;
+    }
+
+
+
 
     /**
      * @return int
