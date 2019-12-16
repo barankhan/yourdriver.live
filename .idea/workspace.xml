@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="dc2e211f-761c-4655-959f-8a09e31a4cb5" name="Default" comment="" />
+    <list default="true" id="dc2e211f-761c-4655-959f-8a09e31a4cb5" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/users/api/update_lat_long.php" afterPath="$PROJECT_DIR$/users/api/update_lat_long.php" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -22,11 +24,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="update_lat_long.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="update_lat_long.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/users/api/update_lat_long.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="522">
-              <caret line="34" column="42" lean-forward="false" selection-start-line="34" selection-start-column="42" selection-end-line="34" selection-end-column="42" />
+            <state relative-caret-position="468">
+              <caret line="31" column="36" lean-forward="false" selection-start-line="31" selection-start-column="36" selection-end-line="31" selection-end-column="36" />
               <folding />
             </state>
           </provider>
@@ -126,14 +128,14 @@
       <file leaf-file-name="cancel_ride.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/rides/api/cancel_ride.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="75" column="8" lean-forward="false" selection-start-line="75" selection-start-column="8" selection-end-line="75" selection-end-column="8" />
+            <state relative-caret-position="126">
+              <caret line="7" column="46" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ride.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ride.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/model/ride.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="627">
@@ -273,6 +275,20 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="driver" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="driver" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="driver" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="utils" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -493,12 +509,12 @@
       <workItem from="1575016465060" duration="41153000" />
       <workItem from="1575621343095" duration="1973000" />
       <workItem from="1575696583666" duration="46587000" />
-      <workItem from="1576140030984" duration="31499000" />
+      <workItem from="1576140030984" duration="31832000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="171037000" />
+    <option name="totallyTimeSpent" value="171370000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="53" y="27" width="1867" height="1053" extended-state="0" />
@@ -958,26 +974,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/rides/api/cancel_ride.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="75" column="8" lean-forward="false" selection-start-line="75" selection-start-column="8" selection-end-line="75" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/rides/api/register_ride.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="540">
           <caret line="60" column="89" lean-forward="true" selection-start-line="47" selection-start-column="8" selection-end-line="60" selection-end-column="89" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/users/api/update_lat_long.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="522">
-          <caret line="34" column="42" lean-forward="false" selection-start-line="34" selection-start-column="42" selection-end-line="34" selection-end-column="42" />
           <folding />
         </state>
       </provider>
@@ -1008,6 +1008,22 @@
             <marker date="1576482313165" expanded="true" signature="2924:3021" ph="update ride_... " />
             <marker date="1576482313165" expanded="true" signature="3525:3557" ph="select * fro... rides" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rides/api/cancel_ride.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="7" column="46" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/users/api/update_lat_long.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="468">
+          <caret line="31" column="36" lean-forward="false" selection-start-line="31" selection-start-column="36" selection-end-line="31" selection-end-column="36" />
+          <folding />
         </state>
       </provider>
     </entry>
