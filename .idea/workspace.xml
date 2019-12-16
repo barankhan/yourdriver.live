@@ -2,13 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dc2e211f-761c-4655-959f-8a09e31a4cb5" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/rides/api/ride_alert_received.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/utils/CooDistance.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/utils/Misc.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/model/FirebaseLog.php" afterPath="$PROJECT_DIR$/model/FirebaseLog.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/model/ride.php" afterPath="$PROJECT_DIR$/model/ride.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rides/api/accept_ride.php" afterPath="$PROJECT_DIR$/rides/api/accept_ride.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rides/api/cancel_ride.php" afterPath="$PROJECT_DIR$/rides/api/cancel_ride.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -115,8 +108,8 @@
       <file leaf-file-name="register_ride.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/rides/api/register_ride.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="864">
-              <caret line="60" column="86" lean-forward="false" selection-start-line="60" selection-start-column="86" selection-end-line="60" selection-end-column="86" />
+            <state relative-caret-position="630">
+              <caret line="38" column="38" lean-forward="true" selection-start-line="38" selection-start-column="38" selection-end-line="38" selection-end-column="38" />
               <folding />
             </state>
           </provider>
@@ -135,8 +128,8 @@
       <file leaf-file-name="cancel_ride.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/rides/api/cancel_ride.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="62">
-              <caret line="33" column="57" lean-forward="false" selection-start-line="33" selection-start-column="57" selection-end-line="33" selection-end-column="57" />
+            <state relative-caret-position="270">
+              <caret line="75" column="8" lean-forward="false" selection-start-line="75" selection-start-column="8" selection-end-line="75" selection-end-column="8" />
               <folding />
             </state>
           </provider>
@@ -295,7 +288,7 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="utils" />
+              <option name="myItemId" value="users" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -484,12 +477,12 @@
       <workItem from="1575016465060" duration="41153000" />
       <workItem from="1575621343095" duration="1973000" />
       <workItem from="1575696583666" duration="46587000" />
-      <workItem from="1576140030984" duration="27845000" />
+      <workItem from="1576140030984" duration="28984000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="167383000" />
+    <option name="totallyTimeSpent" value="168522000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="53" y="27" width="1867" height="1053" extended-state="0" />
@@ -652,6 +645,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="378">
           <caret line="21" column="19" lean-forward="false" selection-start-line="21" selection-start-column="19" selection-end-line="21" selection-end-column="19" />
+          <folding>
+            <element signature="e#6#86#0#PHP" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -659,6 +655,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="126">
           <caret line="7" column="25" lean-forward="true" selection-start-line="7" selection-start-column="25" selection-end-line="7" selection-end-column="25" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -666,6 +663,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="198">
           <caret line="11" column="27" lean-forward="true" selection-start-line="11" selection-start-column="27" selection-end-line="11" selection-end-column="27" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -673,6 +671,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="288">
           <caret line="21" column="17" lean-forward="false" selection-start-line="21" selection-start-column="17" selection-end-line="21" selection-end-column="17" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -696,6 +695,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="607">
           <caret line="53" column="25" lean-forward="false" selection-start-line="53" selection-start-column="25" selection-end-line="53" selection-end-column="25" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -847,14 +847,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/rides/api/register_ride.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="864">
-          <caret line="60" column="86" lean-forward="false" selection-start-line="60" selection-start-column="86" selection-end-line="60" selection-end-column="86" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/utils/basePrice.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="540">
@@ -911,14 +903,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="324">
           <caret line="18" column="58" lean-forward="false" selection-start-line="18" selection-start-column="58" selection-end-line="18" selection-end-column="58" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/rides/api/accept_ride.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="16" column="35" lean-forward="false" selection-start-line="16" selection-start-column="35" selection-end-line="16" selection-end-column="35" />
           <folding />
         </state>
       </provider>
@@ -989,10 +973,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/rides/api/register_ride.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="630">
+          <caret line="38" column="38" lean-forward="true" selection-start-line="38" selection-start-column="38" selection-end-line="38" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rides/api/accept_ride.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="16" column="35" lean-forward="false" selection-start-line="16" selection-start-column="35" selection-end-line="16" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/rides/api/cancel_ride.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="62">
-          <caret line="33" column="57" lean-forward="false" selection-start-line="33" selection-start-column="57" selection-end-line="33" selection-end-column="57" />
+        <state relative-caret-position="270">
+          <caret line="75" column="8" lean-forward="false" selection-start-line="75" selection-start-column="8" selection-end-line="75" selection-end-column="8" />
           <folding />
         </state>
       </provider>
