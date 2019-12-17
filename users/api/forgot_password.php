@@ -21,7 +21,7 @@ if($userObj->getId()!=0){
     $arr  =    array("response"=>"sms_sent","message"=>"We have sent an SMS to your mobile number");
     $post = [
         'message' => "Your password for the Driver App is: ".$userObj->getPassword(),
-        'mobile_number' => $userObj->getMobile(),
+        'mobile_number' => "".$userObj->getMobile(),
     ];
 
     $sendSMSObj = new sendSMS();
