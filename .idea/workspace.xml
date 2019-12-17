@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dc2e211f-761c-4655-959f-8a09e31a4cb5" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rides/api/cancel_ride.php" afterPath="$PROJECT_DIR$/rides/api/cancel_ride.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rides/api/register_ride.php" afterPath="$PROJECT_DIR$/rides/api/register_ride.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/users/api/forgot_password.php" afterPath="$PROJECT_DIR$/users/api/forgot_password.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rides/api/accept_ride.php" afterPath="$PROJECT_DIR$/rides/api/accept_ride.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -38,11 +36,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="accept_ride.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="accept_ride.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/rides/api/accept_ride.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="510">
-              <caret line="38" column="25" lean-forward="false" selection-start-line="38" selection-start-column="25" selection-end-line="38" selection-end-column="25" />
+            <state relative-caret-position="612">
+              <caret line="34" column="33" lean-forward="false" selection-start-line="34" selection-start-column="33" selection-end-line="34" selection-end-column="33" />
               <folding />
             </state>
           </provider>
@@ -111,7 +109,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="register_ride.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="register_ride.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/rides/api/register_ride.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="684">
@@ -207,10 +205,10 @@
         <option value="$PROJECT_DIR$/temp.php" />
         <option value="$PROJECT_DIR$/model/FirebaseLog.php" />
         <option value="$PROJECT_DIR$/utils/firebaseNotification.php" />
-        <option value="$PROJECT_DIR$/rides/api/accept_ride.php" />
         <option value="$PROJECT_DIR$/rides/api/cancel_ride.php" />
         <option value="$PROJECT_DIR$/users/api/forgot_password.php" />
         <option value="$PROJECT_DIR$/rides/api/register_ride.php" />
+        <option value="$PROJECT_DIR$/rides/api/accept_ride.php" />
       </list>
     </option>
   </component>
@@ -411,12 +409,12 @@
       <workItem from="1575621343095" duration="1973000" />
       <workItem from="1575696583666" duration="46587000" />
       <workItem from="1576140030984" duration="31832000" />
-      <workItem from="1576576082579" duration="6771000" />
+      <workItem from="1576576082579" duration="7675000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="185758000" />
+    <option name="totallyTimeSpent" value="186662000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="53" y="25" width="1867" height="1055" extended-state="6" />
@@ -956,18 +954,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/rides/api/accept_ride.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="38" column="25" lean-forward="false" selection-start-line="38" selection-start-column="25" selection-end-line="38" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/rides/api/register_ride.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="684">
           <caret line="56" column="31" lean-forward="false" selection-start-line="56" selection-start-column="31" selection-end-line="56" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rides/api/accept_ride.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="612">
+          <caret line="34" column="33" lean-forward="false" selection-start-line="34" selection-start-column="33" selection-end-line="34" selection-end-column="33" />
           <folding />
         </state>
       </provider>
