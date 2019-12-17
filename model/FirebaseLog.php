@@ -1,5 +1,5 @@
 <?php
-require_once "baseModel.php";
+
 /**
  * Created by PhpStorm.
  * User: baran
@@ -26,7 +26,7 @@ firebase_response)values(:requestLogId,:notification,:payload,:firebaseMessageId
     public function update(){
         $q = "update firebase_log set 
       request_log_id=:requestLogId,notification=:notification,payload=:payload,firebase_message_id=:firebaseMessageId,
-      firebase_key=:firebaseKey,firebase_confirmation=:firebaseConfirmation,firebase_response=:firebaseResponse,firebase_confirmed_at=firebaseConfirmedAt:
+      firebase_key=:firebaseKey,firebase_confirmation=:firebaseConfirmation,firebase_response=:firebaseResponse,firebase_confirmed_at=:firebaseConfirmedAt
       where id=:id";
 
         $params = array("requestLogId"=>$this->requestLogId,"notification"=>$this->notification,"payload"=>$this->payload,"firebaseMessageId"=>$this->firebaseMessageId,

@@ -1,0 +1,9 @@
+{
+    "autoload": {
+        "classmap": ["model/", "utils/"]
+    },
+    "require": {
+
+        "kreait/firebase-php": "^4.35"
+    }
+}
