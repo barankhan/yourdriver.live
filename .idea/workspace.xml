@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dc2e211f-761c-4655-959f-8a09e31a4cb5" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/model/FirebaseLog.php" afterPath="$PROJECT_DIR$/model/FirebaseLog.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/temp.php" afterPath="$PROJECT_DIR$/temp.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/utils/firebaseNotification.php" afterPath="$PROJECT_DIR$/utils/firebaseNotification.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rides/api/accept_ride.php" afterPath="$PROJECT_DIR$/rides/api/accept_ride.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -42,7 +39,7 @@
       <file leaf-file-name="firebaseNotification.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/utils/firebaseNotification.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="346">
+            <state relative-caret-position="576">
               <caret line="32" column="35" lean-forward="false" selection-start-line="32" selection-start-column="35" selection-end-line="32" selection-end-column="35" />
               <folding>
                 <element signature="e#57#100#0#PHP" expanded="true" />
@@ -51,20 +48,43 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="accept_ride.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="accept_ride.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/rides/api/accept_ride.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="643">
-              <caret line="44" column="1" lean-forward="true" selection-start-line="44" selection-start-column="1" selection-end-line="44" selection-end-column="1" />
+            <state relative-caret-position="445">
+              <caret line="33" column="23" lean-forward="false" selection-start-line="33" selection-start-column="23" selection-end-line="33" selection-end-column="23" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="register_ride.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ride.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/model/ride.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="298">
+              <caret line="43" column="20" lean-forward="false" selection-start-line="43" selection-start-column="20" selection-end-line="43" selection-end-column="20" />
+              <folding>
+                <marker date="1576560659823" expanded="true" signature="512:700" ph="insert into rides... " />
+                <marker date="1576560659823" expanded="true" signature="1045:1061" ph="update rides... " />
+                <marker date="1576560659823" expanded="true" signature="1045:1079" ph="update rides... " />
+                <marker date="1576560659823" expanded="true" signature="1045:1111" ph="update rides... " />
+                <marker date="1576560659823" expanded="true" signature="1045:1145" ph="update rides... " />
+                <marker date="1576560659823" expanded="true" signature="1045:1327" ph="update rides... " />
+                <marker date="1576560659823" expanded="true" signature="1946:2041" ph="select * fro... rides" />
+                <marker date="1576560659823" expanded="true" signature="2326:2422" ph="update rides... " />
+                <marker date="1576560659823" expanded="true" signature="2676:2733" ph="update users... " />
+                <marker date="1576560659823" expanded="true" signature="2924:2993" ph="update ride_... " />
+                <marker date="1576560659823" expanded="true" signature="2924:3021" ph="update ride_... " />
+                <marker date="1576560659823" expanded="true" signature="3525:3557" ph="select * fro... rides" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="register_ride.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/rides/api/register_ride.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
+            <state relative-caret-position="900">
               <caret line="50" column="13" lean-forward="false" selection-start-line="50" selection-start-column="13" selection-end-line="50" selection-end-column="13" />
               <folding />
             </state>
@@ -110,16 +130,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="144">
               <caret line="9" column="6" lean-forward="false" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="6" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AndroidConfig.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/vendor/kreait/firebase-php/src/Firebase/Messaging/AndroidConfig.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -189,7 +199,6 @@
         <option value="$PROJECT_DIR$/model/DriverTransaction.php" />
         <option value="$PROJECT_DIR$/rides/api/register_ride.php" />
         <option value="$PROJECT_DIR$/rides/api/ride_alert_received.php" />
-        <option value="$PROJECT_DIR$/rides/api/accept_ride.php" />
         <option value="$PROJECT_DIR$/utils/CooDistance.php" />
         <option value="$PROJECT_DIR$/utils/Misc.php" />
         <option value="$PROJECT_DIR$/model/ride.php" />
@@ -200,6 +209,7 @@
         <option value="$PROJECT_DIR$/temp.php" />
         <option value="$PROJECT_DIR$/model/FirebaseLog.php" />
         <option value="$PROJECT_DIR$/utils/firebaseNotification.php" />
+        <option value="$PROJECT_DIR$/rides/api/accept_ride.php" />
       </list>
     </option>
   </component>
@@ -241,6 +251,20 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="driver" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="driver" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="driver" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="vendor" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -400,12 +424,12 @@
       <workItem from="1575621343095" duration="1973000" />
       <workItem from="1575696583666" duration="46587000" />
       <workItem from="1576140030984" duration="31832000" />
-      <workItem from="1576576082579" duration="5065000" />
+      <workItem from="1576576082579" duration="5879000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="184052000" />
+    <option name="totallyTimeSpent" value="184866000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="53" y="27" width="1867" height="1053" extended-state="0" />
@@ -684,118 +708,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/model/ride.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="5" lean-forward="true" selection-start-line="0" selection-start-column="5" selection-end-line="0" selection-end-column="5" />
-          <folding>
-            <marker date="1576560659823" expanded="true" signature="512:700" ph="insert into rides... " />
-            <marker date="1576560659823" expanded="true" signature="1045:1061" ph="update rides... " />
-            <marker date="1576560659823" expanded="true" signature="1045:1079" ph="update rides... " />
-            <marker date="1576560659823" expanded="true" signature="1045:1111" ph="update rides... " />
-            <marker date="1576560659823" expanded="true" signature="1045:1145" ph="update rides... " />
-            <marker date="1576560659823" expanded="true" signature="1045:1327" ph="update rides... " />
-            <marker date="1576560659823" expanded="true" signature="1868:3469" ph="..." />
-            <marker date="1576560659823" expanded="true" signature="1882:3379" ph="..." />
-            <marker date="1576560659823" expanded="true" signature="1946:2041" ph="select * fro... rides" />
-            <marker date="1576560659823" expanded="true" signature="2251:3260" ph="..." />
-            <marker date="1576560659823" expanded="true" signature="2326:2422" ph="update rides... " />
-            <marker date="1576560659823" expanded="true" signature="2676:2733" ph="update users... " />
-            <marker date="1576560659823" expanded="true" signature="2924:2993" ph="update ride_... " />
-            <marker date="1576560659823" expanded="true" signature="2924:3021" ph="update ride_... " />
-            <marker date="1576560659823" expanded="true" signature="3268:3368" ph="..." />
-            <marker date="1576560659823" expanded="true" signature="3401:3463" ph="..." />
-            <marker date="1576560659823" expanded="true" signature="3510:3674" ph="..." />
-            <marker date="1576560659823" expanded="true" signature="3525:3557" ph="select * fro... rides" />
-            <marker date="1576560659823" expanded="true" signature="3684:3711" ph=" @return mixed ..." />
-            <marker date="1576560659823" expanded="true" signature="3748:3793" ph="{...}" />
-            <marker date="1576560659823" expanded="true" signature="3802:3839" ph=" @param mixed $driverLat ..." />
-            <marker date="1576560659823" expanded="true" signature="3886:3937" ph="{...}" />
-            <marker date="1576560659823" expanded="true" signature="3946:3973" ph=" @return mixed ..." />
-            <marker date="1576560659823" expanded="true" signature="4010:4055" ph="{...}" />
-            <marker date="1576560659823" expanded="true" signature="4064:4101" ph=" @param mixed $driverLng ..." />
-            <marker date="1576560659823" expanded="true" signature="4148:4199" ph="{...}" />
-            <marker date="1576560659823" expanded="true" signature="4208:4233" ph=" @return int ..." />
-            <marker date="1576560659823" expanded="true" signature="4278:4331" ph="{...}" />
-            <marker date="1576560659823" expanded="true" signature="4340:4383" ph=" @param int $cancelledByTypeId ..." />
-            <marker date="1576560659823" expanded="true" signature="4446:4513" ph="{...}" />
-            <marker date="1576560659823" expanded="true" signature="4522:4547" ph=" @return int ..." />
-            <marker date="1576560659823" expanded="true" signature="4590:4641" ph="{...}" />
-            <marker date="1576560659823" expanded="true" signature="4650:4691" ph=" @param int $isDriverArrived ..." />
-            <marker date="1576560659823" expanded="true" signature="4750:4813" ph="{...}" />
-            <marker date="1576560659823" expanded="true" signature="4825:4850" ph=" @return int ..." />
-            <marker date="1576560659823" expanded="true" signature="4891:4940" ph="{...}" />
-            <marker date="1576560659823" expanded="true" signature="4949:4988" ph=" @param int $isRideStarted ..." />
-            <marker date="1576560659823" expanded="true" signature="5043:5102" ph="{...}" />
-            <marker date="1576560659823" expanded="true" signature="5111:5136" ph=" @return int ..." />
-            <marker date="1576560659823" expanded="true" signature="5179:5230" ph="{...}" />
-            <marker date="1576560659823" expanded="true" signature="5239:5280" ph=" @param int $isRideCancelled ..." />
-            <marker date="1576560659823" expanded="true" signature="5339:5402" ph="{...}" />
-            <marker date="1576560659823" expanded="true" signature="5411:5438" ph=" @return mixed ..." />
-            <marker date="1576560659823" expanded="true" signature="5479:5528" ph="{...}" />
-            <marker date="1576560659823" expanded="true" signature="5537:5578" ph=" @param mixed $rideStartedAt ..." />
-            <marker date="1576560659823" expanded="true" signature="5633:5692" ph="{...}" />
-            <marker date="1576560659823" expanded="true" signature="5701:5728" ph=" @return mixed ..." />
-            <marker date="1576560659823" expanded="true" signature="5771:5822" ph="{...}" />
-            <marker date="1576560659823" expanded="true" signature="5831:5874" ph=" @param mixed $rideCancelledAt ..." />
-            <marker date="1576560659823" expanded="true" signature="5933:5996" ph="{...}" />
-            <marker date="1576560659823" expanded="true" signature="6034:6070" ph="..." />
-            <marker date="1576560659823" expanded="true" signature="6080:6107" ph=" @return mixed ..." />
-            <marker date="1576560659823" expanded="true" signature="6143:6187" ph="{...}" />
-            <marker date="1576560659823" expanded="true" signature="6196:6232" ph=" @param mixed $response ..." />
-            <marker date="1576560659823" expanded="true" signature="6277:6326" ph="{...}" />
-            <marker date="1576560659823" expanded="true" signature="6335:6362" ph=" @return mixed ..." />
-            <marker date="1576560659823" expanded="true" signature="6397:6440" ph="{...}" />
-            <marker date="1576560659823" expanded="true" signature="6449:6484" ph=" @param mixed $message ..." />
-            <marker date="1576560659823" expanded="true" signature="6527:6574" ph="{...}" />
-            <marker date="1576560659823" expanded="true" signature="6583:6608" ph=" @return int ..." />
-            <marker date="1576560659823" expanded="true" signature="6638:6676" ph="{...}" />
-            <marker date="1576560659823" expanded="true" signature="6685:6713" ph=" @param int $id ..." />
-            <marker date="1576560659823" expanded="true" signature="6746:6783" ph="{...}" />
-            <marker date="1576560659823" expanded="true" signature="6792:6819" ph=" @return mixed ..." />
-            <marker date="1576560659823" expanded="true" signature="6858:6905" ph="{...}" />
-            <marker date="1576560659823" expanded="true" signature="6914:6953" ph=" @param mixed $passengerId ..." />
-            <marker date="1576560659823" expanded="true" signature="7004:7059" ph="{...}" />
-            <marker date="1576560659823" expanded="true" signature="7068:7095" ph=" @return mixed ..." />
-            <marker date="1576560659823" expanded="true" signature="7131:7175" ph="{...}" />
-            <marker date="1576560659823" expanded="true" signature="7184:7220" ph=" @param mixed $driverId ..." />
-            <marker date="1576560659823" expanded="true" signature="7265:7314" ph="{...}" />
-            <marker date="1576560659823" expanded="true" signature="7323:7350" ph=" @return mixed ..." />
-            <marker date="1576560659823" expanded="true" signature="7387:7432" ph="{...}" />
-            <marker date="1576560659823" expanded="true" signature="7441:7478" ph=" @param mixed $createdAt ..." />
-            <marker date="1576560659823" expanded="true" signature="7525:7576" ph="{...}" />
-            <marker date="1576560659823" expanded="true" signature="7585:7612" ph=" @return mixed ..." />
-            <marker date="1576560659823" expanded="true" signature="7649:7694" ph="{...}" />
-            <marker date="1576560659823" expanded="true" signature="7703:7740" ph=" @param mixed $updatedAt ..." />
-            <marker date="1576560659823" expanded="true" signature="7787:7838" ph="{...}" />
-            <marker date="1576560659823" expanded="true" signature="7847:7874" ph=" @return mixed ..." />
-            <marker date="1576560659823" expanded="true" signature="7911:7956" ph="{...}" />
-            <marker date="1576560659823" expanded="true" signature="7965:8002" ph=" @param mixed $pickupLat ..." />
-            <marker date="1576560659823" expanded="true" signature="8049:8100" ph="{...}" />
-            <marker date="1576560659823" expanded="true" signature="8109:8136" ph=" @return mixed ..." />
-            <marker date="1576560659823" expanded="true" signature="8173:8218" ph="{...}" />
-            <marker date="1576560659823" expanded="true" signature="8227:8264" ph=" @param mixed $pickupLng ..." />
-            <marker date="1576560659823" expanded="true" signature="8311:8362" ph="{...}" />
-            <marker date="1576560659823" expanded="true" signature="8371:8398" ph=" @return mixed ..." />
-            <marker date="1576560659823" expanded="true" signature="8437:8484" ph="{...}" />
-            <marker date="1576560659823" expanded="true" signature="8493:8532" ph=" @param mixed $vehicleType ..." />
-            <marker date="1576560659823" expanded="true" signature="8583:8638" ph="{...}" />
-            <marker date="1576560659823" expanded="true" signature="8647:8674" ph=" @return mixed ..." />
-            <marker date="1576560659823" expanded="true" signature="8712:8758" ph="{...}" />
-            <marker date="1576560659823" expanded="true" signature="8767:8805" ph=" @param mixed $dropoffLat ..." />
-            <marker date="1576560659823" expanded="true" signature="8854:8907" ph="{...}" />
-            <marker date="1576560659823" expanded="true" signature="8916:8943" ph=" @return mixed ..." />
-            <marker date="1576560659823" expanded="true" signature="8981:9027" ph="{...}" />
-            <marker date="1576560659823" expanded="true" signature="9036:9074" ph=" @param mixed $dropoffLng ..." />
-            <marker date="1576560659823" expanded="true" signature="9123:9176" ph="{...}" />
-            <marker date="1576560659823" expanded="true" signature="9216:9439" ph="..." />
-            <marker date="1576560659823" expanded="true" signature="9256:9433" ph="..." />
-            <marker date="1576560659823" expanded="true" signature="9515:9691" ph="..." />
-            <marker date="1576560659823" expanded="true" signature="9582:9681" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/rides/api/cancel_ride.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="126">
@@ -932,9 +844,38 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/rides/api/register_ride.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="900">
+          <caret line="50" column="13" lean-forward="false" selection-start-line="50" selection-start-column="13" selection-end-line="50" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/ride.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="298">
+          <caret line="43" column="20" lean-forward="false" selection-start-line="43" selection-start-column="20" selection-end-line="43" selection-end-column="20" />
+          <folding>
+            <marker date="1576560659823" expanded="true" signature="512:700" ph="insert into rides... " />
+            <marker date="1576560659823" expanded="true" signature="1045:1061" ph="update rides... " />
+            <marker date="1576560659823" expanded="true" signature="1045:1079" ph="update rides... " />
+            <marker date="1576560659823" expanded="true" signature="1045:1111" ph="update rides... " />
+            <marker date="1576560659823" expanded="true" signature="1045:1145" ph="update rides... " />
+            <marker date="1576560659823" expanded="true" signature="1045:1327" ph="update rides... " />
+            <marker date="1576560659823" expanded="true" signature="1946:2041" ph="select * fro... rides" />
+            <marker date="1576560659823" expanded="true" signature="2326:2422" ph="update rides... " />
+            <marker date="1576560659823" expanded="true" signature="2676:2733" ph="update users... " />
+            <marker date="1576560659823" expanded="true" signature="2924:2993" ph="update ride_... " />
+            <marker date="1576560659823" expanded="true" signature="2924:3021" ph="update ride_... " />
+            <marker date="1576560659823" expanded="true" signature="3525:3557" ph="select * fro... rides" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/utils/firebaseNotification.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="346">
+        <state relative-caret-position="576">
           <caret line="32" column="35" lean-forward="false" selection-start-line="32" selection-start-column="35" selection-end-line="32" selection-end-column="35" />
           <folding>
             <element signature="e#57#100#0#PHP" expanded="true" />
@@ -944,16 +885,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/rides/api/accept_ride.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="643">
-          <caret line="44" column="1" lean-forward="true" selection-start-line="44" selection-start-column="1" selection-end-line="44" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/rides/api/register_ride.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="50" column="13" lean-forward="false" selection-start-line="50" selection-start-column="13" selection-end-line="50" selection-end-column="13" />
+        <state relative-caret-position="445">
+          <caret line="33" column="23" lean-forward="false" selection-start-line="33" selection-start-column="23" selection-end-line="33" selection-end-column="23" />
           <folding />
         </state>
       </provider>
