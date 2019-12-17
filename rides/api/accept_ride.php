@@ -30,8 +30,8 @@ if($response=='driver_assigned'){
     $payload['do']="ride_accepted";
     $payload['msg']="You got the driver";
     $payload['key']="ride_accepted";
-    $payload['lat']=$driverObj->getLat();
-    $payload['lng']=$driverObj->getLng();
+    $payload['lat']="".$driverObj->getLat();
+    $payload['lng']="".$driverObj->getLng();
     $payload['driver_mobile']=$driverObj->getMobile();
 
 
