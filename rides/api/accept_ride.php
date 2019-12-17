@@ -32,7 +32,7 @@ if($response=='driver_assigned'){
     $payload['key']="ride_accepted";
     $payload['lat']="".$driverObj->getLat();
     $payload['lng']="".$driverObj->getLng();
-    $payload['driver_mobile']=$driverObj->getMobile();
+    $payload['driver_mobile']="".$driverObj->getMobile();
 
 
     $token = $passengerObj->getFirebaseToken();
