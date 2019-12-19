@@ -14,7 +14,7 @@ class RidePath extends  baseModel implements JsonSerializable
 
     public function insert(){
         $q = "insert into ride_paths (ride_id,lat,lng) values (:rideId,:lat,:lng);";
-        $params = array("rideId"=>$this->rideId,"lat"=>$this->lat,"lng",$this->lng);
+        $params = array("rideId"=>$this->rideId,"lat"=>$this->lat,"lng"=>$this->lng);
         $this->setId($this->executeInsert($q,$params));
 
     }
