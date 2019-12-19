@@ -13,6 +13,7 @@ return array(
     'FirebaseLog' => $baseDir . '/model/FirebaseLog.php',
     'LogRequest' => $baseDir . '/model/LogRequest.php',
     'Misc' => $baseDir . '/utils/Misc.php',
+    'RidePath' => $baseDir . '/model/RidePath.php',
     'SmsDevices' => $baseDir . '/model/sms_devices.php',
     'User' => $baseDir . '/model/user.php',
     'baseModel' => $baseDir . '/model/baseModel.php',
