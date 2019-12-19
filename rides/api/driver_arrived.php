@@ -20,8 +20,7 @@ $rideObj->setResponse("driver_arrived");
 $rideObj->setMessage("Driver arrived at your location");
 
 $passengerObj  = new User();
-$passengerObj->setId($rideObj->getPassengerId());
-$passengerObj->getUserWithId();
+$passengerObj->getUserWithId($rideObj->getPassengerId());
 
 
 $notification['title']='Driver Hazir hy!';
