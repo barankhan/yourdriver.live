@@ -6,9 +6,7 @@
  * Time: 1:38 PM
  */
 
-require_once __DIR__."/../../model/user.php";
-require_once __DIR__."/../../model/LogRequest.php";
-require_once __DIR__."/../../utils/firebaseNotification.php";
+require_once __DIR__."/../../vendor/autoload.php";
 
 $lr = new LogRequest();
 $lr->setRequestUri($_SERVER['REQUEST_URI']);
@@ -35,5 +33,17 @@ if($_REQUEST['passenger_id']!=''){
     $payload['lng']=$_REQUEST['lng'];
     $token = $passObj->getFirebaseToken();
     $fabseRes = $fbaseObj->sendPayloadOnly($lr->getId(),$token,$payload,null,'normal');
+    if($_REQUEST['ride_id']!=''){
+        $rideObj = new ride();
+        $rideObj->setId($_REQUEST['ride_id']);
+        $rideObj->findRideWithId();
+        if($rideObj->getIsRideStarted()==1){
+            $ridePathObj = new RidePath();
+            $ridePathObj->setRideId($rideObj->getId());
+            $ridePathObj->setLat($_REQUEST['lat']);
+            $ridePathObj->setLng($_REQUEST['lng']);
+            $ridePathObj->insert();
+        }
+    }
 }
 
