@@ -20,8 +20,7 @@ $rideObj->setResponse("ride_started");
 $rideObj->setMessage("Your Ride has been started! Enjoy the journey");
 
 $passengerObj  = new User();
-$passengerObj->setId($rideObj->getPassengerId());
-$passengerObj->getUserWithId();
+$passengerObj->getUserWithId($rideObj->getPassengerId());
 
 
 $notification['title']='You are on your way!';
