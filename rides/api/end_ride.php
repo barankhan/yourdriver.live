@@ -16,18 +16,18 @@ $rideObj->findRideWithId();
 $rideObj->setIsRideEnded(1);
 $rideObj->setRideEndedAt(date("Y-m-d H:i:s"));
 $rideObj->update();
-$rideObj->setResponse("ride_started");
-$rideObj->setMessage("Your Ride has been started! Enjoy the journey");
+$rideObj->setResponse("ride_Ended");
+$rideObj->setMessage("Thanks for the ride! We hope you have enjoyed the service.");
 
 $passengerObj  = new User();
 $passengerObj->getUserWithId($rideObj->getPassengerId());
 
 
-$notification['title']='You are on your way!';
-$notification['body']='Your Ride has been started! Enjoy the journey';
-$payload['do']="ride_started";
-$payload['msg']="Your Ride has been started! Enjoy the journey";
-$payload['key']="ride_started";
+$notification['title']='Thank you so much';
+$notification['body']='Thanks for the ride! We hope you have enjoyed the service.';
+$payload['do']="ride_ended";
+$payload['msg']="Thanks for the ride! We hope you have enjoyed the service.";
+$payload['key']="ride_ended";
 
 $fbaseObj = new firebaseNotification();
 
