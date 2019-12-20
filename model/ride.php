@@ -12,7 +12,7 @@ class ride extends  baseModel implements JsonSerializable
 
     private $id=0,$passengerId,$driverId=0,$createdAt,$updatedAt,$pickupLat,$pickupLng,$vehicleType,$dropoffLat
     ,$dropoffLng,$response,$message,$isRideStarted=0,$isRideCancelled=0,$rideStartedAt,$rideCancelledAt,$driverLat,$driverLng,
-        $cancelledByTypeId=0,$isDriverArrived=0,$isRideEnded=0,$rideEndedAt,$driverArrivedAt;
+        $cancelledByTypeId=0,$isDriverArrived=0,$isRideEnded=0,$rideEndedAt,$driverArrivedAt,$distance;
     public function insert(){
         $q = "insert into rides(passenger_id,pickup_lat,pickup_lng,vehicle_type,dropoff_lat,dropoff_lng)
             values(:passenger_id,:pickup_lat,:pickup_lng,:vehicle_type,:dropoff_lat,:dropoff_lng);";
@@ -25,12 +25,15 @@ class ride extends  baseModel implements JsonSerializable
     public function update(){
         $q = "update rides set is_ride_started=:isRideStarted,is_ride_cancelled=:isRideCancelled,ride_started_at=:rideStartedAt,
 ride_cancelled_at=:rideCancelledAt,driver_lat=:driverLat,driver_lng=:driverLng,cancelled_by_type_id=:cancelledByTypeId,
-is_driver_arrived=:isDriverArrived,driver_arrived_at=:driverArrivedAt,is_ride_ended=:isRideEnded,ride_ended_at=:rideEndedAt where id=:id";
+is_driver_arrived=:isDriverArrived,driver_arrived_at=:driverArrivedAt,is_ride_ended=:isRideEnded,ride_ended_at=:rideEndedAt,
+distance=:distance
+ 
+ where id=:id";
         $params = array("isRideStarted"=>$this->isRideStarted,"isRideCancelled"=>$this->isRideCancelled,
             "rideStartedAt"=>$this->rideStartedAt,"rideCancelledAt"=>$this->rideCancelledAt,"id"=>$this->id,
             "driverLat"=>$this->driverLat,"driverLng"=>$this->driverLng,"cancelledByTypeId"=>$this->cancelledByTypeId,
             "isDriverArrived"=>$this->isDriverArrived,"driverArrivedAt"=>$this->driverArrivedAt,"isRideEnded"=>$this->isRideEnded,
-            "rideEndedAt"=>$this->rideEndedAt
+            "rideEndedAt"=>$this->rideEndedAt,"distance"=>$this->distance
         );
 
         return $this->executeUpdate($q,$params);
@@ -87,6 +90,24 @@ is_driver_arrived=:isDriverArrived,driver_arrived_at=:driverArrivedAt,is_ride_en
         $params= array("id"=>$this->id);
         $this->setAllFields($this->executeSelectSingle($q,$params));
     }
+
+    /**
+     * @return mixed
+     */
+    public function getDistance()
+    {
+        return $this->distance;
+    }
+
+    /**
+     * @param mixed $distance
+     */
+    public function setDistance($distance)
+    {
+        $this->distance = $distance;
+    }
+
+
 
     /**
      * @return int
