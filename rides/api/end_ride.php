@@ -15,6 +15,7 @@ $rideObj->setId($_REQUEST['ride_id']);
 $rideObj->findRideWithId();
 $rideObj->setIsRideEnded(1);
 $rideObj->setRideEndedAt(date("Y-m-d H:i:s"));
+$rideObj->setDistance($_REQUEST['distance']);
 $rideObj->update();
 $rideObj->setResponse("ride_Ended");
 $rideObj->setMessage("Thanks for the ride! We hope you have enjoyed the service.");
