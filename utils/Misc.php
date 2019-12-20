@@ -20,7 +20,7 @@ class Misc
         $tranObj->setKmTravelledRate(array_key_exists ("km_travelled_rate" ,  $basePrice )?$basePrice["km_travelled_rate"]:0);
         $tranObj->setTotalFare();
         $tranObj->setTotalAmount();
-        $tranObj->insertRide();
+        $tranObj->insert();
         return $tranObj;
     }
 
@@ -48,7 +48,7 @@ class Misc
 
         $tranObj->setTotalFare();
         $tranObj->setTotalAmount();
-        $tranObj->insertRide();
+        $tranObj->insert();
         return $tranObj;
     }
 
