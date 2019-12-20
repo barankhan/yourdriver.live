@@ -21,6 +21,7 @@ $rideObj->update();
 $basePrice = basePrice::getBasePrice($rideObj->getVehicleType(),$rideObj->getPickupLat(),$rideObj->getPickupLng());
 $transObj = Misc::generateCompletedRideTransaction($rideObj,$basePrice);
 $driverObj->setBalance($driverObj->getBalance()-$transObj->getCompanyServiceCharges());
+$driverObj->setIsDriverOnTrip(0);
 $driverObj->update();
 $transObj->setDriverBalance($driverObj->getBalance());
 $rideObj->setResponse("ride_Ended");
