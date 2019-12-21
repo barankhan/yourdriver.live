@@ -56,6 +56,14 @@ $kmTravelled=0,$kmTravelledRate,$totalFare=0,$amountReceived=0,$createdAt,$updat
 
     }
 
+
+
+    public function findById(){
+        $q = "select * from transactions where id=:id";
+        $params = array("id"=>$this->id);
+        $this->setAllFields($this->executeSelectSingle($q,$params));
+    }
+
     /**
      * @return mixed
      */
