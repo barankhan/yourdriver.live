@@ -42,10 +42,7 @@ if($transObj->update()){
     $transObj->setMessage("Unable to update the amount");
 }
 
-
-
-
-$var = json_encode($rideObj);
+$var = json_encode($transObj);
 $lr->setResponseBody($var);
 $lr->updateResponse();
 echo $var;
