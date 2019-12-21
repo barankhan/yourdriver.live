@@ -12,7 +12,7 @@ $driverObj = new User();
 $driverObj->getUserWithMobile($mobile);
 $rideObj = new ride();
 $rideObj->setId($_REQUEST['ride_id']);
-
+$rideObj->findRideWithId();
 if($rideObj->getIsRideCancelled()==0){
     $rideObj->findRideWithId();
     $rideObj->setIsDriverArrived(1);
