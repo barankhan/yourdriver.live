@@ -33,10 +33,11 @@ if($response=='driver_assigned'){
     $payload['lat']="".$driverObj->getLat();
     $payload['lng']="".$driverObj->getLng();
     $payload['driver_mobile']="".$driverObj->getMobile();
+    $payload['driver']=json_encode($driverObj);
 
 
     $token = $passengerObj->getFirebaseToken();
-    $fabseRes = $fbaseObj->sendPayloadOnly($lr->getId(),$token,$payload,$notification);
+    $fabseRes = $fbaseObj->sendPayloadOnly($lr->getId(),$token,$payload,null);
 
 }else{
     $rideObj->setResponse("some_one_else_got_it");
