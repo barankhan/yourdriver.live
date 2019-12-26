@@ -77,6 +77,8 @@ distance=:distance
                 $this->conn->commit();
                 return "ride_already_assigned";
             }
+            $this->setId($id);
+            $this->findRideWithId();
 
         }catch (Exception $e){
             var_dump($e);

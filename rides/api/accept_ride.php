@@ -24,13 +24,11 @@ if($response=='driver_assigned'){
     $passengerObj->getUserWithId($rideObj->getPassengerId());
 
     $fbaseObj = new firebaseNotification();
-    
+
     $payload['message']="Driver is coming at your pickup location.";
     $payload['key']="p_ride_accepted";
     $payload['driver']=json_encode($driverObj);
     $payload['ride']=json_encode($rideObj);
-
-
     $token = $passengerObj->getFirebaseToken();
     $fabseRes = $fbaseObj->sendPayloadOnly($lr->getId(),$token,$payload,null,"high",30);
 
