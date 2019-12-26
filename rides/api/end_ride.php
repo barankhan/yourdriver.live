@@ -33,14 +33,11 @@ if($rideObj->getIsRideEnded()==0) {
     $rideObj->setMessage("Thanks for the ride! We hope you have enjoyed the service.");
     $passengerObj = new User();
     $passengerObj->getUserWithId($rideObj->getPassengerId());
-    $notification['title'] = 'Thanks Dude';
-    $notification['body'] = 'Thanks for the ride! We hope you have enjoyed the service.Fare is:' . $transObj->getTotalFare();
-    $payload['do'] = "ride_ended";
-    $payload['msg'] = "Thanks for the ride! We hope you have enjoyed the service.";
-    $payload['key'] = "ride_ended";
+    $payload['message'] = "Thanks for the ride! We hope you have enjoyed the service. Your fare is: ".$transObj->getTotalFare();
+    $payload['key'] = "p_ride_ended";
     $fbaseObj = new firebaseNotification();
     $token = $passengerObj->getFirebaseToken();
-    $fabseRes = $fbaseObj->sendPayloadOnly($lr->getId(), $token, $payload, $notification, 'normal');
+    $fabseRes = $fbaseObj->sendPayloadOnly($lr->getId(), $token, $payload, null, 'high',60);
 }else{
     $transObj->setResponse("ride_ended_error");
     $transObj->setMessage("Ride has already been ended.!");
