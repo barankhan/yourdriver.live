@@ -71,14 +71,17 @@ distance=:distance
                 $statement->execute(array("id" => $id, "driver_id" => $driver_id));
 
                 $this->conn->commit();
+                $this->setId($id);
+                $this->findRideWithId();
                 return "driver_assigned";
 
             } else {
                 $this->conn->commit();
+                $this->setId($id);
+                $this->findRideWithId();
                 return "ride_already_assigned";
             }
-            $this->setId($id);
-            $this->findRideWithId();
+
 
         }catch (Exception $e){
             var_dump($e);

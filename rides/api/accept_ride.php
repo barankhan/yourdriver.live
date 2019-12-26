@@ -14,6 +14,7 @@ $lr->insertLog();
 $driverObj = new User();
 $driverObj->getUserWithMobile($mobile);
 $rideObj = new ride();
+
 $response = $rideObj->assignRideToDriver($_REQUEST['ride_id'],$driverObj->getId(),$_REQUEST['driver_lat'],$_REQUEST['driver_lng']);
 if($response=='driver_assigned'){
     $rideObj->setResponse("you_got_it");
