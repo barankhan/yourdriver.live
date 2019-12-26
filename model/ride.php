@@ -47,6 +47,8 @@ distance=:distance
 
     public function assignRideToDriver($id,$driver_id,$driverLat,$driverLng){
         try {
+            $this->setId($id);
+            $this->findRideWithId();
             $this->conn->beginTransaction();
             $q = "select * from rides where id=:id and COALESCE(driver_id,0)=0 and is_ride_cancelled=0 FOR UPDATE;";
             $statement = $this->conn->prepare($q);
@@ -69,16 +71,11 @@ distance=:distance
                 $q2 = "update ride_alerts set is_accepted=1,accepted_at=now() where ride_id=:id and driver_id=:driver_id;";
                 $statement = $this->conn->prepare($q2);
                 $statement->execute(array("id" => $id, "driver_id" => $driver_id));
-
                 $this->conn->commit();
-                $this->setId($id);
-                $this->findRideWithId();
                 return "driver_assigned";
 
             } else {
                 $this->conn->commit();
-                $this->setId($id);
-                $this->findRideWithId();
                 return "ride_already_assigned";
             }
 
