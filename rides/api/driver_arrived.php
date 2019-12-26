@@ -24,18 +24,15 @@ if($rideObj->getIsRideCancelled()==0){
     $passengerObj  = new User();
     $passengerObj->getUserWithId($rideObj->getPassengerId());
 
-
-    $notification['title']='Driver Hazir hy!';
-    $notification['body']='Driver is reached at your pickup location!';
-    $payload['do']="driver_arrived";
-    $payload['msg']="Driver is reached at your pickup location!";
-    $payload['key']="driver_arrived";
+    $payload['message']="Driver is reached at your pickup location!";
+    $payload['key']="p_driver_arrived";
+    $payload['ride']=json_encode($rideObj);
 
     $fbaseObj = new firebaseNotification();
 
 
     $token = $passengerObj->getFirebaseToken();
-    $fabseRes = $fbaseObj->sendPayloadOnly($lr->getId(),$token,$payload,$notification,'high');
+    $fabseRes = $fbaseObj->sendPayloadOnly($lr->getId(),$token,$payload,$notification,'high',20);
 
 }else{
     $rideObj->setResponse("ride_canceled_by_passenger");
