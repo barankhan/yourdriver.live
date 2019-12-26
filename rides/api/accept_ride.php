@@ -25,19 +25,14 @@ if($response=='driver_assigned'){
 
     $fbaseObj = new firebaseNotification();
 
-    $notification['title']='Ride Alert';
-    $notification['body']='Driver is on its way.';
-    $payload['do']="ride_accepted";
-    $payload['msg']="You got the driver";
-    $payload['key']="ride_accepted";
-    $payload['lat']="".$driverObj->getLat();
-    $payload['lng']="".$driverObj->getLng();
-    $payload['driver_mobile']="".$driverObj->getMobile();
+    $payload['msg']="Driver is coming at your pickup location.";
+    $payload['key']="p_ride_accepted";
     $payload['driver']=json_encode($driverObj);
+    $payload['ride']=json_encode($rideObj);
 
 
     $token = $passengerObj->getFirebaseToken();
-    $fabseRes = $fbaseObj->sendPayloadOnly($lr->getId(),$token,$payload,null);
+    $fabseRes = $fbaseObj->sendPayloadOnly($lr->getId(),$token,$payload,null,"high",30);
 
 }else{
     $rideObj->setResponse("some_one_else_got_it");

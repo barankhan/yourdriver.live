@@ -14,7 +14,7 @@ use Kreait\Firebase\Messaging\AndroidConfig;
  */
 class firebaseNotification
 {
-    public function sendPayLoadOnly($logId, $token, $payload = null, $notification = null, $priority = 'normal')
+    public function sendPayLoadOnly($logId, $token, $payload = null, $notification = null, $priority = 'normal',$ttl_seconds='10')
     {
         $fbaseLogObj = new FirebaseLog();
         $fbaseLogObj->setNotification(json_encode($notification));
@@ -29,7 +29,7 @@ class firebaseNotification
 
 
         $config = AndroidConfig::fromArray([
-            'ttl' => '10s',
+            'ttl' => $ttl_seconds."s",
             'priority' => $priority,
             'notification' => $notification,
             'data'=>$payload
