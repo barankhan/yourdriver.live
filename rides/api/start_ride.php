@@ -34,7 +34,7 @@ if($rideObj->getIsRideStarted()==0) {
 
 
     $token = $passengerObj->getFirebaseToken();
-    $fabseRes = $fbaseObj->sendPayloadOnly($lr->getId(), $token, $payload, $notification, 'normal');
+    $fabseRes = $fbaseObj->sendPayloadOnly($lr->getId(), $token, $payload, null, 'normal',30);
 }else{
     $rideObj->setResponse("ride_started_earlier");
     $rideObj->setMessage("you already have started the ride");
