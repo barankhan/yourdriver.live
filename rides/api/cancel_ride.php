@@ -56,7 +56,7 @@ if($rideObj->getDriverId()==0){
         }
 
         $fbaseObj = new firebaseNotification();
-        $payload['msg']="Ride Cancelled By the Driver! Please Book a new ride.";
+        $payload['message']="We are really very sorry! Ride Cancelled By the Driver! Please Book a new ride.";
         $payload['key']="p_ride_cancelled";
         $token = $passengerObj->getFirebaseToken();
         $fabseRes = $fbaseObj->sendPayloadOnly($lr->getId(),$token,$payload,$notification,'high',30);
