@@ -23,11 +23,10 @@ $passengerObj  = new User();
 $passengerObj->getUserWithId($rideObj->getPassengerId());
 
 
-$notification['title']='You are on your way!';
-$notification['body']='Your Ride has been started! Enjoy the journey';
-$payload['do']="ride_started";
-$payload['msg']="Your Ride has been started! Enjoy the journey";
-$payload['key']="ride_started";
+$payload['message']="Your Ride has been started! Enjoy your journey.";
+$payload['key']="p_ride_started";
+$payload['ride']=json_encode($rideObj);
+
 
 $fbaseObj = new firebaseNotification();
 
