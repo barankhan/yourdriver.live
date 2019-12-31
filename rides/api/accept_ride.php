@@ -1,9 +1,6 @@
 <?php
-require_once __DIR__."/../../model/LogRequest.php";
-require_once __DIR__."/../../model/user.php";
-require_once __DIR__."/../../model/ride.php";
-require_once __DIR__."/../../model/rideAlert.php";
-require_once __DIR__."/../../utils/firebaseNotification.php";
+require_once __DIR__."/../../vendor/autoload.php";
+
 $mobile= $_REQUEST['mobile'];
 $lr = new LogRequest();
 $lr->setRequestUri($_SERVER['REQUEST_URI']);
@@ -14,6 +11,8 @@ $lr->insertLog();
 $driverObj = new User();
 $driverObj->getUserWithMobile($mobile);
 $rideObj = new ride();
+
+$res_array = array();
 
 $response = $rideObj->assignRideToDriver($_REQUEST['ride_id'],$driverObj->getId(),$_REQUEST['driver_lat'],$_REQUEST['driver_lng']);
 if($response=='driver_assigned'){
@@ -30,14 +29,24 @@ if($response=='driver_assigned'){
     $payload['key']="p_ride_accepted";
     $payload['driver']=json_encode($driverObj);
     $payload['ride']=json_encode($rideObj);
+
+    $res_array["response"]="you_got_it";
+    $res_array["message"]="Ride has been assigned to you";
+    $res_array["user"]=$passengerObj;
+    $res_array["ride"]=$rideObj;
+
+
+
     $token = $passengerObj->getFirebaseToken();
     $fabseRes = $fbaseObj->sendPayloadOnly($lr->getId(),$token,$payload,null,"high",30);
 
+
+
 }else{
-    $rideObj->setResponse("some_one_else_got_it");
-    $rideObj->setMessage("Sorry you are late.Someone Picked the Ride");
+    $res_array["response"]="some_one_else_got_it";
+    $res_array["message"]="Sorry you are late. Someone Picked the Ride";
 }
-$var = json_encode($rideObj);
+$var = json_encode($res_array);
 $lr->setResponseBody($var);
 $lr->updateResponse();
 echo $var;
