@@ -13,7 +13,7 @@ $lr->insertLog();
 
 $driverTransObj = new DriverTransaction();
 $driverTransObj->setDriverId($_REQUEST['driver_id']);
-$transactions = $driverTransObj->getDriverTransactions($_REQUEST['page_no']);
+$transactions = $driverTransObj->getDriverTransactions($_REQUEST['page_no'],20);
 
 $response = array();
 
