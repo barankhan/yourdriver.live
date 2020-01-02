@@ -432,6 +432,9 @@ $kmTravelled=0,$kmTravelledRate,$totalFare=0,$amountReceived=0,$createdAt,$updat
                 return ! is_null($item);
             }
         );
+
+        $vars['createdAt']=$now = date('d-m-Y h:i:s A', strtotime($vars['createdAt']));;
+
         unset($vars['conn']);
         return $vars;
     }
