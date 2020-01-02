@@ -24,7 +24,7 @@ $kmTravelled=0,$kmTravelledRate,$totalFare=0,$amountReceived=0,$createdAt,$updat
 //            "driverStartUpFare"=>$this->driverStartUpFare,"companyServiceCharges"=>$this->companyServiceCharges,"totalFare"=>$this->totalFare,
 //      "rideId"=>$this->rideId,"totalAmount"=>$this->totalAmount,"kmTravelledRate"=>$this->kmTravelledRate,"timeElapsedRate"=>$this->timeElapsedRate);
 
-        $q = "INSERT INTO `driver`.`transactions` (`driver_id`, `passenger_id`, `transaction_type`, `driver_start_up_fare`, 
+        $q = "INSERT INTO `transactions` (`driver_id`, `passenger_id`, `transaction_type`, `driver_start_up_fare`, 
 `company_service_charges`, `time_elapsed_minutes`, `time_elapsed_rate`, `km_travelled`, `km_travelled_rate`, `total_fare`, 
 `amount_received`, `amount_received_at`, `ride_id`, `total_amount`) VALUES 
 ( :driver_id ,  :passenger_id ,  :transaction_type ,  :driver_start_up_fare ,  :company_service_charges ,  :time_elapsed_minutes,  
@@ -42,7 +42,7 @@ $kmTravelled=0,$kmTravelledRate,$totalFare=0,$amountReceived=0,$createdAt,$updat
 
 
     public function update(){
-        $q = " UPDATE `driver`.`transactions` SET `driver_id` = :driver_id, `passenger_id` = :passenger_id, 
+        $q = " UPDATE `transactions` SET `driver_id` = :driver_id, `passenger_id` = :passenger_id, 
  `transaction_type` = :transaction_type, `driver_start_up_fare` = :driver_start_up_fare, `company_service_charges` = :company_service_charges, 
  `time_elapsed_minutes` = :time_elapsed_minutes, `time_elapsed_rate` = :time_elapsed_rate, `km_travelled` = :km_travelled , 
  `km_travelled_rate` = :km_travelled_rate, `total_fare` = :total_fare, `amount_received` = :amount_received,  `amount_received_at` = :amount_received_at, 
@@ -54,6 +54,14 @@ $kmTravelled=0,$kmTravelledRate,$totalFare=0,$amountReceived=0,$createdAt,$updat
         , "amount_received"=>$this->amountReceived, "amount_received_at"=>$this->amountReceivedAt, "ride_id"=>$this->rideId, "total_amount"=>$this->totalAmount,"id"=>$this->id );
         $this->executeUpdate($q,$params);
 
+    }
+
+
+
+    public function getDriverTransactions($page,$limit=10){
+        $q = "select * from `transactions` where driver_id=:driver_id order by created_at desc limit ".($page*$limit).",".$limit.";";
+        $params = array("driver_id"=>$this->driverId);
+        return $this->executeSelect($q,$params);
     }
 
 
