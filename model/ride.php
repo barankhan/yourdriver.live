@@ -505,13 +505,24 @@ distance=:distance
 
     public function jsonSerialize()
     {
-        $vars = array_filter(
-            get_object_vars($this),
-            function ($item) {
-                // Keep only not-NULL values
-                return ! is_null($item);
-            }
-        );
+//        $vars = array_filter(
+//            get_object_vars($this),
+//            function ($item) {
+//                // Keep only not-NULL values
+//                return !is_null($item);
+//            }
+//        );
+
+
+        $vars = get_object_vars($this);
+
+        array_walk($vars, function(&$v, $k) use (&$vars){
+            $v = trim($v);
+            if (empty($v))
+                unset($vars[$k]);
+        });
+
+
         unset($vars['conn']);
         $vars['createdAt']= date('h:i:s A', strtotime($vars['createdAt']));;
         $vars['rideStartedAt']= date('h:i:s A', strtotime($vars['rideStartedAt']));;

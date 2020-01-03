@@ -722,8 +722,13 @@ class User extends  baseModel implements JsonSerializable {
             }
         );
         unset($vars['password']);
-        unset($vars['firbaseToken']);
+        unset($vars['firebaseToken']);
         unset($vars['conn']);
+        unset($vars['cnic']);
+        unset($vars['cnicFront']);
+        unset($vars['cnicRear']);
+        unset($vars['licence']);
+        unset($vars['registration']);
 
 
         return $vars;
