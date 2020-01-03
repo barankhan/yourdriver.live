@@ -434,7 +434,7 @@ $kmTravelled=0,$kmTravelledRate,$totalFare=0,$amountReceived=0,$createdAt,$updat
         );
 
         $vars['createdAt']= date('d-m-Y h:i:s A', strtotime($vars['createdAt']));
-        $exp_transaction_type = exploade('_',$vars[`transactionType`]);
+        $exp_transaction_type = explode('_',$vars[`transactionType`]);
         $vars['transactionType'] = strtoupper($exp_transaction_type[0]) ;
 
 
