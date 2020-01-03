@@ -513,6 +513,10 @@ distance=:distance
             }
         );
         unset($vars['conn']);
+        $vars['createdAt']= date('d-m-Y h:i:s A', strtotime($vars['createdAt']));;
+        $vars['rideStartedAt']= date('d-m-Y h:i:s A', strtotime($vars['rideStartedAt']));;
+        $vars['rideEndedAt']= date('d-m-Y h:i:s A', strtotime($vars['rideEndedAt']));;
+        $vars['driverArrivedAt']= date('d-m-Y h:i:s A', strtotime($vars['driverArrivedAt']));;
         return $vars;
     }
 }

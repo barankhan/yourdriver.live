@@ -133,7 +133,7 @@ $kmTravelled=0,$kmTravelledRate,$totalFare=0,$amountReceived=0,$createdAt,$updat
      */
     public function getTimeElapsedMinutes()
     {
-        return $this->timeElapsedMinutes;
+        return bcdiv($this->timeElapsedMinutes,1,2);
     }
 
     /**
@@ -141,7 +141,7 @@ $kmTravelled=0,$kmTravelledRate,$totalFare=0,$amountReceived=0,$createdAt,$updat
      */
     public function setTimeElapsedMinutes($timeElapsedMinutes)
     {
-        $this->timeElapsedMinutes = $timeElapsedMinutes;
+        $this->timeElapsedMinutes = bcdiv($timeElapsedMinutes,1,2);
     }
 
 
@@ -216,7 +216,7 @@ $kmTravelled=0,$kmTravelledRate,$totalFare=0,$amountReceived=0,$createdAt,$updat
      */
     public function getDriverStartUpFare()
     {
-        return $this->driverStartUpFare;
+        return bcdiv($this->driverStartUpFare,1,2);
     }
 
     /**
@@ -224,7 +224,7 @@ $kmTravelled=0,$kmTravelledRate,$totalFare=0,$amountReceived=0,$createdAt,$updat
      */
     public function setDriverStartUpFare($driverStartUpFare)
     {
-        $this->driverStartUpFare = $driverStartUpFare;
+        $this->driverStartUpFare =  bcdiv($driverStartUpFare,1,2);
     }
 
     /**
@@ -232,7 +232,7 @@ $kmTravelled=0,$kmTravelledRate,$totalFare=0,$amountReceived=0,$createdAt,$updat
      */
     public function getCompanyServiceCharges()
     {
-        return $this->companyServiceCharges;
+        return bcdiv($this->companyServiceCharges,1,2);
     }
 
     /**
@@ -240,7 +240,7 @@ $kmTravelled=0,$kmTravelledRate,$totalFare=0,$amountReceived=0,$createdAt,$updat
      */
     public function setCompanyServiceCharges($companyServiceCharges)
     {
-        $this->companyServiceCharges = $companyServiceCharges;
+        $this->companyServiceCharges =  bcdiv($companyServiceCharges,1,2);
     }
 
     /**
@@ -248,7 +248,7 @@ $kmTravelled=0,$kmTravelledRate,$totalFare=0,$amountReceived=0,$createdAt,$updat
      */
     public function getTimeElapsedRate()
     {
-        return $this->timeElapsedRate;
+        return bcdiv($this->timeElapsedRate,1,2);
     }
 
     /**
@@ -256,7 +256,7 @@ $kmTravelled=0,$kmTravelledRate,$totalFare=0,$amountReceived=0,$createdAt,$updat
      */
     public function setTimeElapsedRate($timeElapsedRate)
     {
-        $this->timeElapsedRate = $timeElapsedRate;
+        $this->timeElapsedRate = bcdiv($timeElapsedRate,1,2);;
     }
 
     /**
@@ -264,7 +264,7 @@ $kmTravelled=0,$kmTravelledRate,$totalFare=0,$amountReceived=0,$createdAt,$updat
      */
     public function getKmTravelled()
     {
-        return $this->kmTravelled;
+        return bcdiv($this->kmTravelled,1,2);
     }
 
     /**
@@ -272,7 +272,7 @@ $kmTravelled=0,$kmTravelledRate,$totalFare=0,$amountReceived=0,$createdAt,$updat
      */
     public function setKmTravelled($kmTravelled)
     {
-        $this->kmTravelled = $kmTravelled;
+        $this->kmTravelled = bcdiv($kmTravelled,1,2);
     }
 
     /**
@@ -280,7 +280,7 @@ $kmTravelled=0,$kmTravelledRate,$totalFare=0,$amountReceived=0,$createdAt,$updat
      */
     public function getKmTravelledRate()
     {
-        return $this->kmTravelledRate;
+        return bcdiv($this->kmTravelledRate,1,2);
     }
 
     /**
@@ -288,7 +288,7 @@ $kmTravelled=0,$kmTravelledRate,$totalFare=0,$amountReceived=0,$createdAt,$updat
      */
     public function setKmTravelledRate($kmTravelledRate)
     {
-        $this->kmTravelledRate = $kmTravelledRate;
+        $this->kmTravelledRate = bcdiv($kmTravelledRate,1,2);
     }
 
     /**
@@ -296,7 +296,7 @@ $kmTravelled=0,$kmTravelledRate,$totalFare=0,$amountReceived=0,$createdAt,$updat
      */
     public function getTotalFare()
     {
-        return $this->totalFare;
+        return bcdiv($this->totalFare,1,2);
     }
 
     /**
@@ -312,7 +312,7 @@ $kmTravelled=0,$kmTravelledRate,$totalFare=0,$amountReceived=0,$createdAt,$updat
      */
     public function getAmountReceived()
     {
-        return $this->amountReceived;
+        return bcdiv($this->amountReceived,1,2);
     }
 
     /**
@@ -320,7 +320,7 @@ $kmTravelled=0,$kmTravelledRate,$totalFare=0,$amountReceived=0,$createdAt,$updat
      */
     public function setAmountReceived($amountReceived)
     {
-        $this->amountReceived = $amountReceived;
+        $this->amountReceived = bcdiv($amountReceived,1,2);
     }
 
     /**
@@ -360,7 +360,7 @@ $kmTravelled=0,$kmTravelledRate,$totalFare=0,$amountReceived=0,$createdAt,$updat
      */
     public function getAmountReceivedAt()
     {
-        return $this->amountReceivedAt;
+        return bcdiv($this->amountReceivedAt,1,2);
     }
 
     /**
@@ -368,7 +368,7 @@ $kmTravelled=0,$kmTravelledRate,$totalFare=0,$amountReceived=0,$createdAt,$updat
      */
     public function setAmountReceivedAt($amountReceivedAt)
     {
-        $this->amountReceivedAt = $amountReceivedAt;
+        $this->amountReceivedAt = bcdiv($amountReceivedAt,1,2);
     }
 
     /**
@@ -392,7 +392,7 @@ $kmTravelled=0,$kmTravelledRate,$totalFare=0,$amountReceived=0,$createdAt,$updat
      */
     public function getTotalAmount()
     {
-        return $this->totalAmount;
+        return bcdiv($this->totalAmount,1,2);
     }
 
     /**
@@ -400,7 +400,7 @@ $kmTravelled=0,$kmTravelledRate,$totalFare=0,$amountReceived=0,$createdAt,$updat
      */
     public function setTotalAmount()
     {
-        $this->totalAmount = ($this->amountReceived-$this->totalFare)+$this->totalFare;
+        $this->totalAmount = bcdiv(($this->amountReceived-$this->totalFare)+$this->totalFare,1,2);
     }
 
 
@@ -433,7 +433,7 @@ $kmTravelled=0,$kmTravelledRate,$totalFare=0,$amountReceived=0,$createdAt,$updat
             }
         );
 
-        $vars['createdAt']=$now = date('d-m-Y h:i:s A', strtotime($vars['createdAt']));;
+        $vars['createdAt']= date('d-m-Y h:i:s A', strtotime($vars['createdAt']));;
 
         unset($vars['conn']);
         return $vars;
