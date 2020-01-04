@@ -17,7 +17,7 @@ class User extends  baseModel implements JsonSerializable {
         is_deleted=:isDeleted,is_active=:isActive,is_verified=:isVerified,is_driver=:isDriver,father=:father,cnic=:cnic,cnic_front=:cnicFront,
         cnic_rear=:cnicRear,picture=:picture,licence=:licence,vehicle_front=:vehicleFront,vehicle_rear=:vehicleRear,registration=:registration,
         route=:route,reg_alphabet=:regAlphabet,reg_year=:regYear,reg_no=:regNo,lat=:lat,lng=:lng,is_driver_online=:is_driver_online
-        ,vehicle_type=:vehicleType,is_driver_on_trip=:isDriverOnTrip,balance=:balance where id=:id";
+        ,vehicle_type=:vehicleType,is_driver_on_trip=:isDriverOnTrip,balance=:balance,firebase_token=:firebaseToken where id=:id";
             $params = array("id" => $this->id, "driverSteps" => $this->driverSteps, "name" => $this->name, "email" => $this->email, "password" => $this->password,
                 "mobile" => $this->mobile, "verificationToken" => $this->verificationToken,
                 "isDeleted" => $this->isDeleted, "isActive" => $this->isActive, "isVerified" => $this->isVerified, "isDriver" => $this->isDriver,
@@ -25,7 +25,7 @@ class User extends  baseModel implements JsonSerializable {
                 "licence" => $this->licence, "vehicleFront" => $this->vehicleFront, "vehicleRear" => $this->vehicleRear, "registration" => $this->registration,
                 "route" => $this->route, "regAlphabet" => $this->regAlphabet, "regYear" => $this->regYear, "regNo" => $this->regNo,"lat"=>$this->lat,"lng"=>$this->lng
             ,"is_driver_online"=>$this->isDriverOnline,"vehicleType"=>$this->vehicleType,"isDriverOnTrip"=>$this->isDriverOnTrip,
-                "balance"=>$this->balance
+                "balance"=>$this->balance,"firebaseToken"=>$this->firebaseToken
             );
             return $this->executeUpdate($q, $params);
         }

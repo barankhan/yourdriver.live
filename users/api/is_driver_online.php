@@ -20,6 +20,7 @@ $flag = $_REQUEST['is_driver_online'];
 $userObj = new User();
 $userObj->getUserWithMobile($_REQUEST['mobile']);
 $userObj->setIsDriverOnline($flag);
+$userObj->setFirebaseToken($_REQUEST['firebaseToken']);
 
 if($userObj->getIsDriverOnline()==0){
     $userObj->setLat(0);

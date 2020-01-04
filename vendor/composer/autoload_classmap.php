@@ -7,6 +7,7 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'CallHistory' => $baseDir . '/model/CallHistory.php',
+    'ChatHistory' => $baseDir . '/model/ChatHistory.php',
     'CooDistance' => $baseDir . '/utils/CooDistance.php',
     'CurlPost' => $baseDir . '/utils/CurlPost.php',
     'DriverConstants' => $baseDir . '/utils/DriverConstants.php',

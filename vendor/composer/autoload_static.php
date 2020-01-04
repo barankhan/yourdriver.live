@@ -194,6 +194,7 @@ class ComposerStaticInitfd5deadb88ad3e3c17da2a9bccfa0cdc
 
     public static $classMap = array (
         'CallHistory' => __DIR__ . '/../..' . '/model/CallHistory.php',
+        'ChatHistory' => __DIR__ . '/../..' . '/model/ChatHistory.php',
         'CooDistance' => __DIR__ . '/../..' . '/utils/CooDistance.php',
         'CurlPost' => __DIR__ . '/../..' . '/utils/CurlPost.php',
         'DriverConstants' => __DIR__ . '/../..' . '/utils/DriverConstants.php',
