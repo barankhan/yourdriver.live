@@ -44,6 +44,7 @@ $notification['click_action']="com.barankhan.driver.chat";
 $payload['message'] = $chatObj->getMessage();
 $payload['key'] = "chat_message_received";
 $payload['ride_id'] = "".$chatObj->getRideId();
+$payload['sender_id'] = "".$chatObj->getSenderId();
 
 $fbaseObj = new firebaseNotification();
 $token = $userObj->getFirebaseToken();
