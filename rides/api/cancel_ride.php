@@ -72,7 +72,7 @@ if($rideObj->getDriverId()==0){
         $meters = CooDistance::calculateDistanceBetweenTwoPoints($driverObj->getLat(),$driverObj->getLng(),$rideObj->getDriverLat(),$rideObj->getDriverLng(),'MT',true,5);
 
         // Add base fare to the User Balance in case of driver travelled 300 meters. otherwise create a transaction of the ride with 0 balance.
-        if($meters>=300){
+        if($meters>=300 || $rideObj->getIsDriverArrived()==1){
             $transObj = Misc::generateCancelledTransaction($rideObj,$basePrice);
             $userObj->setBalance($userObj->getBalance()-$transObj->getTotalFare());
             $userObj->update();
