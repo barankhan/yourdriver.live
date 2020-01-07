@@ -56,7 +56,7 @@ class User extends  baseModel implements JsonSerializable {
     public function setDriverRating($rating){
         $this->totalRating = $this->totalRating+$rating;
         $this->totalRatedRides = $this->totalRatedRides+1;
-        $this->rating=$this->totalRating/$this->totalRatedRides;
+        $this->setRating($this->totalRating/$this->totalRatedRides);
     }
 
     /**
@@ -96,7 +96,7 @@ class User extends  baseModel implements JsonSerializable {
      */
     public function setRating($rating)
     {
-        $this->rating = $rating;
+        $this->rating = bcdiv($rating,1,2);
     }
 
     /**
