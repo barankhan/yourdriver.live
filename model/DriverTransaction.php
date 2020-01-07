@@ -360,7 +360,7 @@ $kmTravelled=0,$kmTravelledRate,$totalFare=0,$amountReceived=0,$createdAt,$updat
      */
     public function getAmountReceivedAt()
     {
-        return bcdiv($this->amountReceivedAt,1,2);
+        return $this->amountReceivedAt;
     }
 
     /**
@@ -368,7 +368,7 @@ $kmTravelled=0,$kmTravelledRate,$totalFare=0,$amountReceived=0,$createdAt,$updat
      */
     public function setAmountReceivedAt($amountReceivedAt)
     {
-        $this->amountReceivedAt = bcdiv($amountReceivedAt,1,2);
+        $this->amountReceivedAt = $amountReceivedAt;
     }
 
     /**

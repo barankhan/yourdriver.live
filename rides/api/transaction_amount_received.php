@@ -14,6 +14,7 @@ $transObj = new DriverTransaction();
 $transObj->setId($_REQUEST["trans_id"]);
 $transObj->findById();
 $transObj->setAmountReceived($_REQUEST['amount_received']);
+$transObj->setAmountReceivedAt(date("Y-m-d H:i:s"));
 $transObj->setTotalAmount();
 if($transObj->update()){
     $transObj->setResponse("amount_update_success");
