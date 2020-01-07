@@ -5,10 +5,8 @@ class User extends  baseModel implements JsonSerializable {
     private $id=0,$driverSteps=0,$name=null,$email=null,$password=null,$mobile=null,$verificationToken=null,
         $createdAt=null,$updatedAt=null,$isDeleted=0,$isActive=1,$isVerified=0,$isDriver=0,$response,$firebaseToken,
         $father,$cnic,$cnicFront,$cnicRear,$picture,$licence,$vehicleFront,$vehicleRear,$registration,$route,
-        $regAlphabet,$regYear,$regNo,$lat,$lng,$isDriverOnline=0,$vehicleType='Auto',$isDriverOnTrip=0,$distance,$balance;
-
-
-
+        $regAlphabet,$regYear,$regNo,$lat,$lng,$isDriverOnline=0,$vehicleType='Auto',$isDriverOnTrip=0,$distance,$balance,
+    $totalRating=0,$totalRides=0,$rating=5,$totalRatedRides=0;
 
 
     public function update(){
@@ -17,15 +15,19 @@ class User extends  baseModel implements JsonSerializable {
         is_deleted=:isDeleted,is_active=:isActive,is_verified=:isVerified,is_driver=:isDriver,father=:father,cnic=:cnic,cnic_front=:cnicFront,
         cnic_rear=:cnicRear,picture=:picture,licence=:licence,vehicle_front=:vehicleFront,vehicle_rear=:vehicleRear,registration=:registration,
         route=:route,reg_alphabet=:regAlphabet,reg_year=:regYear,reg_no=:regNo,lat=:lat,lng=:lng,is_driver_online=:is_driver_online
-        ,vehicle_type=:vehicleType,is_driver_on_trip=:isDriverOnTrip,balance=:balance,firebase_token=:firebaseToken where id=:id";
+        ,vehicle_type=:vehicleType,is_driver_on_trip=:isDriverOnTrip,balance=:balance,firebase_token=:firebaseToken,
+         total_rating=:totalRating,total_rides=:totalRides,rating=:rating,total_rated_rides=:totalRatedRides
+         
+         where id=:id";
             $params = array("id" => $this->id, "driverSteps" => $this->driverSteps, "name" => $this->name, "email" => $this->email, "password" => $this->password,
                 "mobile" => $this->mobile, "verificationToken" => $this->verificationToken,
                 "isDeleted" => $this->isDeleted, "isActive" => $this->isActive, "isVerified" => $this->isVerified, "isDriver" => $this->isDriver,
                 "father" => $this->father, "cnic" => $this->cnic, "cnicFront" => $this->cnicFront, "cnicRear" => $this->cnicRear, "picture" => $this->picture,
                 "licence" => $this->licence, "vehicleFront" => $this->vehicleFront, "vehicleRear" => $this->vehicleRear, "registration" => $this->registration,
-                "route" => $this->route, "regAlphabet" => $this->regAlphabet, "regYear" => $this->regYear, "regNo" => $this->regNo,"lat"=>$this->lat,"lng"=>$this->lng
-            ,"is_driver_online"=>$this->isDriverOnline,"vehicleType"=>$this->vehicleType,"isDriverOnTrip"=>$this->isDriverOnTrip,
-                "balance"=>$this->balance,"firebaseToken"=>$this->firebaseToken
+                "route" => $this->route, "regAlphabet" => $this->regAlphabet, "regYear" => $this->regYear, "regNo" => $this->regNo,"lat"=>$this->lat,"lng"=>$this->lng,
+                "is_driver_online"=>$this->isDriverOnline,"vehicleType"=>$this->vehicleType,"isDriverOnTrip"=>$this->isDriverOnTrip,
+                "balance"=>$this->balance,"firebaseToken"=>$this->firebaseToken,"totalRating"=>$this->totalRating,"totalRides"=>$this->totalRides,
+                "rating"=>$this->rating,"totalRatedRides"=>$this->totalRatedRides
             );
             return $this->executeUpdate($q, $params);
         }
@@ -41,6 +43,83 @@ class User extends  baseModel implements JsonSerializable {
         $params = array("lat"=>$lat,"lat1"=>$lat,"lng"=>$lng,"limit"=>$limit,"radius"=>$radius,"vehicle_type"=>$vehicle_type);
         return $this->executeSelect($q,$params);
     }
+
+    /**
+     * @return int
+     */
+    public function getTotalRating()
+    {
+        return $this->totalRating;
+    }
+
+
+    public function setDriverRating($rating){
+        $this->totalRating = $this->totalRating+$rating;
+        $this->totalRatedRides = $this->totalRatedRides+1;
+        $this->rating=$this->totalRating/$this->totalRatedRides;
+    }
+
+    /**
+     * @param int $totalRating
+     */
+    public function setTotalRating($totalRating)
+    {
+        $this->totalRating = $totalRating;
+    }
+
+    /**
+     * @return int
+     */
+    public function getTotalRides()
+    {
+        return $this->totalRides;
+    }
+
+    /**
+     * @param int $totalRides
+     */
+    public function setTotalRides($totalRides)
+    {
+        $this->totalRides = $totalRides;
+    }
+
+    /**
+     * @return int
+     */
+    public function getRating()
+    {
+        return $this->rating;
+    }
+
+    /**
+     * @param int $rating
+     */
+    public function setRating($rating)
+    {
+        $this->rating = $rating;
+    }
+
+    /**
+     * @return int
+     */
+    public function getTotalRatedRides()
+    {
+        return $this->totalRatedRides;
+    }
+
+    /**
+     * @param int $totalRatedRides
+     */
+    public function setTotalRatedRides($totalRatedRides)
+    {
+        $this->totalRatedRides = $totalRatedRides;
+    }
+
+
+
+
+
+
 
     /**
      * @return mixed

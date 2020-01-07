@@ -25,7 +25,9 @@ if($rideObj->getIsRideEnded()==0) {
     $transObj = Misc::generateCompletedRideTransaction($rideObj, $basePrice);
     $driverObj->setBalance($driverObj->getBalance() - $transObj->getCompanyServiceCharges());
     $driverObj->setIsDriverOnTrip(0);
+    $driverObj->setTotalRides($driverObj->getTotalRides()+1);
     $driverObj->update();
+
     $transObj->setResponse("ride_ended_successfully");
     $transObj->setMessage("Your ride has been ended successfully");
     $transObj->setDriverBalance($driverObj->getBalance());
