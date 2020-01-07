@@ -35,6 +35,7 @@ if($rideObj->getIsRideEnded()==0) {
     $passengerObj->getUserWithId($rideObj->getPassengerId());
     $payload['message'] = "Thanks for the ride! We hope you have enjoyed the service. Your fare is: ".$transObj->getTotalFare();
     $payload['key'] = "p_ride_ended";
+    $payload['ride'] = json_encode($rideObj);
     $fbaseObj = new firebaseNotification();
     $token = $passengerObj->getFirebaseToken();
     $fabseRes = $fbaseObj->sendPayloadOnly($lr->getId(), $token, $payload, null, 'high',60);
