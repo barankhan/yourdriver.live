@@ -19,6 +19,21 @@ $lr->insertLog();
 $driverObj = new User();
 $driverObj->getUserWithId($_REQUEST['driver_id']);
 $driverObj->setDriverRating($_REQUEST['rating']);
-$driverObj->update();
+
+
+$rideObj = new ride();
+$rideObj->setId($_REQUEST['ride_id']);
+$rideObj->findRideWithId();
+$rideObj->setRating($_REQUEST['rating']);
+
+if($driverObj->update() && $rideObj->update()){
+    $arr = array("message"=>"ok","response"=>"ok");
+}else{
+    $arr = array("message"=>"error","response"=>"error");
+}
+
+echo json_encode($arr);
+
+
 
 
