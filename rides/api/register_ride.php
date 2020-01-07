@@ -13,6 +13,8 @@ $lr->setMobileNumber($mobile);
 $lr->insertLog();
 $userObj = new User();
 $userObj->getUserWithMobile($mobile);
+$userObj->setFirebaseToken($_REQUEST['firebaseToken']);
+$userObj->update();
 
 
 $rideObj = new ride();
