@@ -36,6 +36,7 @@ class PaymentSMS extends  baseModel implements JsonSerializable
      */
     public function __construct($rawSms, $sender)
     {
+        parent::__construct();
         $this->rawSms = $rawSms;
         $this->sender = $sender;
 
@@ -55,6 +56,8 @@ class PaymentSMS extends  baseModel implements JsonSerializable
         }
     }
 
+
+    
 
     /**
      * @return mixed
