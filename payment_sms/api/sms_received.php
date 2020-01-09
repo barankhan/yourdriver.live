@@ -15,7 +15,7 @@ $lr->setRequestHeader(json_encode($_SERVER));
 $lr->setMobileNumber($mobile);
 $lr->insertLog();
 
-$paySmsObj = new PaymentSMS($_REQUEST["raw_sms"],$_REQUEST['sender']);
+$paySmsObj = new PaymentSMS($_REQUEST["sms"],$_REQUEST['sender']);
 $paySmsObj->insert();
 echo json_encode(array("message"=>"ok","response"=>"ok"));
 
