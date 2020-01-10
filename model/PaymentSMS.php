@@ -10,7 +10,7 @@ require_once "baseModel.php";
 class PaymentSMS extends  baseModel implements JsonSerializable
 {
 
-    private $id,$rawSms,$sender,$transactionId,$amount,$createdAt,$updatedAt,$isUsed=0,$usedBy,$usedAt;
+    private $id=0,$rawSms,$sender,$transactionId,$amount,$createdAt,$updatedAt,$isUsed=0,$usedBy,$usedAt,$rechargeRequestId;
 
 
     public function insert(){
@@ -22,9 +22,18 @@ class PaymentSMS extends  baseModel implements JsonSerializable
 
 
     public function update(){
-        $q="UPDATE `payment_sms` SET `transaction_id` = :transaction_id ,`amount` = :amount, `is_used` = :is_used ,`used_by` = :used_by ,`used_at` = :used_at WHERE `id` = :id;";
-        $params = array("transaction_id"=>$this->transactionId,"amount"=>$this->amount,"is_used"=>$this->isUsed,"used_by"=>$this->usedBy,"used_at"=>$this->usedAt,"id"=>$this->id);
+        $q="UPDATE `payment_sms` SET `transaction_id` = :transaction_id ,`amount` = :amount, `is_used` = :is_used ,`used_by` = :used_by ,`used_at` = :used_at,recharge_request_id = :recharge_request_id WHERE `id` = :id;";
+        $params = array("transaction_id"=>$this->transactionId,"amount"=>$this->amount,"is_used"=>$this->isUsed,"used_by"=>$this->usedBy,"used_at"=>$this->usedAt,"id"=>$this->id,"recharge_request_id"=>$this->rechargeRequestId);
         $this->executeUpdate($q,$params);
+    }
+
+
+
+    public function getPaymentSMSToRedeem(){
+        $q = "select * from payment_sms where transaction_id=:transaction_id and amount=:amount and sender=:sender and is_used=0 order by id limit 1";
+        $params = array("transaction_id"=>$this->transactionId,"amount"=>$this->amount,"sender"=>$this->sender);
+        $this->setAllFields($this->executeSelectSingle($q,$params));
+
     }
 
 
@@ -34,30 +43,46 @@ class PaymentSMS extends  baseModel implements JsonSerializable
      * @param $rawSms
      * @param $sender
      */
-    public function __construct($rawSms, $sender)
+    public function __construct($rawSms=null, $sender=null)
     {
         parent::__construct();
-        $this->rawSms = $rawSms;
-        $this->sender = $sender;
-
-
-        if($sender=='3737'){
-            $rawSms = strtolower($rawSms);
-            echo $rawSms = str_replace("rs ","rs. ",$rawSms);
-            $s_array = explode(" ",$rawSms);
-            $this->transactionId = str_replace(".","",$s_array[2]);
-            $rs_array = explode("rs. ",$rawSms);
-            $rs_array = explode(" ",$rs_array[1]);
-            $this->amount =  str_replace(",",'',$rs_array[0]) ;
-        }elseif($sender=="8558"){
-            $s_array = explode(" ",$rawSms);
-            $this->amount =  str_replace(",",'',$s_array[1]) ;
-            $this->transactionId = str_replace(".",'',$s_array[count($s_array)-1]);
+        if($rawSms!=null and $sender!=null) {
+            $this->rawSms = $rawSms;
+            $this->sender = $sender;
+            if ($sender == '3737') {
+                $rawSms = strtolower($rawSms);
+                $rawSms = str_replace("rs ", "rs. ", $rawSms);
+                $s_array = explode(" ", $rawSms);
+                $this->transactionId = str_replace(".", "", $s_array[2]);
+                $rs_array = explode("rs. ", $rawSms);
+                $rs_array = explode(" ", $rs_array[1]);
+                $this->amount = str_replace(",", '', $rs_array[0]);
+            } elseif ($sender == "8558") {
+                $s_array = explode(" ", $rawSms);
+                $this->amount = str_replace(",", '', $s_array[1]);
+                $this->transactionId = str_replace(".", '', $s_array[count($s_array) - 1]);
+            }
         }
     }
 
+    /**
+     * @return mixed
+     */
+    public function getRechargeRequestId()
+    {
+        return $this->rechargeRequestId;
+    }
 
-    
+    /**
+     * @param mixed $rechargeRequestId
+     */
+    public function setRechargeRequestId($rechargeRequestId)
+    {
+        $this->rechargeRequestId = $rechargeRequestId;
+    }
+
+
+
 
     /**
      * @return mixed
@@ -224,7 +249,15 @@ class PaymentSMS extends  baseModel implements JsonSerializable
 
 
 
+    public function setAllFields($rs){
 
+        foreach($rs as $key => $val) {
+            $key = str_replace("_", " ", $key);
+            $key = ucwords($key);
+            $key = "set" . str_replace(" ", "", $key);
+            $this->$key($val);
+        }
+    }
 
 
     /**

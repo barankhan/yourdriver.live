@@ -203,6 +203,7 @@ class ComposerStaticInitfd5deadb88ad3e3c17da2a9bccfa0cdc
         'LogRequest' => __DIR__ . '/../..' . '/model/LogRequest.php',
         'Misc' => __DIR__ . '/../..' . '/utils/Misc.php',
         'PaymentSMS' => __DIR__ . '/../..' . '/model/PaymentSMS.php',
+        'RechargeRequest' => __DIR__ . '/../..' . '/model/RechargeRequest.php',
         'RidePath' => __DIR__ . '/../..' . '/model/RidePath.php',
         'SmsDevices' => __DIR__ . '/../..' . '/model/sms_devices.php',
         'User' => __DIR__ . '/../..' . '/model/user.php',
