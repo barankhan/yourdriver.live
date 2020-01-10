@@ -36,11 +36,16 @@ if($response=='payment_done'){
     $tranObj->setDriverId($rechargeRequestObj->getUserId());
     $tranObj->insert();
 }else if($response=='sms_not_found'){
-
+    $userObj->setResponse("voucher_not_found");
+    $userObj->setBalance("Your Amount not yet received. We will update your balance later.");
 }else if($response=='transaction_already_successful'){
-
+    $userObj->setResponse("already_used");
+    $userObj->setBalance("This Transaction ID is already used.");
 }else{
-
-};
-
-
+    $userObj->setResponse("error");
+    $userObj->setBalance("We can't recognize your request! Please contact support!.");
+}
+$var = json_encode();
+$lr->setResponseBody($var);
+$lr->updateResponse();
+echo $var;
