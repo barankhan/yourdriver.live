@@ -844,6 +844,7 @@ class User extends  baseModel implements JsonSerializable {
         unset($vars['cnicRear']);
         unset($vars['licence']);
         unset($vars['registration']);
+        unset($vars['creditLimit']);
 
 
         return $vars;
