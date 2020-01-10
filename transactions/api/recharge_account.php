@@ -45,7 +45,7 @@ if($response=='payment_done'){
     $userObj->setResponse("error");
     $userObj->setBalance("We can't recognize your request! Please contact support!.");
 }
-$var = json_encode();
+$var = json_encode($userObj);
 $lr->setResponseBody($var);
 $lr->updateResponse();
 echo $var;
