@@ -544,8 +544,7 @@ distance=:distance,rating=:rating
 
 
         unset($vars['conn']);
-        $vars['createdAt']= date('h:i:s A', strtotime($vars['createdAt']));;
-
+        if(array_key_exists('createdAt', $vars)) $vars['createdAt']= date('h:i:s A', strtotime($vars['createdAt']));;
         if(array_key_exists('rideStartedAt', $vars))$vars['rideStartedAt']= date('h:i:s A', strtotime($vars['rideStartedAt']));;
         if(array_key_exists('rideEndedAt', $vars))$vars['rideEndedAt']= date('h:i:s A', strtotime($vars['rideEndedAt']));;
         if(array_key_exists('driverArrivedAt', $vars)) $vars['driverArrivedAt']= date('h:i:s A', strtotime($vars['driverArrivedAt']));;

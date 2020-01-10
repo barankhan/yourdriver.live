@@ -30,7 +30,7 @@ if($response=='payment_done'){
     $userObj->update();
     $userObj->setMessage("Your new Account balance is: ".$userObj->getBalance());
     $tranObj = new DriverTransaction();
-    $tranObj->setTransactionType("Credit");
+    $tranObj->setTransactionType("credit");
     $tranObj->setAmountReceived($rechargeRequestObj->getAmount());
     $tranObj->setAmountReceivedAt(date("Y-m-d H:i:s"));
     $tranObj->setDriverId($rechargeRequestObj->getUserId());
