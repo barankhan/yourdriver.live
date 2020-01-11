@@ -5,8 +5,7 @@
  * Date: 11/26/19
  * Time: 10:22 AM
  */
-require_once __DIR__."/../../model/sms_devices.php";
-require_once __DIR__."/../../model/LogRequest.php";
+require_once __DIR__."/../../vendor/autoload.php";
 
 
 $lr = new LogRequest();
@@ -20,7 +19,7 @@ $sms_devices_obj = new SmsDevices();
 $dev = $sms_devices_obj->getCurrentSMSSedingDevice();
 
 $message = $_REQUEST['message'];
-$mob = $_REQUEST['mobile_number'];
+$mob = $_REQUEST['mobi le_number'];
 
 define('API_ACCESS_KEY',"AIzaSyChw9Prigf-JNQmQoyligFeVQZR3Wvbovk");
  $fcmUrl = 'https://fcm.googleapis.com/fcm/send';

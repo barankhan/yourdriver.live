@@ -62,7 +62,7 @@ distance=:distance,rating=:rating
                 $statement->execute($params);
 
 
-                $q3 = "update users set is_driver_on_trip=1 where id=:ddriver_id;";
+                $q3 = "update users set is_driver_on_trip=1,acceptance_points=acceptance_points+15 where id=:ddriver_id;";
                 $statement = $this->conn->prepare($q3);
                 $params = array("ddriver_id" => $driver_id);
                 $statement->execute($params);

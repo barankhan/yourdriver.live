@@ -41,6 +41,8 @@ if($userObj->getId()>0){
     if(array_key_exists(0, $drivers)){
         $driver = new User();
         $driver->setAllFields($drivers[0]);
+        $driver->setAcceptancePoints($driver->getAcceptancePoints()-5);
+        $driver->update();
         $rideAlertObj = new rideAlert();
         $rideAlertObj->setDriverId($driver->getId());
         $rideAlertObj->setRideId($rideObj->getId());

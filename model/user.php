@@ -6,7 +6,7 @@ class User extends  baseModel implements JsonSerializable {
         $createdAt=null,$updatedAt=null,$isDeleted=0,$isActive=1,$isVerified=0,$isDriver=0,$response,$firebaseToken,
         $father,$cnic,$cnicFront,$cnicRear,$picture,$licence,$vehicleFront,$vehicleRear,$registration,$route,
         $regAlphabet,$regYear,$regNo,$lat,$lng,$isDriverOnline=0,$vehicleType='Auto',$isDriverOnTrip=0,$distance,$balance,
-    $totalRating=0,$totalRides=0,$rating=5,$totalRatedRides=0,$creditLimit,$message;
+    $totalRating=0,$totalRides=0,$rating=5,$totalRatedRides=0,$creditLimit,$message,$acceptancePoints;
 
 
     public function update(){
@@ -16,7 +16,7 @@ class User extends  baseModel implements JsonSerializable {
         cnic_rear=:cnicRear,picture=:picture,licence=:licence,vehicle_front=:vehicleFront,vehicle_rear=:vehicleRear,registration=:registration,
         route=:route,reg_alphabet=:regAlphabet,reg_year=:regYear,reg_no=:regNo,lat=:lat,lng=:lng,is_driver_online=:is_driver_online
         ,vehicle_type=:vehicleType,is_driver_on_trip=:isDriverOnTrip,balance=:balance,firebase_token=:firebaseToken,
-         total_rating=:totalRating,total_rides=:totalRides,rating=:rating,total_rated_rides=:totalRatedRides,credit_limit=:creditLimit
+         total_rating=:totalRating,total_rides=:totalRides,rating=:rating,total_rated_rides=:totalRatedRides,credit_limit=:creditLimit,acceptance_points=:acceptancePoints
          
          where id=:id";
             $params = array("id" => $this->id, "driverSteps" => $this->driverSteps, "name" => $this->name, "email" => $this->email, "password" => $this->password,
@@ -27,7 +27,7 @@ class User extends  baseModel implements JsonSerializable {
                 "route" => $this->route, "regAlphabet" => $this->regAlphabet, "regYear" => $this->regYear, "regNo" => $this->regNo,"lat"=>$this->lat,"lng"=>$this->lng,
                 "is_driver_online"=>$this->isDriverOnline,"vehicleType"=>$this->vehicleType,"isDriverOnTrip"=>$this->isDriverOnTrip,
                 "balance"=>$this->balance,"firebaseToken"=>$this->firebaseToken,"totalRating"=>$this->totalRating,"totalRides"=>$this->totalRides,
-                "rating"=>$this->rating,"totalRatedRides"=>$this->totalRatedRides,"creditLimit"=>$this->creditLimit
+                "rating"=>$this->rating,"totalRatedRides"=>$this->totalRatedRides,"creditLimit"=>$this->creditLimit,"acceptancePoints"=>$this->acceptancePoints
             );
             return $this->executeUpdate($q, $params);
         }
@@ -38,11 +38,29 @@ class User extends  baseModel implements JsonSerializable {
     public function getAvailableDrivers($lat,$lng,$vehicle_type,$limit=1,$radius=15){
 
         $q = "SELECT *, (6371*acos(cos(radians(:lat))*cos(radians(lat))*cos(radians(lng)-radians(:lng))
-            + sin(radians(:lat1))*sin(radians(lat)))) AS distance FROM users where is_driver=1 and is_driver_online=1 and is_driver_on_trip=0 and vehicle_type=:vehicle_type HAVING distance < :radius ORDER BY distance
+            + sin(radians(:lat1))*sin(radians(lat)))) AS distance FROM users where is_driver=1 and is_driver_online=1 and is_driver_on_trip=0 and vehicle_type=:vehicle_type HAVING distance < :radius ORDER BY distance,(acceptance_points/total_rides)+rating
           LIMIT :limit;";
         $params = array("lat"=>$lat,"lat1"=>$lat,"lng"=>$lng,"limit"=>$limit,"radius"=>$radius,"vehicle_type"=>$vehicle_type);
         return $this->executeSelect($q,$params);
     }
+
+    /**
+     * @return mixed
+     */
+    public function getAcceptancePoints()
+    {
+        return $this->acceptancePoints;
+    }
+
+    /**
+     * @param mixed $acceptancePoints
+     */
+    public function setAcceptancePoints($acceptancePoints)
+    {
+        $this->acceptancePoints = $acceptancePoints;
+    }
+
+
 
     /**
      * @return mixed

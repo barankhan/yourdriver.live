@@ -52,6 +52,7 @@ if($rideObj->getDriverId()==0){
             $passengerObj->update();
         }else{
             $transObj = Misc::generateCancelledTransaction($rideObj,null);
+            $userObj->setAcceptancePoints($userObj->getAcceptancePoints()-20);
             // TODO: Penalty to the Driver.
         }
 
