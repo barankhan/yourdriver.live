@@ -37,13 +37,13 @@ if($response=='payment_done'){
     $tranObj->insert();
 }else if($response=='sms_not_found'){
     $userObj->setResponse("voucher_not_found");
-    $userObj->setBalance("Your Amount not yet received. We will update your balance later.");
+    $userObj->setMessage("Your Amount not yet received. We will update your balance later.");
 }else if($response=='transaction_already_successful'){
     $userObj->setResponse("already_used");
-    $userObj->setBalance("This Transaction ID is already used.");
+    $userObj->setMessage("This Transaction ID is already used.");
 }else{
     $userObj->setResponse("error");
-    $userObj->setBalance("We can't recognize your request! Please contact support!.");
+    $userObj->setMessage("We can't recognize your request! Please contact support!.");
 }
 $var = json_encode($userObj);
 $lr->setResponseBody($var);
