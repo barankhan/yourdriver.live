@@ -18,14 +18,23 @@ $lr->insertLog();
 $flag = $_REQUEST['is_driver_online'];
 $userObj = new User();
 $userObj->getUserWithMobile($_REQUEST['mobile']);
+
+//echo $userObj->getBalance()."<br/>".$userObj->getCreditLimit()."<br/>".$flag;
 if($userObj->getBalance()>$userObj->getCreditLimit() && $flag==1){
     $userObj->setIsDriverOnline($flag);
     $userObj->setMessage("Online");
     $userObj->setResponse("success");
-}else{
+}elseif ($flag==0){
+    $userObj->setMessage("Offline");
+    $userObj->setResponse("success");
+}
+else{
     $userObj->setMessage("Sorry! You can't go online.Recharge your Account!");
     $userObj->setResponse("success");
 }
+
+
+
 $userObj->setFirebaseToken($_REQUEST['firebaseToken']);
 if($userObj->getIsDriverOnline()==0){
     $userObj->setLat(0);
@@ -39,7 +48,6 @@ if(!$userObj->update())
      $userObj->setResponse("error");
      $userObj->setMessage("Sorry you can't Change your status now.");
 }
-header('Content-Type: application/json');
 $lr->setResponseBody(json_encode($userObj));
 $lr->updateResponse();
 echo json_encode($userObj);
