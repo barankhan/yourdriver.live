@@ -27,6 +27,7 @@ if($userObj->getBalance()>$userObj->getCreditLimit() && $flag==1){
 }elseif ($flag==0){
     $userObj->setMessage("Offline");
     $userObj->setResponse("success");
+    $userObj->setIsDriverOnline($flag);
 }
 else{
     $userObj->setMessage("Sorry! You can't go online.Recharge your Account!");
