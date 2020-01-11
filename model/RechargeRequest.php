@@ -41,7 +41,7 @@ class RechargeRequest extends  baseModel implements JsonSerializable
     public function successfulTransactionExists(){
         $q = "select count(*) as ct from recharge_requests where payment_type=:payment_type and transaction_id=:transaction_id 
         and is_deleted=0 and is_successful=1";
-        $params = array("payment_type"=>$this->paymentType,"transaction_id"=>$this->transactionId,"amount"=>$this->amount);
+        $params = array("payment_type"=>$this->paymentType,"transaction_id"=>$this->transactionId);
         $rs = $this->executeSelectSingle($q,$params);
         return $rs['ct'];
     }
