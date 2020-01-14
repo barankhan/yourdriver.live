@@ -79,7 +79,7 @@ class User extends  baseModel implements JsonSerializable {
     }
 
 
-    
+
 
     /**
      * @return mixed
