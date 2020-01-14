@@ -65,6 +65,13 @@ $kmTravelled=0,$kmTravelledRate,$totalFare=0,$amountReceived=0,$createdAt,$updat
     }
 
 
+    public function getPassengerTransactions($page,$limit=10){
+        $q = "select * from `transactions` where passenger_id=:passenger_id order by created_at desc limit ".($page*$limit).",".$limit.";";
+        $params = array("passenger_id"=>$this->passengerId);
+        return $this->executeSelect($q,$params);
+    }
+
+
 
     public function findById(){
         $q = "select * from transactions where id=:id";
