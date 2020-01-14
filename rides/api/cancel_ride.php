@@ -83,14 +83,18 @@ if($rideObj->getDriverId()==0){
         $fbaseObj = new firebaseNotification();
 
 
-        $payload['message']="Ride Cancelled By the Passenger";
-        $payload['key']="d_ride_cancelled";
-        $token = $driverObj->getFirebaseToken();
-        $fabseRes = $fbaseObj->sendPayloadOnly($lr->getId(),$token,$payload,$notification,'high',30);
 
         // Set On Trip Status.
         $driverObj->setIsDriverOnTrip(0);
         $driverObj->update();
+
+        $payload['message']="Ride Cancelled By the Passenger";
+        $payload['key']="d_ride_cancelled";
+        $payload['user']=json_encode($driverObj);
+        $token = $driverObj->getFirebaseToken();
+        $fabseRes = $fbaseObj->sendPayloadOnly($lr->getId(),$token,$payload,null,'high',30);
+
+
 
     }
 
