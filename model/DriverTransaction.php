@@ -10,7 +10,7 @@ class DriverTransaction extends  baseModel implements JsonSerializable
 {
     private $id,$driverId,$passengerId,$transactionType,$driverStartUpFare,$companyServiceCharges,$timeElapsedMinutes=0,$timeElapsedRate,
 $kmTravelled=0,$kmTravelledRate,$totalFare=0,$amountReceived=0,$createdAt,$updatedAt,$amountReceivedAt,$rideId,$totalAmount=0,$message,$response,
-    $driverBalance,$companyHead,$headAmount;
+    $driverBalance,$companyHead,$headAmount,$payableAmount;
 
 
 
@@ -26,10 +26,10 @@ $kmTravelled=0,$kmTravelledRate,$totalFare=0,$amountReceived=0,$createdAt,$updat
 
         $q = "INSERT INTO `transactions` (`driver_id`, `passenger_id`, `transaction_type`, `driver_start_up_fare`, 
 `company_service_charges`, `time_elapsed_minutes`, `time_elapsed_rate`, `km_travelled`, `km_travelled_rate`, `total_fare`, 
-`amount_received`, `amount_received_at`, `ride_id`, `total_amount`) VALUES 
+`amount_received`, `amount_received_at`, `ride_id`, `total_amount`,`company_head`,`head_amount`,`payable_amount`) VALUES 
 ( :driver_id ,  :passenger_id ,  :transaction_type ,  :driver_start_up_fare ,  :company_service_charges ,  :time_elapsed_minutes,  
 :time_elapsed_rate ,  :km_travelled,  :km_travelled_rate ,  :total_fare ,  :amount_received,  :amount_received_at ,  
-:ride_id ,  :total_amount );  ";
+:ride_id ,  :total_amount ,:company_head,:head_amount:,:payable_amount);  ";
 
     $params = array( "driver_id"=>$this->driverId, "passenger_id"=>$this->passengerId, "transaction_type"=>$this->transactionType,
         "driver_start_up_fare"=>$this->driverStartUpFare, "company_service_charges"=>$this->companyServiceCharges, "time_elapsed_minutes"=>$this->timeElapsedMinutes,
@@ -87,6 +87,26 @@ $kmTravelled=0,$kmTravelledRate,$totalFare=0,$amountReceived=0,$createdAt,$updat
     /**
      * @return mixed
      */
+    public function getPayableAmount()
+    {
+        return $this->payableAmount;
+    }
+
+    /**
+     * @param mixed $payableAmount
+     */
+    public function setPayableAmount($payableAmount)
+    {
+        $this->payableAmount = bcdiv($payableAmount,1,2);
+    }
+
+
+
+
+
+    /**
+     * @return mixed
+     */
     public function getCompanyHead()
     {
         return $this->companyHead;
@@ -117,7 +137,7 @@ $kmTravelled=0,$kmTravelledRate,$totalFare=0,$amountReceived=0,$createdAt,$updat
     }
 
 
-    
+
 
     /**
      * @return mixed
@@ -351,7 +371,7 @@ $kmTravelled=0,$kmTravelledRate,$totalFare=0,$amountReceived=0,$createdAt,$updat
      */
     public function setTotalFare()
     {
-        $this->totalFare = bcdiv($this->companyServiceCharges+$this->driverStartUpFare+($this->timeElapsedMinutes*$this->timeElapsedRate)+($this->kmTravelled*$this->kmTravelledRate),1,2);
+        $this->totalFare = round(bcdiv($this->companyServiceCharges+$this->driverStartUpFare+($this->timeElapsedMinutes*$this->timeElapsedRate)+($this->kmTravelled*$this->kmTravelledRate),1,2));
     }
 
     /**

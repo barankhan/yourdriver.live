@@ -28,7 +28,7 @@ class Misc
 
 
 
-    public static function generateCompletedRideTransaction(ride $rideObj,$basePrice){
+    public static function generateCompletedRideTransaction(ride $rideObj,$basePrice,User $passengerObj,User &$driverObj){
         $tranObj = new DriverTransaction();
         $tranObj->setRideId($rideObj->getId());
         $tranObj->setPassengerId($rideObj->getPassengerId());
@@ -43,10 +43,38 @@ class Misc
         $start = strtotime($rideObj->getRideStartedAt());
         $end = strtotime($rideObj->getRideEndedAt());
         $mins = ($end - $start) / 60;
-
         $tranObj->setTimeElapsedMinutes($mins);
-
         $tranObj->setTotalFare();
+
+        $driverObj->setBalance($driverObj->getBalance() - $tranObj->getCompanyServiceCharges());
+
+        if($passengerObj->getBalance()>0){
+            // Wallet already have amount.
+            $tranObj->setCompanyHead('Balance_Used');
+            $tranObj->setHeadAmount($tranObj->getTotalFare());
+
+            if($passengerObj->getBalance()>=$tranObj->getTotalFare()){
+                $tranObj->setPayableAmount(0);
+                $driverObj->setBalance($driverObj->getBalance()+($tranObj->getTotalFare()-$tranObj->getCompanyServiceCharges()));
+            }else{
+                $tranObj->setPayableAmount($tranObj->getTotalFare()-$passengerObj->getBalance());
+                $driverObj->setBalance($driverObj->getBalance()-($tranObj->getTotalFare()-$tranObj->getCompanyServiceCharges()-$tranObj->getPayableAmount()));
+            }
+
+            $passengerObj->setBalance($passengerObj->getBalance()-$tranObj->getTotalFare());
+            $passengerObj->update();
+
+
+        }elseif ($passengerObj->getBalance()<0){
+           // Cancelled Amount.
+        }
+
+
+        $driverObj->update();
+        $passengerObj->update();
+
+
+
         $tranObj->setTotalAmount();
         $tranObj->insert();
         return $tranObj;

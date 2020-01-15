@@ -21,9 +21,15 @@ if($rideObj->getIsRideEnded()==0) {
     $rideObj->setDistance($_REQUEST['distance']);
     $rideObj->update();
 
+    $passengerObj = new User();
+    $passengerObj->getUserWithId($rideObj->getPassengerId());
+
+
+
+
     $basePrice = basePrice::getBasePrice($rideObj->getVehicleType(), $rideObj->getPickupLat(), $rideObj->getPickupLng());
-    $transObj = Misc::generateCompletedRideTransaction($rideObj, $basePrice);
-    $driverObj->setBalance($driverObj->getBalance() - $transObj->getCompanyServiceCharges());
+    $transObj = Misc::generateCompletedRideTransaction($rideObj, $basePrice,$passengerObj,$driverObj);
+
     $driverObj->setIsDriverOnTrip(0);
     $driverObj->setTotalRides($driverObj->getTotalRides()+1);
     $driverObj->update();
@@ -33,8 +39,7 @@ if($rideObj->getIsRideEnded()==0) {
     $transObj->setDriverBalance($driverObj->getBalance());
     $rideObj->setResponse("ride_Ended");
     $rideObj->setMessage("Thanks for the ride! We hope you have enjoyed the service.");
-    $passengerObj = new User();
-    $passengerObj->getUserWithId($rideObj->getPassengerId());
+
     $payload['message'] = "Thanks for the ride! We hope you have enjoyed the service. Your fare is: ".$transObj->getTotalFare();
     $payload['key'] = "p_ride_ended";
     $payload['ride'] = json_encode($rideObj);
