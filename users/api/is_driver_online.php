@@ -45,7 +45,7 @@ if($userObj->getIsDriverOnline()==0 && $flag==0){
     $userObj->setOfflineAt($d);
 
     $onlineHistoryObj = new UserOnlineHistory();
-    $onlineHistoryObj->setOnlineAt($d);
+    $onlineHistoryObj->setOfflineAt($d);
     $onlineHistoryObj->setUserId($userObj->getId());
     $onlineHistoryObj->setOnlineAt($userObj->getOnlineAt());
 
@@ -55,7 +55,7 @@ if($userObj->getIsDriverOnline()==0 && $flag==0){
 
     $onlineHistoryObj->setDurationInMinutes($mins);
     $onlineHistoryObj->insert();
-    
+
     $userObj->setMessage("Offline");
     $userObj->setResponse("success");
 }
