@@ -56,12 +56,14 @@ class Misc
             if($passengerObj->getBalance()>=$tranObj->getTotalFare()){
                 $tranObj->setPayableAmount(0);
                 $driverObj->setBalance($driverObj->getBalance()+($tranObj->getTotalFare()-$tranObj->getCompanyServiceCharges()));
+                $passengerObj->setBalance($passengerObj->getBalance()-$tranObj->getTotalFare());
             }else{
                 $tranObj->setPayableAmount($tranObj->getTotalFare()-$passengerObj->getBalance());
                 $driverObj->setBalance($driverObj->getBalance()-($tranObj->getTotalFare()-$tranObj->getCompanyServiceCharges()-$tranObj->getPayableAmount()));
+                $passengerObj->setBalance(0);
             }
 
-            $passengerObj->setBalance($passengerObj->getBalance()-$tranObj->getTotalFare());
+
             $passengerObj->update();
 
 
