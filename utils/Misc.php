@@ -62,13 +62,8 @@ class Misc
                 $driverObj->setBalance($driverObj->getBalance()-($tranObj->getTotalFare()-$tranObj->getCompanyServiceCharges()-$tranObj->getPayableAmount()));
                 $tranObj->setHeadAmount($passengerObj->getBalance());
                 $passengerObj->setBalance(0);
-
             }
-
-
             $passengerObj->update();
-
-
         }elseif ($passengerObj->getBalance()<0){
            // Cancelled Amount.
             $tranObj->setPayableAmount($tranObj->getTotalFare());
