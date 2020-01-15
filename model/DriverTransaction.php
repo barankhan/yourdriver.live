@@ -59,8 +59,7 @@ $kmTravelled=0,$kmTravelledRate,$totalFare=0,$amountReceived=0,$createdAt,$updat
 
 
         );
-        $this->executeUpdate($q,$params);
-
+        return $this->executeUpdate($q,$params);
     }
 
 
