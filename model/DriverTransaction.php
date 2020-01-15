@@ -10,7 +10,7 @@ class DriverTransaction extends  baseModel implements JsonSerializable
 {
     private $id,$driverId,$passengerId,$transactionType,$driverStartUpFare,$companyServiceCharges,$timeElapsedMinutes=0,$timeElapsedRate,
 $kmTravelled=0,$kmTravelledRate,$totalFare=0,$amountReceived=0,$createdAt,$updatedAt,$amountReceivedAt,$rideId,$totalAmount=0,$message,$response,
-    $driverBalance;
+    $driverBalance,$companyHead,$companyAmount;
 
 
 
@@ -46,12 +46,17 @@ $kmTravelled=0,$kmTravelledRate,$totalFare=0,$amountReceived=0,$createdAt,$updat
  `transaction_type` = :transaction_type, `driver_start_up_fare` = :driver_start_up_fare, `company_service_charges` = :company_service_charges, 
  `time_elapsed_minutes` = :time_elapsed_minutes, `time_elapsed_rate` = :time_elapsed_rate, `km_travelled` = :km_travelled , 
  `km_travelled_rate` = :km_travelled_rate, `total_fare` = :total_fare, `amount_received` = :amount_received,  `amount_received_at` = :amount_received_at, 
- `ride_id` = :ride_id, `total_amount` = :total_amount WHERE `id` = :id; ";
+ `ride_id` = :ride_id, `total_amount` = :total_amount,company_head=:companyHead,company_amount=:companyAmount
+  WHERE `id` = :id; ";
 
         $params = array( "driver_id"=>$this->driverId, "passenger_id"=>$this->passengerId, "transaction_type"=>$this->transactionType,
             "driver_start_up_fare"=>$this->driverStartUpFare, "company_service_charges"=>$this->companyServiceCharges, "time_elapsed_minutes"=>$this->timeElapsedMinutes,
             "time_elapsed_rate"=>$this->timeElapsedRate, "km_travelled"=>$this->kmTravelled, "km_travelled_rate"=>$this->kmTravelledRate, "total_fare"=>$this->totalFare
-        , "amount_received"=>$this->amountReceived, "amount_received_at"=>$this->amountReceivedAt, "ride_id"=>$this->rideId, "total_amount"=>$this->totalAmount,"id"=>$this->id );
+        , "amount_received"=>$this->amountReceived, "amount_received_at"=>$this->amountReceivedAt, "ride_id"=>$this->rideId, "total_amount"=>$this->totalAmount,"id"=>$this->id,
+            "companyHead"=>$this->companyHead,"companyAmount"=>$this->companyAmount
+
+
+        );
         $this->executeUpdate($q,$params);
 
     }
@@ -78,6 +83,40 @@ $kmTravelled=0,$kmTravelledRate,$totalFare=0,$amountReceived=0,$createdAt,$updat
         $params = array("id"=>$this->id);
         $this->setAllFields($this->executeSelectSingle($q,$params));
     }
+
+
+    /**
+     * @return mixed
+     */
+    public function getCompanyHead()
+    {
+        return $this->companyHead;
+    }
+
+    /**
+     * @param mixed $companyHead
+     */
+    public function setCompanyHead($companyHead)
+    {
+        $this->companyHead = $companyHead;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCompanyAmount()
+    {
+        return $this->companyAmount;
+    }
+
+    /**
+     * @param mixed $companyAmount
+     */
+    public function setCompanyAmount($companyAmount)
+    {
+        $this->companyAmount = $companyAmount;
+    }
+
 
     /**
      * @return mixed
