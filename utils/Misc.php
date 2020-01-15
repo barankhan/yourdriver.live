@@ -67,6 +67,9 @@ class Misc
 
         }elseif ($passengerObj->getBalance()<0){
            // Cancelled Amount.
+            $tranObj->setPayableAmount($tranObj->getTotalFare());
+        }else{
+            $tranObj->setPayableAmount($tranObj->getTotalFare());
         }
 
 
