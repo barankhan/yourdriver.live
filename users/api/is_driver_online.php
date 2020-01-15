@@ -24,6 +24,7 @@ if($userObj->getBalance()>$userObj->getCreditLimit() && $flag==1){
     $userObj->setIsDriverOnline($flag);
     $userObj->setMessage("Online");
     $userObj->setResponse("success");
+    $userObj->setOnlineAt(date('Y-m-d H:i:s'));
 }elseif ($flag==0){
     $userObj->setMessage("Offline");
     $userObj->setResponse("success");
@@ -40,6 +41,21 @@ $userObj->setFirebaseToken($_REQUEST['firebaseToken']);
 if($userObj->getIsDriverOnline()==0 && $flag==0){
     $userObj->setLat(0);
     $userObj->setLng(0);
+    $d = date('Y-m-d H:i:s');
+    $userObj->setOfflineAt($d);
+
+    $onlineHistoryObj = new UserOnlineHistory();
+    $onlineHistoryObj->setOnlineAt($d);
+    $onlineHistoryObj->setUserId($userObj->getId());
+    $onlineHistoryObj->setOnlineAt($userObj->getOnlineAt());
+
+    $start = strtotime($userObj->getOnlineAt());
+    $end = strtotime($d);
+    $mins = ($end - $start) / 60;
+
+    $onlineHistoryObj->setDurationInMinutes($mins);
+    $onlineHistoryObj->insert();
+    
     $userObj->setMessage("Offline");
     $userObj->setResponse("success");
 }

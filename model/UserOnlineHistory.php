@@ -15,10 +15,124 @@ class UserOnlineHistory extends  baseModel implements JsonSerializable
 
 
     public function insert(){
-        $q = "INSERT INTO `driver`.`user_online_history` (`user_id`, `online_at`, `offline_at`, `duration_in_minutes`) VALUES (:user_id, :online_at, :offline_at, :duration_in_minutes); ";
+        $q = "INSERT INTO `user_online_history` (`user_id`, `online_at`, `offline_at`, `duration_in_minutes`) VALUES (:user_id, :online_at, :offline_at, :duration_in_minutes); ";
         $params=array("user_id"=>$this->userId, "online_at"=>$this->onlineAt, "offline_at"=>$this->offlineAt, "duration_in_minutes"=>$this->durationInMinutes);
         $this->setId($this->executeInsert($q,$params));
     }
+
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param mixed $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getUserId()
+    {
+        return $this->userId;
+    }
+
+    /**
+     * @param mixed $userId
+     */
+    public function setUserId($userId)
+    {
+        $this->userId = $userId;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getOnlineAt()
+    {
+        return $this->onlineAt;
+    }
+
+    /**
+     * @param mixed $onlineAt
+     */
+    public function setOnlineAt($onlineAt)
+    {
+        $this->onlineAt = $onlineAt;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getOfflineAt()
+    {
+        return $this->offlineAt;
+    }
+
+    /**
+     * @param mixed $offlineAt
+     */
+    public function setOfflineAt($offlineAt)
+    {
+        $this->offlineAt = $offlineAt;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDurationInMinutes()
+    {
+        return $this->durationInMinutes;
+    }
+
+    /**
+     * @param mixed $durationInMinutes
+     */
+    public function setDurationInMinutes($durationInMinutes)
+    {
+        $this->durationInMinutes = $durationInMinutes;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * @param mixed $createdAt
+     */
+    public function setCreatedAt($createdAt)
+    {
+        $this->createdAt = $createdAt;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
+    }
+
+    /**
+     * @param mixed $updatedAt
+     */
+    public function setUpdatedAt($updatedAt)
+    {
+        $this->updatedAt = $updatedAt;
+    }
+
+
 
 
 

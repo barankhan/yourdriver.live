@@ -20,6 +20,7 @@ return array(
     'RidePath' => $baseDir . '/model/RidePath.php',
     'SmsDevices' => $baseDir . '/model/sms_devices.php',
     'User' => $baseDir . '/model/user.php',
+    'UserOnlineHistory' => $baseDir . '/model/UserOnlineHistory.php',
     'baseModel' => $baseDir . '/model/baseModel.php',
     'basePrice' => $baseDir . '/utils/basePrice.php',
     'findRideCity' => $baseDir . '/utils/findRideCity.php',
