@@ -35,7 +35,7 @@ if($transObj->update()){
     $transObj->setResponse("amount_update_error");
     $transObj->setMessage("Unable to update the amount");
 }
-$res = array("user"=>$driverObj,"transaction"=>$transObj);
+$res = array("user"=>$driverObj,"transaction"=>$transObj,"response"=>$transObj->getResponse(),"message"=>$transObj->getMessage());
 $var = json_encode($res);
 $lr->setResponseBody($var);
 $lr->updateResponse();
