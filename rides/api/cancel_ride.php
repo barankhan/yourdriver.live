@@ -94,8 +94,6 @@ if($rideObj->getDriverId()==0){
         $token = $driverObj->getFirebaseToken();
         $fabseRes = $fbaseObj->sendPayloadOnly($lr->getId(),$token,$payload,null,'high',30);
 
-
-
     }
 
 
