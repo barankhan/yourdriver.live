@@ -10,7 +10,8 @@ class DriverTransaction extends  baseModel implements JsonSerializable
 {
     private $id,$driverId,$passengerId,$transactionType,$driverStartUpFare,$companyServiceCharges,$timeElapsedMinutes=0,$timeElapsedRate,
 $kmTravelled=0,$kmTravelledRate,$totalFare=0,$amountReceived=0,$createdAt,$updatedAt,$amountReceivedAt,$rideId,$totalAmount=0,$message,$response,
-    $driverBalance,$companyOutwardHead,$outwardHeadAmount,$payableAmount,$companyInwardHead,$inwardHeadAmount,$transactionCompleted=0;
+    $driverBalance,$companyOutwardHead,$outwardHeadAmount,$payableAmount,$companyInwardHead,$inwardHeadAmount,$transactionCompleted=0,
+    $driverInitialBalance,$passengerInitialBalance;
 
 
 
@@ -26,16 +27,17 @@ $kmTravelled=0,$kmTravelledRate,$totalFare=0,$amountReceived=0,$createdAt,$updat
 
         $q = "INSERT INTO `transactions` (`driver_id`, `passenger_id`, `transaction_type`, `driver_start_up_fare`, 
 `company_service_charges`, `time_elapsed_minutes`, `time_elapsed_rate`, `km_travelled`, `km_travelled_rate`, `total_fare`, 
-`amount_received`, `amount_received_at`, `ride_id`, `total_amount`,`company_outward_head`,`outward_head_amount`,`payable_amount`) VALUES 
+`amount_received`, `amount_received_at`, `ride_id`, `total_amount`,`company_outward_head`,`outward_head_amount`,`payable_amount`,`driver_initial_balance`,`passenger_initial_balance`) VALUES 
 ( :driver_id ,  :passenger_id ,  :transaction_type ,  :driver_start_up_fare ,  :company_service_charges ,  :time_elapsed_minutes,  
 :time_elapsed_rate ,  :km_travelled,  :km_travelled_rate ,  :total_fare ,  :amount_received,  :amount_received_at ,  
-:ride_id ,  :total_amount ,:company_outward_head,:outward_head_amount,:payable_amount);  ";
+:ride_id ,  :total_amount ,:company_outward_head,:outward_head_amount,:payable_amount,:driver_initial_balance,:passenger_initial_balance);  ";
 
     $params = array( "driver_id"=>$this->driverId, "passenger_id"=>$this->passengerId, "transaction_type"=>$this->transactionType,
         "driver_start_up_fare"=>$this->driverStartUpFare, "company_service_charges"=>$this->companyServiceCharges, "time_elapsed_minutes"=>$this->timeElapsedMinutes,
         "time_elapsed_rate"=>$this->timeElapsedRate, "km_travelled"=>$this->kmTravelled, "km_travelled_rate"=>$this->kmTravelledRate, "total_fare"=>$this->totalFare
     , "amount_received"=>$this->amountReceived, "amount_received_at"=>$this->amountReceivedAt, "ride_id"=>$this->rideId, "total_amount"=>$this->totalAmount,
-    "company_outward_head"=>$this->companyOutwardHead,"outward_head_amount"=>$this->outwardHeadAmount,"payable_amount"=>$this->payableAmount
+    "company_outward_head"=>$this->companyOutwardHead,"outward_head_amount"=>$this->outwardHeadAmount,"payable_amount"=>$this->payableAmount,
+        "driver_initial_balance"=>$this->driverInitialBalance,"passenger_initial_balance"=>$this->passengerInitialBalance
     );
 
         $this->setId($this->executeInsert($q,$params));
@@ -49,7 +51,8 @@ $kmTravelled=0,$kmTravelledRate,$totalFare=0,$amountReceived=0,$createdAt,$updat
  `time_elapsed_minutes` = :time_elapsed_minutes, `time_elapsed_rate` = :time_elapsed_rate, `km_travelled` = :km_travelled , 
  `km_travelled_rate` = :km_travelled_rate, `total_fare` = :total_fare, `amount_received` = :amount_received,  `amount_received_at` = :amount_received_at, 
  `ride_id` = :ride_id, `total_amount` = :total_amount,company_outward_head=:companyOutwardHead,outward_head_amount=:outwardHeadAmount
- ,company_inward_head=:companyInwardHead,inward_head_amount=:inwardHeadAmount,transaction_completed=:transactionCompleted
+ ,company_inward_head=:companyInwardHead,inward_head_amount=:inwardHeadAmount,transaction_completed=:transactionCompleted,
+ 
   WHERE `id` = :id; ";
 
         $params = array( "driver_id"=>$this->driverId, "passenger_id"=>$this->passengerId, "transaction_type"=>$this->transactionType,
@@ -58,7 +61,8 @@ $kmTravelled=0,$kmTravelledRate,$totalFare=0,$amountReceived=0,$createdAt,$updat
         , "amount_received"=>$this->amountReceived, "amount_received_at"=>$this->amountReceivedAt, "ride_id"=>$this->rideId, "total_amount"=>$this->totalAmount,"id"=>$this->id,
             "companyOutwardHead"=>$this->companyOutwardHead,"outwardHeadAmount"=>$this->outwardHeadAmount,
             "companyInwardHead"=>$this->companyInwardHead,"inwardHeadAmount"=>$this->inwardHeadAmount,
-            "transactionCompleted"=>$this->transactionCompleted
+            "transactionCompleted"=>$this->transactionCompleted,
+            "driver_initial_balance"=>$this->driverInitialBalance,"passenger_initial_balance"=>$this->passengerInitialBalance
 
 
 
@@ -88,6 +92,42 @@ $kmTravelled=0,$kmTravelledRate,$totalFare=0,$amountReceived=0,$createdAt,$updat
         $params = array("id"=>$this->id);
         $this->setAllFields($this->executeSelectSingle($q,$params));
     }
+
+    /**
+     * @return mixed
+     */
+    public function getDriverInitialBalance()
+    {
+        return $this->driverInitialBalance;
+    }
+
+    /**
+     * @param mixed $driverInitialBalance
+     */
+    public function setDriverInitialBalance($driverInitialBalance)
+    {
+        $this->driverInitialBalance = $driverInitialBalance;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPassengerInitialBalance()
+    {
+        return $this->passengerInitialBalance;
+    }
+
+    /**
+     * @param mixed $passengerInitialBalance
+     */
+    public function setPassengerInitialBalance($passengerInitialBalance)
+    {
+        $this->passengerInitialBalance = $passengerInitialBalance;
+    }
+
+
+
+
 
     /**
      * @return int

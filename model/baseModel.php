@@ -86,4 +86,13 @@ class baseModel
         return $randomString;
     }
 
+
+
+
+    public function getDateTimeDiffInMinutes($date1,$date2){
+        $start = strtotime($date1);
+        $end = strtotime($date2);
+        return ($end - $start) / 60;
+    }
+
 }

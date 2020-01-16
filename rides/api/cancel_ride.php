@@ -42,23 +42,33 @@ if($rideObj->getDriverId()==0){
     $rideObj->setCancelledByTypeId($cancelledByTypeId);
     $rideObj->setResponse("ride_cancelled_successfully");
     $basePrice = basePrice::getBasePrice($rideObj->getVehicleType(),$rideObj->getPickupLat(),$rideObj->getPickupLng());
+
+    $driverObj = new User();
+    $driverObj->getUserWithId($tranObj->getDriverId());
+
+    $passengerObj  = new User();
+    $passengerObj->getUserWithId($rideObj->getPassengerId());
+
+
     if($userObj->getIsDriver()==1){
         // Cancelled By Driver.
-        $passengerObj = new User();
-        $passengerObj->getUserWithId($rideObj->getPassengerId());
-        if($rideObj->getIsDriverArrived()==1){
-            $cancTransObj = Misc::generateCancelledTransaction($rideObj,$basePrice);
-            $passengerObj->setBalance($passengerObj->getBalance()-$cancTransObj->getTotalFare());
-            $passengerObj->update();
+        $cancel_time = $rideObj->getDateTimeDiffInMinutes($rideObj->getDriverArrivedAt(),$rideObj->getRideCancelledAt());
+        if($rideObj->getIsDriverArrived()==1 &&
+            $cancel_time >=DRIVER_CANCELLED_WAIT_AFTER_ARRIVED){
+            $cancTransObj = Misc::generateCancelledTransaction($rideObj,$basePrice,$passengerObj,$driverObj);
+//            $passengerObj->setBalance($passengerObj->getBalance()-$cancTransObj->getTotalFare());
+//            $passengerObj->update();
         }else{
             $transObj = Misc::generateCancelledTransaction($rideObj,null);
             $userObj->setAcceptancePoints($userObj->getAcceptancePoints()-20);
             // TODO: Penalty to the Driver.
         }
 
+
         $fbaseObj = new firebaseNotification();
         $payload['message']="We are really very sorry! Ride Cancelled By the Driver! Please Book a new ride.";
         $payload['key']="p_ride_cancelled";
+        $payload['user']=json_encode($passengerObj);
         $token = $passengerObj->getFirebaseToken();
         $fabseRes = $fbaseObj->sendPayloadOnly($lr->getId(),$token,$payload,$notification,'high',30);
 
@@ -68,21 +78,16 @@ if($rideObj->getDriverId()==0){
 
     }else{
         // cancelled by user:
-        $driverObj = new User();
-        $driverObj->getUserWithId($rideObj->getDriverId());
         $meters = CooDistance::calculateDistanceBetweenTwoPoints($driverObj->getLat(),$driverObj->getLng(),$rideObj->getDriverLat(),$rideObj->getDriverLng(),'MT',true,5);
 
         // Add base fare to the User Balance in case of driver travelled 300 meters. otherwise create a transaction of the ride with 0 balance.
-        if($meters>=300 || $rideObj->getIsDriverArrived()==1){
-            $transObj = Misc::generateCancelledTransaction($rideObj,$basePrice);
-            $userObj->setBalance($userObj->getBalance()-$transObj->getTotalFare());
-            $userObj->update();
+        $cancel_time = $rideObj->getDateTimeDiffInMinutes($rideObj->getCreatedAt(),$rideObj->getRideCancelledAt());
+        if($cancel_time>=PASSENGER_CANCELLED_WAIT_AFTER_RIDE_REGISTER || $rideObj->getIsDriverArrived()==1){
+            $transObj = Misc::generateCancelledTransaction($rideObj,$basePrice,$passengerObj,$driverObj);
         }else{
             $transObj = Misc::generateCancelledTransaction($rideObj,null);
         }
         $fbaseObj = new firebaseNotification();
-
-
 
         // Set On Trip Status.
         $driverObj->setIsDriverOnTrip(0);

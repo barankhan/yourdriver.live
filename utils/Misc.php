@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__. "/../model/DriverTransaction.php";
+require_once __DIR__."/../vendor/autoload.php";
 /**
  * Created by PhpStorm.
  * User: baran
@@ -8,7 +8,7 @@ require_once __DIR__. "/../model/DriverTransaction.php";
  */
 class Misc
 {
-    public static function generateCancelledTransaction($rideObj,$basePrice){
+    public static function generateCancelledTransaction(ride $rideObj,$basePrice,User &$passengerObj=null,User &$driverObj=null){
         $tranObj = new DriverTransaction();
         $tranObj->setRideId($rideObj->getId());
         $tranObj->setPassengerId($rideObj->getPassengerId());
@@ -19,6 +19,31 @@ class Misc
         $tranObj->setTimeElapsedRate(array_key_exists ("time_elapsed_rate" ,  $basePrice )?$basePrice["time_elapsed_rate"]:0);
         $tranObj->setKmTravelledRate(array_key_exists ("km_travelled_rate" ,  $basePrice )?$basePrice["km_travelled_rate"]:0);
         $tranObj->setTotalFare();
+
+        if($tranObj->getTotalFare()>0){
+            // If there is cancelled amount and user has balance. Deduct from the User Account and add into Driver Account.
+
+            if($passengerObj->getBalance()>=$tranObj->getTotalFare()){
+                // if user fare is less or equal to his balance dedcut it.
+
+
+                $tranObj->setDriverInitialBalance($driverObj->getBalance());
+                $tranObj->setPassengerInitialBalance($passengerObj->getBalance());
+
+                $tranObj->setCompanyOutwardHead('Balance_Used');
+                $passengerObj->setBalance($passengerObj->getBalance()-$tranObj->getTotalFare());
+                $tranObj->setOutwardHeadAmount($tranObj->getTotalFare());
+                $driverObj->setBalance($driverObj->getBalance()+($tranObj->getTotalFare()-$tranObj->getCompanyServiceCharges()));
+
+
+                $driverObj->update();
+                $passengerObj->update();
+
+            }else{
+                $passengerObj->setBalance($passengerObj->getBalance()-$tranObj->getTotalFare());
+                $passengerObj->update();
+            }
+        }
         $tranObj->setTotalAmount();
         $tranObj->insert();
         return $tranObj;
@@ -39,6 +64,9 @@ class Misc
         $tranObj->setTimeElapsedRate(array_key_exists ("time_elapsed_rate" ,  $basePrice )?$basePrice["time_elapsed_rate"]:0);
         $tranObj->setKmTravelledRate(array_key_exists ("km_travelled_rate" ,  $basePrice )?$basePrice["km_travelled_rate"]:0);
         $tranObj->setKmTravelled($rideObj->getDistance()/1000);
+
+        $tranObj->setDriverInitialBalance($driverObj->getBalance());
+        $tranObj->setPassengerInitialBalance($passengerObj->getBalance());
 
         $start = strtotime($rideObj->getRideStartedAt());
         $end = strtotime($rideObj->getRideEndedAt());
