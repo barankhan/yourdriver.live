@@ -29,12 +29,12 @@ class Misc
 
                 $tranObj->setDriverInitialBalance($driverObj->getBalance());
                 $tranObj->setPassengerInitialBalance($passengerObj->getBalance());
+                $tranObj->setTransactionCompleted(1);
 
                 $tranObj->setCompanyOutwardHead('Balance_Used');
                 $passengerObj->setBalance($passengerObj->getBalance()-$tranObj->getTotalFare());
                 $tranObj->setOutwardHeadAmount($tranObj->getTotalFare());
                 $driverObj->setBalance($driverObj->getBalance()+($tranObj->getTotalFare()-$tranObj->getCompanyServiceCharges()));
-
 
                 $driverObj->update();
                 $passengerObj->update();
@@ -43,6 +43,8 @@ class Misc
                 $passengerObj->setBalance($passengerObj->getBalance()-$tranObj->getTotalFare());
                 $passengerObj->update();
             }
+        }else{
+            $tranObj->setTransactionCompleted(1);
         }
         $tranObj->setTotalAmount();
         $tranObj->insert();
