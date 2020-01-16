@@ -51,7 +51,8 @@ $kmTravelled=0,$kmTravelledRate,$totalFare=0,$amountReceived=0,$createdAt,$updat
  `time_elapsed_minutes` = :time_elapsed_minutes, `time_elapsed_rate` = :time_elapsed_rate, `km_travelled` = :km_travelled , 
  `km_travelled_rate` = :km_travelled_rate, `total_fare` = :total_fare, `amount_received` = :amount_received,  `amount_received_at` = :amount_received_at, 
  `ride_id` = :ride_id, `total_amount` = :total_amount,company_outward_head=:companyOutwardHead,outward_head_amount=:outwardHeadAmount
- ,company_inward_head=:companyInwardHead,inward_head_amount=:inwardHeadAmount,transaction_completed=:transactionCompleted
+ ,company_inward_head=:companyInwardHead,inward_head_amount=:inwardHeadAmount,transaction_completed=:transactionCompleted,
+ `driverInitialBalance`=:driverInitialBalance,`passenger_initial_balance`=:passenger_initial_balance
  
   WHERE `id` = :id; ";
 
