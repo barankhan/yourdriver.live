@@ -44,7 +44,7 @@ if($rideObj->getDriverId()==0){
     $basePrice = basePrice::getBasePrice($rideObj->getVehicleType(),$rideObj->getPickupLat(),$rideObj->getPickupLng());
 
     $driverObj = new User();
-    $driverObj->getUserWithId($tranObj->getDriverId());
+    $driverObj->getUserWithId($rideObj->getDriverId());
 
     $passengerObj  = new User();
     $passengerObj->getUserWithId($rideObj->getPassengerId());
