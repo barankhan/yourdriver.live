@@ -35,7 +35,7 @@ $kmTravelled=0,$kmTravelledRate,$totalFare=0,$amountReceived=0,$createdAt,$updat
         "driver_start_up_fare"=>$this->driverStartUpFare, "company_service_charges"=>$this->companyServiceCharges, "time_elapsed_minutes"=>$this->timeElapsedMinutes,
         "time_elapsed_rate"=>$this->timeElapsedRate, "km_travelled"=>$this->kmTravelled, "km_travelled_rate"=>$this->kmTravelledRate, "total_fare"=>$this->totalFare
     , "amount_received"=>$this->amountReceived, "amount_received_at"=>$this->amountReceivedAt, "ride_id"=>$this->rideId, "total_amount"=>$this->totalAmount,
-    "company_outward_head"=>$this->companyOutwardHead,"head_amount"=>$this->outwardHeadAmount,"payable_amount"=>$this->payableAmount
+    "company_outward_head"=>$this->companyOutwardHead,"outward_head_amount"=>$this->outwardHeadAmount,"payable_amount"=>$this->payableAmount
     );
 
         $this->setId($this->executeInsert($q,$params));
