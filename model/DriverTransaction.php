@@ -596,7 +596,13 @@ $kmTravelled=0,$kmTravelledRate,$totalFare=0,$amountReceived=0,$createdAt,$updat
 
         $vars['createdAt']= date('d-m-y h:i:s A', strtotime($vars['createdAt']));
         $exp_transaction_type = explode('_',$vars['transactionType']);
+
         $vars['transactionType'] = strtoupper($exp_transaction_type[0]) ;
+
+
+        if (array_key_exists("companyInwardHead",$vars)) $vars["companyInwardHead"]=strtoupper(str_replace("_","",$vars["companyInwardHead"]));
+        if (array_key_exists("companyOutwardHead",$vars)) $vars["companyOutwardHead"]=strtoupper(str_replace("_","",$vars["companyOutwardHead"]));
+
 
 
         unset($vars['conn']);
