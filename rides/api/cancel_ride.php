@@ -105,9 +105,12 @@ if($rideObj->getDriverId()==0){
 
 }else{
     $rideObj->setResponse("ride_cancel_error");
+    $rideObj->setMessage("Unable to Cancel the ride.");
 }
 $rideObj->update();
-$var = json_encode($rideObj);
+$res = array("ride"=>$rideObj,"user"=>($userObj->getIsDriver()?$driverObj:$passengerObj),
+    "response"=>$rideObj->getResponse(),"message"=>$rideObj->getMessage());
+$var = json_encode($res);
 $lr->setResponseBody($var);
 $lr->updateResponse();
 echo $var;
