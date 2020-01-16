@@ -232,11 +232,6 @@ $kmTravelled=0,$kmTravelledRate,$totalFare=0,$amountReceived=0,$createdAt,$updat
         $this->response = $response;
     }
 
-
-
-
-
-
     /**
      * @return int
      */
@@ -252,10 +247,7 @@ $kmTravelled=0,$kmTravelledRate,$totalFare=0,$amountReceived=0,$createdAt,$updat
     {
         $this->timeElapsedMinutes = bcdiv($timeElapsedMinutes,1,2);
     }
-
-
-
-
+    
     /**
      * @return mixed
      */
