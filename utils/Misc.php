@@ -50,17 +50,17 @@ class Misc
 
         if($passengerObj->getBalance()>0){
             // Wallet already have amount.
-            $tranObj->setCompanyHead('Balance_Used');
+            $tranObj->setCompanyOutwardHead('Balance_Used');
 
             if($passengerObj->getBalance()>=$tranObj->getTotalFare()){
                 $tranObj->setPayableAmount(0);
                 $driverObj->setBalance($driverObj->getBalance()+($tranObj->getTotalFare()));
                 $passengerObj->setBalance($passengerObj->getBalance()-$tranObj->getTotalFare());
-                $tranObj->setHeadAmount($tranObj->getTotalFare());
+                $tranObj->setOutwardHeadAmount($tranObj->getTotalFare());
             }else{
                 $tranObj->setPayableAmount($tranObj->getTotalFare()-$passengerObj->getBalance());
                 $driverObj->setBalance($driverObj->getBalance()+($tranObj->getTotalFare()-$tranObj->getPayableAmount()));
-                $tranObj->setHeadAmount($passengerObj->getBalance());
+                $tranObj->setOutwardHeadAmount($passengerObj->getBalance());
                 $passengerObj->setBalance(0);
             }
             $passengerObj->update();
