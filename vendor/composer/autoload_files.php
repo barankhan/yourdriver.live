@@ -13,4 +13,5 @@ return array(
     '27592325262b385204a263c2ab632d6e' => $vendorDir . '/kreait/clock/src/Clock.php',
     'b067bc7112e384b61c701452d53a14a8' => $vendorDir . '/mtdowling/jmespath.php/src/JmesPath.php',
     'f7c6080b46f9fe41a46a657439674576' => $vendorDir . '/kreait/firebase-php/src/Firebase.php',
+    '527f4183ee54da5eb326258f0f8125b0' => $baseDir . '/model/constants.php',
 );

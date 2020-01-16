@@ -14,6 +14,7 @@ class ComposerStaticInitfd5deadb88ad3e3c17da2a9bccfa0cdc
         '27592325262b385204a263c2ab632d6e' => __DIR__ . '/..' . '/kreait/clock/src/Clock.php',
         'b067bc7112e384b61c701452d53a14a8' => __DIR__ . '/..' . '/mtdowling/jmespath.php/src/JmesPath.php',
         'f7c6080b46f9fe41a46a657439674576' => __DIR__ . '/..' . '/kreait/firebase-php/src/Firebase.php',
+        '527f4183ee54da5eb326258f0f8125b0' => __DIR__ . '/../..' . '/model/constants.php',
     );
 
     public static $prefixLengthsPsr4 = array (

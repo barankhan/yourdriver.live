@@ -10,30 +10,82 @@ $lr->setMobileNumber($mobile);
 $lr->insertLog();
 
 
+$amount_received = $_REQUEST['amount_received'];
+
 $transObj = new DriverTransaction();
 $transObj->setId($_REQUEST["trans_id"]);
 $transObj->findById();
-$transObj->setAmountReceived($_REQUEST['amount_received']);
-$transObj->setAmountReceivedAt(date("Y-m-d H:i:s"));
-$transObj->setTotalAmount();
+
+$passengerObj = new User();
+$passengerObj->getUserWithId($transObj->getPassengerId());
 
 $driverObj = new User();
 $driverObj->getUserWithId($transObj->getDriverId());
 
-if($transObj->update()){
-    $transObj->setResponse("amount_update_success");
-    $transObj->setMessage("Your Amount has been updated on the server.");
-    $passengerObj = new User();
-    $passengerObj->getUserWithId($transObj->getPassengerId());
-    $payload['message']='Driver has received :'.$transObj->getAmountReceived().', Your balance is:'.$passengerObj->getBalance();
+$triggerFirebaseToPassenger=false;
+
+if($transObj->getTransactionCompleted()==0){
+    // Transaction has not be received by the driver.
+
+    if($amount_received>$transObj->getPayableAmount()){
+        // if passenger pays more then payable amount;
+        if(($amount_received-$transObj->getPayableAmount())+$passengerObj->getBalance()<=PASSENGER_WALLET_LIMIT){
+            $transObj->setAmountReceived($amount_received);
+            $transObj->setAmountReceivedAt(date("Y-m-d H:i:s"));
+            $transObj->setTotalAmount();
+            $transObj->setCompanyInwardHead("Balance_added");
+            $transObj->setInwardHeadAmount($amount_received-$transObj->getPayableAmount());
+            $transObj->setTransactionCompleted(1);
+            $transObj->update();
+            $transObj->setResponse("amount_update_success");
+            $transObj->setMessage("Your Transaction is completed successfully");
+
+            $triggerFirebaseToPassenger = true;
+            
+            $passengerObj->setBalance($passengerObj->getBalance()+$amount_received-$transObj->getPayableAmount());
+            $passengerObj->update();
+
+            $driverObj->setBalance($driverObj->getBalance()-($amount_received-$transObj->getPayableAmount()));
+            $driverObj->update();
+
+        }else{
+            $transObj->setResponse("wallet_in_access");
+            $transObj->setMessage("You can only collect Rs.".($transObj->getPayableAmount()+PASSENGER_WALLET_LIMIT-$passengerObj->getBalance()));
+        }
+    }
+    else if($amount_received==round($transObj->getPayableAmount())){
+        // if passenger pays Only Payable amount;
+        $transObj->setAmountReceived($amount_received);
+        $transObj->setAmountReceivedAt(date("Y-m-d H:i:s"));
+        $transObj->setTotalAmount();
+        $transObj->setTransactionCompleted(1);
+        $transObj->update();
+
+        $transObj->setResponse("amount_update_success");
+        $transObj->setMessage("Your Transaction is completed successfully");
+        $triggerFirebaseToPassenger = true;
+    }else{
+        // if passenger pays less than payable amount.
+        $transObj->setResponse("less_amount_entered");
+        $transObj->setMessage("Please collect at least Rs.".$transObj->getPayableAmount());
+
+    }
+}else{
+    $transObj->setResponse("already_completed");
+    $transObj->setMessage("This transaction has already been completed!");
+}
+
+
+
+if($triggerFirebaseToPassenger){
+    $payload['message']='Driver has received Rs. '.$transObj->getAmountReceived().', Your balance is Rs.'.$passengerObj->getBalance();
     $payload['key']="p_amount_received";
+    $payload['user']=json_encode($passengerObj);
     $fbaseObj = new firebaseNotification();
     $token = $passengerObj->getFirebaseToken();
+
     $fabseRes = $fbaseObj->sendPayloadOnly($lr->getId(),$token,$payload,null,'high');
 
-}else{
-    $transObj->setResponse("amount_update_error");
-    $transObj->setMessage("Unable to update the amount");
 }
 $res = array("user"=>$driverObj,"transaction"=>$transObj,"response"=>$transObj->getResponse(),"message"=>$transObj->getMessage());
 $var = json_encode($res);
