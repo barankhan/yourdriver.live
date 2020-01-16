@@ -10,7 +10,7 @@ class DriverTransaction extends  baseModel implements JsonSerializable
 {
     private $id,$driverId,$passengerId,$transactionType,$driverStartUpFare,$companyServiceCharges,$timeElapsedMinutes=0,$timeElapsedRate,
 $kmTravelled=0,$kmTravelledRate,$totalFare=0,$amountReceived=0,$createdAt,$updatedAt,$amountReceivedAt,$rideId,$totalAmount=0,$message,$response,
-    $driverBalance,$companyHead,$headAmount,$payableAmount;
+    $driverBalance,$companyOutwardHead,$outwardHeadAmount,$payableAmount,$companyInwardHead,$inwardHeadAmount;
 
 
 
@@ -26,16 +26,16 @@ $kmTravelled=0,$kmTravelledRate,$totalFare=0,$amountReceived=0,$createdAt,$updat
 
         $q = "INSERT INTO `transactions` (`driver_id`, `passenger_id`, `transaction_type`, `driver_start_up_fare`, 
 `company_service_charges`, `time_elapsed_minutes`, `time_elapsed_rate`, `km_travelled`, `km_travelled_rate`, `total_fare`, 
-`amount_received`, `amount_received_at`, `ride_id`, `total_amount`,`company_head`,`head_amount`,`payable_amount`) VALUES 
+`amount_received`, `amount_received_at`, `ride_id`, `total_amount`,`company_outward_head`,`outward_head_amount`,`payable_amount`) VALUES 
 ( :driver_id ,  :passenger_id ,  :transaction_type ,  :driver_start_up_fare ,  :company_service_charges ,  :time_elapsed_minutes,  
 :time_elapsed_rate ,  :km_travelled,  :km_travelled_rate ,  :total_fare ,  :amount_received,  :amount_received_at ,  
-:ride_id ,  :total_amount ,:company_head,:head_amount,:payable_amount);  ";
+:ride_id ,  :total_amount ,:company_outward_head,:outward_head_amount,:payable_amount);  ";
 
     $params = array( "driver_id"=>$this->driverId, "passenger_id"=>$this->passengerId, "transaction_type"=>$this->transactionType,
         "driver_start_up_fare"=>$this->driverStartUpFare, "company_service_charges"=>$this->companyServiceCharges, "time_elapsed_minutes"=>$this->timeElapsedMinutes,
         "time_elapsed_rate"=>$this->timeElapsedRate, "km_travelled"=>$this->kmTravelled, "km_travelled_rate"=>$this->kmTravelledRate, "total_fare"=>$this->totalFare
     , "amount_received"=>$this->amountReceived, "amount_received_at"=>$this->amountReceivedAt, "ride_id"=>$this->rideId, "total_amount"=>$this->totalAmount,
-    "company_head"=>$this->companyHead,"head_amount"=>$this->headAmount,"payable_amount"=>$this->payableAmount
+    "company_outward_head"=>$this->companyOutwardHead,"head_amount"=>$this->outwardHeadAmount,"payable_amount"=>$this->payableAmount
     );
 
         $this->setId($this->executeInsert($q,$params));
@@ -48,14 +48,17 @@ $kmTravelled=0,$kmTravelledRate,$totalFare=0,$amountReceived=0,$createdAt,$updat
  `transaction_type` = :transaction_type, `driver_start_up_fare` = :driver_start_up_fare, `company_service_charges` = :company_service_charges, 
  `time_elapsed_minutes` = :time_elapsed_minutes, `time_elapsed_rate` = :time_elapsed_rate, `km_travelled` = :km_travelled , 
  `km_travelled_rate` = :km_travelled_rate, `total_fare` = :total_fare, `amount_received` = :amount_received,  `amount_received_at` = :amount_received_at, 
- `ride_id` = :ride_id, `total_amount` = :total_amount,company_head=:companyHead,head_amount=:headAmount
+ `ride_id` = :ride_id, `total_amount` = :total_amount,company_outward_head=:companyOutwardHead,outward_head_amount=:outwardHeadAmount
+ ,company_inward_head=:companyInwardHead,inward_head_amount=:inwardHeadAmount
   WHERE `id` = :id; ";
 
         $params = array( "driver_id"=>$this->driverId, "passenger_id"=>$this->passengerId, "transaction_type"=>$this->transactionType,
             "driver_start_up_fare"=>$this->driverStartUpFare, "company_service_charges"=>$this->companyServiceCharges, "time_elapsed_minutes"=>$this->timeElapsedMinutes,
             "time_elapsed_rate"=>$this->timeElapsedRate, "km_travelled"=>$this->kmTravelled, "km_travelled_rate"=>$this->kmTravelledRate, "total_fare"=>$this->totalFare
         , "amount_received"=>$this->amountReceived, "amount_received_at"=>$this->amountReceivedAt, "ride_id"=>$this->rideId, "total_amount"=>$this->totalAmount,"id"=>$this->id,
-            "companyHead"=>$this->companyHead,"headAmount"=>$this->headAmount
+            "companyOutwardHead"=>$this->companyOutwardHead,"outwardHeadAmount"=>$this->outwardHeadAmount,
+            "companyInwardHead"=>$this->companyInwardHead,"inwardHeadAmount"=>$this->inwardHeadAmount
+
 
 
         );
@@ -88,6 +91,42 @@ $kmTravelled=0,$kmTravelledRate,$totalFare=0,$amountReceived=0,$createdAt,$updat
     /**
      * @return mixed
      */
+    public function getCompanyInwardHead()
+    {
+        return $this->companyInwardHead;
+    }
+
+    /**
+     * @param mixed $companyInwardHead
+     */
+    public function setCompanyInwardHead($companyInwardHead)
+    {
+        $this->companyInwardHead = $companyInwardHead;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getInwardHeadAmount()
+    {
+        return $this->inwardHeadAmount;
+    }
+
+    /**
+     * @param mixed $inwardHeadAmount
+     */
+    public function setInwardHeadAmount($inwardHeadAmount)
+    {
+        $this->inwardHeadAmount = $inwardHeadAmount;
+    }
+
+
+
+
+
+    /**
+     * @return mixed
+     */
     public function getPayableAmount()
     {
         return $this->payableAmount;
@@ -101,41 +140,43 @@ $kmTravelled=0,$kmTravelledRate,$totalFare=0,$amountReceived=0,$createdAt,$updat
         $this->payableAmount = bcdiv($payableAmount,1,2);
     }
 
-
-
-
-
     /**
      * @return mixed
      */
-    public function getCompanyHead()
+    public function getCompanyOutwardHead()
     {
-        return $this->companyHead;
+        return $this->companyOutwardHead;
     }
 
     /**
-     * @param mixed $companyHead
+     * @param mixed $companyOutwardHead
      */
-    public function setCompanyHead($companyHead)
+    public function setCompanyOutwardHead($companyOutwardHead)
     {
-        $this->companyHead = $companyHead;
+        $this->companyOutwardHead = $companyOutwardHead;
     }
 
     /**
      * @return mixed
      */
-    public function getHeadAmount()
+    public function getOutwardHeadAmount()
     {
-        return $this->headAmount;
+        return $this->outwardHeadAmount;
     }
 
     /**
-     * @param mixed $headAmount
+     * @param mixed $outwardHeadAmount
      */
-    public function setHeadAmount($headAmount)
+    public function setOutwardHeadAmount($outwardHeadAmount)
     {
-        $this->headAmount = $headAmount;
+        $this->outwardHeadAmount = $outwardHeadAmount;
     }
+
+
+
+
+
+
 
 
 
