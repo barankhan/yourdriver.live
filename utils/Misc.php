@@ -96,6 +96,17 @@ class Misc
             $passengerObj->update();
         }elseif ($passengerObj->getBalance()<0){
            // Cancelled Amount.
+
+            $tranObj->setIsCancelAdjustment(1);
+            $canceled_transactions = $tranObj->getPassengerCanceledUnpaidTransactions();
+            foreach($canceled_transactions as  $canceled_transaction){
+                $cTObj = new DriverTransaction();
+                $cTObj->setAllFields($canceled_transaction);
+
+            }
+
+
+
             $tranObj->setPayableAmount($tranObj->getTotalFare());
         }else{
             $tranObj->setPayableAmount($tranObj->getTotalFare());

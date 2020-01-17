@@ -11,7 +11,7 @@ class DriverTransaction extends  baseModel implements JsonSerializable
     private $id,$driverId,$passengerId,$transactionType,$driverStartUpFare,$companyServiceCharges,$timeElapsedMinutes=0,$timeElapsedRate,
 $kmTravelled=0,$kmTravelledRate,$totalFare=0,$amountReceived=0,$createdAt,$updatedAt,$amountReceivedAt,$rideId,$totalAmount=0,$message,$response,
     $driverBalance,$companyOutwardHead,$outwardHeadAmount,$payableAmount,$companyInwardHead,$inwardHeadAmount,$transactionCompleted=0,
-    $driverInitialBalance,$passengerInitialBalance;
+    $driverInitialBalance,$passengerInitialBalance,$isCancelAdjustment=0;
 
 
 
@@ -52,7 +52,7 @@ $kmTravelled=0,$kmTravelledRate,$totalFare=0,$amountReceived=0,$createdAt,$updat
  `km_travelled_rate` = :km_travelled_rate, `total_fare` = :total_fare, `amount_received` = :amount_received,  `amount_received_at` = :amount_received_at, 
  `ride_id` = :ride_id, `total_amount` = :total_amount,company_outward_head=:companyOutwardHead,outward_head_amount=:outwardHeadAmount
  ,company_inward_head=:companyInwardHead,inward_head_amount=:inwardHeadAmount,transaction_completed=:transactionCompleted,
- `driver_initial_balance`=:driver_initial_balance,`passenger_initial_balance`=:passenger_initial_balance
+ `driver_initial_balance`=:driver_initial_balance,`passenger_initial_balance`=:passenger_initial_balance,is_cancel_adjustment=:is_cancel_adjustment
  
   WHERE `id` = :id; ";
 
@@ -63,7 +63,8 @@ $kmTravelled=0,$kmTravelledRate,$totalFare=0,$amountReceived=0,$createdAt,$updat
             "companyOutwardHead"=>$this->companyOutwardHead,"outwardHeadAmount"=>$this->outwardHeadAmount,
             "companyInwardHead"=>$this->companyInwardHead,"inwardHeadAmount"=>$this->inwardHeadAmount,
             "transactionCompleted"=>$this->transactionCompleted,
-            "driver_initial_balance"=>$this->driverInitialBalance,"passenger_initial_balance"=>$this->passengerInitialBalance
+            "driver_initial_balance"=>$this->driverInitialBalance,"passenger_initial_balance"=>$this->passengerInitialBalance,
+            "is_cancel_adjustment"=>$this->isCancelAdjustment
 
 
 
@@ -87,12 +88,39 @@ $kmTravelled=0,$kmTravelledRate,$totalFare=0,$amountReceived=0,$createdAt,$updat
     }
 
 
+    public  function getPassengerCanceledUnpaidTransactions(){
+        $q = "select * from transactions where passenger_id=:passenger_id and is_cancelled=1 and cancelled_by=1 and total_fare>0 and transaction_completed=0";
+        $params = array("passenger_id"=>$this->passengerId);
+        return $this->executeSelect($q,$params);
+    }
+
+
 
     public function findById(){
         $q = "select * from transactions where id=:id";
         $params = array("id"=>$this->id);
         $this->setAllFields($this->executeSelectSingle($q,$params));
     }
+
+    /**
+     * @return int
+     */
+    public function getIsCancelAdjustment(): int
+    {
+        return $this->isCancelAdjustment;
+    }
+
+    /**
+     * @param int $isCancelAdjustment
+     */
+    public function setIsCancelAdjustment(int $isCancelAdjustment)
+    {
+        $this->isCancelAdjustment = $isCancelAdjustment;
+    }
+
+
+
+
 
     /**
      * @return mixed
