@@ -132,7 +132,7 @@ $kmTravelled=0,$kmTravelledRate,$totalFare=0,$amountReceived=0,$createdAt,$updat
                 $newDriverTransaction = new DriverTransaction();
                 $newDriverTransaction->setDriverInitialBalance($driverObj->getBalance());
                 $newDriverTransaction->setTransactionCompleted(1);
-                $newDriverTransaction->setTransactionType("Cancel Credit");
+                $newDriverTransaction->setTransactionType("Cancel_Credit");
                 $newDriverTransaction->setAmountReceived($driverTransactionObj->getTotalFare()-$driverTransactionObj->getCompanyServiceCharges());
                 $newDriverTransaction->setDriverId($driverTransactionObj->getDriverId());
                 $newDriverTransaction->insert();
@@ -682,9 +682,8 @@ $kmTravelled=0,$kmTravelledRate,$totalFare=0,$amountReceived=0,$createdAt,$updat
         );
 
         $vars['createdAt']= date('d-m-y h:i:s A', strtotime($vars['createdAt']));
-        $exp_transaction_type = explode('_',$vars['transactionType']);
-        $vars['transactionType'] = strtoupper($exp_transaction_type[0]) ;
 
+        if (array_key_exists("transactionType",$vars)) $vars["transactionType"]=ucwords(str_replace("_"," ",$vars["transactionType"]));
         if (array_key_exists("companyInwardHead",$vars)) $vars["companyInwardHead"]=ucwords(str_replace("_"," ",$vars["companyInwardHead"]));
         if (array_key_exists("companyOutwardHead",$vars)) $vars["companyOutwardHead"]=ucwords(str_replace("_"," ",$vars["companyOutwardHead"]));
 

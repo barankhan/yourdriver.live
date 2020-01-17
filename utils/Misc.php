@@ -34,6 +34,16 @@ class Misc
                 $tranObj->setCompanyOutwardHead('Balance_Used');
                 $passengerObj->setBalance($passengerObj->getBalance()-$tranObj->getTotalFare());
                 $tranObj->setOutwardHeadAmount($tranObj->getTotalFare());
+
+
+                $newDriverTransaction = new DriverTransaction();
+                $newDriverTransaction->setDriverInitialBalance($driverObj->getBalance());
+                $newDriverTransaction->setTransactionCompleted(1);
+                $newDriverTransaction->setTransactionType("Cancel_Credit");
+                $newDriverTransaction->setAmountReceived($tranObj->getTotalFare()-$tranObj->getCompanyServiceCharges());
+                $newDriverTransaction->setDriverId($tranObj->getDriverId());
+                $newDriverTransaction->insert();
+
                 $driverObj->setBalance($driverObj->getBalance()+($tranObj->getTotalFare()-$tranObj->getCompanyServiceCharges()));
 
                 $driverObj->update();
