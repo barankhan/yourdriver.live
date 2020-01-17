@@ -34,6 +34,7 @@ if($response=='payment_done'){
     $tranObj->setAmountReceived($rechargeRequestObj->getAmount());
     $tranObj->setAmountReceivedAt(date("Y-m-d H:i:s"));
     $tranObj->setDriverId($rechargeRequestObj->getUserId());
+    $tranObj->setTransactionCompleted(1);
     $tranObj->insert();
 }else if($response=='sms_not_found'){
     $userObj->setResponse("voucher_not_found");

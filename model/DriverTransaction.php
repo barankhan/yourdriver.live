@@ -27,16 +27,18 @@ $kmTravelled=0,$kmTravelledRate,$totalFare=0,$amountReceived=0,$createdAt,$updat
 
         $q = "INSERT INTO `transactions` (`driver_id`, `passenger_id`, `transaction_type`, `driver_start_up_fare`, 
 `company_service_charges`, `time_elapsed_minutes`, `time_elapsed_rate`, `km_travelled`, `km_travelled_rate`, `total_fare`, 
-`amount_received`, `amount_received_at`, `ride_id`, `total_amount`,`company_outward_head`,`outward_head_amount`,`payable_amount`,`driver_initial_balance`,`passenger_initial_balance`,`transaction_completed`,`is_cancel_adjustment`) VALUES 
+`amount_received`, `amount_received_at`, `ride_id`, `total_amount`,`company_outward_head`,`outward_head_amount`,`company_inward_head`,`inward_head_amount`,`payable_amount`,`driver_initial_balance`,`passenger_initial_balance`,`transaction_completed`,`is_cancel_adjustment`) VALUES 
 ( :driver_id ,  :passenger_id ,  :transaction_type ,  :driver_start_up_fare ,  :company_service_charges ,  :time_elapsed_minutes,  
 :time_elapsed_rate ,  :km_travelled,  :km_travelled_rate ,  :total_fare ,  :amount_received,  :amount_received_at ,  
-:ride_id ,  :total_amount ,:company_outward_head,:outward_head_amount,:payable_amount,:driver_initial_balance,:passenger_initial_balance,:transaction_completed,:is_cancel_adjustment);  ";
+:ride_id ,  :total_amount ,:company_outward_head,:outward_head_amount,:company_inward_head,:inward_head_amount,:payable_amount,:driver_initial_balance,:passenger_initial_balance,:transaction_completed,:is_cancel_adjustment);  ";
 
     $params = array( "driver_id"=>$this->driverId, "passenger_id"=>$this->passengerId, "transaction_type"=>$this->transactionType,
         "driver_start_up_fare"=>$this->driverStartUpFare, "company_service_charges"=>$this->companyServiceCharges, "time_elapsed_minutes"=>$this->timeElapsedMinutes,
         "time_elapsed_rate"=>$this->timeElapsedRate, "km_travelled"=>$this->kmTravelled, "km_travelled_rate"=>$this->kmTravelledRate, "total_fare"=>$this->totalFare
     , "amount_received"=>$this->amountReceived, "amount_received_at"=>$this->amountReceivedAt, "ride_id"=>$this->rideId, "total_amount"=>$this->totalAmount,
-    "company_outward_head"=>$this->companyOutwardHead,"outward_head_amount"=>$this->outwardHeadAmount,"payable_amount"=>$this->payableAmount,
+    "company_outward_head"=>$this->companyOutwardHead,"outward_head_amount"=>$this->outwardHeadAmount,
+        "company_inward_head"=>$this->companyInwardHead,"inward_head_amount"=>$this->inwardHeadAmount,
+        "payable_amount"=>$this->payableAmount,
         "driver_initial_balance"=>$this->driverInitialBalance,"passenger_initial_balance"=>$this->passengerInitialBalance,
         "transaction_completed"=>$this->transactionCompleted,"is_cancel_adjustment"=>$this->isCancelAdjustment
     );
@@ -90,7 +92,7 @@ $kmTravelled=0,$kmTravelledRate,$totalFare=0,$amountReceived=0,$createdAt,$updat
 
 
     public  function getPassengerCanceledUnpaidTransactions(){
-        $q = "select * from transactions where passenger_id=:passenger_id and is_cancelled=1 and cancelled_by=1 and total_fare>0 and transaction_completed=0";
+        $q = "select * from transactions where passenger_id=:passenger_id and transaction_type='cancelled_ride' and total_fare>0 and transaction_completed=0";
         $params = array("passenger_id"=>$this->passengerId);
         return $this->executeSelect($q,$params);
     }
@@ -102,6 +104,61 @@ $kmTravelled=0,$kmTravelledRate,$totalFare=0,$amountReceived=0,$createdAt,$updat
         $params = array("id"=>$this->id);
         $this->setAllFields($this->executeSelectSingle($q,$params));
     }
+
+
+
+    public function settleCancelledAmount(){
+        if($this->isCancelAdjustment==1){
+            $paidTransactionObj = new PaidCanceledRide();
+            $paidTransactionObj->setTransactionId($this->id);
+            $transactions = $paidTransactionObj->getAllPaidCancelledRidesOfTransaction();
+            foreach($transactions as $transaction){
+                $paidCancObj = new PaidCanceledRide();
+                $paidCancObj->setAllFields($transaction);
+                $paidCancObj->setIsSuccessful(1);
+
+
+                $driverTransactionObj = new DriverTransaction();
+                $driverTransactionObj->setId($paidCancObj->getCancelledTransactionId());
+                $driverTransactionObj->findById();
+
+                $driverObj =  new User();
+                $driverObj->getUserWithId($driverTransactionObj->getDriverId());
+
+                $passengerObj = new User();
+                $passengerObj->getUserWithId($driverTransactionObj->getPassengerId());
+
+
+                $newDriverTransaction = new DriverTransaction();
+                $newDriverTransaction->setDriverInitialBalance($driverObj->getBalance());
+                $newDriverTransaction->setTransactionCompleted(1);
+                $newDriverTransaction->setTransactionType("Cancel Credit");
+                $newDriverTransaction->setAmountReceived($driverTransactionObj->getTotalFare()-$driverTransactionObj->getCompanyServiceCharges());
+                $newDriverTransaction->setDriverId($driverTransactionObj->getDriverId());
+                $newDriverTransaction->insert();
+
+                $driverObj->setBalance($driverObj->getBalance()+$newDriverTransaction->getAmountReceived());
+                $driverTransactionObj->setTransactionCompleted(1);
+
+                $passengerObj->setBalance($passengerObj->getBalance()+$driverTransactionObj->getTotalFare());
+
+                $paidCancObj->update();
+                $driverObj->update();
+                $driverTransactionObj->update();
+                $newDriverTransaction->update();
+                $passengerObj->update();
+
+
+
+
+            }
+
+        }
+    }
+
+
+
+
 
     /**
      * @return int

@@ -203,6 +203,7 @@ class ComposerStaticInitfd5deadb88ad3e3c17da2a9bccfa0cdc
         'FirebaseLog' => __DIR__ . '/../..' . '/model/FirebaseLog.php',
         'LogRequest' => __DIR__ . '/../..' . '/model/LogRequest.php',
         'Misc' => __DIR__ . '/../..' . '/utils/Misc.php',
+        'PaidCanceledRide' => __DIR__ . '/../..' . '/model/PaidCanceledRide.php',
         'PaymentSMS' => __DIR__ . '/../..' . '/model/PaymentSMS.php',
         'RechargeRequest' => __DIR__ . '/../..' . '/model/RechargeRequest.php',
         'RidePath' => __DIR__ . '/../..' . '/model/RidePath.php',

@@ -37,6 +37,7 @@ if($transObj->getTransactionCompleted()==0){
             $transObj->setInwardHeadAmount($amount_received-$transObj->getPayableAmount());
             $transObj->setTransactionCompleted(1);
             $transObj->update();
+            $transObj->settleCancelledAmount();
             $transObj->setResponse("amount_update_success");
             $transObj->setMessage("Your Transaction is completed successfully");
 
@@ -60,7 +61,7 @@ if($transObj->getTransactionCompleted()==0){
         $transObj->setTotalAmount();
         $transObj->setTransactionCompleted(1);
         $transObj->update();
-
+        $transObj->settleCancelledAmount();
         $transObj->setResponse("amount_update_success");
         $transObj->setMessage("Your Transaction is completed successfully");
         $triggerFirebaseToPassenger = true;
@@ -74,6 +75,8 @@ if($transObj->getTransactionCompleted()==0){
     $transObj->setResponse("already_completed");
     $transObj->setMessage("This transaction has already been completed!");
 }
+
+
 
 
 

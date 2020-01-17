@@ -77,7 +77,7 @@ class Misc
         $tranObj->setTotalFare();
 
         $driverObj->setBalance($driverObj->getBalance() - $tranObj->getCompanyServiceCharges());
-
+        $paidCancels = array();
         if($passengerObj->getBalance()>0){
             // Wallet already have amount.
             $tranObj->setCompanyOutwardHead('Balance_Used');
@@ -99,15 +99,25 @@ class Misc
 
             $tranObj->setIsCancelAdjustment(1);
             $canceled_transactions = $tranObj->getPassengerCanceledUnpaidTransactions();
+            $cancel_amount=0;
+
             foreach($canceled_transactions as  $canceled_transaction){
                 $cTObj = new DriverTransaction();
                 $cTObj->setAllFields($canceled_transaction);
+                $cancel_amount += $cTObj->getTotalFare();
 
+                $paidCanceledRideObj = new PaidCanceledRide();
+                $paidCanceledRideObj->setCancelledTransactionId($cTObj->getId());
+                $paidCanceledRideObj->insert();
+                $paidCancels[]=$paidCanceledRideObj;
             }
+            $tranObj->setPayableAmount($tranObj->getTotalFare()+$cancel_amount);
+            $driverObj->setBalance($driverObj->getBalance()-$cancel_amount);
+            $tranObj->setCompanyInwardHead("Cancel_Charges");
+            $tranObj->setInwardHeadAmount($cancel_amount);
 
 
 
-            $tranObj->setPayableAmount($tranObj->getTotalFare());
         }else{
             $tranObj->setPayableAmount($tranObj->getTotalFare());
         }
@@ -120,6 +130,14 @@ class Misc
 
         $tranObj->setTotalAmount();
         $tranObj->insert();
+
+        // Adding Transaction Id to the paid cancels if any. So later we can update.
+        foreach ($paidCancels as $paidCancel){
+            $paidCancel->setTransactionId($tranObj->getId());
+            $paidCancel->update();
+        }
+
+
         return $tranObj;
     }
 

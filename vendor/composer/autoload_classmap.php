@@ -15,6 +15,7 @@ return array(
     'FirebaseLog' => $baseDir . '/model/FirebaseLog.php',
     'LogRequest' => $baseDir . '/model/LogRequest.php',
     'Misc' => $baseDir . '/utils/Misc.php',
+    'PaidCanceledRide' => $baseDir . '/model/PaidCanceledRide.php',
     'PaymentSMS' => $baseDir . '/model/PaymentSMS.php',
     'RechargeRequest' => $baseDir . '/model/RechargeRequest.php',
     'RidePath' => $baseDir . '/model/RidePath.php',
