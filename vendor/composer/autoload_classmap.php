@@ -20,6 +20,8 @@ return array(
     'RechargeRequest' => $baseDir . '/model/RechargeRequest.php',
     'RidePath' => $baseDir . '/model/RidePath.php',
     'SmsDevices' => $baseDir . '/model/sms_devices.php',
+    'SupportTicket' => $baseDir . '/model/SupportTicket.php',
+    'SupportTicketHistory' => $baseDir . '/model/SupportTicketHistory.php',
     'User' => $baseDir . '/model/user.php',
     'UserOnlineHistory' => $baseDir . '/model/UserOnlineHistory.php',
     'baseModel' => $baseDir . '/model/baseModel.php',

@@ -208,6 +208,8 @@ class ComposerStaticInitfd5deadb88ad3e3c17da2a9bccfa0cdc
         'RechargeRequest' => __DIR__ . '/../..' . '/model/RechargeRequest.php',
         'RidePath' => __DIR__ . '/../..' . '/model/RidePath.php',
         'SmsDevices' => __DIR__ . '/../..' . '/model/sms_devices.php',
+        'SupportTicket' => __DIR__ . '/../..' . '/model/SupportTicket.php',
+        'SupportTicketHistory' => __DIR__ . '/../..' . '/model/SupportTicketHistory.php',
         'User' => __DIR__ . '/../..' . '/model/user.php',
         'UserOnlineHistory' => __DIR__ . '/../..' . '/model/UserOnlineHistory.php',
         'baseModel' => __DIR__ . '/../..' . '/model/baseModel.php',
