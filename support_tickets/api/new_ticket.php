@@ -24,7 +24,7 @@ $supportTicketObj->insert();
 
 $ticketHistoryObj = new SupportTicketHistory();
 $ticketHistoryObj->setSupportTicketId($supportTicketObj->getId());
-$ticketHistoryObj->setMessage($_REQUEST['message']);
+$ticketHistoryObj->setMessage(trim($_REQUEST['message']));
 $ticketHistoryObj->setUserId($user_id);
 $ticketHistoryObj->insert();
 
