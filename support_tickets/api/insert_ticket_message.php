@@ -19,7 +19,7 @@ $lr->insertLog();
 
 $supportTicketMessagesObj = new SupportTicketHistory();
 $supportTicketMessagesObj->setSupportTicketId($_REQUEST['ticket_id']);
-$supportTicketMessagesObj->setUserId('user_id');
+$supportTicketMessagesObj->setUserId($_REQUEST['user_id']);
 $supportTicketMessagesObj->setMessage($_REQUEST['message']);
 $supportTicketMessagesObj->insert();
 
