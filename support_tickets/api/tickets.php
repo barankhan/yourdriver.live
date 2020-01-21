@@ -19,7 +19,7 @@ $lr->insertLog();
 
 $supportTicketObj = new SupportTicket();
 $supportTicketObj->setUserId($user_id);
-$tickets  = $supportTicketObj->getUserSupportTickets();
+$tickets  = $supportTicketObj->getUserSupportTickets($_REQUEST['page_no']);
 
 
 $response = array();

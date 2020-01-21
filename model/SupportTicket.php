@@ -38,8 +38,8 @@ class SupportTicket extends  baseModel implements JsonSerializable {
 
 
 
-    public function getUserSupportTickets(){
-        $q = "select * from support_tickets where user_id=:user_id order by created_at desc;";
+    public function getUserSupportTickets($page,$limit=20){
+        $q = "select * from support_tickets where user_id=:user_id order by created_at desc limit ".($page*$limit).",".$limit.";";
         $params = array("user_id"=>$this->userId);
         return $this->executeSelect($q,$params);
     }
