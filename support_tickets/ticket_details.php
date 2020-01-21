@@ -17,6 +17,8 @@ if(isset($_REQUEST['submit']) && $_REQUEST['submit']=='submit'){
     $newSupportHistoryObj->setSupportTicketId($ticket_id);
     $newSupportHistoryObj->setUserId(1);
     $newSupportHistoryObj->insert();
+    $newSupportHistoryObj->updateIsReplied();
+
 
     $ticketsObj->setMessageCount($ticketsObj->getMessageCount()+1);
     $ticketsObj->setIsUnread(1);
@@ -25,11 +27,10 @@ if(isset($_REQUEST['submit']) && $_REQUEST['submit']=='submit'){
 
     $payload['message'] = "your ticket id: ".$ticketsObj->getId()." is updated! Please check.";
     $payload['key'] = "ticket_updated";
-    $payload['ride'] = json_encode($rideObj);
     $fbaseObj = new firebaseNotification();
     $userObj->getUserWithId($ticketsObj->getUserId());
     $token = $userObj->getFirebaseToken();
-    $fabseRes = $fbaseObj->sendPayloadOnly(0, $token, $payload, null, 'high',60);
+    $fabseRes = $fbaseObj->sendPayloadOnly(0, $token, $payload, null, 'normal',500);
 
 
 }

@@ -42,6 +42,14 @@ class SupportTicketHistory  extends  baseModel implements JsonSerializable {
         $this->setAllFields($this->executeSelectSingle($q,$params));
     }
 
+
+    public function updateIsReplied(){
+        $q = "UPDATE `support_ticket_history` SET  `is_replied` = 1 WHERE `support_ticket_id` = :support_ticket_id; ";
+        $params = array("support_ticket_id"=>$this->supportTicketId);
+        return $this->executeUpdate($q,$params);
+
+    }
+
     /**
      * @return mixed
      */

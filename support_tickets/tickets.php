@@ -9,7 +9,7 @@ require_once __DIR__."/../vendor/autoload.php";
 
 
 $ticketsObj = new SupportTicket();
-$tickets = $ticketsObj->getLatestOpenedTickets();
+$tickets = $ticketsObj->getLatestPendingReplyOpenTickets();
 
 foreach ($tickets as $ticket){
     $ticObj  = new SupportTicket();

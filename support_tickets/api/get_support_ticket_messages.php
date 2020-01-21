@@ -16,6 +16,11 @@ $lr->setRequestHeader(json_encode($_SERVER));
 $lr->setMobileNumber($user_id);
 $lr->insertLog();
 
+$supportTicketObj = new SupportTicket();
+$supportTicketObj->setId($_REQUEST['ticket_id']);
+$supportTicketObj->getSupportTicketById();
+$supportTicketObj->setIsUnread(0);
+$supportTicketObj->update();
 
 $supportTicketMessagesObj = new SupportTicketHistory();
 $supportTicketMessagesObj->setSupportTicketId($_REQUEST['ticket_id']);

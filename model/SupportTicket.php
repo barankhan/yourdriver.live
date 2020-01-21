@@ -30,6 +30,7 @@ class SupportTicket extends  baseModel implements JsonSerializable {
 
 
 
+
     public function getSupportTicketById(){
         $q = "select  * from support_tickets where id=:id";
         $params = array("id"=>$this->id);
@@ -45,8 +46,8 @@ class SupportTicket extends  baseModel implements JsonSerializable {
     }
 
 
-    public function getLatestOpenedTickets(){
-        $q = "select * from support_tickets where is_closed=0 order by created_at";
+    public function getLatestPendingReplyOpenTickets(){
+        $q = "select s.* from support_tickets s,support_ticket_history h where s.id=h.support_ticket_id and h.is_replied=0 and s.is_closed=0 group by s.id order by s.updated_at desc ";
         return $this->executeSelect($q);
     }
 

@@ -25,6 +25,9 @@ $supportTicketMessagesObj->insert();
 
 
 $supportTicketObj = new SupportTicket();
+$supportTicketObj->setId($_REQUEST['ticket_id']);
+$supportTicketObj->getSupportTicketById();
+
 $supportTicketObj->setMessageCount($supportTicketObj->getMessageCount()+1);
 $supportTicketObj->update();
 
