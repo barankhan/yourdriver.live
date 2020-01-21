@@ -5,8 +5,15 @@
  * Date: 1/21/20
  * Time: 11:16 AM
  */
-require_once __DIR__."/../../vendor/autoload.php";
+require_once __DIR__."/../vendor/autoload.php";
 
 
 $ticketsObj = new SupportTicket();
-$ticketsObj->getLatestTickets();
+$tickets = $ticketsObj->getLatestOpenedTickets();
+
+foreach ($tickets as $ticket){
+    $ticObj  = new SupportTicket();
+    $ticObj->setAllFields($ticket);
+    echo "<a href='ticket_details.php?id=".$ticObj->getId()."'>".$ticObj->getTitle()."</a>";
+    echo "<br/>";
+}

@@ -12,7 +12,7 @@ class SupportTicket extends  baseModel implements JsonSerializable {
 
 
 //    private $id,title,created_at,updated_at,is_closed,user_id,ride_id
-    private $id=0,$title,$createdAt,$updatedAt,$isClosed,$userId,$rideId,$closedAt,$isUnread;
+    private $id=0,$title,$createdAt,$updatedAt,$isClosed,$userId,$rideId,$closedAt,$isUnread,$messageCount=1;
 
 
     public function insert(){
@@ -23,8 +23,8 @@ class SupportTicket extends  baseModel implements JsonSerializable {
 
 
     public function update(){
-        $q="UPDATE `support_tickets` SET `title` = :title, `is_closed` = :is_closed, `user_id` = :user_id, `ride_id` = :ride_id,closed_at=:closed_at,is_unread=:is_unread WHERE `id` = :id; ";
-        $params = array("title"=>$this->title, "is_closed"=>$this->isClosed, "user_id"=>$this->userId, "ride_id"=>$this->rideId,"id"=>$this->id,"closed_at"=>$this->closedAt,"is_unread"=>$this->isUnread);
+        $q="UPDATE `support_tickets` SET `title` = :title, `is_closed` = :is_closed, `user_id` = :user_id, `ride_id` = :ride_id,closed_at=:closed_at,is_unread=:is_unread,message_count=:message_count WHERE `id` = :id; ";
+        $params = array("title"=>$this->title, "is_closed"=>$this->isClosed, "user_id"=>$this->userId, "ride_id"=>$this->rideId,"id"=>$this->id,"closed_at"=>$this->closedAt,"is_unread"=>$this->isUnread,"message_count"=>$this->messageCount);
         $this->executeUpdate($q,$params);
     }
 
@@ -45,8 +45,9 @@ class SupportTicket extends  baseModel implements JsonSerializable {
     }
 
 
-    public function getLatestTickets(){
-        $q = "select * from support_tickets s,support_ticket_history h where s.is_closed=0 and s.id=h.support_ticket_id order by h.created_at";
+    public function getLatestOpenedTickets(){
+        $q = "select * from support_tickets where is_closed=0 order by created_at";
+        return $this->executeSelect($q);
     }
 
 
@@ -71,6 +72,26 @@ class SupportTicket extends  baseModel implements JsonSerializable {
             $this->$key($val);
         }
     }
+
+    /**
+     * @return int
+     */
+    public function getMessageCount(): int
+    {
+        return $this->messageCount;
+    }
+
+    /**
+     * @param int $messageCount
+     */
+    public function setMessageCount(int $messageCount)
+    {
+        $this->messageCount = $messageCount;
+    }
+
+
+
+
 
     /**
      * @return mixed

@@ -23,6 +23,15 @@ $supportTicketMessagesObj->setUserId($_REQUEST['user_id']);
 $supportTicketMessagesObj->setMessage($_REQUEST['message']);
 $supportTicketMessagesObj->insert();
 
+
+$supportTicketObj = new SupportTicket();
+$supportTicketObj->setMessageCount($supportTicketObj->getMessageCount()+1);
+$supportTicketObj->update();
+
+
+
+
+
 echo json_encode(array("message"=>"Your ticket updated successfully!","response"=>"Ok"));
 
 

@@ -9,3 +9,4 @@
 define("PASSENGER_WALLET_LIMIT",200);
 define("DRIVER_CANCELLED_WAIT_AFTER_ARRIVED",5);
 define("PASSENGER_CANCELLED_WAIT_AFTER_RIDE_REGISTER",3);
+define("MY_HOST","http://localhost/driver/");

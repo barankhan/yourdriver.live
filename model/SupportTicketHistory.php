@@ -30,8 +30,8 @@ class SupportTicketHistory  extends  baseModel implements JsonSerializable {
     }
 
 
-    public function getSupportTicketHistory(){
-        $q = "select * from support_ticket_history where support_ticket_id=:support_ticket_id";
+    public function getSupportTicketHistory($order='asc'){
+        $q = "select * from support_ticket_history where support_ticket_id=:support_ticket_id order by created_at ".$order;
         $params = array("support_ticket_id"=>$this->supportTicketId);
         return $this->executeSelect($q,$params);
     }
