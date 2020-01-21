@@ -11,7 +11,7 @@ class SupportTicketHistory  extends  baseModel implements JsonSerializable {
 
     //id,support_ticket_id,message,created_at,updated_at,user_id,is_replied
 
-    private $id,$supportTicketId,$message,$createdAt,$updatedAt,$userId,$isReplied;
+    private $id,$supportTicketId,$message,$createdAt,$updatedAt,$userId,$isReplied,$isMe;
 
 
 
@@ -41,6 +41,25 @@ class SupportTicketHistory  extends  baseModel implements JsonSerializable {
         $params = array("id"=>$this->id);
         $this->setAllFields($this->executeSelectSingle($q,$params));
     }
+
+    /**
+     * @return mixed
+     */
+    public function getIsMe()
+    {
+        return $this->isMe;
+    }
+
+    /**
+     * @param mixed $isMe
+     */
+    public function setIsMe($currentUserId)
+    {
+        $this->isMe = ($currentUserId==$this->userId?true:false);
+    }
+
+
+
 
 
 

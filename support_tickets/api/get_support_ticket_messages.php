@@ -24,6 +24,7 @@ $res = array();
 foreach($ticket_histories as $history){
     $obj = new SupportTicketHistory();
     $obj->setAllFields($history);
+    $obj->setIsMe($user_id);
     $res[]=$obj;
 }
 
