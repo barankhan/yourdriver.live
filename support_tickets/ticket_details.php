@@ -23,7 +23,7 @@ if(isset($_REQUEST['submit']) && $_REQUEST['submit']=='submit'){
     $ticketsObj->update();
 
 
-    $payload['message'] = "your ticket is updated! Please check.";
+    $payload['message'] = "your ticket id: ".$ticketsObj->getId()." is updated! Please check.";
     $payload['key'] = "ticket_updated";
     $payload['ride'] = json_encode($rideObj);
     $fbaseObj = new firebaseNotification();
