@@ -45,6 +45,11 @@ class SupportTicket extends  baseModel implements JsonSerializable {
     }
 
 
+    public function getLatestTickets(){
+        $q = "select * from support_tickets s,support_ticket_history h where s.is_closed=0 and s.id=h.support_ticket_id order by h.created_at";
+    }
+
+
 
     public function getSupportTicketOfRide(){
         $q = "select * from support_tickets where ride_id=:ride_id ;";
