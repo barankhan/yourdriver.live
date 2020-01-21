@@ -11,7 +11,7 @@ class SupportTicketHistory  extends  baseModel implements JsonSerializable {
 
     //id,support_ticket_id,message,created_at,updated_at,user_id,is_replied
 
-    private $id,$supportTicketId,$message,$createdAt,$updatedAt,$userId,$isReplied,$isMe;
+    private $id,$supportTicketId,$message,$createdAt,$updatedAt,$userId,$isReplied=0,$isMe;
 
 
 

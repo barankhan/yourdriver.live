@@ -90,7 +90,7 @@ class SupportTicket extends  baseModel implements JsonSerializable {
 
 
 
-    
+
     /**
      * @return mixed
      */
