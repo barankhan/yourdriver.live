@@ -12,19 +12,19 @@ class SupportTicket extends  baseModel implements JsonSerializable {
 
 
 //    private $id,title,created_at,updated_at,is_closed,user_id,ride_id
-    private $id=0,$title,$createdAt,$updatedAt,$isClosed,$userId,$rideId,$closedAt;
+    private $id=0,$title,$createdAt,$updatedAt,$isClosed,$userId,$rideId,$closedAt,$isUnread;
 
 
     public function insert(){
-        $q = "INSERT INTO `support_tickets` ( `title`, `is_closed`, `user_id`, `ride_id`,`closed_at`) VALUES (:title, :is_closed, :user_id, :ride_id,:closed_at); ";
-        $params = array("title"=>$this->title, "is_closed"=>$this->isClosed, "user_id"=>$this->userId, "ride_id"=>$this->rideId,"closed_at"=>$this->closedAt);
+        $q = "INSERT INTO `support_tickets` ( `title`, `is_closed`, `user_id`, `ride_id`,`closed_at`,`is_unread`) VALUES (:title, :is_closed, :user_id, :ride_id,:closed_at,:is_unread); ";
+        $params = array("title"=>$this->title, "is_closed"=>$this->isClosed, "user_id"=>$this->userId, "ride_id"=>$this->rideId,"closed_at"=>$this->closedAt,"is_unread"=>$this->isUnread);
         $this->setId($this->executeInsert($q,$params));
     }
 
 
     public function update(){
-        $q="UPDATE `support_tickets` SET `title` = :title, `is_closed` = :is_closed, `user_id` = :user_id, `ride_id` = :ride_id,closed_at=:closed_at WHERE `id` = :id; ";
-        $params = array("title"=>$this->title, "is_closed"=>$this->isClosed, "user_id"=>$this->userId, "ride_id"=>$this->rideId,"id"=>$this->id,"closed_at"=>$this->closedAt);
+        $q="UPDATE `support_tickets` SET `title` = :title, `is_closed` = :is_closed, `user_id` = :user_id, `ride_id` = :ride_id,closed_at=:closed_at,is_unread=:is_unread WHERE `id` = :id; ";
+        $params = array("title"=>$this->title, "is_closed"=>$this->isClosed, "user_id"=>$this->userId, "ride_id"=>$this->rideId,"id"=>$this->id,"closed_at"=>$this->closedAt,"is_unread"=>$this->isUnread);
         $this->executeUpdate($q,$params);
     }
 
@@ -72,6 +72,25 @@ class SupportTicket extends  baseModel implements JsonSerializable {
         }
     }
 
+    /**
+     * @return mixed
+     */
+    public function getIsUnread()
+    {
+        return $this->isUnread;
+    }
+
+    /**
+     * @param mixed $isUnread
+     */
+    public function setIsUnread($isUnread)
+    {
+        $this->isUnread = $isUnread;
+    }
+
+
+
+    
     /**
      * @return mixed
      */
