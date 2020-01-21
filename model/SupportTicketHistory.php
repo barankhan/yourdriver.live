@@ -192,6 +192,15 @@ class SupportTicketHistory  extends  baseModel implements JsonSerializable {
      */
     function jsonSerialize()
     {
-        // TODO: Implement jsonSerialize() method.
+        $vars = array_filter(
+            get_object_vars($this),
+            function ($item) {
+                // Keep only not-NULL values
+                return ! is_null($item);
+            }
+        );
+
+        unset($vars['conn']);
+        return $vars;
     }
 }

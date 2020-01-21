@@ -27,6 +27,5 @@ foreach($ticket_histories as $history){
     $res[]=$obj;
 }
 
-
 echo json_encode($res);
 
