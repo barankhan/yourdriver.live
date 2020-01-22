@@ -12,7 +12,7 @@ class SupportTicket extends  baseModel implements JsonSerializable {
 
 
 //    private $id,title,created_at,updated_at,is_closed,user_id,ride_id
-    private $id=0,$title,$createdAt,$updatedAt,$isClosed,$userId,$rideId,$closedAt,$isUnread,$messageCount=1;
+    private $id=0,$title,$createdAt,$updatedAt,$isClosed=0,$userId,$rideId,$closedAt,$isUnread,$messageCount=1;
 
 
     public function insert(){
