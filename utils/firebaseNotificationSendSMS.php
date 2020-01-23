@@ -22,7 +22,6 @@ class firebaseNotificationSendSMS
 
 
         $fbaseLogObj = new FirebaseLog();
-        $fbaseLogObj->setNotification(json_encode(null));
         $fbaseLogObj->setPayload(json_encode($payload));
         $fbaseLogObj->setRequestLogId($logId);
         $fbaseLogObj->setFirebaseKey($dev['token']);
@@ -36,35 +35,14 @@ class firebaseNotificationSendSMS
         $config = AndroidConfig::fromArray([
             'ttl' => "60s",
             'priority' => 'high',
-            'notification' => null,
             'data'=>$payload
         ]);
 
 
         $messaging = $factory->createMessaging();
-        $message = CloudMessage::withTarget('token', $token);
-//        $message = $message->withData($payload);
+        $message = CloudMessage::withTarget('token', $dev['token']);
         $message = $message->withAndroidConfig($config);
 
-
-
-//        $message->withNotification($notification);
-
-//        if (!empty($notification)) {
-//            $message;
-//        }
-//        if (!empty($payload)) {
-//            $message->withData($payload);
-//        }
-
-
-//        try {
-//            $messaging->validate($message);
-//        } catch (InvalidMessage $e) {
-//            print_r($e->errors());
-//        }
-//
-//        die;
 
         $result = $messaging->send($message);
         $res = explode("/", $result["name"]);

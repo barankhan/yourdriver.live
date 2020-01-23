@@ -210,6 +210,7 @@ class ComposerStaticInitfd5deadb88ad3e3c17da2a9bccfa0cdc
         'SmsDevices' => __DIR__ . '/../..' . '/model/SmsDevices.php',
         'SupportTicket' => __DIR__ . '/../..' . '/model/SupportTicket.php',
         'SupportTicketHistory' => __DIR__ . '/../..' . '/model/SupportTicketHistory.php',
+        'TransactionLiability' => __DIR__ . '/../..' . '/model/TransactionLiability.php',
         'User' => __DIR__ . '/../..' . '/model/user.php',
         'UserOnlineHistory' => __DIR__ . '/../..' . '/model/UserOnlineHistory.php',
         'baseModel' => __DIR__ . '/../..' . '/model/baseModel.php',

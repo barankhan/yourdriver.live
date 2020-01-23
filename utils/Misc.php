@@ -20,6 +20,8 @@ class Misc
         $tranObj->setKmTravelledRate(array_key_exists ("km_travelled_rate" ,  $basePrice )?$basePrice["km_travelled_rate"]:0);
         $tranObj->setTotalFare();
 
+        $transaction_liabilities = array();
+
         if($tranObj->getTotalFare()>0){
             // If there is cancelled amount and user has balance. Deduct from the User Account and add into Driver Account.
 
@@ -31,9 +33,17 @@ class Misc
                 $tranObj->setPassengerInitialBalance($passengerObj->getBalance());
                 $tranObj->setTransactionCompleted(1);
 
-                $tranObj->setCompanyOutwardHead('Balance_Used');
                 $passengerObj->setBalance($passengerObj->getBalance()-$tranObj->getTotalFare());
-                $tranObj->setOutwardHeadAmount($tranObj->getTotalFare());
+
+//                $tranObj->setCompanyOutwardHead('Balance_Used');
+//                $tranObj->setOutwardHeadAmount($tranObj->getTotalFare());
+
+                $liabilityObj  =  new TransactionLiability();
+                $liabilityObj->setTitle("Balance_Used");
+                $liabilityObj->setLiabilityTypeId(2);
+                $liabilityObj->setAmount($tranObj->getTotalFare());
+                $liabilityObj->insert();
+                $transaction_liabilities [] = $liabilityObj;
 
 
                 $newDriverTransaction = new DriverTransaction();
@@ -58,6 +68,12 @@ class Misc
         }
         $tranObj->setTotalAmount();
         $tranObj->insert();
+
+        foreach($transaction_liabilities as $liability){
+            $liability->setTransactionId($tranObj->getId());
+            $liability->update();
+        }
+
         return $tranObj;
     }
 
@@ -88,22 +104,37 @@ class Misc
 
         $driverObj->setBalance($driverObj->getBalance() - $tranObj->getCompanyServiceCharges());
         $paidCancels = array();
+        $transaction_liabilities = array();
+
+
+
         if($passengerObj->getBalance()>0){
             // Wallet already have amount.
-            $tranObj->setCompanyOutwardHead('Balance_Used');
+
+
+            //$tranObj->setCompanyOutwardHead('Balance_Used');
+
+            $liabilityObj  =  new TransactionLiability();
+            $liabilityObj->setTitle("Balance_Used");
+            $liabilityObj->setLiabilityTypeId(2);
 
             if($passengerObj->getBalance()>=$tranObj->getTotalFare()){
                 $tranObj->setPayableAmount(0);
                 $driverObj->setBalance($driverObj->getBalance()+($tranObj->getTotalFare()));
                 $passengerObj->setBalance($passengerObj->getBalance()-$tranObj->getTotalFare());
-                $tranObj->setOutwardHeadAmount($tranObj->getTotalFare());
+//                $tranObj->setOutwardHeadAmount($tranObj->getTotalFare());
+                $liabilityObj->setAmount($tranObj->getTotalFare());
             }else{
                 $tranObj->setPayableAmount($tranObj->getTotalFare()-$passengerObj->getBalance());
                 $driverObj->setBalance($driverObj->getBalance()+($tranObj->getTotalFare()-$tranObj->getPayableAmount()));
-                $tranObj->setOutwardHeadAmount($passengerObj->getBalance());
+//                $tranObj->setOutwardHeadAmount($passengerObj->getBalance());
                 $passengerObj->setBalance(0);
+                $liabilityObj->setAmount($passengerObj->getBalance());
             }
             $passengerObj->update();
+            $liabilityObj->insert();
+            $transaction_liabilities [] = $liabilityObj;
+
         }elseif ($passengerObj->getBalance()<0){
            // Cancelled Amount.
 
@@ -123,8 +154,15 @@ class Misc
             }
             $tranObj->setPayableAmount($tranObj->getTotalFare()+$cancel_amount);
             $driverObj->setBalance($driverObj->getBalance()-$cancel_amount);
-            $tranObj->setCompanyInwardHead("Cancel_Charges");
-            $tranObj->setInwardHeadAmount($cancel_amount);
+
+            $liabilityObj  =  new TransactionLiability();
+            $liabilityObj->setTitle("Cancel_Charges");
+            $liabilityObj->setLiabilityTypeId(1);
+            $liabilityObj->setAmount($cancel_amount);
+            $liabilityObj->insert();
+            $transaction_liabilities [] = $liabilityObj;
+//            $tranObj->setCompanyInwardHead("Cancel_Charges");
+//            $tranObj->setInwardHeadAmount($cancel_amount);
 
 
 
@@ -145,6 +183,11 @@ class Misc
         foreach ($paidCancels as $paidCancel){
             $paidCancel->setTransactionId($tranObj->getId());
             $paidCancel->update();
+        }
+
+        foreach($transaction_liabilities as $liability){
+            $liability->setTransactionId($tranObj->getId());
+            $liability->update();
         }
 
 

@@ -33,8 +33,16 @@ if($transObj->getTransactionCompleted()==0){
             $transObj->setAmountReceived($amount_received);
             $transObj->setAmountReceivedAt(date("Y-m-d H:i:s"));
             $transObj->setTotalAmount();
-            $transObj->setCompanyInwardHead("Balance_added");
-            $transObj->setInwardHeadAmount($amount_received-$transObj->getPayableAmount());
+//            $transObj->setCompanyInwardHead("Balance_added");
+//            $transObj->setInwardHeadAmount($amount_received-$transObj->getPayableAmount());
+
+            $liabilityObj  =  new TransactionLiability();
+            $liabilityObj->setTitle("Balance_added");
+            $liabilityObj->setLiabilityTypeId(1);
+            $liabilityObj->setAmount($amount_received-$transObj->getPayableAmount());
+            $liabilityObj->setTransactionId($transObj->getId());
+            $liabilityObj->insert();
+
             $transObj->setTransactionCompleted(1);
             $transObj->update();
             $transObj->settleCancelledAmount();

@@ -22,6 +22,7 @@ return array(
     'SmsDevices' => $baseDir . '/model/SmsDevices.php',
     'SupportTicket' => $baseDir . '/model/SupportTicket.php',
     'SupportTicketHistory' => $baseDir . '/model/SupportTicketHistory.php',
+    'TransactionLiability' => $baseDir . '/model/TransactionLiability.php',
     'User' => $baseDir . '/model/user.php',
     'UserOnlineHistory' => $baseDir . '/model/UserOnlineHistory.php',
     'baseModel' => $baseDir . '/model/baseModel.php',

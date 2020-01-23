@@ -15,7 +15,7 @@ class FirebaseLog extends  baseModel implements JsonSerializable
 
 
     public function insert(){
-        $q = "insert into firebase_log(request_log_id,notification,payload,firebase_message_id,firebase_key,firebase_confirmation,
+       $q = "insert into firebase_log(request_log_id,notification,payload,firebase_message_id,firebase_key,firebase_confirmation,
 firebase_response)values(:requestLogId,:notification,:payload,:firebaseMessageId,:firebaseKey,:firebaseConfirmation,:firebaseResponse);";
         $params = array("requestLogId"=>$this->requestLogId,"notification"=>$this->notification,"payload"=>$this->payload,"firebaseMessageId"=>$this->firebaseMessageId,
             "firebaseKey"=>$this->firebaseKey,"firebaseConfirmation"=>$this->firebaseConfirmation,"firebaseResponse"=>$this->firebaseResponse);
