@@ -32,7 +32,7 @@ $liability_array = array();
 foreach($liabilities as $liability){
    $liabilityObj = new TransactionLiability();
     $liabilityObj->setAllFields($liability);
-    $liability_array[]=$liability_array;
+    $liability_array[]=$liabilityObj;
 }
 
 
