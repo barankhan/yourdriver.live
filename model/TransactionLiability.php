@@ -186,6 +186,8 @@ class TransactionLiability  extends  baseModel implements JsonSerializable
             }
         );
         unset($vars['conn']);
+        if (array_key_exists("title",$vars)) $vars["title"]=ucwords(str_replace("_"," ",$vars["title"]));
+
         return $vars;
     }
 }
