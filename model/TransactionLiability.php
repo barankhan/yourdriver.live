@@ -34,6 +34,12 @@ class TransactionLiability  extends  baseModel implements JsonSerializable
     }
 
 
+    public function findByTransactionId(){
+        $q = "select * from `transaction_liabilities` where transaction_id=:transaction_id";
+        $params = array("transaction_id"=>$this->transactionId);
+        return $this->executeSelect($q,$params);
+    }
+
 
     /**
      * @return mixed
