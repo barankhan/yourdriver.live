@@ -23,7 +23,21 @@ $passengerObj->getUserWithId($driverTransObj->getDriverId());
 $rideObj = new ride();
 $rideObj->setId($driverTransObj->getRideId());
 $rideObj->findRideWithId();
-$res = array("user"=>$passengerObj,"ride"=>$rideObj,"driver_transaction"=>$driverTransObj);
+
+
+$transactionLiabilitiesObj = new TransactionLiability();
+$transactionLiabilitiesObj->setTransactionId($driverTransObj->getId());
+$liabilities = $transactionLiabilitiesObj->findByTransactionId();
+
+$liability_array = array();
+foreach($liabilities as $liability){
+    $liabilityObj = new TransactionLiability();
+    $liabilityObj->setAllFields($liability);
+    $liability_array[]=$liabilityObj;
+}
+
+
+$res = array("user"=>$passengerObj,"ride"=>$rideObj,"driver_transaction"=>$driverTransObj,"transactionLiabilityList"=>$liability_array);
 echo json_encode($res);
 
 
