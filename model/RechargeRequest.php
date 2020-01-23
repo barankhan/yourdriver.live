@@ -59,13 +59,19 @@ class RechargeRequest extends  baseModel implements JsonSerializable
 
 
 
-    public function validateTransactionAndInsert(){
+    public function validateTransactionAndInsert($currentUser){
         if($this->successfulTransactionExists()){
             // Transaction has already been performed by any users.
             return "transaction_already_successful";
         }else if($this->transactionExists()) {
+
             $this->getNonSuccessfulTransaction();
-           return $this->processPayment();
+            if($this->getUserId()==$currentUser){
+                return $this->processPayment();
+            }else{
+                return "invalid_request";
+            }
+
         }else{
             $this->insert();
             return $this->processPayment();

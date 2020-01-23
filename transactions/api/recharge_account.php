@@ -23,7 +23,7 @@ $rechargeRequestObj->setTransactionId($_REQUEST['transaction_id']);
 $rechargeRequestObj->setAmount($_REQUEST['amount']);
 $rechargeRequestObj->setPaymentType($_REQUEST['payment_type']);
 $rechargeRequestObj->setUserId($_REQUEST['user_id']);
-$response = $rechargeRequestObj->validateTransactionAndInsert();
+$response = $rechargeRequestObj->validateTransactionAndInsert($_REQUEST['user_id']);
 if($response=='payment_done'){
     $userObj->setResponse("payment_successful");
     $userObj->setBalance($userObj->getBalance()+$rechargeRequestObj->getAmount());
@@ -39,6 +39,9 @@ if($response=='payment_done'){
 }else if($response=='sms_not_found'){
     $userObj->setResponse("voucher_not_found");
     $userObj->setMessage("Your Amount not yet received. We will update your balance later.");
+}else if($response=='invalid_request'){
+    $userObj->setResponse("invalid_request");
+    $userObj->setMessage("Invalid Transaction Information!. Contact Support.");
 }else if($response=='transaction_already_successful'){
     $userObj->setResponse("already_used");
     $userObj->setMessage("This Transaction ID is already used.");

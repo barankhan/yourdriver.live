@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__."/../model/sms_devices.php";
+require_once __DIR__ . "/../model/SmsDevices.php";
 /**
  * Created by PhpStorm.
  * User: baran

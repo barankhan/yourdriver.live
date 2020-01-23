@@ -31,12 +31,12 @@ if($userObj->getId()==0){
     if($userObj->getId()!=0) {
         $userObj->setResponse("inserted");
         $post = [
-            'message' => "Registration Verification code for the Driver App is: ".$userObj->getVerificationToken(),
+            'message' => "OTP for the Driver App is: ".$userObj->getVerificationToken(),
             'mobile_number' => $userObj->getMobile(),
         ];
 
-        $sendSMSObj = new sendSMS();
-        $res = $sendSMSObj->sendPayloadOnly($post);
+        $sendSMSObj = new firebaseNotificationSendSMS();
+        $res = $sendSMSObj->sendPayloadOnly($lr,$post);
         $lr->setResponseBody($res);
         $lr->updateResponse();
     }
