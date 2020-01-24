@@ -42,8 +42,12 @@ if($city=='multan'){
         $exp_fare2  = round($basePrice["driver_start_up_fare"]+$basePrice["company_service_charges"]+
             ($basePrice['km_travelled_rate']*($distance_in_meters/1000)*1.2)+
             ($basePrice['time_elapsed_rate']*($duration_in_seconds/60)*1.3));
+        if($type=='Auto'){
+            $vehicle_types[] = array("title"=>$type,"expectedFare"=>$exp_fare."-".$exp_fare2);
+        }else{
+            $vehicle_types[] = array("title"=>$type,"expectedFare"=>'N/A');
+        }
 
-        $vehicle_types[] = array("title"=>$type,"expectedFare"=>$exp_fare."-".$exp_fare2);
     }
     $res = array("response"=>'success',"vehicleTypesList"=>$vehicle_types,"duration"=>$duration_title);
 
