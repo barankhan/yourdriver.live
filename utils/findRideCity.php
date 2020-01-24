@@ -12,11 +12,13 @@ class findRideCity
     public static function getCity($pickUpLat,$pickUpLng){
         foreach(self::$cities as $key=>$city){
             if(self::inBounds($pickUpLat,$pickUpLng,$city[2],$city[3],$city[0],$city[1])){
+//            if(self::inBounds($pickUpLat,$pickUpLng,$city[0],$city[1],$city[2],$city[3])){
                 return $key;
             }
         }
         return "invalid_city";
     }
+
     static function  inBounds($pointLat, $pointLong, $boundsNElat, $boundsNElong, $boundsSWlat, $boundsSWlong) {
         $eastBound = $pointLong < $boundsNElong;
         $westBound = $pointLong > $boundsSWlong;

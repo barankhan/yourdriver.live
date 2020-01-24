@@ -102,7 +102,7 @@ class TransactionLiability  extends  baseModel implements JsonSerializable
      */
     public function setAmount($amount)
     {
-        $this->amount = $amount;
+        $this->amount = bcdiv($amount,1,2);
     }
 
     /**

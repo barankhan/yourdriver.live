@@ -11,10 +11,11 @@ class basePrice
 {
     public static function getBasePrice($vehicle_type,$pickupLat,$pickLng){
         switch (strtolower($vehicle_type)){
+
             case "auto":
                 switch (findRideCity::getCity($pickupLat,$pickLng)){
                     case "multan":
-                        return array("driver_start_up_fare"=>30,"company_service_charges"=>20,"time_elapsed_rate"=>4,"km_travelled_rate"=>5);
+                        return array("driver_start_up_fare"=>25,"company_service_charges"=>20,"time_elapsed_rate"=>3,"km_travelled_rate"=>6);
                         break;
                     default:
                         return array("driver_start_up_fare"=>30,"company_service_charges"=>20,"time_elapsed_rate"=>4,"km_travelled_rate"=>5);
@@ -22,7 +23,7 @@ class basePrice
             case "car":
                 switch (findRideCity::getCity($pickupLat,$pickLng)){
                     case "multan":
-                        return array("driver_start_up_fare"=>70,"company_service_charges"=>25,"time_elapsed_rate"=>4,"km_travelled_rate"=>10);
+                        return array("driver_start_up_fare"=>60,"company_service_charges"=>35,"time_elapsed_rate"=>4,"km_travelled_rate"=>10);
                         break;
                     default:
                         return array("driver_start_up_fare"=>70,"company_service_charges"=>25,"time_elapsed_rate"=>4,"km_travelled_rate"=>10);
@@ -30,7 +31,7 @@ class basePrice
             case "bike":
                 switch (findRideCity::getCity($pickupLat,$pickLng)){
                     case "multan":
-                        return array("driver_start_up_fare"=>25,"company_service_charges"=>15,"time_elapsed_rate"=>2.5,"km_travelled_rate"=>4);
+                        return array("driver_start_up_fare"=>25,"company_service_charges"=>15,"time_elapsed_rate"=>2,"km_travelled_rate"=>4);
                         break;
                     default:
                         return array("driver_start_up_fare"=>25,"company_service_charges"=>15,"time_elapsed_rate"=>2.5,"km_travelled_rate"=>4);

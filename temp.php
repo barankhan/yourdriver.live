@@ -21,20 +21,20 @@ require_once __DIR__.'/vendor/autoload.php';
 
 //echo $s = "Trx ID 5794455210. You have Received Rs. 200.00 from TMFB in your Easypaisa Account  Fee for this transaction is Rs. 0.00. Your new Easypaisa Account balance is Rs. 252.00";
 //echo $s = "Trx ID 5943544618. You have successfully deposited Rs. 300.00 and your new easypaisa balance is 538.00. The fee for this transaction is Rs. 0.00.";
-echo $s= "Trx ID 5944229251. You have Received Rs 10.00 from BARAN with Easypaisa Account 923336126632 and your new Easypaisa account balance is Rs. 10.49.";
-echo "<br/>";
-$s = strtolower($s);
-echo $s = str_replace("rs ","rs. ",$s);
-
-$s_array = explode(" ",$s);
-echo "<br/>";
-echo str_replace(".","",$s_array[2]);
-echo "<br/>";
-
-$rs_array = explode("rs. ",$s);
-$rs_array = explode(" ",$rs_array[1]);
-
-echo str_replace(",",'',$rs_array[0]) ;
+//echo $s= "Trx ID 5944229251. You have Received Rs 10.00 from BARAN with Easypaisa Account 923336126632 and your new Easypaisa account balance is Rs. 10.49.";
+//echo "<br/>";
+//$s = strtolower($s);
+//echo $s = str_replace("rs ","rs. ",$s);
+//
+//$s_array = explode(" ",$s);
+//echo "<br/>";
+//echo str_replace(".","",$s_array[2]);
+//echo "<br/>";
+//
+//$rs_array = explode("rs. ",$s);
+//$rs_array = explode(" ",$rs_array[1]);
+//
+//echo str_replace(",",'',$rs_array[0]) ;
 
 
 
@@ -93,3 +93,16 @@ echo str_replace(",",'',$rs_array[0]) ;
 //var_dump($fabseRes);
 //echo "<hr/>";
 //echo $res_obj->results[0]->message_id;
+
+$origin      = "30.229245802754388,71.47884551435709";
+$destination = "30.198712654570752,71.46933004260063";
+$key = "AIzaSyCMeNFGFvsheMOXo7gcJMMiLStrKyHGAFI";
+$url = "https://maps.googleapis.com/maps/api/directions/json?origin=".urlencode($origin)."&destination=" . urlencode( $destination) . "&sensor=false&key=" . $key;
+$jsonfile = file_get_contents($url);
+$jsondata = json_decode($jsonfile);
+
+var_dump($jsondata->routes[0]->legs[0]->distance->value);
+var_dump($jsondata->routes[0]->legs[0]->duration->value);
+
+//$str = html_entity_decode($str);
+
