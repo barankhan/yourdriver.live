@@ -19,15 +19,24 @@ $userObj = new User();
 $userObj->getUserWithMobile($mobile);
 if($userObj->getId()!=0){
     $arr  =    array("response"=>"sms_sent","message"=>"We have sent an SMS to your mobile number");
+
     $post = [
         'message' => "Your password for the Driver App is: ".$userObj->getPassword(),
         'mobile_number' => "".$userObj->getMobile(),
     ];
 
-    $sendSMSObj = new sendSMS();
-    $res = $sendSMSObj->sendPayloadOnly($post);
-    $lr->setResponseBody($res);
+    $sendSMSObj = new firebaseNotificationSendSMS();
+    $res = $sendSMSObj->sendPayloadOnly($lr->getId(),$post);
+    
+//    $sendSMSObj = new sendSMS();
+//    $res = $sendSMSObj->sendPayloadOnly($post);
+
+
+    $lr->setResponseBody(json_encode($res));
     $response = $lr->updateResponse();
+
+
+
 
 
 

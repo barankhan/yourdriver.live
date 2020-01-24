@@ -16,13 +16,8 @@ $userObj->update();
 
 $fbaseObj = new firebaseNotification();
 
-$notification['title']='Congrats';
-$notification['body']='you are partner now!.';
-$notification['click_action']='com.barankhan.driver.driver_confirmation_activity';
-
-$payload['do']="logout";
-$payload['msg']="Congratulation. Please login now.";
+$payload['message']="Congratulation! You're a stakeholder now, Please login.";
 $payload['key']="driver_successful";
 $token = $userObj->getFirebaseToken();
 
-echo $fbaseObj->sendPayloadOnly(0,$token,$payload,$notification);
+echo $fbaseObj->sendPayloadOnly(0,$token,$payload);
