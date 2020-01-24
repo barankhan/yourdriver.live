@@ -1,9 +1,5 @@
 <?php
-require_once __DIR__."/../../model/user.php";
-require_once __DIR__."/../../utils/CurlPost.php";
-require_once __DIR__."/../../utils/sendSMS.php";
-require_once __DIR__."/../../model/LogRequest.php";
-
+require_once __DIR__."/../../vendor/autoload.php";
 
 
 $lr = new LogRequest();
@@ -27,9 +23,6 @@ if($userObj->getId()!=0){
 
     $sendSMSObj = new firebaseNotificationSendSMS();
     $res = $sendSMSObj->sendPayloadOnly($lr->getId(),$post);
-    
-//    $sendSMSObj = new sendSMS();
-//    $res = $sendSMSObj->sendPayloadOnly($post);
 
 
     $lr->setResponseBody(json_encode($res));
