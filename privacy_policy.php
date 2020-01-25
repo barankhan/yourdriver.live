@@ -119,11 +119,15 @@ To the extent that Driver does receive, store or otherwise process your personal
 
 Each time you access or use the products or services provided by RTA Driver LLC or provide us with information, by doing so you accept and consent to the practices described in this notice.
 
+<h3>Calls</h3>
+<p>Driver and passengers call talk via the Voip calls. We are using agora.io service and same terms and conditions are applied. We value your privacy.</p>
+
 Contact Us
 
 If you have any questions, comments and requests related to this Privacy Statement, or if you have any complaints related to how Driver processes your personal data, please contact us at go@Driver.com.
 
-Dubai
+
+Pakistan
 Terms of Service
 Privacy Policy
 
