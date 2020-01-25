@@ -49,6 +49,13 @@ if($userObj->getId()>0){
         $rideAlertObj->insert();
         // now send push notification to the driver.
 
+
+        $rideObj->setResponse("alert_sent_to_driver");
+        $rideObj->setMessage("waiting for driver to accept the ride");
+        $var = json_encode($rideObj);
+        echo $var;
+        fastcgi_finish_request();
+        
         $fbaseObj = new firebaseNotification();
 
         $notification['title']='Ride Alert';
@@ -64,25 +71,27 @@ if($userObj->getId()>0){
 
         $fabseRes = $fbaseObj->sendPayloadOnly($lr->getId(),$token,$payload,null,'high');
 
-        $rideObj->setResponse("alert_sent_to_driver");
-        $rideObj->setMessage("waiting for driver to accept the ride");
+
 
 
 
     }else{
         $rideObj->setResponse("no_driver_found");
         $rideObj->setMessage("Sorry no driver found in your area!");
-
+        $var = json_encode($rideObj);
+        echo $var;
     }
 
 }else{
     $rideObj->setResponse("mobile_number_not_registered");
     $rideObj->setMessage("Sorry Your mobile number is not register with us!");
+    $var = json_encode($rideObj);
+    echo $var;
 }
-$var = json_encode($rideObj);
+
 $lr->setResponseBody($var);
 $lr->updateResponse();
-echo $var;
+
 
 
 
