@@ -18,7 +18,7 @@ if($userObj->getId()!=0){
 
     header('Content-Type: application/json');
     echo json_encode($arr);
-    fastcgi_finish_request();
+//    fastcgi_finish_request();
 
 
     $post = [
