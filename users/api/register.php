@@ -27,6 +27,12 @@ if($userObj->getId()==0){
     $userObj->registerUser();
     if($userObj->getId()!=0) {
         $userObj->setResponse("inserted");
+        header('Content-Type: application/json');
+        echo json_encode($userObj);
+        fastcgi_finish_request();
+
+
+
         $post = [
             'message' => "OTP for the Driver App is: ".$userObj->getVerificationToken(),
             'mobile_number' => $userObj->getMobile(),
@@ -39,10 +45,13 @@ if($userObj->getId()==0){
     }
     else{
         $userObj->setResponse("error");
+        header('Content-Type: application/json');
+        echo json_encode($userObj);
     }
 
 }else{
     $userObj->setResponse("exists");
+    header('Content-Type: application/json');
+    echo json_encode($userObj);
 }
-header('Content-Type: application/json');
-echo json_encode($userObj);
+

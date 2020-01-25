@@ -19,6 +19,11 @@ $callObj->setFromUserId($fromUserObj->getId());
 $callObj->setToUserId($toUserObj->getId());
 $callObj->setChannel("ride_call_".$_REQUEST['ride_id']);
 $callObj->insert();
+$var = json_encode(array("message"=>"Calling to ".$toUserObj->getName(),"response"=>"calling"));
+echo $var;
+fastcgi_finish_request();
+
+
 $fbaseObj = new firebaseNotification();
 $payload['agora_channel']=$callObj->getChannel();
 $payload['ride_id']="".$_REQUEST['ride_id'];
@@ -26,10 +31,10 @@ $payload['key']="call_alert";
 $payload['message']="Calling....";
 $token = $toUserObj->getFirebaseToken();
 $fabseRes = $fbaseObj->sendPayloadOnly($lr->getId(),$token,$payload,null,'high');
-$var = json_encode(array("message"=>"Calling to ".$toUserObj->getName(),"response"=>"calling"));
+
 $lr->setResponseBody($var);
 $lr->updateResponse();
-echo $var;
+
 
 
 

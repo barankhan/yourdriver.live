@@ -85,8 +85,12 @@ if($transObj->getTransactionCompleted()==0){
 }
 
 
-
-
+$res = array("user"=>$driverObj,"transaction"=>$transObj,"response"=>$transObj->getResponse(),"message"=>$transObj->getMessage());
+$var = json_encode($res);
+$lr->setResponseBody($var);
+$lr->updateResponse();
+echo $var;
+fastcgi_finish_request();
 
 if($triggerFirebaseToPassenger){
     $payload['message']='Driver has received Rs. '.$transObj->getAmountReceived().', Your balance is Rs.'.$passengerObj->getBalance();
@@ -98,11 +102,7 @@ if($triggerFirebaseToPassenger){
     $fabseRes = $fbaseObj->sendPayloadOnly($lr->getId(),$token,$payload,null,'high');
 
 }
-$res = array("user"=>$driverObj,"transaction"=>$transObj,"response"=>$transObj->getResponse(),"message"=>$transObj->getMessage());
-$var = json_encode($res);
-$lr->setResponseBody($var);
-$lr->updateResponse();
-echo $var;
+
 
 
 

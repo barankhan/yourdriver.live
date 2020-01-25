@@ -20,6 +20,9 @@ if($rideObj->getIsRideStarted()==0) {
     $rideObj->update();
     $rideObj->setResponse("ride_started");
     $rideObj->setMessage("Your Ride has been started! Enjoy the journey");
+    $var = json_encode($rideObj);
+    echo $var;
+    fastcgi_finish_request();
 
     $passengerObj = new User();
     $passengerObj->getUserWithId($rideObj->getPassengerId());
@@ -38,13 +41,15 @@ if($rideObj->getIsRideStarted()==0) {
 }else{
     $rideObj->setResponse("ride_started_earlier");
     $rideObj->setMessage("you already have started the ride");
+    $var = json_encode($rideObj);
+    echo $var;
 
 }
 
-$var = json_encode($rideObj);
+
 $lr->setResponseBody($var);
 $lr->updateResponse();
-echo $var;
+
 
 
 
