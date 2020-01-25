@@ -135,8 +135,9 @@ class Misc
                 $tranObj->setPayableAmount($tranObj->getTotalFare()-$passengerObj->getBalance());
                 $driverObj->setBalance($driverObj->getBalance()+($tranObj->getTotalFare()-$tranObj->getPayableAmount()));
 //                $tranObj->setOutwardHeadAmount($passengerObj->getBalance());
-                $passengerObj->setBalance(0);
                 $liabilityObj->setAmount($passengerObj->getBalance());
+                $passengerObj->setBalance(0);
+
             }
             $passengerObj->update();
             $liabilityObj->insert();
