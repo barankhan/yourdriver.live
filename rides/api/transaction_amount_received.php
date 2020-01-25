@@ -99,6 +99,12 @@ echo $var;
 fastcgi_finish_request();
 
 if($triggerFirebaseToPassenger){
+
+    // for the settlement of cancel amount we need to fetch the user current object;
+
+    $passengerObj->getUserWithId($passengerObj->getId());
+
+
     $payload['message']='Driver has received Rs. '.$transObj->getAmountReceived().', Your balance is Rs.'.$passengerObj->getBalance();
     $payload['key']="p_amount_received";
     $payload['user']=json_encode($passengerObj);
