@@ -55,7 +55,7 @@ if($userObj->getId()>0){
         $var = json_encode($rideObj);
         echo $var;
         fastcgi_finish_request();
-        
+
         $fbaseObj = new firebaseNotification();
 
         $notification['title']='Ride Alert';

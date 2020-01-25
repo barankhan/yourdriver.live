@@ -37,8 +37,14 @@ if($rideObj->getIsRideEnded()==0) {
     $transObj->setResponse("ride_ended_successfully");
     $transObj->setMessage("Your ride has been ended successfully");
     $transObj->setDriverBalance($driverObj->getBalance());
+    $var = json_encode($transObj);
+    echo $var;
+    fastcgi_finish_request();
+
     $rideObj->setResponse("ride_Ended");
     $rideObj->setMessage("Thanks for the ride! We hope you have enjoyed the service.");
+
+
 
     $payload['message'] = "Thanks for the ride! We hope you have enjoyed the service. Your fare is: ".$transObj->getTotalFare();
     $payload['key'] = "p_ride_ended";
@@ -49,13 +55,15 @@ if($rideObj->getIsRideEnded()==0) {
 }else{
     $transObj->setResponse("ride_ended_error");
     $transObj->setMessage("Ride has already been ended.!");
+    $var = json_encode($transObj);
+    echo $var;
 }
 
 
-$var = json_encode($transObj);
+
 $lr->setResponseBody($var);
 $lr->updateResponse();
-echo $var;
+
 
 
 

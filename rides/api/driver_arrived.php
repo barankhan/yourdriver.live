@@ -20,6 +20,9 @@ if($rideObj->getIsRideCancelled()==0){
     $rideObj->update();
     $rideObj->setResponse("driver_arrived");
     $rideObj->setMessage("Driver arrived at your location");
+    $var = json_encode($rideObj);
+    echo $var;
+    fastcgi_finish_request();
 
     $passengerObj  = new User();
     $passengerObj->getUserWithId($rideObj->getPassengerId());
@@ -32,18 +35,20 @@ if($rideObj->getIsRideCancelled()==0){
 
 
     $token = $passengerObj->getFirebaseToken();
-    $fabseRes = $fbaseObj->sendPayloadOnly($lr->getId(),$token,$payload,$notification,'high',20);
+    $fabseRes = $fbaseObj->sendPayloadOnly($lr->getId(),$token,$payload,$notification,'high',200);
 
 }else{
     $rideObj->setResponse("ride_canceled_by_passenger");
     $rideObj->setResponse("Sorry The Ride has been cancelled by the passenger");
+    $var = json_encode($rideObj);
+    echo $var;
 }
 
 
-$var = json_encode($rideObj);
+
 $lr->setResponseBody($var);
 $lr->updateResponse();
-echo $var;
+
 
 
 
