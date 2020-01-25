@@ -11,7 +11,7 @@ class DriverTransaction extends  baseModel implements JsonSerializable
     private $id,$driverId,$passengerId,$transactionType,$driverStartUpFare,$companyServiceCharges,$timeElapsedMinutes=0,$timeElapsedRate,
 $kmTravelled=0,$kmTravelledRate,$totalFare=0,$amountReceived=0,$createdAt,$updatedAt,$amountReceivedAt,$rideId,$totalAmount=0,$message,$response,
     $driverBalance,$companyOutwardHead,$outwardHeadAmount,$payableAmount,$companyInwardHead,$inwardHeadAmount,$transactionCompleted=0,
-    $driverInitialBalance,$passengerInitialBalance,$isCancelAdjustment=0;
+    $driverInitialBalance=0,$passengerInitialBalance=0,$isCancelAdjustment=0,$driverNewBalance=0,$passengerNewBalance=0;
 
 
 
@@ -27,10 +27,12 @@ $kmTravelled=0,$kmTravelledRate,$totalFare=0,$amountReceived=0,$createdAt,$updat
 
         $q = "INSERT INTO `transactions` (`driver_id`, `passenger_id`, `transaction_type`, `driver_start_up_fare`, 
 `company_service_charges`, `time_elapsed_minutes`, `time_elapsed_rate`, `km_travelled`, `km_travelled_rate`, `total_fare`, 
-`amount_received`, `amount_received_at`, `ride_id`, `total_amount`,`company_outward_head`,`outward_head_amount`,`company_inward_head`,`inward_head_amount`,`payable_amount`,`driver_initial_balance`,`passenger_initial_balance`,`transaction_completed`,`is_cancel_adjustment`) VALUES 
+`amount_received`, `amount_received_at`, `ride_id`, `total_amount`,`company_outward_head`,`outward_head_amount`,`company_inward_head`,`inward_head_amount`,
+`payable_amount`,`driver_initial_balance`,`passenger_initial_balance`,`transaction_completed`,`is_cancel_adjustment`,driver_new_balance,passenger_new_balance) VALUES 
 ( :driver_id ,  :passenger_id ,  :transaction_type ,  :driver_start_up_fare ,  :company_service_charges ,  :time_elapsed_minutes,  
 :time_elapsed_rate ,  :km_travelled,  :km_travelled_rate ,  :total_fare ,  :amount_received,  :amount_received_at ,  
-:ride_id ,  :total_amount ,:company_outward_head,:outward_head_amount,:company_inward_head,:inward_head_amount,:payable_amount,:driver_initial_balance,:passenger_initial_balance,:transaction_completed,:is_cancel_adjustment);  ";
+:ride_id ,  :total_amount ,:company_outward_head,:outward_head_amount,:company_inward_head,:inward_head_amount,:payable_amount
+,:driver_initial_balance,:passenger_initial_balance,:transaction_completed,:is_cancel_adjustment,:driver_new_balance,:passenger_new_balance);  ";
 
     $params = array( "driver_id"=>$this->driverId, "passenger_id"=>$this->passengerId, "transaction_type"=>$this->transactionType,
         "driver_start_up_fare"=>$this->driverStartUpFare, "company_service_charges"=>$this->companyServiceCharges, "time_elapsed_minutes"=>$this->timeElapsedMinutes,
@@ -40,7 +42,8 @@ $kmTravelled=0,$kmTravelledRate,$totalFare=0,$amountReceived=0,$createdAt,$updat
         "company_inward_head"=>$this->companyInwardHead,"inward_head_amount"=>$this->inwardHeadAmount,
         "payable_amount"=>$this->payableAmount,
         "driver_initial_balance"=>$this->driverInitialBalance,"passenger_initial_balance"=>$this->passengerInitialBalance,
-        "transaction_completed"=>$this->transactionCompleted,"is_cancel_adjustment"=>$this->isCancelAdjustment
+        "transaction_completed"=>$this->transactionCompleted,"is_cancel_adjustment"=>$this->isCancelAdjustment,
+        "driver_new_balance"=>$this->driverNewBalance,"passenger_new_balance"=>$this->passengerNewBalance
     );
 
         $this->setId($this->executeInsert($q,$params));
@@ -55,7 +58,8 @@ $kmTravelled=0,$kmTravelledRate,$totalFare=0,$amountReceived=0,$createdAt,$updat
  `km_travelled_rate` = :km_travelled_rate, `total_fare` = :total_fare, `amount_received` = :amount_received,  `amount_received_at` = :amount_received_at, 
  `ride_id` = :ride_id, `total_amount` = :total_amount,company_outward_head=:companyOutwardHead,outward_head_amount=:outwardHeadAmount
  ,company_inward_head=:companyInwardHead,inward_head_amount=:inwardHeadAmount,transaction_completed=:transactionCompleted,
- `driver_initial_balance`=:driver_initial_balance,`passenger_initial_balance`=:passenger_initial_balance,is_cancel_adjustment=:is_cancel_adjustment
+ `driver_initial_balance`=:driver_initial_balance,`passenger_initial_balance`=:passenger_initial_balance,is_cancel_adjustment=:is_cancel_adjustment,
+ driver_new_balance=:driver_new_balance,passenger_new_balance=:passenger_new_balance
  
   WHERE `id` = :id; ";
 
@@ -67,7 +71,8 @@ $kmTravelled=0,$kmTravelledRate,$totalFare=0,$amountReceived=0,$createdAt,$updat
             "companyInwardHead"=>$this->companyInwardHead,"inwardHeadAmount"=>$this->inwardHeadAmount,
             "transactionCompleted"=>$this->transactionCompleted,
             "driver_initial_balance"=>$this->driverInitialBalance,"passenger_initial_balance"=>$this->passengerInitialBalance,
-            "is_cancel_adjustment"=>$this->isCancelAdjustment
+            "is_cancel_adjustment"=>$this->isCancelAdjustment,
+            "driver_new_balance"=>$this->driverNewBalance,"passenger_new_balance"=>$this->passengerNewBalance
 
 
 
@@ -156,6 +161,40 @@ $kmTravelled=0,$kmTravelledRate,$totalFare=0,$amountReceived=0,$createdAt,$updat
         }
     }
 
+    /**
+     * @return int
+     */
+    public function getDriverNewBalance(): int
+    {
+        return $this->driverNewBalance;
+    }
+
+    /**
+     * @param int $driverNewBalance
+     */
+    public function setDriverNewBalance(int $driverNewBalance)
+    {
+        $this->driverNewBalance = bcdiv($driverNewBalance,1,2);
+    }
+
+    /**
+     * @return int
+     */
+    public function getPassengerNewBalance(): int
+    {
+        return $this->passengerNewBalance;
+    }
+
+    /**
+     * @param int $passengerNewBalance
+     */
+    public function setPassengerNewBalance(int $passengerNewBalance)
+    {
+        $this->passengerNewBalance = bcdiv($passengerNewBalance,1,2);
+    }
+
+
+
 
 
 
@@ -193,7 +232,7 @@ $kmTravelled=0,$kmTravelledRate,$totalFare=0,$amountReceived=0,$createdAt,$updat
      */
     public function setDriverInitialBalance($driverInitialBalance)
     {
-        $this->driverInitialBalance = $driverInitialBalance;
+        $this->driverInitialBalance = bcdiv($driverInitialBalance,1,2);
     }
 
     /**
@@ -209,7 +248,7 @@ $kmTravelled=0,$kmTravelledRate,$totalFare=0,$amountReceived=0,$createdAt,$updat
      */
     public function setPassengerInitialBalance($passengerInitialBalance)
     {
-        $this->passengerInitialBalance = $passengerInitialBalance;
+        $this->passengerInitialBalance = bcdiv($passengerInitialBalance,1,2);
     }
 
 
