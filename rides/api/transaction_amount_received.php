@@ -44,10 +44,7 @@ if($transObj->getTransactionCompleted()==0){
             $liabilityObj->insert();
 
             $transObj->setTransactionCompleted(1);
-            $transObj->update();
-            $transObj->settleCancelledAmount();
-            $transObj->setResponse("amount_update_success");
-            $transObj->setMessage("Your Transaction is completed successfully");
+
 
             $triggerFirebaseToPassenger = true;
             
@@ -56,6 +53,15 @@ if($transObj->getTransactionCompleted()==0){
 
             $driverObj->setBalance($driverObj->getBalance()-($amount_received-$transObj->getPayableAmount()));
             $driverObj->update();
+
+            $transObj->setPassengerNewBalance($passengerObj->getBalance());
+            $transObj->setDriverNewBalance($driverObj->getBalance());
+
+            $transObj->update();
+            $transObj->settleCancelledAmount();
+            $transObj->setResponse("amount_update_success");
+            $transObj->setMessage("Your Transaction is completed successfully");
+
 
         }else{
             $transObj->setResponse("wallet_in_access");

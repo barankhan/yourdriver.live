@@ -146,12 +146,15 @@ $kmTravelled=0,$kmTravelledRate,$totalFare=0,$amountReceived=0,$createdAt,$updat
                 $driverTransactionObj->setTransactionCompleted(1);
 
                 $passengerObj->setBalance($passengerObj->getBalance()+$driverTransactionObj->getTotalFare());
-
                 $paidCancObj->update();
                 $driverObj->update();
                 $driverTransactionObj->update();
                 $newDriverTransaction->update();
                 $passengerObj->update();
+
+                $this->setPassengerNewBalance($passengerObj->getBalance());
+                $this->setDriverNewBalance($driverObj->getBalance());
+                $this->update();
 
 
 

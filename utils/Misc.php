@@ -59,6 +59,10 @@ class Misc
                 $driverObj->update();
                 $passengerObj->update();
 
+                $tranObj->setPassengerNewBalance($passengerObj->getBalance());
+                $tranObj->setDriverNewBalance($driverObj->getBalance());
+
+
             }else{
                 $passengerObj->setBalance($passengerObj->getBalance()-$tranObj->getTotalFare());
                 $passengerObj->update();
@@ -174,7 +178,8 @@ class Misc
         $driverObj->update();
         $passengerObj->update();
 
-
+        $tranObj->setPassengerNewBalance($passengerObj->getBalance());
+        $tranObj->setDriverNewBalance($driverObj->getBalance());
 
         $tranObj->setTotalAmount();
         $tranObj->insert();
