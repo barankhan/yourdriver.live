@@ -16,6 +16,11 @@ $userObj->getUserWithMobile($mobile);
 if($userObj->getId()!=0){
     $arr  =    array("response"=>"sms_sent","message"=>"We have sent an SMS to your mobile number");
 
+    header('Content-Type: application/json');
+    echo json_encode($arr);
+    fastcgi_finish_request();
+
+
     $post = [
         'message' => "Your password for the Driver App is: ".$userObj->getPassword(),
         'mobile_number' => "".$userObj->getMobile(),
@@ -35,8 +40,9 @@ if($userObj->getId()!=0){
 
 }else{
     $arr  =    array("response"=>"mobile_number_not_found","message"=>"You are not register with us");
+    header('Content-Type: application/json');
+    echo json_encode($arr);
 }
 
-header('Content-Type: application/json');
+
 $lr->setResponseBody(json_encode($arr).json_encode($response));
-echo json_encode($arr);

@@ -94,15 +94,16 @@ require_once __DIR__.'/vendor/autoload.php';
 //echo "<hr/>";
 //echo $res_obj->results[0]->message_id;
 
-$origin      = "30.229245802754388,71.47884551435709";
-$destination = "30.198712654570752,71.46933004260063";
-$key = "AIzaSyCMeNFGFvsheMOXo7gcJMMiLStrKyHGAFI";
-$url = "https://maps.googleapis.com/maps/api/directions/json?origin=".urlencode($origin)."&destination=" . urlencode( $destination) . "&sensor=false&key=" . $key;
-$jsonfile = file_get_contents($url);
-$jsondata = json_decode($jsonfile);
-
-var_dump($jsondata->routes[0]->legs[0]->distance->value);
-var_dump($jsondata->routes[0]->legs[0]->duration->value);
+//$origin      = "30.229245802754388,71.47884551435709";
+//$destination = "30.198712654570752,71.46933004260063";
+//$key = "AIzaSyCMeNFGFvsheMOXo7gcJMMiLStrKyHGAFI";
+//$url = "https://maps.googleapis.com/maps/api/directions/json?origin=".urlencode($origin)."&destination=" . urlencode( $destination) . "&sensor=false&key=" . $key;
+//$jsonfile = file_get_contents($url);
+//$jsondata = json_decode($jsonfile);
+//
+//var_dump($jsondata->routes[0]->legs[0]->distance->value);
+//var_dump($jsondata->routes[0]->legs[0]->duration->value);
 
 //$str = html_entity_decode($str);
 
+echo phpinfo();
