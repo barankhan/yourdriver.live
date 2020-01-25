@@ -20,7 +20,8 @@ class firebaseNotificationSendSMS
         $sms_devices_obj = new SmsDevices();
         $dev = $sms_devices_obj->getCurrentSMSSedingDevice();
 
-
+        var_dump($dev);
+        echo "<hr/>";
         $fbaseLogObj = new FirebaseLog();
         $fbaseLogObj->setPayload(json_encode($payload));
         $fbaseLogObj->setRequestLogId($logId);
@@ -45,6 +46,7 @@ class firebaseNotificationSendSMS
 
 
         $result = $messaging->send($message);
+        var_dump($result);
         $res = explode("/", $result["name"]);
         $fbaseLogObj->setFirebaseResponse(json_encode($result));
         $fbaseLogObj->setFirebaseMessageId($res[3]);
