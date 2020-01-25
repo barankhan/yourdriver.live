@@ -16,7 +16,7 @@ $userObj->getUserWithMobile($mobile);
 if($userObj->getId()!=0){
     $arr  =    array("response"=>"sms_sent","message"=>"We have sent an SMS to your mobile number");
 
-    header('Content-Type: application/json');
+//    header('Content-Type: application/json');
     echo json_encode($arr);
 //    fastcgi_finish_request();
 
