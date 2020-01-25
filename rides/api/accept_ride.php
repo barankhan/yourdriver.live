@@ -23,20 +23,22 @@ if($response=='driver_assigned'){
     $passengerObj = new User();
     $passengerObj->getUserWithId($rideObj->getPassengerId());
 
-    $fbaseObj = new firebaseNotification();
 
-    $payload['message']="Driver is coming at your pickup location.";
-    $payload['key']="p_ride_accepted";
-    $payload['driver']=json_encode($driverObj);
-    $payload['ride']=json_encode($rideObj);
 
     $res_array["response"]="you_got_it";
     $res_array["message"]="Ride has been assigned to you";
     $res_array["user"]=$passengerObj;
     $res_array["ride"]=$rideObj;
 
+    $var = json_encode($res_array);
+    echo $vars;
+    fastcgi_finish_request();
 
-
+    $fbaseObj = new firebaseNotification();
+    $payload['message']="Driver is coming at your pickup location.";
+    $payload['key']="p_ride_accepted";
+    $payload['driver']=json_encode($driverObj);
+    $payload['ride']=json_encode($rideObj);
     $token = $passengerObj->getFirebaseToken();
     $fabseRes = $fbaseObj->sendPayloadOnly($lr->getId(),$token,$payload,null,"high",30);
 
@@ -45,11 +47,13 @@ if($response=='driver_assigned'){
 }else{
     $res_array["response"]="some_one_else_got_it";
     $res_array["message"]="Sorry you are late. Someone Picked the Ride";
+    $var = json_encode($res_array);
+    echo $vars;
 }
-$var = json_encode($res_array);
+
 $lr->setResponseBody($var);
 $lr->updateResponse();
-echo $var;
+
 
 
 
