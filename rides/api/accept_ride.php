@@ -31,7 +31,7 @@ if($response=='driver_assigned'){
     $res_array["ride"]=$rideObj;
 
     $var = json_encode($res_array);
-    echo $vars;
+    echo $var;
     fastcgi_finish_request();
 
     $fbaseObj = new firebaseNotification();
@@ -48,7 +48,7 @@ if($response=='driver_assigned'){
     $res_array["response"]="some_one_else_got_it";
     $res_array["message"]="Sorry you are late. Someone Picked the Ride";
     $var = json_encode($res_array);
-    echo $vars;
+    echo $var;
 }
 
 $lr->setResponseBody($var);
