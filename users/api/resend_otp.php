@@ -11,7 +11,7 @@ $lr->insertLog();
 
 
 $userObj = new User();
-$userObj->getUserWithMobile($mobile);
+$userObj->getUserWithMobile($_REQUEST['mobile']);
 if($userObj->getId()!=0) {
     $userObj->setResponse("inserted");
     header('Content-Type: application/json');
