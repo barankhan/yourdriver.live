@@ -23,7 +23,7 @@ $driver_types = array("Auto","Car","Bike");
 if($city=='multan'){
     $origin      = $_REQUEST['origin_lat'].",".$_REQUEST['origin_lng'];
     $destination      = $_REQUEST['destination_lat'].",".$_REQUEST['destination_lng'];
-    $key = "AIzaSyCMeNFGFvsheMOXo7gcJMMiLStrKyHGAFI";
+    $key = "AIzaSyCCqsVyBepTZWwra2IdMy0o-6Hrp0ZJY_E";
     $url = "https://maps.googleapis.com/maps/api/directions/json?origin=".urlencode($origin)."&destination=" . urlencode( $destination) . "&sensor=false&key=" . $key;
     $jsonfile = file_get_contents($url);
     $jsondata = json_decode($jsonfile);
