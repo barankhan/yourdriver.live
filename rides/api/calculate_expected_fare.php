@@ -26,7 +26,6 @@ if($city=='multan'){
     $key = "AIzaSyCCqsVyBepTZWwra2IdMy0o-6Hrp0ZJY_E";
     $url = "https://maps.googleapis.com/maps/api/directions/json?origin=".urlencode($origin)."&destination=" . urlencode( $destination) . "&sensor=false&key=" . $key;
     $jsonfile = file_get_contents($url);
-    var_dump($jsonfile);die;
     $jsondata = json_decode($jsonfile);
 
     $distance_in_meters = $jsondata->routes[0]->legs[0]->distance->value;
