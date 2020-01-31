@@ -112,7 +112,7 @@ class User extends  baseModel implements JsonSerializable {
      */
     public function getVehicleMade()
     {
-        return $this->vehicleMade;
+        return ucwords($this->vehicleMade);
     }
 
     /**
@@ -128,7 +128,7 @@ class User extends  baseModel implements JsonSerializable {
      */
     public function getVehicleColor()
     {
-        return $this->vehicleColor;
+        return ucwords($this->vehicleColor);
     }
 
     /**
@@ -489,7 +489,7 @@ class User extends  baseModel implements JsonSerializable {
      */
     public function getRegNo()
     {
-        return $this->regNo;
+        return ucwords($this->regNo);
     }
 
     /**
