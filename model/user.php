@@ -457,7 +457,7 @@ class User extends  baseModel implements JsonSerializable {
      */
     public function getRegAlphabet()
     {
-        return ucwords($this->regAlphabet);
+        return strtoupper($this->regAlphabet);
     }
 
     /**
