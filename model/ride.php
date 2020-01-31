@@ -12,12 +12,12 @@ class ride extends  baseModel implements JsonSerializable
 
     private $id=0,$passengerId,$driverId=0,$createdAt,$updatedAt,$pickupLat,$pickupLng,$vehicleType,$dropoffLat
     ,$dropoffLng,$response,$message,$isRideStarted=0,$isRideCancelled=0,$rideStartedAt,$rideCancelledAt,$driverLat,$driverLng,
-        $cancelledByTypeId=0,$isDriverArrived=0,$isRideEnded=0,$rideEndedAt,$driverArrivedAt,$distance,$rating;
+        $cancelledByTypeId=0,$isDriverArrived=0,$isRideEnded=0,$rideEndedAt,$driverArrivedAt,$distance,$rating,$pickupAddress,$dropoffAddress;
     public function insert(){
-        $q = "insert into rides(passenger_id,pickup_lat,pickup_lng,vehicle_type,dropoff_lat,dropoff_lng)
-            values(:passenger_id,:pickup_lat,:pickup_lng,:vehicle_type,:dropoff_lat,:dropoff_lng);";
+        $q = "insert into rides(passenger_id,pickup_lat,pickup_lng,vehicle_type,dropoff_lat,dropoff_lng,pickup_address,dropoff_address)
+            values(:passenger_id,:pickup_lat,:pickup_lng,:vehicle_type,:dropoff_lat,:dropoff_lng,:pickup_address,:dropoff_address);";
         $params = array("passenger_id"=>$this->passengerId,"pickup_lat"=>$this->pickupLat,"pickup_lng"=>$this->pickupLng
-        ,"vehicle_type"=>$this->vehicleType,"dropoff_lat"=>$this->dropoffLat,"dropoff_lng"=>$this->dropoffLng);
+        ,"vehicle_type"=>$this->vehicleType,"dropoff_lat"=>$this->dropoffLat,"dropoff_lng"=>$this->dropoffLng,"pickup_address"=>$this->pickupAddress,"dropoff_address"=>$this->dropoffAddress);
         $this->setId($this->executeInsert($q,$params));
     }
 
@@ -26,14 +26,14 @@ class ride extends  baseModel implements JsonSerializable
         $q = "update rides set is_ride_started=:isRideStarted,is_ride_cancelled=:isRideCancelled,ride_started_at=:rideStartedAt,
 ride_cancelled_at=:rideCancelledAt,driver_lat=:driverLat,driver_lng=:driverLng,cancelled_by_type_id=:cancelledByTypeId,
 is_driver_arrived=:isDriverArrived,driver_arrived_at=:driverArrivedAt,is_ride_ended=:isRideEnded,ride_ended_at=:rideEndedAt,
-distance=:distance,rating=:rating
+distance=:distance,rating=:rating,pickup_address=:pickup_address,dropoff_address=:dropoff_address
  
  where id=:id";
         $params = array("isRideStarted"=>$this->isRideStarted,"isRideCancelled"=>$this->isRideCancelled,
             "rideStartedAt"=>$this->rideStartedAt,"rideCancelledAt"=>$this->rideCancelledAt,"id"=>$this->id,
             "driverLat"=>$this->driverLat,"driverLng"=>$this->driverLng,"cancelledByTypeId"=>$this->cancelledByTypeId,
             "isDriverArrived"=>$this->isDriverArrived,"driverArrivedAt"=>$this->driverArrivedAt,"isRideEnded"=>$this->isRideEnded,
-            "rideEndedAt"=>$this->rideEndedAt,"distance"=>$this->distance,"rating"=>$this->rating
+            "rideEndedAt"=>$this->rideEndedAt,"distance"=>$this->distance,"rating"=>$this->rating,"pickup_address"=>$this->pickupAddress,"dropoff_address"=>$this->dropoffAddress
         );
 
         return $this->executeUpdate($q,$params);
@@ -86,6 +86,40 @@ distance=:distance,rating=:rating
             die("fucked");
         }
     }
+
+    /**
+     * @return mixed
+     */
+    public function getPickupAddress()
+    {
+        return $this->pickupAddress;
+    }
+
+    /**
+     * @param mixed $pickupAddress
+     */
+    public function setPickupAddress($pickupAddress)
+    {
+        $this->pickupAddress = $pickupAddress;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDropoffAddress()
+    {
+        return $this->dropoffAddress;
+    }
+
+    /**
+     * @param mixed $dropoffAddress
+     */
+    public function setDropoffAddress($dropoffAddress)
+    {
+        $this->dropoffAddress = $dropoffAddress;
+    }
+
+
 
 
     public function findRideWithId(){

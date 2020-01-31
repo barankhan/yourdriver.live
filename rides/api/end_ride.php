@@ -46,7 +46,7 @@ if($rideObj->getIsRideEnded()==0) {
 
 
 
-    $payload['message'] = "Thanks for using our service. Your fare is: ".$transObj->getTotalFare()." & payable amount is: ".$transObj->getPayableAmount();
+    $payload['message'] = "Thanks for using our service. Your fare is: ".$transObj->getTotalFare()." & Your payable amount is: ".$transObj->getPayableAmount();
     $payload['key'] = "p_ride_ended";
     $payload['ride'] = json_encode($rideObj);
     $fbaseObj = new firebaseNotification();

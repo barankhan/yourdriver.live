@@ -23,6 +23,7 @@ if(!empty($_REQUEST["dropoff_lat_lng"])){
     $dropoff_lat_lng = explode(",",$_REQUEST["dropoff_lat_lng"]);
     $rideObj->setDropoffLat($dropoff_lat_lng[0]);
     $rideObj->setDropoffLng($dropoff_lat_lng[1]);
+    $rideObj->setDropoffAddress($_REQUEST['dropoff_address']);
 
 }
 
@@ -34,6 +35,8 @@ if($userObj->getId()>0){
     $rideObj->setPickupLng($pickup_lat_lng[1]);
     $rideObj->setVehicleType($_REQUEST["vehicle_type"]);
     $rideObj->setPassengerId($userObj->getId());
+    $rideObj->setPickupAddress($_REQUEST['pickup_address']);
+
     $rideObj->insert();
 
     $drivers = $userObj->getAvailableDrivers($pickup_lat_lng[0],$pickup_lat_lng[1],$_REQUEST["vehicle_type"]);
