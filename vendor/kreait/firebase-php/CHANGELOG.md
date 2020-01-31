@@ -1,5 +1,23 @@
 # CHANGELOG
 
+## 4.39.1 - 2020-01-30
+
+* Messaging: The SDK was unable to handle numeric/numbers-only subscription topics. ([#373](https://github.com/kreait/firebase-php/issues/373))
+
+## 4.39.0 - 2020-01-17
+
+* Updated [`kreait/firebase-tokens`](https://github.com/kreait/firebase-tokens-php) to `^1.10` for better error handling and error messages
+* Added support for Guzzle 7 (requires [#256 in google/auth](https://github.com/googleapis/google-auth-library-php/pull/256) to be merged and released)
+* Restored the casting of scalars to strings in Cloud Message data ([#371](https://github.com/kreait/firebase-php/issues/371))
+
+## 4.38.1 - 2020-01-14
+
+* Fixed malformed tokens not being caught during ID Token verification ([#370](https://github.com/kreait/firebase-php/issues/370))
+
+## 4.38.0 - 2020-01-02
+
+* Validate Cloud Message data before casting it to strings (and failing while doing it) ([#365](https://github.com/kreait/firebase-php/issues/365), [#368](https://github.com/kreait/firebase-php/issues/368))
+
 ## 4.37.0 - 2019-12-13
 
 ### Auth

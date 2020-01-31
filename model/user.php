@@ -6,7 +6,7 @@ class User extends  baseModel implements JsonSerializable {
         $createdAt=null,$updatedAt=null,$isDeleted=0,$isActive=1,$isVerified=0,$isDriver=0,$response,$firebaseToken,
         $father,$cnic,$cnicFront,$cnicRear,$picture,$licence,$vehicleFront,$vehicleRear,$registration,$route,
         $regAlphabet,$regYear,$regNo,$lat,$lng,$isDriverOnline=0,$vehicleType='Auto',$isDriverOnTrip=0,$distance,$balance,
-    $totalRating=0,$totalRides=0,$rating=5,$totalRatedRides=0,$creditLimit,$message,$acceptancePoints,$vehicleMade,$vehicleColor,$onlineAt,$offlineAt;
+    $totalRating=0,$totalRides=0,$rating=5,$totalRatedRides=0,$creditLimit,$message,$acceptancePoints,$vehicleMade,$vehicleColor,$onlineAt,$offlineAt,$isAdmin=0;
 
 
     public function update(){
@@ -17,7 +17,7 @@ class User extends  baseModel implements JsonSerializable {
         route=:route,reg_alphabet=:regAlphabet,reg_year=:regYear,reg_no=:regNo,lat=:lat,lng=:lng,is_driver_online=:is_driver_online
         ,vehicle_type=:vehicleType,is_driver_on_trip=:isDriverOnTrip,balance=:balance,firebase_token=:firebaseToken,
          total_rating=:totalRating,total_rides=:totalRides,rating=:rating,total_rated_rides=:totalRatedRides,credit_limit=:creditLimit,acceptance_points=:acceptancePoints,
-         vehicle_made=:vehicleMade,vehicle_color=:vehicleColor,online_at=:onlineAt,offline_at=:offlineAt
+         vehicle_made=:vehicleMade,vehicle_color=:vehicleColor,online_at=:onlineAt,offline_at=:offlineAt,is_admin=:is_admin
          
          where id=:id";
             $params = array("id" => $this->id, "driverSteps" => $this->driverSteps, "name" => $this->name, "email" => $this->email, "password" => $this->password,
@@ -29,7 +29,7 @@ class User extends  baseModel implements JsonSerializable {
                 "is_driver_online"=>$this->isDriverOnline,"vehicleType"=>$this->vehicleType,"isDriverOnTrip"=>$this->isDriverOnTrip,
                 "balance"=>$this->balance,"firebaseToken"=>$this->firebaseToken,"totalRating"=>$this->totalRating,"totalRides"=>$this->totalRides,
                 "rating"=>$this->rating,"totalRatedRides"=>$this->totalRatedRides,"creditLimit"=>$this->creditLimit,"acceptancePoints"=>$this->acceptancePoints,
-                "vehicleMade"=>$this->vehicleMade,"vehicleColor"=>$this->vehicleColor,"onlineAt"=>$this->onlineAt,"offlineAt"=>$this->offlineAt
+                "vehicleMade"=>$this->vehicleMade,"vehicleColor"=>$this->vehicleColor,"onlineAt"=>$this->onlineAt,"offlineAt"=>$this->offlineAt,"is_admin"=>$this->isAdmin
 
             );
             return $this->executeUpdate($q, $params);
@@ -46,6 +46,25 @@ class User extends  baseModel implements JsonSerializable {
         $params = array("lat"=>$lat,"lat1"=>$lat,"lng"=>$lng,"limit"=>$limit,"radius"=>$radius,"vehicle_type"=>$vehicle_type);
         return $this->executeSelect($q,$params);
     }
+
+    /**
+     * @return int
+     */
+    public function getIsAdmin(): int
+    {
+        return $this->isAdmin;
+    }
+
+    /**
+     * @param int $isAdmin
+     */
+    public function setIsAdmin(int $isAdmin)
+    {
+        $this->isAdmin = $isAdmin;
+    }
+
+
+
 
 
 
@@ -860,6 +879,16 @@ class User extends  baseModel implements JsonSerializable {
     }
 
 
+    public function getAdminWithMobileAndPassword($mobile,$password){
+        $q  = "select * from users where mobile=:mobile and password=:password and is_admin=1";
+        $params = array("mobile"=>$mobile,"password"=>$password);
+        $rs = $this->executeSelectSingle($q,$params);
+        if($rs!=null){
+            $this->setAllFields($rs);
+        }
+    }
+
+
     public function updateFirebaseToken($firebaseToken){
         if(!empty($firebaseToken)) {
             $q = "update users set firebase_token=:firebase_token where id=:id";
@@ -903,7 +932,7 @@ class User extends  baseModel implements JsonSerializable {
 
 
     public function getAllApprovalRequiredDrivers(){
-        $q  = "select * from users where is_driver=0 and driver_steps=2 and is_verified=1";
+        $q  = "select * from users where is_driver=0 and driver_steps=2 and is_verified=1 order by id desc";
         return $this->executeSelect($q);
     }
 

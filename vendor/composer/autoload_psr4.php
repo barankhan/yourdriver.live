@@ -7,6 +7,7 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'libphonenumber\\' => array($vendorDir . '/giggsey/libphonenumber-for-php/src'),
+    'Symfony\\Polyfill\\Mbstring\\' => array($vendorDir . '/symfony/polyfill-mbstring'),
     'Superbalist\\Flysystem\\GoogleStorage\\' => array($vendorDir . '/superbalist/flysystem-google-storage/src'),
     'Riverline\\MultiPartParser\\' => array($vendorDir . '/riverline/multipart-parser/src'),
     'Psr\\SimpleCache\\' => array($vendorDir . '/psr/simple-cache/src'),
