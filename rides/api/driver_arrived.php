@@ -27,7 +27,7 @@ if($rideObj->getIsRideCancelled()==0){
     $passengerObj  = new User();
     $passengerObj->getUserWithId($rideObj->getPassengerId());
 
-    $payload['message']="Driver is reached at your pickup location!";
+    $payload['message']="Driver is reached at your pickup location! Please Meet him. (".$driverObj->getRegAlphabet()."-".$driverObj->getRegYear()."-".$driverObj->getRegNo().")";
     $payload['key']="p_driver_arrived";
     $payload['ride']=json_encode($rideObj);
 
