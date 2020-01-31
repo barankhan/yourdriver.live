@@ -27,6 +27,8 @@ $rideObj = new ride();
 $rideObj->setId($_REQUEST['ride_id']);
 $rideObj->findRideWithId();
 
+$passengerObj  = new User();
+$passengerObj->getUserWithId($rideObj->getPassengerId());
 
 
 if($rideObj->getDriverId()==0){
@@ -46,8 +48,6 @@ if($rideObj->getDriverId()==0){
     $driverObj = new User();
     $driverObj->getUserWithId($rideObj->getDriverId());
 
-    $passengerObj  = new User();
-    $passengerObj->getUserWithId($rideObj->getPassengerId());
 
 
     if($userObj->getIsDriver()==1){
