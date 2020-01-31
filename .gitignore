@@ -1,2 +1,3 @@
 .idea/
 model/baseModel.php
+model/env_constants.php

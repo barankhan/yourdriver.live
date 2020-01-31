@@ -1,7 +1,7 @@
 {
     "autoload": {
         "classmap": ["model/", "utils/"],
-        "files": [ "model/constants.php" ]
+        "files": [ "model/constants.php","model/env_constants.php" ]
     },
     "require": {
 
