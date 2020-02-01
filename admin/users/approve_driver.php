@@ -5,8 +5,7 @@
  * Date: 12/4/19
  * Time: 6:10 PM
  */
-require_once __DIR__."/../model/user.php";
-require_once __DIR__."/../utils/firebaseNotification.php";
+require_once __DIR__."/../partials/validate_session.php";
 
 $userObj = new User();
 $userObj->getUserWithId($_REQUEST['id']);
