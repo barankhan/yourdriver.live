@@ -51,7 +51,7 @@ if($rideObj->getIsRideEnded()==0) {
     $payload['ride'] = json_encode($rideObj);
     $fbaseObj = new firebaseNotification();
     $token = $passengerObj->getFirebaseToken();
-    $fabseRes = $fbaseObj->sendPayloadOnly($lr->getId(), $token, $payload, null, 'high',3600060);
+    $fabseRes = $fbaseObj->sendPayloadOnly($lr->getId(), $token, $payload, null, 'high',90);
 }else{
     $transObj->setResponse("ride_ended_error");
     $transObj->setMessage("Ride has already been ended.!");
