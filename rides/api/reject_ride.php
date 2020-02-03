@@ -17,7 +17,7 @@ $lr->setRequestHeader(json_encode($_SERVER));
 $lr->setMobileNumber($driver_id);
 $lr->insertLog();
 
-$rideObj = new RideAlert();
+$rideObj = new rideAlert();
 $rideObj->setRideId($_REQUEST['ride_id']);
 $rideObj->setDriverId($_REQUEST['driver_id']);
 $rideObj->findAlertByDriverId();

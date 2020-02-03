@@ -9,7 +9,7 @@ require_once "baseModel.php";
 class rideAlert extends  baseModel implements JsonSerializable
 {
 
-    private $id,$driverId,$rideId,$isAccepted=0,$acceptedAt,$isRejected=0,$rejectedAt;
+    private $id,$driverId,$rideId,$isAccepted=0,$acceptedAt,$isRejected=0,$rejectedAt,$createdAt,$updatedAt;
 
 
     public function insert(){
@@ -31,6 +31,38 @@ class rideAlert extends  baseModel implements JsonSerializable
         $q = "select * from ride_alerts where ride_id=:ride_id and driver_id=:driver_id";
         $params = array("ride_id"=>$this->rideId,"driver_id"=>$this->driverId);
         $this->setAllFields($this->executeSelectSingle($q,$params));
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * @param mixed $createdAt
+     */
+    public function setCreatedAt($createdAt)
+    {
+        $this->createdAt = $createdAt;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
+    }
+
+    /**
+     * @param mixed $updatedAt
+     */
+    public function setUpdatedAt($updatedAt)
+    {
+        $this->updatedAt = $updatedAt;
     }
 
 
