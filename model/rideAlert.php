@@ -9,7 +9,7 @@ require_once "baseModel.php";
 class rideAlert extends  baseModel implements JsonSerializable
 {
 
-    private $id,$driverId,$rideId,$isAccepted=0,$acceptedAt;
+    private $id,$driverId,$rideId,$isAccepted=0,$acceptedAt,$isRejected=0,$rejectedAt;
 
 
     public function insert(){
@@ -21,10 +21,55 @@ class rideAlert extends  baseModel implements JsonSerializable
 
 
     public function update(){
-        $q = "update ride_alerts set is_accepted=:isAccepted,accepted_at=now() where id=:id;";
-        $params = array("isAccepted"=>$this->isAccepted,"id"=>$this->id);
+        $q = "update ride_alerts set is_accepted=:is_accepted,accepted_at=:accepted_at,rejected_at=:rejected_at,is_rejected=:is_rejected where id=:id;";
+        $params = array("is_accepted"=>$this->isAccepted,"id"=>$this->id,"is_rejected"=>$this->isRejected,
+            "rejected_at"=>$this->rejectedAt,"accepted_at"=>$this->acceptedAt);
         return $this->executeUpdate($q,$params);
     }
+
+    public function findAlertByDriverId(){
+        $q = "select * from ride_alerts where ride_id=:ride_id and driver_id=:driver_id";
+        $params = array("ride_id"=>$this->rideId,"driver_id"=>$this->driverId);
+        $this->setAllFields($this->executeSelectSingle($q,$params));
+    }
+
+
+
+
+    /**
+     * @return mixed
+     */
+    public function getIsRejected()
+    {
+        return $this->isRejected;
+    }
+
+    /**
+     * @param mixed $isRejected
+     */
+    public function setIsRejected($isRejected)
+    {
+        $this->isRejected = $isRejected;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getRejectedAt()
+    {
+        return $this->rejectedAt;
+    }
+
+    /**
+     * @param mixed $rejectedAt
+     */
+    public function setRejectedAt($rejectedAt)
+    {
+        $this->rejectedAt = $rejectedAt;
+    }
+
+
+
 
     /**
      * @return mixed
