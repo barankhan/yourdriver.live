@@ -938,6 +938,37 @@ class User extends  baseModel implements JsonSerializable {
 
 
 
+    public function getAllUnVerifiedUsers($page,$limit=10){
+        $q  = "select * from users where  is_verified=0 and is_deleted=0 order by id desc limit ".(($page-1)*$limit).",".$limit.";";
+        return $this->executeSelect($q);
+    }
+
+
+    public function getAllUsers($where=null,$page=1,$limit=10){
+
+        $q  = "select * from users  ".($where!=null?$where:"")." order by id desc limit ".(($page-1)*$limit).",".$limit.";";
+        return $this->executeSelect($q);
+    }
+
+
+    public function getAllUsersCount($where=null){
+
+
+        $q  = "select count(*) as ct from users ".($where!=null?$where:"")."     ;";
+
+
+        $rs =  $this->executeSelectSingle($q);
+        return $rs['ct'];
+    }
+
+
+    public function getCountNotVerifiedUsers(){
+        $q  = "select count(*) as ct from users where  is_verified=0 and is_deleted=0";
+        $rs =  $this->executeSelectSingle($q);
+        return $rs['ct'];
+    }
+
+
 
 
 

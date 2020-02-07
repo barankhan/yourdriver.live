@@ -20,13 +20,13 @@
             <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">User</a>
             <ul class="collapse list-unstyled" id="homeSubmenu">
                 <li>
-                    <a href="<?php echo MY_HOST ?>admin/users/list_driver_aproval.php">Driver Approvals</a>
+                    <a href="<?php echo MY_HOST ?>admin/users/list_driver_approval.php">Driver Approvals</a>
                 </li>
                 <li>
-                    <a href="#">Home 2</a>
+                    <a href="<?php echo MY_HOST ?>admin/users/list_not_verified_users.php">Not Verified Users</a>
                 </li>
                 <li>
-                    <a href="#">Home 3</a>
+                    <a href="<?php echo MY_HOST ?>admin/users/list_users.php">Users</a>
                 </li>
             </ul>
         </li>
