@@ -87,6 +87,12 @@ distance=:distance,rating=:rating,pickup_address=:pickup_address,dropoff_address
         }
     }
 
+
+    public function getNonAssignedRides(){
+        $q = "SELECT * FROM driver.rides where coalesce(driver_id,0)=0 and coalesce(is_ride_cancelled)<>1 and TIMESTAMPDIFF(SECOND,created_at,now())>=8  order by id desc;";
+        return $this->executeSelect($q);
+    }
+
     /**
      * @return mixed
      */

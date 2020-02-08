@@ -33,6 +33,19 @@ class rideAlert extends  baseModel implements JsonSerializable
         $this->setAllFields($this->executeSelectSingle($q,$params));
     }
 
+
+    public function shouldCancelRideInCron($ride_id){
+        $q = 'SELECT if(TIMESTAMPDIFF(SECOND,updated_at,now())>40,"1","0") as val  FROM driver.ride_alerts where ride_id='.$ride_id.' order by id desc limit 1;';
+        $rs = $this->executeSelectSingle($q);
+
+        if($rs['val']==1){
+            return true;
+        }else{
+            return false;
+        }
+
+    }
+
     /**
      * @return mixed
      */
