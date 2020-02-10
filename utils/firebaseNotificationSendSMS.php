@@ -56,6 +56,35 @@ class firebaseNotificationSendSMS
     }
 
 
+
+    public function sendPayLoadToSMSOnly($device_token,$payload)
+    {
+
+
+        $factory = (new Factory())
+            ->withServiceAccount(__DIR__ . '/sendregistrationsms_firebasekey.json');
+//        $notification = Notification::fromArray($notification);
+
+
+        $config = AndroidConfig::fromArray([
+            'ttl' => "120s",
+            'priority' => 'high',
+            'data'=>$payload
+        ]);
+
+
+        $messaging = $factory->createMessaging();
+        $message = CloudMessage::withTarget('token', $device_token);
+        $message = $message->withAndroidConfig($config);
+
+
+        $result = $messaging->send($message);
+        $res = explode("/", $result["name"]);
+
+        return $result;
+    }
+
+
 }
 
 

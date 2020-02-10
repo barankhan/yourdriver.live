@@ -10,6 +10,8 @@ require_once "baseModel.php";
 
 class SmsDevices extends  baseModel {
 
+    private $id=0,$title,$token,$createdAt,$updatedAt;
+
     public function __construct(){
         parent::__construct();
     }
@@ -32,6 +34,110 @@ class SmsDevices extends  baseModel {
         $params = array("token"=>$token,"id"=>$id);
         return $this->executeUpdate($q,$params);
     }
+
+
+    public function getSMSSendingDevice($id){
+        $q = "select * from sms_devices where id=:id;";
+        $this->setAllFields($this->executeSelectSingle($q,array("id"=>$id)));
+    }
+
+
+
+    public function setAllFields($rs){
+
+        foreach($rs as $key => $val) {
+            $key = str_replace("_", " ", $key);
+            $key = ucwords($key);
+            $key = "set" . str_replace(" ", "", $key);
+            $this->$key($val);
+        }
+    }
+
+    /**
+     * @return int
+     */
+    public function getId(): int
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param int $id
+     */
+    public function setId(int $id)
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+    /**
+     * @param mixed $title
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getToken()
+    {
+        return $this->token;
+    }
+
+    /**
+     * @param mixed $token
+     */
+    public function setToken($token)
+    {
+        $this->token = $token;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * @param mixed $createdAt
+     */
+    public function setCreatedAt($createdAt)
+    {
+        $this->createdAt = $createdAt;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
+    }
+
+    /**
+     * @param mixed $updatedAt
+     */
+    public function setUpdatedAt($updatedAt)
+    {
+        $this->updatedAt = $updatedAt;
+    }
+
+
+
+
+
+
 
 }
 
