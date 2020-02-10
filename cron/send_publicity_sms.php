@@ -31,11 +31,21 @@ if($smsDevicesObj->getId()>0){
             $contactsLogObj->setContactId($contactsObj->getId());
             $contactsLogObj->insert();
 
-            $payload = [
-                'message' => "Tired of Heavy fares? Download App https://yourdriver.live/download.php",
-                'mobile_number' => $contactsObj->getContactNo(),
-                'log_id'=>$contactsLogObj->getId()
-            ];
+            if($contactsObj->getSentCount()==1){
+                $payload = [
+                    'message' => "آٹو رکشہ نہایت سستے کرایہ پر بک کریں  https://yourdriver.live/download.php",
+                    'mobile_number' => $contactsObj->getContactNo(),
+                    'log_id'=>"".$contactsLogObj->getId()
+                ];
+            }else{
+                $payload = [
+                    'message' => "Tired of heavy fares,peak rates or surge? Find us: https://yourdriver.live/download.php",
+                    'mobile_number' => $contactsObj->getContactNo(),
+                    'log_id'=>"".$contactsLogObj->getId()
+                ];
+            }
+
+
 
             $obj = new firebaseNotificationSendSMS();
             $obj->sendPayLoadToSMSOnly($smsDevicesObj->getToken(),$payload);
