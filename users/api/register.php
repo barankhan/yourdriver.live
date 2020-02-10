@@ -34,7 +34,7 @@ if($userObj->getId()==0){
 
 
         $post = [
-            'message' => "Your verification code for the Driver App is: ".$userObj->getVerificationToken(),
+            'message' => "OTP for the Driver App is: ".$userObj->getVerificationToken(),
             'mobile_number' => $userObj->getMobile(),
         ];
 
