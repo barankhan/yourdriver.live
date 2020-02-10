@@ -26,5 +26,12 @@ class SmsDevices extends  baseModel {
         return $this->executeUpdate($q,$params);
     }
 
+
+    public function updateDeviceTokenWithId($token,$id){
+        $q = "update sms_devices set token=:token where id=:id;";
+        $params = array("token"=>$token,"id"=>$id);
+        return $this->executeUpdate($q,$params);
+    }
+
 }
 
