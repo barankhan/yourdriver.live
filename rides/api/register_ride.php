@@ -79,6 +79,8 @@ if($userObj->getId()>0){
 
 
     }else{
+        $rideObj->setIsRideCancelled(1);
+        $rideObj->update();
         $rideObj->setResponse("no_driver_found");
         $rideObj->setMessage("Sorry no driver found in your area!");
         $var = json_encode($rideObj);
