@@ -35,6 +35,14 @@ class ContactsLog extends  baseModel implements JsonSerializable
     }
 
 
+    public function getLast15MinutesCountOfSender(){
+        $q = "select count(*) as ct from contacts_log where sent_by=:sent_by and created_at > NOW() - INTERVAL 15 MINUTE";
+        $params = array("sent_by"=>$this->sentBy);
+        $rs = $this->executeSelectSingle($q,$params);
+        return $rs['ct'];
+    }
+
+
 
 
 
