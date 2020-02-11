@@ -28,6 +28,9 @@
                 <li>
                     <a href="<?php echo MY_HOST ?>admin/users/list_users.php">Users</a>
                 </li>
+                <li>
+                    <a href="<?php echo MY_HOST ?>admin/users/online_drivers.php">Online Drivers</a>
+                </li>
             </ul>
         </li>
         <li>

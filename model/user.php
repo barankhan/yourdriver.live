@@ -943,6 +943,12 @@ class User extends  baseModel implements JsonSerializable {
     }
 
 
+    public function getOnlineDrivers(){
+        $q  = "select * from users where is_driver=1 and is_driver_online=1 order by online_at";
+        return $this->executeSelect($q);
+    }
+
+
 
     public function getAllUnVerifiedUsers($page,$limit=10){
         $q  = "select * from users where  is_verified=0 and is_deleted=0 order by id desc limit ".(($page-1)*$limit).",".$limit.";";
