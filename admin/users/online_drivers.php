@@ -33,13 +33,13 @@ foreach ($drivers as $driver){
             <?php echo $userObj->getFather(); ?>
         </div>
         <div class="col-sm">
-                <?php echo $userObj->getCnic();?>
+                <?php echo $userObj->getMobile();?>
         </div>
         <div class="col-sm">
                 <?php echo $userObj->getRegAlphabet()."-".$userObj->getRegYear()."-".$userObj->getRegNo();?>
         </div>
         <div class="col-sm">
-            <?php echo $userObj->getCreatedAt();?>
+            <?php echo $userObj->getOnlineAt();?>
         </div>
         <div class="col-sm p-2">
             <?php echo "<a target='_blank' href='https://www.google.com/maps/search/?api=1&query=".$userObj->getLat().",".$userObj->getLng()."' class='btn btn-primary'>Current Location</a>"; ?>
