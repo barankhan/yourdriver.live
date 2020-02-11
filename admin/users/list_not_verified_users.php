@@ -7,6 +7,12 @@
  */
 require_once __DIR__."/../partials/header.php";
 
+if(isset($_REQUEST['msg'])){
+    if($_REQUEST['msg']!=''){
+        echo "<div class='alert alert-success'>".$_REQUEST['msg']."</div>";
+    }
+}
+
 $userObj = new User();
 $page = (empty($_REQUEST['page'])?1:$_REQUEST['page']);
 $limit = (empty($_REQUEST['limit'])?10:$_REQUEST['limit']);
@@ -41,7 +47,9 @@ $i=0;
         <div class="col-sm">
             Registered At
         </div>
-
+        <div class="col-sm">
+            Actions
+        </div>
 
 
     </div>
@@ -68,7 +76,9 @@ foreach ($drivers as $driver){
         <div class="col-sm">
             <?php echo $userObj->getCreatedAt();?>
         </div>
-
+        <div class="col-sm">
+            <a class="btn btn-primary" href="actions/resend_sms.php?id=<?php echo $userObj->getId(); ?>">Resend SMS</a>
+        </div>
 
     </div>
 
