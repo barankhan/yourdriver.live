@@ -17,7 +17,7 @@ $contactsLogObj = new ContactsLog();
 
 
 if($smsDevicesObj->getId()>0){
-    echo "I found sms device\n";
+//    echo "I found sms device\n";
     $contactsLogObj->setSentBy($sender_id);
     if($contactsLogObj->getTodayCountOfSender()<2000 && $contactsLogObj->getLast15MinutesCountOfSender()<200){
         $contactsObj = new Contacts();
@@ -57,6 +57,6 @@ if($smsDevicesObj->getId()>0){
 
 
 }else{
-    echo "no device found\n";
+//    echo "no device found\n";
 }
 
