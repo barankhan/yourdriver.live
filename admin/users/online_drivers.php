@@ -24,6 +24,9 @@ foreach ($drivers as $driver){
     ?>
     <div class="row" style="background-color: <?php echo ($i++%2==0?'#dcdcdc':'#aaaaaa'); ?>"   >
         <div class="col-sm">
+            <?php echo $userObj->getId(); ?>
+        </div>
+        <div class="col-sm">
             <?php echo $userObj->getName(); ?>
         </div>
         <div class="col-sm">
