@@ -18,7 +18,7 @@
         <p>Welcome <?php echo $_SESSION['name']; ?></p>
         <li class="active">
             <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">User</a>
-            <ul class="collapse list-unstyled" id="homeSubmenu">
+            <ul class="list-unstyled" id="homeSubmenu">
                 <li>
                     <a href="<?php echo MY_HOST ?>admin/users/list_driver_approval.php">Driver Approvals</a>
                 </li>
