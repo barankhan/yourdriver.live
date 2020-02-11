@@ -9,12 +9,12 @@ require_once __DIR__."/../vendor/autoload.php";
 class RidePath extends  baseModel implements JsonSerializable
 {
 
-    public $id,$rideId,$lat,$lng,$createdAt,$updatedAt;
+    public $id,$rideId=0,$lat,$lng,$createdAt,$updatedAt,$driverId;
 
 
     public function insert(){
-        $q = "insert into ride_paths (ride_id,lat,lng) values (:rideId,:lat,:lng);";
-        $params = array("rideId"=>$this->rideId,"lat"=>$this->lat,"lng"=>$this->lng);
+        $q = "insert into ride_paths (ride_id,lat,lng,driver_id) values (:rideId,:lat,:lng,:driverId);";
+        $params = array("rideId"=>$this->rideId,"lat"=>$this->lat,"lng"=>$this->lng,"driverId"=>$this->driverId);
         $this->setId($this->executeInsert($q,$params));
 
     }
@@ -24,6 +24,25 @@ class RidePath extends  baseModel implements JsonSerializable
     {
         parent::__construct();
     }
+
+    /**
+     * @return mixed
+     */
+    public function getDriverId()
+    {
+        return $this->driverId;
+    }
+
+    /**
+     * @param mixed $driverId
+     */
+    public function setDriverId($driverId)
+    {
+        $this->driverId = $driverId;
+    }
+
+
+
 
 
     /**

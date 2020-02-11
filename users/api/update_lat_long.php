@@ -33,17 +33,26 @@ if($_REQUEST['passenger_id']!=''){
     $payload['lng']=$_REQUEST['lng'];
     $token = $passObj->getFirebaseToken();
     $fabseRes = $fbaseObj->sendPayloadOnly($lr->getId(),$token,$payload,null,'normal');
-    if($_REQUEST['ride_id']!=''){
-        $rideObj = new ride();
-        $rideObj->setId($_REQUEST['ride_id']);
-        $rideObj->findRideWithId();
-        if($rideObj->getIsRideStarted()==1){
-            $ridePathObj = new RidePath();
-            $ridePathObj->setRideId($rideObj->getId());
-            $ridePathObj->setLat($_REQUEST['lat']);
-            $ridePathObj->setLng($_REQUEST['lng']);
-            $ridePathObj->insert();
-        }
+
+}
+
+
+if($_REQUEST['ride_id']!=''){
+    $rideObj = new ride();
+    $rideObj->setId($_REQUEST['ride_id']);
+    $rideObj->findRideWithId();
+    if($rideObj->getIsRideStarted()==1){
+        $ridePathObj = new RidePath();
+        $ridePathObj->setRideId($rideObj->getId());
+        $ridePathObj->setLat($_REQUEST['lat']);
+        $ridePathObj->setLng($_REQUEST['lng']);
+        $ridePathObj->insert();
     }
+}else{
+    $ridePathObj = new RidePath();
+    $ridePathObj->setDriverId($userObj->getId());
+    $ridePathObj->setLat($_REQUEST['lat']);
+    $ridePathObj->setLng($_REQUEST['lng']);
+    $ridePathObj->insert();
 }
 

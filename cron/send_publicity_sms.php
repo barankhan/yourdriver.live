@@ -17,7 +17,7 @@ $contactsLogObj = new ContactsLog();
 
 
 if($smsDevicesObj->getId()>0) {
-    echo "I found sms device\n";
+
     $contactsLogObj->setSentBy($sender_id);
     if ($contactsLogObj->getTodayCountOfSender() < 2000 && $contactsLogObj->getLast15MinutesCountOfSender() < 200) {
         $contactsObj = new Contacts();
@@ -30,9 +30,7 @@ if($smsDevicesObj->getId()>0) {
             $contactsLogObj->setSentBy($sender_id);
             $contactsLogObj->setContactId($contactsObj->getId());
             $contactsLogObj->insert();
-            echo "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%55\n";
-            echo $contactsLogObj->getId()."\n";
-            echo "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%55\n";
+
 
             if ($contactsObj->getSentCount() == 1) {
                 $payload = [
@@ -57,6 +55,6 @@ if($smsDevicesObj->getId()>0) {
     }
 
 }else{
-    echo "no device found\n";
+
 }
 
