@@ -42,7 +42,7 @@ foreach ($drivers as $driver){
             <?php echo $userObj->getOnlineAt();?>
         </div>
         <div class="col-sm p-2">
-            <?php echo "<a target='_blank' href='https://www.google.com/maps/search/?api=1&query=".$userObj->getLat().",".$userObj->getLng()."' class='btn btn-primary'>Current Location</a>"; ?>
+            <?php echo "<a target='_blank' href='actions/driver_current_location.php?id=".$userObj->getId()."' class='btn btn-primary'>Current Location</a>"; ?>
         </div>
 
     </div>
