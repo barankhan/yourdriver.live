@@ -49,6 +49,8 @@ foreach ($drivers as $driver){
 
 <?php
 }
+
+echo "Total Online Drivers: ".$i;
 ?>
 
 
