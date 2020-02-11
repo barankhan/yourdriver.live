@@ -16,47 +16,47 @@ $smsDevicesObj->getSMSSendingDevice($sender_id);
 $contactsLogObj = new ContactsLog();
 
 
-if($smsDevicesObj->getId()>0){
-//    echo "I found sms device\n";
+if($smsDevicesObj->getId()>0) {
+    echo "I found sms device\n";
     $contactsLogObj->setSentBy($sender_id);
-    if($contactsLogObj->getTodayCountOfSender()<2000 && $contactsLogObj->getLast15MinutesCountOfSender()<200){
+    if ($contactsLogObj->getTodayCountOfSender() < 2000 && $contactsLogObj->getLast15MinutesCountOfSender() < 200) {
         $contactsObj = new Contacts();
         $contactsObj->setSentBy($sender_id);
         $contactsObj->getNumberToSendSMS();
-        if($contactsObj->getId()>0){
+        if ($contactsObj->getId() > 0) {
             $contactsObj->setSentBy($sender_id);
-            $contactsObj->setSentCount($contactsObj->getSentCount()+1);
+            $contactsObj->setSentCount($contactsObj->getSentCount() + 1);
             $contactsObj->update();
             $contactsLogObj->setSentBy($sender_id);
             $contactsLogObj->setContactId($contactsObj->getId());
             $contactsLogObj->insert();
+            echo "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%55\n";
+            echo $contactsLogObj->getId()."\n";
+            echo "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%55\n";
 
-            if($contactsObj->getSentCount()==1){
+            if ($contactsObj->getSentCount() == 1) {
                 $payload = [
                     'message' => "آٹو رکشہ نہایت سستے کرایہ پر بک کریں  https://yourdriver.live/download.php",
                     'mobile_number' => $contactsObj->getContactNo(),
-                    'log_id'=>"".$contactsLogObj->getId()
+                    'log_id' => "" . $contactsLogObj->getId()
                 ];
-            }else{
+            } else {
                 $payload = [
                     'message' => "Tired of heavy fares,peak rates or surge? Find us: https://yourdriver.live/download.php",
                     'mobile_number' => $contactsObj->getContactNo(),
-                    'log_id'=>"".$contactsLogObj->getId()
+                    'log_id' => "" . $contactsLogObj->getId()
                 ];
             }
 
 
-
             $obj = new firebaseNotificationSendSMS();
-            $obj->sendPayLoadToSMSOnly($smsDevicesObj->getToken(),$payload);
+            $obj->sendPayLoadToSMSOnly($smsDevicesObj->getToken(), $payload);
 
 
         }
     }
 
-
-
 }else{
-//    echo "no device found\n";
+    echo "no device found\n";
 }
 
