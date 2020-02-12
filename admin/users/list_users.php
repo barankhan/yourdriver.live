@@ -49,7 +49,7 @@ $i=0;
             Mobile
         </div>
         <div class="col-sm">
-            Verification Token
+            Email
         </div>
         <div class="col-sm">
             Registered At
@@ -76,7 +76,7 @@ foreach ($drivers as $driver){
             <?php echo $userObj->getMobile(); ?>
         </div>
         <div class="col-sm">
-            <?php echo $userObj->getVerificationToken(); ?>
+            <?php echo $userObj->getEmail(); ?>
         </div>
         <div class="col-sm">
             <?php echo $userObj->getCreatedAt();?>
