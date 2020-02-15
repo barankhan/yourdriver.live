@@ -82,7 +82,14 @@ if($userObj->getId()>0){
         $rideObj->setIsRideCancelled(1);
         $rideObj->update();
         $rideObj->setResponse("no_driver_found");
-        $rideObj->setMessage("Sorry no driver found in your area!");
+
+        if($_REQUEST["vehicle_type"]=="Auto"){
+            $rideObj->setMessage("Sorry no driver found in your area!");
+        }else{
+            $rideObj->setMessage($_REQUEST["vehicle_type"]." is coming Soon!");
+        }
+
+
         $var = json_encode($rideObj);
         echo $var;
     }
