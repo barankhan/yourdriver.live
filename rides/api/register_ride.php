@@ -86,7 +86,7 @@ if($userObj->getId()>0){
         if($_REQUEST["vehicle_type"]=="Auto"){
             $rideObj->setMessage("Sorry no driver found in your area!");
         }else{
-            $rideObj->setMessage($_REQUEST["vehicle_type"]." is coming Soon!");
+            $rideObj->setMessage($_REQUEST["vehicle_type"]." service is launching Soon!");
         }
 
 
