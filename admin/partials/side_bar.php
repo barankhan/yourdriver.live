@@ -11,7 +11,7 @@
 
 <nav id="sidebar">
     <div class="sidebar-header">
-        <h3>Driver Admin Panel</h3>
+        <h3><a href="/admin/">Driver Admin Panel</a></h3>
     </div>
 
     <ul class="list-unstyled components">
@@ -34,7 +34,7 @@
             </ul>
         </li>
         <li>
-            <a href="#">About</a>
+            <a href="<?php echo MY_HOST ?>admin/support_tickets/tickets.php">Support Tickets</a>
         </li>
         <li>
             <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Pages</a>

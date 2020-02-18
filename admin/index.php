@@ -7,36 +7,111 @@
  */
 require_once __DIR__."/partials/header.php";
 
+$userObj = new User();
+$rs = $userObj->getCurrentWeekRegistrationCounts();
+
+$supportTicketsObj = new SupportTicket();
+$supportTicketsRs = $supportTicketsObj->getLatestPendingReplyOpenTicketsCount();
+
+$rideObj = new ride();
+$rideRs = $rideObj->getEndedRidesCountInCurrentWeek();
+$passengerCancelledRs = $rideObj->getCancelledRidesInCurrentWeek(1);
+$driverCancelledRs = $rideObj->getCancelledRidesInCurrentWeek(2);
+
+
 ?>
+    <div class="card float-left" style="width: 18rem;">
+        <div class="card-header">
+            Registration Counts
+        </div>
+        <ul class="list-group">
+            <?php foreach($rs as $r) { ?>
+
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <?php echo $r['created_date'] ?>
+                    <span class="badge badge-primary badge-pill"><?php echo $r['ct'] ?></span>
+                </li>
+
+
+            <?php } ?>
+        </ul>
+    </div>
+
+    <div class="card float-left" style="width: 18rem;">
+        <div class="card-header">
+            Completed Rides
+        </div>
+        <ul class="list-group">
+            <?php foreach($rideRs as $r) { ?>
+
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <?php echo $r['ride_ended_at'] ?>
+                    <span class="badge badge-primary badge-pill"><?php echo $r['ct'] ?></span>
+                </li>
+
+
+            <?php } ?>
+        </ul>
+    </div>
 
 
 
+    <div class="card float-left" style="width: 18rem;">
+        <div class="card-header">
+            Cancelled by passenger
+        </div>
+        <ul class="list-group">
+            <?php foreach($passengerCancelledRs as $r) { ?>
+
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <?php echo $r['ride_cancelled_at'] ?>
+                    <span class="badge badge-primary badge-pill"><?php echo $r['ct'] ?></span>
+                </li>
+
+
+            <?php } ?>
+        </ul>
+    </div>
 
 
 
+    <div class="card float-left" style="width: 18rem;">
+        <div class="card-header">
+            Cancelled by driver
+        </div>
+        <ul class="list-group">
+            <?php foreach($driverCancelledRs as $r) { ?>
 
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent velit orci, elementum ac ultricies eu, condimentum quis arcu. Nulla consectetur nisi quis libero ultricies, id porta lacus tempus. Suspendisse sollicitudin sagittis diam, ultricies varius dolor ornare ut. Morbi faucibus ipsum metus, quis faucibus elit dapibus non. Nunc venenatis dictum nunc, eget congue lectus vehicula volutpat. Quisque turpis ex, eleifend vitae erat eu, dapibus iaculis velit. Donec lectus metus, luctus mollis semper a, scelerisque quis est. Suspendisse enim magna, imperdiet vitae risus nec, fringilla commodo diam. Curabitur vitae pellentesque magna. Ut dictum feugiat commodo. Integer vitae interdum libero. Aliquam congue pulvinar magna, cursus bibendum purus laoreet non. Nunc non ligula sit amet diam euismod rhoncus. Ut elit erat, porttitor a laoreet sit amet, feugiat ut augue. Morbi luctus dui ut massa eleifend efficitur ut vel nulla.
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <?php echo $r['ride_cancelled_at'] ?>
+                    <span class="badge badge-primary badge-pill"><?php echo $r['ct'] ?></span>
+                </li>
 
-        Quisque massa mauris, sagittis quis imperdiet eget, sagittis eget elit. Nulla eu elit nec dui ullamcorper maximus et et massa. Vestibulum non luctus felis. Nulla bibendum, eros laoreet tempus vestibulum, lacus sem tempor eros, id lobortis massa orci non magna. Nulla aliquet facilisis dui eu varius. Nunc a mi est. Morbi viverra, neque id varius interdum, nisl nunc lobortis justo, vel tincidunt turpis sem ut eros. Proin ullamcorper eu libero ac vestibulum. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Etiam lacus urna, cursus ut ipsum eu, accumsan pharetra libero. Nulla a quam consequat, malesuada tortor sit amet, rutrum nisl. Pellentesque pretium vitae turpis in hendrerit. Sed eget mauris augue.
 
-        Proin ut magna eleifend, posuere eros vitae, tincidunt odio. Quisque ultricies lorem rutrum, ullamcorper tortor eget, molestie libero. Sed in dui et ligula cursus finibus. Nunc erat purus, auctor quis pretium a, venenatis nec nunc. Curabitur facilisis leo est, id ullamcorper nibh mollis ut. Sed ac augue vel turpis aliquam congue sit amet sit amet tortor. Cras risus velit, mattis sodales elit ut, tincidunt hendrerit lorem. Donec est ex, condimentum at sagittis eu, finibus ac nibh. Sed condimentum congue nulla.
-
-        Etiam vitae pharetra lectus. Morbi id dignissim justo. Curabitur vulputate ullamcorper lectus, nec sollicitudin justo faucibus in. Sed eget velit id lectus rhoncus ornare in ut lectus. Aliquam urna justo, iaculis et vulputate et, lobortis quis mi. Maecenas pulvinar nisi metus, vel posuere arcu lobortis in. Fusce laoreet dolor id massa feugiat cursus. Phasellus vel nisl quis ante vestibulum consequat.
-
-        Mauris dapibus ac ipsum nec aliquam. Quisque gravida feugiat cursus. Donec vel purus feugiat, ornare ante eu, dignissim purus. Aliquam erat volutpat. Fusce vulputate lacus justo, porta laoreet ex commodo in. Maecenas sit amet ultrices ante. Fusce sed bibendum risus. Sed tristique mi vel lacus molestie, vel venenatis nulla ultrices.
+            <?php } ?>
+        </ul>
     </div>
 
 
 
 
 
+    <div class="card float-left ml-2" style="width: 18rem;">
+        <div class="card-header">
+            Stats
+        </div>
+        <ul class="list-group">
+
+
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    Unanswered tickets
+                    <span class="badge badge-primary badge-pill"><?php echo $supportTicketsRs['ct'] ?></span>
+                </li>
 
 
 
-
-
-
-
+        </ul>
+    </div>
 
 <?php
 require_once __DIR__."/../partials/footer.php";

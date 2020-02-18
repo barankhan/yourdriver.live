@@ -52,6 +52,12 @@ class SupportTicket extends  baseModel implements JsonSerializable {
     }
 
 
+    public function getLatestPendingReplyOpenTicketsCount(){
+        $q = "select count(*) as ct from support_tickets s,support_ticket_history h where s.id=h.support_ticket_id and h.is_replied=0 and s.is_closed=0 group by s.id order by s.updated_at desc ";
+        return $this->executeSelectSingle($q);
+    }
+
+
 
     public function getSupportTicketOfRide(){
         $q = "select * from support_tickets where ride_id=:ride_id ;";

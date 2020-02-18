@@ -53,6 +53,14 @@ class User extends  baseModel implements JsonSerializable {
         return $this->executeSelect($q,$params);
     }
 
+
+
+    public function getCurrentWeekRegistrationCounts(){
+        $q = "SELECT date(created_at) as created_date,count(*) as ct FROM driver.users where created_at >= DATE(NOW()) - INTERVAL 7 DAY and  is_verified=1 group by date(created_at) order by date(created_at) desc limit 7";
+        return $this->executeSelect($q);
+
+    }
+
     /**
      * @return int
      */

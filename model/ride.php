@@ -93,6 +93,22 @@ distance=:distance,rating=:rating,pickup_address=:pickup_address,dropoff_address
         return $this->executeSelect($q);
     }
 
+
+    public function getEndedRidesCountInCurrentWeek(){
+        $q = "SELECT date(ride_ended_at) as ride_ended_at ,count(*) ct FROM driver.rides where ride_ended_at >= DATE(NOW()) - INTERVAL 7 DAY and is_ride_ended=1 group by date(ride_ended_at) order by date(ride_ended_at) desc limit 7;";
+        return $this->executeSelect($q);
+
+    }
+
+
+    // default by passenger
+    public function getCancelledRidesInCurrentWeek($cancelled_by=1){
+        $q = "SELECT date(ride_cancelled_at) as ride_cancelled_at ,count(*) ct FROM driver.rides where ride_cancelled_at >= DATE(NOW()) - INTERVAL 7 DAY and cancelled_by_type_id=:cancelled_by_type_id and is_ride_cancelled=1 group by date(ride_cancelled_at) order by date(ride_cancelled_at) desc limit 7;";
+        $params = array("cancelled_by_type_id"=>$cancelled_by);
+        return $this->executeSelect($q,$params);
+    }
+
+
     /**
      * @return mixed
      */
