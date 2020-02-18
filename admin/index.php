@@ -10,6 +10,14 @@ require_once __DIR__."/partials/header.php";
 $userObj = new User();
 $rs = $userObj->getCurrentWeekRegistrationCounts();
 
+
+$rsUserCount = $userObj->getRegisterUsersCount();
+$rsDriverCount = $userObj->getRegisterDriversCount();
+
+
+
+
+
 $supportTicketsObj = new SupportTicket();
 $supportTicketsRs = $supportTicketsObj->getLatestPendingReplyOpenTicketsCount();
 
@@ -17,6 +25,8 @@ $rideObj = new ride();
 $rideRs = $rideObj->getEndedRidesCountInCurrentWeek();
 $passengerCancelledRs = $rideObj->getCancelledRidesInCurrentWeek(1);
 $driverCancelledRs = $rideObj->getCancelledRidesInCurrentWeek(2);
+
+
 
 
 ?>
@@ -108,6 +118,16 @@ $driverCancelledRs = $rideObj->getCancelledRidesInCurrentWeek(2);
                     <span class="badge badge-primary badge-pill"><?php echo $supportTicketsRs['ct'] ?></span>
                 </li>
 
+
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                Register Passengers:
+                <span class="badge badge-primary badge-pill"><?php echo $rsUserCount ?></span>
+            </li>
+
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                Register Drivers
+                <span class="badge badge-primary badge-pill"><?php echo $rsDriverCount ?></span>
+            </li>
 
 
         </ul>

@@ -989,6 +989,20 @@ class User extends  baseModel implements JsonSerializable {
     }
 
 
+    public function getRegisterUsersCount(){
+        $q  = "select count(*) as ct from users where  is_verified=0 and is_deleted=0 and is_driver=0";
+        $rs =  $this->executeSelectSingle($q);
+        return $rs['ct'];
+    }
+
+
+    public function getRegisterDriversCount(){
+        $q  = "select count(*) as ct from users where  is_verified=0 and is_deleted=0 and is_driver=0";
+        $rs =  $this->executeSelectSingle($q);
+        return $rs['ct'];
+    }
+
+
 
 
 
