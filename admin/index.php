@@ -30,7 +30,7 @@ $driverCancelledRs = $rideObj->getCancelledRidesInCurrentWeek(2);
 
 
 ?>
-    <div class="card float-left" style="width: 18rem;">
+    <div class="card float-left  ml-2" style="width: 18rem;">
         <div class="card-header">
             Registration Counts
         </div>
@@ -47,7 +47,7 @@ $driverCancelledRs = $rideObj->getCancelledRidesInCurrentWeek(2);
         </ul>
     </div>
 
-    <div class="card float-left" style="width: 18rem;">
+    <div class="card float-left  ml-2" style="width: 18rem;">
         <div class="card-header">
             Completed Rides
         </div>
@@ -66,7 +66,7 @@ $driverCancelledRs = $rideObj->getCancelledRidesInCurrentWeek(2);
 
 
 
-    <div class="card float-left" style="width: 18rem;">
+    <div class="card float-left  ml-2" style="width: 18rem;">
         <div class="card-header">
             Cancelled by passenger
         </div>
@@ -85,7 +85,7 @@ $driverCancelledRs = $rideObj->getCancelledRidesInCurrentWeek(2);
 
 
 
-    <div class="card float-left" style="width: 18rem;">
+    <div class="card float-left  ml-2" style="width: 18rem;">
         <div class="card-header">
             Cancelled by driver
         </div>
