@@ -31,6 +31,9 @@ $alerts = $rideAlertObject->findAlertsWithDriverInfoByRideId($ride_id);
         <div class="col-sm">
             Accepted At
         </div>
+        <div class="col-sm">
+            Driver Location
+        </div>
     </div>
 
 
@@ -60,7 +63,11 @@ foreach ($alerts as $alert){
             <?php echo $alert['accepted_at'] ?>
         </div>
 
-
+        <?php if($alert['driver_lat']>0) {  ?>
+         <div class="col-sm p-2">
+            <?php echo "<a target='_blank' href='https://www.google.com/maps/search/?api=1&query=". $alert['driver_lat'].",".$alert['driver_lng']."' class='btn btn-primary'>Location</a>"; ?>
+        </div>
+        <?php } ?>
     </div>
 
     <?php
