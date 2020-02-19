@@ -89,13 +89,13 @@ distance=:distance,rating=:rating,pickup_address=:pickup_address,dropoff_address
 
 
     public function getNonAssignedRides(){
-        $q = "SELECT * FROM driver.rides where coalesce(driver_id,0)=0 and coalesce(is_ride_cancelled)<>1 and TIMESTAMPDIFF(SECOND,created_at,now())>=8  order by id desc;";
+        $q = "SELECT * FROM rides where coalesce(driver_id,0)=0 and coalesce(is_ride_cancelled)<>1 and TIMESTAMPDIFF(SECOND,created_at,now())>=8  order by id desc;";
         return $this->executeSelect($q);
     }
 
 
     public function getEndedRidesCountInCurrentWeek(){
-        $q = "SELECT date(ride_ended_at) as ride_ended_at ,count(*) ct FROM driver.rides where ride_ended_at >= DATE(NOW()) - INTERVAL 7 DAY and is_ride_ended=1 group by date(ride_ended_at) order by date(ride_ended_at) desc limit 7;";
+        $q = "SELECT date(ride_ended_at) as ride_ended_at ,count(*) ct FROM rides where ride_ended_at >= DATE(NOW()) - INTERVAL 7 DAY and is_ride_ended=1 group by date(ride_ended_at) order by date(ride_ended_at) desc limit 7;";
         return $this->executeSelect($q);
 
     }
@@ -103,17 +103,35 @@ distance=:distance,rating=:rating,pickup_address=:pickup_address,dropoff_address
 
     // default by passenger
     public function getCancelledRidesInCurrentWeek($cancelled_by=1){
-        $q = "SELECT date(ride_cancelled_at) as ride_cancelled_at ,count(*) ct FROM driver.rides where ride_cancelled_at >= DATE(NOW()) - INTERVAL 7 DAY and cancelled_by_type_id=:cancelled_by_type_id and is_ride_cancelled=1 group by date(ride_cancelled_at) order by date(ride_cancelled_at) desc limit 7;";
+        $q = "SELECT date(ride_cancelled_at) as ride_cancelled_at ,count(*) ct FROM rides where ride_cancelled_at >= DATE(NOW()) - INTERVAL 7 DAY and cancelled_by_type_id=:cancelled_by_type_id and is_ride_cancelled=1 group by date(ride_cancelled_at) order by date(ride_cancelled_at) desc limit 7;";
         $params = array("cancelled_by_type_id"=>$cancelled_by);
         return $this->executeSelect($q,$params);
     }
 
 
 
-    public function getUnAttendedAutoAutoRides(){
-        $q = "SELECT date(created_at) as created_at ,count(*) ct FROM driver.rides where vehicle_type='Auto' and created_at >= DATE(NOW()) - INTERVAL 7 DAY and cancelled_by_type_id=0 and is_ride_cancelled=1 group by date(created_at) order by date(created_at) desc limit 7;";
+    public function getUnAttendedAutoAutoRidesCountInCurrentWeek(){
+        $q = "SELECT date(created_at) as created_at ,count(*) ct FROM rides where vehicle_type='Auto' and created_at >= DATE(NOW()) - INTERVAL 7 DAY and cancelled_by_type_id=0 and is_ride_cancelled=1 group by date(created_at) order by date(created_at) desc limit 7;";
         return $this->executeSelect($q);
     }
+
+
+    public function getUnAttendedAutoAutoRidesCount(){
+        $q = "SELECT count(*) ct FROM rides where vehicle_type='Auto'  and cancelled_by_type_id=0 and is_ride_cancelled=1;";
+        $rs =  $this->executeSelectSingle($q);
+        return $rs['ct'];
+    }
+
+
+
+    public function getUnAttendedAutoAutoRides($page=1,$limit=10){
+
+        $q  = "SELECT r.id,r.passenger_id,r.created_at,r.pickup_lat,r.pickup_lng,r.dropoff_lat,r.dropoff_lng,u.name,(select count(*) from ride_alerts where ride_id=r.id) as alert_count FROM rides r,users u where u.id=r.passenger_id and r.vehicle_type='Auto' and cancelled_by_type_id=0 and is_ride_cancelled=1 order by r.id desc limit  ".(($page-1)*$limit).",".$limit.";";
+        return $this->executeSelect($q);
+    }
+
+
+
 
 
     /**

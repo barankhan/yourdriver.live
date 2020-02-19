@@ -26,7 +26,7 @@ $rideObj = new ride();
 $rideRs = $rideObj->getEndedRidesCountInCurrentWeek();
 $passengerCancelledRs = $rideObj->getCancelledRidesInCurrentWeek(1);
 $driverCancelledRs = $rideObj->getCancelledRidesInCurrentWeek(2);
-$unAttendedAutoRides = $rideObj->getUnAttendedAutoAutoRides();
+$unAttendedAutoRides = $rideObj->getUnAttendedAutoAutoRidesCountInCurrentWeek();
 
 
 
@@ -138,7 +138,7 @@ $unAttendedAutoRides = $rideObj->getUnAttendedAutoAutoRides();
 
     <div class="card float-left  ml-2" style="width: 18rem;">
         <div class="card-header">
-            Driver Not found
+            Auto Driver Not found
         </div>
         <ul class="list-group">
             <?php foreach($unAttendedAutoRides as $r) { ?>
