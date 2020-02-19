@@ -29,6 +29,8 @@ foreach($rides as $ride) {
             $rideAlertObj = new rideAlert();
             $rideAlertObj->setDriverId($driver->getId());
             $rideAlertObj->setRideId($newRideObj->getId());
+            $rideAlertObj->setDriverLat($driver->getLat());
+            $rideAlertObj->setDriverLng($driver->getLng());
             $rideAlertObj->insert();
             // now send push notification to the driver.
 

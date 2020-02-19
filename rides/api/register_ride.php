@@ -49,6 +49,8 @@ if($userObj->getId()>0){
         $rideAlertObj = new rideAlert();
         $rideAlertObj->setDriverId($driver->getId());
         $rideAlertObj->setRideId($rideObj->getId());
+        $rideAlertObj->setDriverLat($driver->getLat());
+        $rideAlertObj->setDriverLng($driver->getLng());
         $rideAlertObj->insert();
         // now send push notification to the driver.
 

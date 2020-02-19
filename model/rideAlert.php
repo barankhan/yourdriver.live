@@ -9,7 +9,7 @@ require_once "baseModel.php";
 class rideAlert extends  baseModel implements JsonSerializable
 {
 
-    private $id,$driverId,$rideId,$isAccepted=0,$acceptedAt,$isRejected=0,$rejectedAt,$createdAt,$updatedAt;
+    private $id,$driverId,$rideId,$isAccepted=0,$acceptedAt,$isRejected=0,$rejectedAt,$createdAt,$updatedAt,$driverLat,$driverLng;
 
 
     public function insert(){
@@ -52,6 +52,42 @@ class rideAlert extends  baseModel implements JsonSerializable
         $params = array("ride_id"=>$rideId);
         return $this->executeSelect($q,$params);
     }
+
+    /**
+     * @return mixed
+     */
+    public function getDriverLat()
+    {
+        return $this->driverLat;
+    }
+
+    /**
+     * @param mixed $driverLat
+     */
+    public function setDriverLat($driverLat)
+    {
+        $this->driverLat = $driverLat;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDriverLng()
+    {
+        return $this->driverLng;
+    }
+
+    /**
+     * @param mixed $driverLng
+     */
+    public function setDriverLng($driverLng)
+    {
+        $this->driverLng = $driverLng;
+    }
+
+
+
+
 
     /**
      * @return mixed
