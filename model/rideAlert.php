@@ -13,8 +13,8 @@ class rideAlert extends  baseModel implements JsonSerializable
 
 
     public function insert(){
-        $q = "insert into ride_alerts(driver_id,ride_id)values(:driverId,:rideId);";
-        $params = array("driverId"=>$this->driverId,"rideId"=>$this->rideId);
+        $q = "insert into ride_alerts(driver_id,ride_id,driver_lat,driver_lng)values(:driverId,:rideId,:driverLat,:driverLng);";
+        $params = array("driverId"=>$this->driverId,"rideId"=>$this->rideId,"driverLat"=>$this->driverLat,"driverLng"=>$this->driverLng);
         $this->setId($this->executeInsert($q,$params));
         return $this->getId();
     }
