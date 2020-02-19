@@ -37,71 +37,67 @@ $i=0;
     </div>
 
 
-    <div class="container">
-
-    <div class="row" style="background-color: <?php echo ($i++%2==0?'#dcdcdc':'#aaaaaa'); ?>"   >
-        <div class="col-sm">
+    <table class="table table-striped">
+    <thead>
+    <tr>
+        <th>
             ID
-        </div>
-        <div class="col-sm">
+        </th>
+        <th>
             Driver Id
-        </div>
-        <div class="col-sm">
+        </th>
+        <th>
             Driver Name
-        </div>
-        <div class="col-sm">
+        </th>
+        <th>
             Created At
-        </div>
-        <div class="col-sm">
+        </th>
+        <th>
             Alert Count
-        </div>
-        <div class="col-sm">
+        </th>
+        <th>
            Actions
-        </div>
-
-
-
-    </div>
-
-
+        </th>
+    </tr>
+    </thead>
+    <tbody>
 <?php
 
 foreach ($unattended_rides as $ride){
 
     ?>
-    <div class="row  p-2" style="background-color: <?php echo ($i++%2==0?'#dcdcdc':'#aaaaaa'); ?>"   >
-        <div class="col-sm">
+    <tr>
+        <td >
             <?php echo $ride['id'] ?>
-        </div>
-        <div class="col-sm">
+        </td>
+        <td >
             <?php echo $ride['driver_id'] ?>
-        </div>
+        </td>
 
-        <div class="col-sm">
+        <td >
             <?php echo $ride['name'] ?>
-        </div>
-        <div class="col-sm">
+        </td>
+        <td >
             <?php echo $ride['created_at'];?>
-        </div>
-        <div class="col-sm">
+        </td>
+        <td >
             <?php if($ride['alert_count']>0){ ?>
             <a href="alert_details.php?ride_id=<?php  echo $ride['id'] ?> " class="btn btn-primary"><?php echo $ride['alert_count']; ?></a>
             <?php }else{ echo $ride['alert_count']; } ?>
-        </div>
-        <div class="col-sm p-2">
+        </td>
+        <td>
             <?php echo "<a target='_blank' href='https://www.google.com/maps/search/?api=1&query=". $ride['pickup_lat'].",".$ride['pickup_lng']."' class='btn btn-primary'>Pickup</a>"; ?>
-        </div>
-        <?php if ($ride['dropoff_lat']>0){ ?>
-        <div class="col-sm p-2">
-            <?php echo "<a target='_blank' href='https://www.google.com/maps/search/?api=1&query=". $ride['dropoff_lat'].",".$ride['dropoff_lng']."' class='btn btn-primary'>Dropoff</a>"; ?>
-        </div>
-        <?php } ?>
-
-    </div>
+            <?php if ($ride['dropoff_lat']>0){ ?>
+                <?php echo "<a target='_blank' href='https://www.google.com/maps/search/?api=1&query=". $ride['dropoff_lat'].",".$ride['dropoff_lng']."' class='btn btn-primary'>Dropoff</a>"; ?>
+            <?php } ?>
+        </td>
+    </tr>
 
     <?php
 }
 ?>
+    </tbody>
+    </table>
 <?php  if($total_pages>1){ ?>
 
     <nav aria-label="Page navigation example">

@@ -12,32 +12,23 @@ $ride_id = $_REQUEST['ride_id'];
 $rideAlertObject = new rideAlert();
 $alerts = $rideAlertObject->findAlertsWithDriverInfoByRideId($ride_id);
 ?>
-    <div class="row">
-        <div class="col-sm">
-            Alert Id
-        </div>
-        <div class="col-sm">
-            Ride Id
-        </div>
-        <div class="col-sm">
-            Driver Name
-        </div>
-        <div class="col-sm">
-            Driver Mobile
-        </div>
-        <div class="col-sm">
-           Created At
-        </div>
-        <div class="col-sm">
-            Is Accepted
-        </div>
-        <div class="col-sm">
-            Accepted At
-        </div>
-        <div class="col-sm">
-            Driver Location
-        </div>
-    </div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Alert Id</th>
+                <th scope="col"> Ride Id</th>
+                <th scope="col"> Driver Name</th>
+                <th scope="col">Driver Mobile</th>
+                <th scope="col">Created At</th>
+                <th scope="col">Is Accepted</th>
+                <th scope="col">Accepted At</th>
+                <th scope="col">Driver Location</th>
+            </tr>
+        </thead>
+        <tbody>
+
+
+
 
 
 <?php
@@ -46,37 +37,42 @@ $alerts = $rideAlertObject->findAlertsWithDriverInfoByRideId($ride_id);
 $i=0;
 foreach ($alerts as $alert){
     ?>
-    <div class="row p-2" style="background-color: <?php echo ($i++%2==0?'#dcdcdc':'#aaaaaa'); ?>"   >
-        <div class="col-sm">
+    <tr>
+
+        <td >
             <?php echo $alert['id'] ?>
-        </div>
-        <div class="col-sm">
+        </td>
+        <td>
             <?php echo $alert['ride_id'] ?>
-        </div>
-        <div class="col-sm">
+        </td>
+        <td >
             <?php echo $alert['name'] ?>
-        </div>
-        <div class="col-sm">
+        </td>
+        <td >
             <?php echo $alert['mobile'] ?>
-        </div>
-        <div class="col-sm">
+        </td>
+        <td >
             <?php echo $alert['created_at'] ?>
-        </div>
-        <div class="col-sm">
+        </td>
+        <td>
             <?php echo $alert['is_accepted'] ?>
-        </div>
-        <div class="col-sm">
+        </td>
+        <td>
             <?php echo $alert['accepted_at'] ?>
-        </div>
+        </td>
 
         <?php if($alert['driver_lat']>0) {  ?>
-         <div class="col-sm p-2">
+         <td>
             <?php echo "<a target='_blank' href='https://www.google.com/maps/search/?api=1&query=". $alert['driver_lat'].",".$alert['driver_lng']."' class='btn btn-primary'>Location</a>"; ?>
-        </div>
+        </td>
         <?php } ?>
-    </div>
+    </tr>
 
     <?php
 }
+?>
+        </tbody>
+    </table>
 
+<?php
 echo "Total Alerts: ".$i;
