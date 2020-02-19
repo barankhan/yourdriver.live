@@ -40,10 +40,13 @@
             <a href="#ridesSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Rides</a>
             <ul class="collapse list-unstyled" id="ridesSubmenu">
                 <li>
-                    <a href="<?php echo MY_HOST ?>admin/rides/unattended_auto_rides.php">Unattended Auto Rides</a>
+                    <a href="<?php echo MY_HOST ?>admin/rides/unattended_auto_rides.php">Unattended Auto</a>
                 </li>
                 <li>
-                    <a href="#">Page 2</a>
+                    <a href="<?php echo MY_HOST ?>admin/rides/passenger_cancelled_auto_rides.php">Passenger Cancelled Auto</a>
+                </li>
+                <li>
+                    <a href="<?php echo MY_HOST ?>admin/rides/driver_cancelled_auto_rides.php">Driver Cancelled Auto</a>
                 </li>
                 <li>
                     <a href="#">Page 3</a>

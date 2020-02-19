@@ -131,7 +131,27 @@ distance=:distance,rating=:rating,pickup_address=:pickup_address,dropoff_address
     }
 
 
+    public function getCancelledByPassengerAutoRidesCount(){
+        $q = "SELECT count(*) ct FROM rides where vehicle_type='Auto'  and cancelled_by_type_id=1 and is_ride_cancelled=1;";
+        $rs =  $this->executeSelectSingle($q);
+        return $rs['ct'];
+    }
 
+    public function getCancelledByPassengerAutoRides($page=1,$limit=10){
+        $q  = "SELECT r.id,r.passenger_id,r.created_at,r.pickup_lat,r.pickup_lng,r.dropoff_lat,r.dropoff_lng,u.name,(select count(*) from ride_alerts where ride_id=r.id) as alert_count FROM rides r,users u where u.id=r.passenger_id and r.vehicle_type='Auto' and cancelled_by_type_id=1 and is_ride_cancelled=1 order by r.id desc limit  ".(($page-1)*$limit).",".$limit.";";
+        return $this->executeSelect($q);
+    }
+
+    public function getCancelledByDriverAutoRidesCount(){
+        $q = "SELECT count(*) ct FROM rides where vehicle_type='Auto'  and cancelled_by_type_id=2 and is_ride_cancelled=1;";
+        $rs =  $this->executeSelectSingle($q);
+        return $rs['ct'];
+    }
+
+    public function getCancelledByDriverAutoRides($page=1,$limit=10){
+        $q  = "SELECT r.id,r.driver_id,r.created_at,r.pickup_lat,r.pickup_lng,r.dropoff_lat,r.dropoff_lng,u.name,(select count(*) from ride_alerts where ride_id=r.id) as alert_count FROM rides r,users u where u.id=r.driver_id and r.vehicle_type='Auto' and cancelled_by_type_id=2 and is_ride_cancelled=1 order by r.id desc limit  ".(($page-1)*$limit).",".$limit.";";
+        return $this->executeSelect($q);
+    }
 
 
     /**
