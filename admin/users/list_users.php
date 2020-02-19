@@ -36,28 +36,31 @@ $i=0;
     </div>
 
 
-    <div class="container">
+    <table class="table table-striped">
+    <thead>
 
-    <div class="row" style="background-color: <?php echo ($i++%2==0?'#dcdcdc':'#aaaaaa'); ?>"   >
-        <div class="col-sm">
+    <tr >
+        <td >
             ID
-        </div>
-        <div class="col-sm">
+        </td>
+        <td >
             Name
-        </div>
-        <div class="col-sm">
+        </td>
+        <td>
             Mobile
-        </div>
-        <div class="col-sm">
+        </td>
+        <td>
             Email
-        </div>
-        <div class="col-sm">
+        </td>
+        <td>
             Registered At
-        </div>
+        </td>
 
 
 
-    </div>
+    </tr>
+    </thead>
+    <tbody>
 
 
 <?php
@@ -65,29 +68,31 @@ $i=0;
 foreach ($drivers as $driver){
     $userObj->setAllFields($driver);
     ?>
-    <div class="row  p-2" style="background-color: <?php echo ($i++%2==0?'#dcdcdc':'#aaaaaa'); ?>"   >
-        <div class="col-sm">
+    <tr >
+        <td >
             <?php echo $userObj->getId(); ?>
-        </div>
-        <div class="col-sm">
+        </td>
+        <td >
             <?php echo $userObj->getName(); ?>
-        </div>
-        <div class="col-sm">
+        </td>
+        <td >
             <?php echo $userObj->getMobile(); ?>
-        </div>
-        <div class="col-sm">
+        </td>
+        <td>
             <?php echo $userObj->getEmail(); ?>
-        </div>
-        <div class="col-sm">
+        </td>
+        <td >
             <?php echo $userObj->getCreatedAt();?>
-        </div>
+        </td>
 
 
-    </div>
+    </tr>
 
 <?php
 }
 ?>
+    </tbody>
+    </table>
 <?php  if($total_pages>1){ ?>
 
     <nav aria-label="Page navigation example">

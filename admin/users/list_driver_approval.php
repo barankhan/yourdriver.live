@@ -11,10 +11,39 @@ $userObj = new User();
 $drivers  = $userObj->getAllApprovalRequiredDrivers();
 ?>
 
+    <table class="table table-striped">
+    <thead>
+
+    <tr >
+        <td >
+            ID
+        </td>
+        <td >
+            Name
+        </td>
+        <td>
+            Fater
+        </td>
+        <td>
+            CNIC
+        </td>
+        <td>
+            Vehicle No
+        </td>
+        <td>
+            Created at
+        </td>
+        <td>
+            Actions
+        </td>
+
+
+    </tr>
+    </thead>
+    <tbody>
 
 
 
-    <div class="container">
 <?php
 $i=0;
 foreach ($drivers as $driver){
@@ -22,35 +51,36 @@ foreach ($drivers as $driver){
 
     $userObj->setAllFields($driver);
     ?>
-    <div class="row" style="background-color: <?php echo ($i++%2==0?'#dcdcdc':'#aaaaaa'); ?>"   >
-        <div class="col-sm">
+    <tr  >
+        <td>
+            <?php echo $userObj->getId(); ?>
+        </td><td>
             <?php echo $userObj->getName(); ?>
-        </div>
-        <div class="col-sm">
+        </td>
+        <td >
             <?php echo $userObj->getFather(); ?>
-        </div>
-        <div class="col-sm">
+        </td>
+        <td >
                 <?php echo $userObj->getCnic();?>
-        </div>
-        <div class="col-sm">
+        </td>
+        <td >
                 <?php echo $userObj->getRegAlphabet()."-".$userObj->getRegYear()."-".$userObj->getRegNo();?>
-        </div>
-        <div class="col-sm">
+        </td>
+        <td >
             <?php echo $userObj->getCreatedAt();?>
-        </div>
-        <div class="col-sm">
+        </td>
+        <td >
             <?php echo "<a href='user_detail.php?id=".$userObj->getId()."' class='btn btn-primary'>Detail</a>"; ?>
-        </div>
-        <div class="col-sm">
-                <?php echo "<a href='approve_driver.php?id=".$userObj->getId()."' class='btn btn-primary'>Approve</a>"; ?>
-        </div>
-    </div>
+            <?php echo "<a href='approve_driver.php?id=".$userObj->getId()."' class='btn btn-primary'>Approve</a>"; ?>
+        </td>
+
+    </tr>
 
 <?php
 }
 ?>
 
-
-
+    </tbody>
+    </table>
 <?php
 require_once __DIR__."/../partials/footer.php";

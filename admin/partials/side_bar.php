@@ -33,12 +33,10 @@
                 </li>
             </ul>
         </li>
-        <li>
-            <a href="<?php echo MY_HOST ?>admin/support_tickets/tickets.php">Support Tickets</a>
-        </li>
+
         <li>
             <a href="#ridesSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Rides</a>
-            <ul class="collapse list-unstyled" id="ridesSubmenu">
+            <ul class="list-unstyled" id="ridesSubmenu">
                 <li>
                     <a href="<?php echo MY_HOST ?>admin/rides/unattended_auto_rides.php">Unattended Auto</a>
                 </li>
@@ -48,10 +46,12 @@
                 <li>
                     <a href="<?php echo MY_HOST ?>admin/rides/driver_cancelled_auto_rides.php">Driver Cancelled Auto</a>
                 </li>
-                
+
             </ul>
         </li>
-
+        <li>
+            <a href="<?php echo MY_HOST ?>admin/support_tickets/tickets.php">Support Tickets</a>
+        </li>
 
         <li>
             <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Pages</a>

@@ -29,62 +29,65 @@ $i=0;
 
 
 
-    <div class="container">
-
-    <div class="row" style="background-color: <?php echo ($i++%2==0?'#dcdcdc':'#aaaaaa'); ?>"   >
-        <div class="col-sm">
+    <table class="table table-striped">
+    <thead>
+    <tr    >
+        <td >
             ID
-        </div>
-        <div class="col-sm">
+        </td>
+        <td >
             Name
-        </div>
-        <div class="col-sm">
+        </td>
+        <td >
             Mobile
-        </div>
-        <div class="col-sm">
+        </td>
+        <td >
             Verification Token
-        </div>
-        <div class="col-sm">
+        </td>
+        <td >
             Registered At
-        </div>
-        <div class="col-sm">
+        </td>
+        <td >
             Actions
-        </div>
+        </td>
 
 
-    </div>
-
+    </tr>
+    </thead>
+    <tbody>
 
 <?php
 
 foreach ($drivers as $driver){
     $userObj->setAllFields($driver);
     ?>
-    <div class="row  p-2" style="background-color: <?php echo ($i++%2==0?'#dcdcdc':'#aaaaaa'); ?>"   >
-        <div class="col-sm">
+    <tr  >
+        <td>
             <?php echo $userObj->getId(); ?>
-        </div>
-        <div class="col-sm">
+        </td>
+        <td>
             <?php echo $userObj->getName(); ?>
-        </div>
-        <div class="col-sm">
+        </td>
+        <td>
             <?php echo $userObj->getMobile(); ?>
-        </div>
-        <div class="col-sm">
+        </td>
+        <td>
             <?php echo $userObj->getVerificationToken(); ?>
-        </div>
-        <div class="col-sm">
+        </td>
+        <td>
             <?php echo $userObj->getCreatedAt();?>
-        </div>
-        <div class="col-sm">
+        </td>
+        <td>
             <a class="btn btn-primary" href="actions/resend_sms.php?id=<?php echo $userObj->getId(); ?>">Resend SMS</a>
-        </div>
+        </td>
 
-    </div>
+    </tr>
 
 <?php
 }
 ?>
+    </tbody>
+    </table>
 <?php  if($total_pages>1){ ?>
 
     <nav aria-label="Page navigation example">

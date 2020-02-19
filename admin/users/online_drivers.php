@@ -11,49 +11,80 @@ $userObj = new User();
 $drivers  = $userObj->getOnlineDrivers();
 ?>
 
+    <table class="table table-striped">
+    <thead>
+    <tr    >
+        <td >
+            ID
+        </td>
+        <td >
+            Name
+        </td>
+        <td >
+            Father
+        </td>
+        <td >
+            Mobile
+        </td>
+        <td >
+            Vehicle Registration
+        </td>
+        <td >
+            Online At
+        </td>
+        <td >
+            Actions
+        </td>
+
+
+    </tr>
+    </thead>
+    <tbody>
 
 
 
-    <div class="container">
 <?php
 $i=0;
 foreach ($drivers as $driver){
 
-
+    $i++;
     $userObj->setAllFields($driver);
     ?>
-    <div class="row" style="background-color: <?php echo ($i++%2==0?'#dcdcdc':'#aaaaaa'); ?>"   >
-        <div class="col-sm">
+    <tr  >
+        <td >
             <?php echo $userObj->getId(); ?>
-        </div>
-        <div class="col-sm">
+        </td>
+        <td >
             <?php echo $userObj->getName(); ?>
-        </div>
-        <div class="col-sm">
+        </td>
+        <td >
             <?php echo $userObj->getFather(); ?>
-        </div>
-        <div class="col-sm">
+        </td>
+        <td >
                 <?php echo $userObj->getMobile();?>
-        </div>
-        <div class="col-sm">
+        </td>
+        <td >
                 <?php echo $userObj->getRegAlphabet()."-".$userObj->getRegYear()."-".$userObj->getRegNo();?>
-        </div>
-        <div class="col-sm">
+        </td>
+        <td >
             <?php echo $userObj->getOnlineAt();?>
-        </div>
-        <div class="col-sm p-2">
+        </td>
+        <td >
             <?php echo "<a target='_blank' href='actions/driver_current_location.php?id=".$userObj->getId()."' class='btn btn-primary'>Current Location</a>"; ?>
-        </div>
+        </td>
 
-    </div>
+    </tr>
 
 <?php
 }
 
+
+
 echo "Total Online Drivers: ".$i;
 ?>
 
-
+    </tbody>
+    </table>
 
 <?php
 require_once __DIR__."/../partials/footer.php";
