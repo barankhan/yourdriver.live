@@ -1002,6 +1002,12 @@ class User extends  baseModel implements JsonSerializable {
         return $rs['ct'];
     }
 
+    public function getOnlineDriversCount(){
+        $q  = "select count(*) as ct from users where is_driver=1 and is_driver_online=1";
+        $rs =  $this->executeSelectSingle($q);
+        return $rs['ct'];
+    }
+
 
 
 

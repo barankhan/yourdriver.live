@@ -109,6 +109,13 @@ distance=:distance,rating=:rating,pickup_address=:pickup_address,dropoff_address
     }
 
 
+
+    public function getUnAttendedAutoAutoRides(){
+        $q = "SELECT date(created_at) as created_at ,count(*) ct FROM driver.rides where vehicle_type='Auto' and created_at >= DATE(NOW()) - INTERVAL 7 DAY and cancelled_by_type_id=0 and is_ride_cancelled=1 group by date(created_at) order by date(created_at) desc limit 7;";
+        return $this->executeSelect($q);
+    }
+
+
     /**
      * @return mixed
      */
