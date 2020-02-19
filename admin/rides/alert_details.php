@@ -23,6 +23,9 @@ $alerts = $rideAlertObject->findAlertsWithDriverInfoByRideId($ride_id);
             Driver Name
         </div>
         <div class="col-sm">
+            Driver Mobile
+        </div>
+        <div class="col-sm">
            Created At
         </div>
         <div class="col-sm">
@@ -52,6 +55,9 @@ foreach ($alerts as $alert){
         </div>
         <div class="col-sm">
             <?php echo $alert['name'] ?>
+        </div>
+        <div class="col-sm">
+            <?php echo $alert['mobile'] ?>
         </div>
         <div class="col-sm">
             <?php echo $alert['created_at'] ?>
