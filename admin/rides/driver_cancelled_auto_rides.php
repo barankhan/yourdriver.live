@@ -43,11 +43,12 @@ $i=0;
         <th>
             ID
         </th>
+
         <th>
-            Driver Id
+            Driver
         </th>
         <th>
-            Driver Name
+            Passenger
         </th>
         <th>
             Created At
@@ -70,12 +71,13 @@ foreach ($unattended_rides as $ride){
         <td >
             <?php echo $ride['id'] ?>
         </td>
-        <td >
-            <?php echo $ride['driver_id'] ?>
-        </td>
+        
 
         <td >
-            <?php echo $ride['name'] ?>
+            <?php echo $ride['driver_id'] ?>-<?php echo $ride['name'] ?>
+        </td>
+        <td >
+            <?php echo $ride['passenger_id'] ?>-<?php echo $ride['passenger_name'] ?>
         </td>
         <td >
             <?php echo $ride['created_at'];?>

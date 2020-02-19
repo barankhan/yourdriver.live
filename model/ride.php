@@ -149,7 +149,7 @@ distance=:distance,rating=:rating,pickup_address=:pickup_address,dropoff_address
     }
 
     public function getCancelledByDriverAutoRides($page=1,$limit=10){
-        $q  = "SELECT r.id,r.driver_id,r.created_at,r.pickup_lat,r.pickup_lng,r.dropoff_lat,r.dropoff_lng,u.name,(select count(*) from ride_alerts where ride_id=r.id) as alert_count FROM rides r,users u where u.id=r.driver_id and r.vehicle_type='Auto' and cancelled_by_type_id=2 and is_ride_cancelled=1 order by r.id desc limit  ".(($page-1)*$limit).",".$limit.";";
+        $q  = "SELECT r.id,r.passenger_id,r.driver_id,r.created_at,r.pickup_lat,r.pickup_lng,r.dropoff_lat,r.dropoff_lng,u.name,p.name as passenger_name,(select count(*) from ride_alerts where ride_id=r.id) as alert_count FROM rides r,users u,users p where p.id=r.passenger_id and u.id=r.driver_id and r.vehicle_type='Auto' and cancelled_by_type_id=2 and is_ride_cancelled=1 order by r.id desc limit  ".(($page-1)*$limit).",".$limit.";";
         return $this->executeSelect($q);
     }
 
