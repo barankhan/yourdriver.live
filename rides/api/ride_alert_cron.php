@@ -52,7 +52,7 @@ foreach($rides as $ride) {
 
             $token = $driver->getFirebaseToken();
 
-            $fabseRes = $fbaseObj->sendPayloadOnly(0, $token, $payload, null, 'high');
+            $fabseRes = $fbaseObj->sendPayloadOnly(0, $token, $payload, null, 'high',30,"ride_alert",$rideAlertObj->getId());
 
         } else {
             $newRideAlertObj = new rideAlert();

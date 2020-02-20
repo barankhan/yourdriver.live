@@ -14,13 +14,16 @@ use Kreait\Firebase\Messaging\AndroidConfig;
  */
 class firebaseNotification
 {
-    public function sendPayLoadOnly($logId, $token, $payload = null, $notification = null, $priority = 'normal',$ttl_seconds='10')
+    public function sendPayLoadOnly($logId, $token, $payload = null, $notification = null, $priority = 'normal',$ttl_seconds='10',$table_name='',$table_id=0)
     {
         $fbaseLogObj = new FirebaseLog();
         $fbaseLogObj->setNotification(json_encode($notification));
         $fbaseLogObj->setPayload(json_encode($payload));
         $fbaseLogObj->setRequestLogId($logId);
         $fbaseLogObj->setFirebaseKey($token);
+        $fbaseLogObj->setTableId($table_id);
+        $fbaseLogObj->setTableName($table_name);
+
 
 
         $factory = (new Factory())

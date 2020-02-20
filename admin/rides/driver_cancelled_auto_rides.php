@@ -71,7 +71,7 @@ foreach ($unattended_rides as $ride){
         <td >
             <?php echo $ride['id'] ?>
         </td>
-        
+
 
         <td >
             <?php echo $ride['driver_id'] ?>-<?php echo $ride['name'] ?>

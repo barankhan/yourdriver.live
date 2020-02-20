@@ -10,15 +10,15 @@ class FirebaseLog extends  baseModel implements JsonSerializable
 {
 
     private $id,$requestLogId,$notification,$payload,$firebaseMessageId,$firebaseKey,$firebaseConfirmation=0,$firebaseResponse,$createdAt,
-    $updatedAt,$firebaseConfirmedAt;
+    $updatedAt,$firebaseConfirmedAt,$tableName,$tableId;
 
 
 
     public function insert(){
        $q = "insert into firebase_log(request_log_id,notification,payload,firebase_message_id,firebase_key,firebase_confirmation,
-firebase_response)values(:requestLogId,:notification,:payload,:firebaseMessageId,:firebaseKey,:firebaseConfirmation,:firebaseResponse);";
+firebase_response,table_name,table_id)values(:requestLogId,:notification,:payload,:firebaseMessageId,:firebaseKey,:firebaseConfirmation,:firebaseResponse,:table_name,:table_id);";
         $params = array("requestLogId"=>$this->requestLogId,"notification"=>$this->notification,"payload"=>$this->payload,"firebaseMessageId"=>$this->firebaseMessageId,
-            "firebaseKey"=>$this->firebaseKey,"firebaseConfirmation"=>$this->firebaseConfirmation,"firebaseResponse"=>$this->firebaseResponse);
+            "firebaseKey"=>$this->firebaseKey,"firebaseConfirmation"=>$this->firebaseConfirmation,"firebaseResponse"=>$this->firebaseResponse,"table_name"=>$this->tableName,"table_id"=>$this->tableId);
         $this->setId($this->executeInsert($q,$params));
     }
 
@@ -41,6 +41,41 @@ firebase_response)values(:requestLogId,:notification,:payload,:firebaseMessageId
         $params = array("firebaseMessageId"=>$this->firebaseMessageId);
         $this->setAllFields($this->executeSelectSingle($q,$params));
     }
+
+    /**
+     * @return mixed
+     */
+    public function getTableName()
+    {
+        return $this->tableName;
+    }
+
+    /**
+     * @param mixed $tableName
+     */
+    public function setTableName($tableName)
+    {
+        $this->tableName = $tableName;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTableId()
+    {
+        return $this->tableId;
+    }
+
+    /**
+     * @param mixed $tableId
+     */
+    public function setTableId($tableId)
+    {
+        $this->tableId = $tableId;
+    }
+
+
+
 
 
 

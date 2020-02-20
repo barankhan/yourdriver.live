@@ -9,7 +9,7 @@ require_once "baseModel.php";
 class rideAlert extends  baseModel implements JsonSerializable
 {
 
-    private $id,$driverId,$rideId,$isAccepted=0,$acceptedAt,$isRejected=0,$rejectedAt,$createdAt,$updatedAt,$driverLat,$driverLng;
+    private $id,$driverId,$rideId,$isAccepted=0,$acceptedAt,$isRejected=0,$rejectedAt,$createdAt,$updatedAt,$driverLat,$driverLng,$firebaseRequestReceived=0;
 
 
     public function insert(){
@@ -21,15 +21,22 @@ class rideAlert extends  baseModel implements JsonSerializable
 
 
     public function update(){
-        $q = "update ride_alerts set is_accepted=:is_accepted,accepted_at=:accepted_at,rejected_at=:rejected_at,is_rejected=:is_rejected where id=:id;";
+        $q = "update ride_alerts set is_accepted=:is_accepted,accepted_at=:accepted_at,rejected_at=:rejected_at,is_rejected=:is_rejected,firebase_request_received=:firebase_request_received where id=:id;";
         $params = array("is_accepted"=>$this->isAccepted,"id"=>$this->id,"is_rejected"=>$this->isRejected,
-            "rejected_at"=>$this->rejectedAt,"accepted_at"=>$this->acceptedAt);
+            "rejected_at"=>$this->rejectedAt,"accepted_at"=>$this->acceptedAt,"firebase_request_received"=>$this->firebaseRequestReceived);
         return $this->executeUpdate($q,$params);
     }
 
     public function findAlertByDriverId(){
         $q = "select * from ride_alerts where ride_id=:ride_id and driver_id=:driver_id";
         $params = array("ride_id"=>$this->rideId,"driver_id"=>$this->driverId);
+        $this->setAllFields($this->executeSelectSingle($q,$params));
+    }
+
+
+    public function findAlertById(){
+        $q = "select * from ride_alerts where id=:id";
+        $params = array("id"=>$this->id);
         $this->setAllFields($this->executeSelectSingle($q,$params));
     }
 
@@ -52,6 +59,26 @@ class rideAlert extends  baseModel implements JsonSerializable
         $params = array("ride_id"=>$rideId);
         return $this->executeSelect($q,$params);
     }
+
+    /**
+     * @return int
+     */
+    public function getFirebaseRequestReceived(): int
+    {
+        return $this->firebaseRequestReceived;
+    }
+
+    /**
+     * @param int $firebaseRequestReceived
+     */
+    public function setFirebaseRequestReceived(int $firebaseRequestReceived)
+    {
+        $this->firebaseRequestReceived = $firebaseRequestReceived;
+    }
+
+
+
+
 
     /**
      * @return mixed

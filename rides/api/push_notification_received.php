@@ -16,6 +16,16 @@ $firebaseLogObj->getByFirebaseId();
 $firebaseLogObj->setFirebaseConfirmation(1);
 $firebaseLogObj->setFirebaseConfirmedAt(date("Y-m-d H:i:s"));
 $firebaseLogObj->update();
+
+if($firebaseLogObj->getTableName()=='ride_alert'){
+    $rideAlertObj = new rideAlert();
+    $rideAlertObj->setId($firebaseLogObj->getTableId());
+    $rideAlertObj->findAlertById();
+    $rideAlertObj->setFirebaseRequestReceived(1);
+    $rideAlertObj->update();
+}
+
+
 echo json_encode(array("message"=>"done","response"=>"done"));
 
 
