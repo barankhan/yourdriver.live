@@ -74,7 +74,7 @@ if($userObj->getId()>0){
 
         $token = $driver->getFirebaseToken();
 
-        $fabseRes = $fbaseObj->sendPayloadOnly($lr->getId(),$token,$payload,null,'high');
+        $fabseRes = $fbaseObj->sendPayloadOnly($lr->getId(),$token,$payload,null,'high',60,"ride_alert",$rideAlertObj->getId());
 
 
 
