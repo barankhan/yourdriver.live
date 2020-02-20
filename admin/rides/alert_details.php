@@ -22,6 +22,7 @@ $alerts = $rideAlertObject->findAlertsWithDriverInfoByRideId($ride_id);
                 <th scope="col">Created At</th>
                 <th scope="col">Is Accepted</th>
                 <th scope="col">Accepted At</th>
+                <th scope="col">Request Received</th>
                 <th scope="col">Driver Location</th>
             </tr>
         </thead>
@@ -59,6 +60,9 @@ foreach ($alerts as $alert){
         </td>
         <td>
             <?php echo $alert['accepted_at'] ?>
+        </td>
+        <td>
+            <?php echo $alert['firebase_request_received'] ?>
         </td>
 
         <?php if($alert['driver_lat']>0) {  ?>
