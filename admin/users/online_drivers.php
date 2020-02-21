@@ -9,7 +9,14 @@ require_once __DIR__."/../partials/header.php";
 
 $userObj = new User();
 $drivers  = $userObj->getOnlineDrivers();
+if(isset($_REQUEST['msg'])){
+    if($_REQUEST['msg']!=''){
+        echo "<div class='alert alert-success'>".$_REQUEST['msg']."</div>";
+    }
+}
 ?>
+
+
 
     <table class="table table-striped">
     <thead>
