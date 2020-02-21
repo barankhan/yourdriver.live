@@ -10,7 +10,7 @@ class MarkedOffline   extends  baseModel implements JsonSerializable
 {
 
 
-    private $id=0,$driverId,$createdAt,$updateAt,$firebaseRequestReceived=0;
+    private $id=0,$driverId,$createdAt,$updatedAt,$firebaseRequestReceived=0;
 
 
 
@@ -98,18 +98,20 @@ class MarkedOffline   extends  baseModel implements JsonSerializable
     /**
      * @return mixed
      */
-    public function getUpdateAt()
+    public function getUpdatedAt()
     {
-        return $this->updateAt;
+        return $this->updatedAt;
     }
 
     /**
-     * @param mixed $updateAt
+     * @param mixed $updatedAt
      */
-    public function setUpdateAt($updateAt)
+    public function setUpdatedAt($updatedAt)
     {
-        $this->updateAt = $updateAt;
+        $this->updatedAt = $updatedAt;
     }
+
+   
 
     /**
      * @return mixed
