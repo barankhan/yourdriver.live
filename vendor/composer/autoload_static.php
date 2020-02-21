@@ -211,6 +211,7 @@ class ComposerStaticInitfd5deadb88ad3e3c17da2a9bccfa0cdc
         'DriverTransaction' => __DIR__ . '/../..' . '/model/DriverTransaction.php',
         'FirebaseLog' => __DIR__ . '/../..' . '/model/FirebaseLog.php',
         'LogRequest' => __DIR__ . '/../..' . '/model/LogRequest.php',
+        'MarkedOffline' => __DIR__ . '/../..' . '/model/MarkedOffline.php',
         'Misc' => __DIR__ . '/../..' . '/utils/Misc.php',
         'PaidCanceledRide' => __DIR__ . '/../..' . '/model/PaidCanceledRide.php',
         'PaymentSMS' => __DIR__ . '/../..' . '/model/PaymentSMS.php',

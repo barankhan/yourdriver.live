@@ -73,6 +73,10 @@ foreach ($drivers as $driver){
             <?php echo "<a target='_blank' href='actions/driver_current_location.php?id=".$userObj->getId()."' class='btn btn-primary'>Current Location</a>"; ?>
         </td>
 
+        <td >
+            <?php echo "<a href='actions/mark_offline.php?id=".$userObj->getId()."' class='btn btn-primary'>Mark Offline</a>"; ?>
+        </td>
+
     </tr>
 
 <?php

@@ -16,6 +16,7 @@ return array(
     'DriverTransaction' => $baseDir . '/model/DriverTransaction.php',
     'FirebaseLog' => $baseDir . '/model/FirebaseLog.php',
     'LogRequest' => $baseDir . '/model/LogRequest.php',
+    'MarkedOffline' => $baseDir . '/model/MarkedOffline.php',
     'Misc' => $baseDir . '/utils/Misc.php',
     'PaidCanceledRide' => $baseDir . '/model/PaidCanceledRide.php',
     'PaymentSMS' => $baseDir . '/model/PaymentSMS.php',

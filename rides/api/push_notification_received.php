@@ -1,9 +1,6 @@
 <?php
-require_once __DIR__."/../../model/LogRequest.php";
-require_once __DIR__."/../../model/user.php";
-require_once __DIR__."/../../model/ride.php";
-require_once __DIR__."/../../model/rideAlert.php";
-require_once __DIR__."/../../utils/firebaseNotification.php";
+require_once __DIR__."/../../vendor/autoload.php";
+
 
 $lr = new LogRequest();
 $lr->setRequestUri($_SERVER['REQUEST_URI']);
@@ -23,6 +20,13 @@ if($firebaseLogObj->getTableName()=='ride_alert'){
     $rideAlertObj->findAlertById();
     $rideAlertObj->setFirebaseRequestReceived(1);
     $rideAlertObj->update();
+}else if($firebaseLogObj->getTableName()=='marked_offline'){
+    if($firebaseLogObj->getTableId()>0){
+        $markedOfflineObj = new MarkedOffline();
+        $markedOfflineObj->setId($firebaseLogObj->getTableId());
+        $markedOfflineObj->setFirebaseRequestReceived(1);
+        $markedOfflineObj->update();
+    }
 }
 
 
