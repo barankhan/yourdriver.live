@@ -24,6 +24,7 @@ if($firebaseLogObj->getTableName()=='ride_alert'){
     if($firebaseLogObj->getTableId()>0){
         $markedOfflineObj = new MarkedOffline();
         $markedOfflineObj->setId($firebaseLogObj->getTableId());
+        $markedOfflineObj->findById();
         $markedOfflineObj->setFirebaseRequestReceived(1);
         $markedOfflineObj->update();
     }
