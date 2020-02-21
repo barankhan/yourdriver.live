@@ -9,7 +9,6 @@ require_once __DIR__."/../../partials/validate_session.php";
 
 $userObj = new User();
 $userObj->getUserWithId($_REQUEST["id"]);
-$userObj->getId();
 
 
 $userObj->setIsDriverOnline(0);
@@ -19,7 +18,7 @@ $userObj->update();
 
 
 $markedOfflineObj = new MarkedOffline();
-$markedOfflineObj->setDriverId($userObj->getId());
+$markedOfflineObj->setDriverId($_REQUEST["id"]);
 $markedOfflineObj->insert();
 
 
