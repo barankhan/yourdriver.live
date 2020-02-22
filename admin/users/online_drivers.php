@@ -16,6 +16,13 @@ if(isset($_REQUEST['msg'])){
 }
 ?>
 
+    <script type="text/javascript">
+        $(document).ready(function() {
+            jQuery('.confirmation').on('click', function () {
+                return confirm('Are you sure?');
+            });
+        });
+    </script>
 
 
     <table class="table table-striped">
@@ -78,12 +85,8 @@ foreach ($drivers as $driver){
         </td>
         <td >
             <?php echo "<a target='_blank' href='actions/driver_current_location.php?id=".$userObj->getId()."' class='btn btn-primary'>Current Location</a>"; ?>
+            <?php echo "<a href='actions/mark_offline.php?id=".$userObj->getId()."' class='btn btn-primary confirmation'>Mark Offline</a>"; ?>
         </td>
-
-        <td >
-            <?php echo "<a href='actions/mark_offline.php?id=".$userObj->getId()."' class='btn btn-primary'>Mark Offline</a>"; ?>
-        </td>
-
     </tr>
 
 <?php
