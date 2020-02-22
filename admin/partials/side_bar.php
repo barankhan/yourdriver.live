@@ -46,6 +46,9 @@
                 <li>
                     <a href="<?php echo MY_HOST ?>admin/rides/driver_cancelled_auto_rides.php">Driver Cancelled Auto</a>
                 </li>
+                <li>
+                    <a href="<?php echo MY_HOST ?>admin/rides/completed_auto_rides.php">Completed Auto</a>
+                </li>
 
             </ul>
         </li>

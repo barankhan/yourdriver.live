@@ -154,6 +154,17 @@ distance=:distance,rating=:rating,pickup_address=:pickup_address,dropoff_address
     }
 
 
+    public function getCompletedAutoRidesCount(){
+        $q = "SELECT count(*) ct FROM rides where vehicle_type='Auto'  and is_ride_ended=1;";
+        $rs =  $this->executeSelectSingle($q);
+        return $rs['ct'];
+    }
+
+    public function getCompletedAutoRides($page=1,$limit=10){
+        $q  = "SELECT r.id,r.passenger_id,r.driver_id,r.created_at,r.pickup_lat,r.pickup_lng,r.dropoff_lat,r.dropoff_lng,u.name,t.total_fare,t.amount_received,p.name as passenger_name,(select count(*) from ride_alerts where ride_id=r.id) as alert_count,concat(t.driver_initial_balance,' to ',t.driver_new_balance) as driver_balance,concat(t.passenger_initial_balance,' to ',t.passenger_new_balance) as passenger_balance FROM rides r,users u,users p,transactions t where t.ride_id=r.id and p.id=r.passenger_id and u.id=r.driver_id and r.vehicle_type='Auto' and is_ride_ended=1 order by r.id desc limit  ".(($page-1)*$limit).",".$limit.";";
+        return $this->executeSelect($q);
+    }
+
     /**
      * @return mixed
      */
