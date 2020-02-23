@@ -39,7 +39,7 @@ if($userObj->getId()>0){
 
     $rideObj->insert();
 
-    $drivers = $userObj->getAvailableDrivers($pickup_lat_lng[0],$pickup_lat_lng[1],$_REQUEST["vehicle_type"],1,4);
+    $drivers = $userObj->getAvailableDrivers($pickup_lat_lng[0],$pickup_lat_lng[1],$_REQUEST["vehicle_type"],1,3);
 
     if(array_key_exists(0, $drivers)){
         $driver = new User();

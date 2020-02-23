@@ -18,7 +18,7 @@ foreach($rides as $ride) {
     if($testRideObj->getIsRideCancelled()!=1 and $testRideObj->getDriverId()==0) {
 
 
-        $drivers = $userObj->getAvailableDrivers($newRideObj->getPickupLat(), $newRideObj->getPickupLng(), $newRideObj->getVehicleType(), 1, 4, true, $newRideObj->getId());
+        $drivers = $userObj->getAvailableDrivers($newRideObj->getPickupLat(), $newRideObj->getPickupLng(), $newRideObj->getVehicleType(), 1, 3, true, $newRideObj->getId());
 
         if (array_key_exists(0, $drivers)) {
             $driver = new User();
