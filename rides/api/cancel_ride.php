@@ -70,7 +70,7 @@ if($rideObj->getDriverId()==0){
         $payload['key']="p_ride_cancelled";
         $payload['user']=json_encode($passengerObj);
         $token = $passengerObj->getFirebaseToken();
-        $fabseRes = $fbaseObj->sendPayloadOnly($lr->getId(),$token,$payload,$notification,'high',30);
+        $fabseRes = $fbaseObj->sendPayloadOnly($lr->getId(),$token,$payload,$notification,'high',864000);
 
         // Set On Trip Status.
         $userObj->setIsDriverOnTrip(0);
@@ -97,7 +97,7 @@ if($rideObj->getDriverId()==0){
         $payload['key']="d_ride_cancelled";
         $payload['user']=json_encode($driverObj);
         $token = $driverObj->getFirebaseToken();
-        $fabseRes = $fbaseObj->sendPayloadOnly($lr->getId(),$token,$payload,null,'high',30);
+        $fabseRes = $fbaseObj->sendPayloadOnly($lr->getId(),$token,$payload,null,'high',864000);
 
     }
 
