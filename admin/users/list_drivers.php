@@ -9,7 +9,7 @@ require_once __DIR__."/../partials/header.php";
 
 $userObj = new User();
 $page = (empty($_REQUEST['page'])?1:$_REQUEST['page']);
-$limit = (empty($_REQUEST['limit'])?10:$_REQUEST['limit']);
+$limit = (empty($_REQUEST['limit'])?50:$_REQUEST['limit']);
 $search=(empty($_REQUEST['search'])?"":$_REQUEST['search']);
 
 $where = null;
