@@ -31,6 +31,9 @@
                 <li>
                     <a href="<?php echo MY_HOST ?>admin/users/online_drivers.php">Online Drivers</a>
                 </li>
+                <li>
+                    <a href="<?php echo MY_HOST ?>admin/users/list_drivers.php">Drivers</a>
+                </li>
             </ul>
         </li>
 

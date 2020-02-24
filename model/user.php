@@ -971,6 +971,8 @@ class User extends  baseModel implements JsonSerializable {
     }
 
 
+
+
     public function getAllUsersCount($where=null){
 
 
@@ -1022,6 +1024,21 @@ class User extends  baseModel implements JsonSerializable {
         }
     }
 
+
+
+    public function getAllDriversCount($where=null){
+
+        $q  = "select count(*) as ct from users ".($where!=null?$where:"")."     ;";
+
+        $rs =  $this->executeSelectSingle($q);
+        return $rs['ct'];
+    }
+
+    public function getAllDrivers($where=null,$page=1,$limit=10){
+
+        $q  = "select * from users Where is_driver=1 and  ".($where!=null?$where:"")." order by id desc limit ".(($page-1)*$limit).",".$limit.";";
+        return $this->executeSelect($q);
+    }
 
 
     public function jsonSerialize()
