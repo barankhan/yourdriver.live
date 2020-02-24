@@ -14,7 +14,7 @@ $search=(empty($_REQUEST['search'])?"":$_REQUEST['search']);
 
 $where = null;
 if(strlen($search)>0){
-        $where = ' and cnic like "%'.$search.'%" or mobile like "%'.$search.'%"  or  name like "%'.$search.'%"' ;
+        $where = ' and cnic like "%'.$search.'%" or mobile like "%'.$search.'%"  or  name like "%'.$search.'%"   or  vehicle_type like "%'.$search.'%" ' ;
 }
 
 $total_rows = $userObj->getAllDriversCount($where);
