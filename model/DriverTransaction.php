@@ -110,6 +110,12 @@ $kmTravelled=0,$kmTravelledRate,$totalFare=0,$amountReceived=0,$createdAt,$updat
         $this->setAllFields($this->executeSelectSingle($q,$params));
     }
 
+    public function findByRideId(){
+        $q = "select * from transactions where ride_id=:ride_id";
+        $params = array("ride_id"=>$this->rideId);
+        $this->setAllFields($this->executeSelectSingle($q,$params));
+    }
+
 
 
     public function settleCancelledAmount(){
