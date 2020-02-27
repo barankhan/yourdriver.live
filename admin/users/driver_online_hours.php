@@ -32,14 +32,17 @@ $date = (empty($_REQUEST['date'])?date('Y-m-d'):$_REQUEST['date']);
 
 </form>
 <table class="table table-striped">
-    <th>
-        <td>ID</td>
-        <td>Name</td>
-        <td>Mobile</td>
-        <td>Date</td>
-        <td>Duration(Hours)</td>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Mobile</th>
+        <th>Date</th>
+        <th>Duration(Hours)</th>
 
-    </th>
+    </tr>
+    </thead>
+    <tbody>
 <?php
 $history = $userOnlineHistoryObj->getDailyReport($date);
 foreach($history as $his){
@@ -59,4 +62,5 @@ foreach($history as $his){
 }
 
 ?>
+    </tbody>
 </table>
