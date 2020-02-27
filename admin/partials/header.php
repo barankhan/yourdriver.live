@@ -13,8 +13,10 @@ require_once __DIR__."/validate_session.php";
 <html>
 <head>
     <link rel="stylesheet" href="<?php echo MY_HOST;?>/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="<?php echo MY_HOST;?>/bootstrap/css/bootstrap-datepicker3.min.css">
     <script type="text/javascript" src="<?php echo MY_HOST;?>/bootstrap/js/jquery-3.4.1.min.js"></script>
     <script type="text/javascript" src="<?php echo MY_HOST;?>/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="<?php echo MY_HOST;?>/bootstrap/js/bootstrap-datepicker.js"></script>
     <style>
         /*
     DEMO STYLE
