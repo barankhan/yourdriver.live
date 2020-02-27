@@ -54,7 +54,7 @@ foreach($history as $his){
 <td><?php echo $userObj->getName(); ?></td>
 <td><?php echo $userObj->getMobile(); ?></td>
 <td><?php echo $date; ?></td>
-<td><?php echo bcdiv(intdiv($his['duration'], 60),1,2).':'. bcdiv(($his['duration'] % 60),1,2); ?></td>
+<td><?php echo sprintf("%02s", intdiv($his['duration'], 60)).':'. sprintf("%02s",$his['duration'] % 60); ?></td>
 
 </tr>
 <?php
