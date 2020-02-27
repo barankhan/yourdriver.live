@@ -34,6 +34,9 @@
                 <li>
                     <a href="<?php echo MY_HOST ?>admin/users/list_drivers.php">Drivers</a>
                 </li>
+                <li>
+                    <a href="<?php echo MY_HOST ?>admin/users/driver_online_hours">Online Time sheet</a>
+                </li>
             </ul>
         </li>
 
