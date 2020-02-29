@@ -14,6 +14,8 @@ $userObj->getUserWithId($_REQUEST["id"]);
 $userObj->setIsDriverOnline(0);
 $userObj->setLat(0);
 $userObj->setLng(0);
+$userObj->setOnlineAt(null);
+$userObj->setOfflineAt(null);
 $userObj->update();
 
 
