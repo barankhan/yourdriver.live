@@ -53,6 +53,11 @@ distance=:distance,rating=:rating,pickup_address=:pickup_address,dropoff_address
             $statement = $this->conn->prepare($q);
             $statement->execute(array("id" => $id));
             $records = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+            $q2 = "update ride_alerts set is_accepted=1,accepted_at=now() where ride_id=:id and driver_id=:driver_id;";
+            $statement = $this->conn->prepare($q2);
+            $statement->execute(array("id" => $id, "driver_id" => $driver_id));
+
             if (sizeof($records) > 0) {
                 $this->setAllFields($records[0]);
 
@@ -67,9 +72,6 @@ distance=:distance,rating=:rating,pickup_address=:pickup_address,dropoff_address
                 $params = array("ddriver_id" => $driver_id);
                 $statement->execute($params);
 
-                $q2 = "update ride_alerts set is_accepted=1,accepted_at=now() where ride_id=:id and driver_id=:driver_id;";
-                $statement = $this->conn->prepare($q2);
-                $statement->execute(array("id" => $id, "driver_id" => $driver_id));
                 $this->conn->commit();
                 $this->setId($id);
                 $this->findRideWithId();
