@@ -15,7 +15,7 @@ $rideObj->setId($_REQUEST['ride_id']);
 $rideObj->findRideWithId();
 
 if($rideObj->getArrivalCode()==0){
-    $rideObj->setArrivalCode($rideObj->generateRandomString(4));
+    $rideObj->setArrivalCode(mt_rand(10000,99999));
     $rideObj->update();
 }
 $rideObj->setResponse("code_sent");
