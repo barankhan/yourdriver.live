@@ -28,16 +28,13 @@ $passengerObj = new User();
 $passengerObj->getUserWithId($rideObj->getPassengerId());
 
 
-$payload['message'] = "Arrival Code is: ".$rideObj->getArrivalCode();
-$payload['key'] = "p_ride_started";
-$payload['ride'] = json_encode($rideObj);
-
-
 $fbaseObj = new firebaseNotification();
-
-
+$payload['message'] = "Arrival Code is: ".$rideObj->getArrivalCode();
+$payload['key']="p_ride_accepted";
+$payload['driver']=json_encode($driverObj);
+$payload['ride']=json_encode($rideObj);
 $token = $passengerObj->getFirebaseToken();
-$fabseRes = $fbaseObj->sendPayloadOnly($lr->getId(), $token, $payload, null, 'normal',30);
+$fabseRes = $fbaseObj->sendPayloadOnly($lr->getId(),$token,$payload,null,"high",30);
 
 
 
