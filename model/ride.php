@@ -12,7 +12,10 @@ class ride extends  baseModel implements JsonSerializable
 
     private $id=0,$passengerId,$driverId=0,$createdAt,$updatedAt,$pickupLat,$pickupLng,$vehicleType,$dropoffLat
     ,$dropoffLng,$response,$message,$isRideStarted=0,$isRideCancelled=0,$rideStartedAt,$rideCancelledAt,$driverLat,$driverLng,
-        $cancelledByTypeId=0,$isDriverArrived=0,$isRideEnded=0,$rideEndedAt,$driverArrivedAt,$distance,$rating,$pickupAddress,$dropoffAddress;
+        $cancelledByTypeId=0,$isDriverArrived=0,$isRideEnded=0,$rideEndedAt,$driverArrivedAt,$distance,$rating,$pickupAddress,$dropoffAddress
+    ,$rideEndedLat,$rideEndedLng,$arrivalCode=0
+
+    ;
     public function insert(){
         $q = "insert into rides(passenger_id,pickup_lat,pickup_lng,vehicle_type,dropoff_lat,dropoff_lng,pickup_address,dropoff_address)
             values(:passenger_id,:pickup_lat,:pickup_lng,:vehicle_type,:dropoff_lat,:dropoff_lng,:pickup_address,:dropoff_address);";
@@ -26,14 +29,16 @@ class ride extends  baseModel implements JsonSerializable
         $q = "update rides set is_ride_started=:isRideStarted,is_ride_cancelled=:isRideCancelled,ride_started_at=:rideStartedAt,
 ride_cancelled_at=:rideCancelledAt,driver_lat=:driverLat,driver_lng=:driverLng,cancelled_by_type_id=:cancelledByTypeId,
 is_driver_arrived=:isDriverArrived,driver_arrived_at=:driverArrivedAt,is_ride_ended=:isRideEnded,ride_ended_at=:rideEndedAt,
-distance=:distance,rating=:rating,pickup_address=:pickup_address,dropoff_address=:dropoff_address
+distance=:distance,rating=:rating,pickup_address=:pickup_address,dropoff_address=:dropoff_address,ride_ended_lat=:ride_ended_lat,
+ride_ended_lng=:ride_ended_lng,arrival_code=:arrival_code
  
  where id=:id";
         $params = array("isRideStarted"=>$this->isRideStarted,"isRideCancelled"=>$this->isRideCancelled,
             "rideStartedAt"=>$this->rideStartedAt,"rideCancelledAt"=>$this->rideCancelledAt,"id"=>$this->id,
             "driverLat"=>$this->driverLat,"driverLng"=>$this->driverLng,"cancelledByTypeId"=>$this->cancelledByTypeId,
             "isDriverArrived"=>$this->isDriverArrived,"driverArrivedAt"=>$this->driverArrivedAt,"isRideEnded"=>$this->isRideEnded,
-            "rideEndedAt"=>$this->rideEndedAt,"distance"=>$this->distance,"rating"=>$this->rating,"pickup_address"=>$this->pickupAddress,"dropoff_address"=>$this->dropoffAddress
+            "rideEndedAt"=>$this->rideEndedAt,"distance"=>$this->distance,"rating"=>$this->rating,"pickup_address"=>$this->pickupAddress,"dropoff_address"=>$this->dropoffAddress,
+            "ride_ended_lat"=>$this->rideEndedLat,"ride_ended_lng"=>$this->rideEndedLng,"arrival_code"=>$this->arrivalCode
         );
 
         return $this->executeUpdate($q,$params);
@@ -166,6 +171,59 @@ distance=:distance,rating=:rating,pickup_address=:pickup_address,dropoff_address
         $q  = "SELECT r.id,r.passenger_id,r.driver_id,r.created_at,r.pickup_lat,r.pickup_lng,r.dropoff_lat,r.dropoff_lng,u.name,t.total_fare,t.amount_received,p.name as passenger_name,(select count(*) from ride_alerts where ride_id=r.id) as alert_count,concat(t.driver_initial_balance,' to ',t.driver_new_balance) as driver_balance,concat(t.passenger_initial_balance,' to ',t.passenger_new_balance) as passenger_balance FROM rides r,users u,users p,transactions t where t.ride_id=r.id and p.id=r.passenger_id and u.id=r.driver_id and r.vehicle_type='Auto' and is_ride_ended=1 order by r.id desc limit  ".(($page-1)*$limit).",".$limit.";";
         return $this->executeSelect($q);
     }
+
+    /**
+     * @return mixed
+     */
+    public function getRideEndedLat()
+    {
+        return $this->rideEndedLat;
+    }
+
+    /**
+     * @param mixed $rideEndedLat
+     */
+    public function setRideEndedLat($rideEndedLat)
+    {
+        $this->rideEndedLat = $rideEndedLat;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getRideEndedLng()
+    {
+        return $this->rideEndedLng;
+    }
+
+    /**
+     * @param mixed $rideEndedLng
+     */
+    public function setRideEndedLng($rideEndedLng)
+    {
+        $this->rideEndedLng = $rideEndedLng;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getArrivalCode()
+    {
+        return $this->arrivalCode;
+    }
+
+    /**
+     * @param mixed $arrivalCode
+     */
+    public function setArrivalCode($arrivalCode)
+    {
+        $this->arrivalCode = $arrivalCode;
+    }
+
+
+
+
+
 
     /**
      * @return mixed
