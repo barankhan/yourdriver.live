@@ -34,6 +34,13 @@ class rideAlert extends  baseModel implements JsonSerializable
     }
 
 
+    public function getDriverAlerts($page,$limit=10){
+        $q = "select * from `ride_alerts` where driver_id=:driver_id order by created_at desc limit ".($page*$limit).",".$limit.";";
+        $params = array("driver_id"=>$this->driverId);
+        return $this->executeSelect($q,$params);
+    }
+
+
     public function findAlertById(){
         $q = "select * from ride_alerts where id=:id";
         $params = array("id"=>$this->id);
