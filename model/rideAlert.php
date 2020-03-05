@@ -298,7 +298,8 @@ class rideAlert extends  baseModel implements JsonSerializable
                 return ! is_null($item);
             }
         );
-
+        unset($vars['conn']);
+        $vars['createdAt']= date('d-m-y h:i:s A', strtotime($vars['createdAt']));
         return $vars;
     }
 }
