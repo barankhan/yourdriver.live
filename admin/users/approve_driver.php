@@ -19,4 +19,4 @@ $payload['message']="Congratulation! You're a stakeholder now, Please login.";
 $payload['key']="driver_successful";
 $token = $userObj->getFirebaseToken();
 
-echo $fbaseObj->sendPayloadOnly(0,$token,$payload);
+echo $fbaseObj->sendPayloadOnly(0,$token,$payload,null,'high',25000);
