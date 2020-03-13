@@ -15,6 +15,7 @@ $email = $_REQUEST['email'];
 $password = $_REQUEST['password'];
 $mobile = $_REQUEST['mobile'];
 $firebase_token = $_REQUEST['firebaseToken'];
+$referral_code = $_REQUEST['ref_code'];
 $userObj = new User();
 $userObj->getUserWithMobile($mobile);
 if($userObj->getId()==0){
@@ -23,6 +24,7 @@ if($userObj->getId()==0){
     $userObj->setMobile($mobile);
     $userObj->setPassword($password);
     $userObj->setFirebaseToken($firebase_token);
+    $userObj->setReferralCode($referral_code);
     $userObj->setVerificationToken(mt_rand(10000,99999));
     $userObj->registerUser();
     if($userObj->getId()!=0) {

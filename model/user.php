@@ -6,7 +6,8 @@ class User extends  baseModel implements JsonSerializable {
         $createdAt=null,$updatedAt=null,$isDeleted=0,$isActive=1,$isVerified=0,$isDriver=0,$response,$firebaseToken,
         $father,$cnic,$cnicFront,$cnicRear,$picture,$licence,$vehicleFront,$vehicleRear,$registration,$route,
         $regAlphabet,$regYear,$regNo,$lat,$lng,$isDriverOnline=0,$vehicleType='Auto',$isDriverOnTrip=0,$distance,$balance,
-    $totalRating=0,$totalRides=0,$rating=5,$totalRatedRides=0,$creditLimit,$message,$acceptancePoints,$vehicleMade,$vehicleColor,$onlineAt,$offlineAt,$isAdmin=0;
+    $totalRating=0,$totalRides=0,$rating=5,$totalRatedRides=0,$creditLimit,$message,$acceptancePoints,$vehicleMade,$vehicleColor
+    ,$onlineAt,$offlineAt,$isAdmin=0,$referralCode=0;
 
 
     public function update(){
@@ -17,7 +18,7 @@ class User extends  baseModel implements JsonSerializable {
         route=:route,reg_alphabet=:regAlphabet,reg_year=:regYear,reg_no=:regNo,lat=:lat,lng=:lng,is_driver_online=:is_driver_online
         ,vehicle_type=:vehicleType,is_driver_on_trip=:isDriverOnTrip,balance=:balance,firebase_token=:firebaseToken,
          total_rating=:totalRating,total_rides=:totalRides,rating=:rating,total_rated_rides=:totalRatedRides,credit_limit=:creditLimit,acceptance_points=:acceptancePoints,
-         vehicle_made=:vehicleMade,vehicle_color=:vehicleColor,online_at=:onlineAt,offline_at=:offlineAt,is_admin=:is_admin
+         vehicle_made=:vehicleMade,vehicle_color=:vehicleColor,online_at=:onlineAt,offline_at=:offlineAt,is_admin=:is_admin,referral_code=:referral_code
          
          where id=:id";
             $params = array("id" => $this->id, "driverSteps" => $this->driverSteps, "name" => $this->name, "email" => $this->email, "password" => $this->password,
@@ -29,7 +30,8 @@ class User extends  baseModel implements JsonSerializable {
                 "is_driver_online"=>$this->isDriverOnline,"vehicleType"=>$this->vehicleType,"isDriverOnTrip"=>$this->isDriverOnTrip,
                 "balance"=>$this->balance,"firebaseToken"=>$this->firebaseToken,"totalRating"=>$this->totalRating,"totalRides"=>$this->totalRides,
                 "rating"=>$this->rating,"totalRatedRides"=>$this->totalRatedRides,"creditLimit"=>$this->creditLimit,"acceptancePoints"=>$this->acceptancePoints,
-                "vehicleMade"=>$this->vehicleMade,"vehicleColor"=>$this->vehicleColor,"onlineAt"=>$this->onlineAt,"offlineAt"=>$this->offlineAt,"is_admin"=>$this->isAdmin
+                "vehicleMade"=>$this->vehicleMade,"vehicleColor"=>$this->vehicleColor,"onlineAt"=>$this->onlineAt,"offlineAt"=>$this->offlineAt,"is_admin"=>$this->isAdmin,
+                "referral_code"=>$this->referralCode
 
             );
             return $this->executeUpdate($q, $params);
@@ -60,6 +62,25 @@ class User extends  baseModel implements JsonSerializable {
         return $this->executeSelect($q);
 
     }
+
+    /**
+     * @return int
+     */
+    public function getReferralCode(): int
+    {
+        return $this->referralCode;
+    }
+
+    /**
+     * @param int $referralCode
+     */
+    public function setReferralCode(int $referralCode)
+    {
+        $this->referralCode = $referralCode;
+    }
+
+
+
 
     /**
      * @return int
@@ -850,8 +871,9 @@ class User extends  baseModel implements JsonSerializable {
     }
 
     public function registerUser(){
-        $q = "INSERT INTO users(name, email, password, mobile,verification_token,firebase_token) VALUES(:name,:email,:password,:mobile,:verification_token,:firebase_token)";
-        $params = array('name'=>$this->name,'email'=>$this->email,'password'=>$this->password,'mobile'=>$this->mobile,"verification_token"=>$this->verificationToken,"firebase_token"=>$this->firebaseToken);
+        $q = "INSERT INTO users(name, email, password, mobile,verification_token,firebase_token,referral_code) VALUES(:name,:email,:password,:mobile,:verification_token,:firebase_token,:referral_code)";
+        $params = array('name'=>$this->name,'email'=>$this->email,'password'=>$this->password,'mobile'=>$this->mobile,"verification_token"=>$this->verificationToken,
+            "firebase_token"=>$this->firebaseToken,"referral_code"=>$this->referralCode);
         $this->setId($this->executeInsert($q,$params));
     }
 
