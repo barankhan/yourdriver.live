@@ -117,6 +117,14 @@ $kmTravelled=0,$kmTravelledRate,$totalFare=0,$amountReceived=0,$createdAt,$updat
     }
 
 
+    public function getLastDaysEarning($days = 7){
+        $q = "select COALESCE(round(sum(total_fare)-sum(company_service_charges)),0) as earning from transactions where driver_id=:driver_id and date(created_at) >= date(NOW() + INTERVAL - :days DAY );";
+        $params = array("days"=>$days,"driver_id"=>$this->getDriverId());
+        $rs =  $this->executeSelectSingle($q,$params);
+        return $rs['earning'];
+    }
+
+
 
     public function settleCancelledAmount(){
         if($this->isCancelAdjustment==1){

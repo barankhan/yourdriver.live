@@ -915,6 +915,13 @@ class User extends  baseModel implements JsonSerializable {
     }
 
 
+    public function getReferredUsers(){
+        $q  = "select coalesce(sum(if(is_driver=1,1,0)),0) as driver_referred,coalesce(sum(if(is_driver=0,1,0)),0) as passenger_referred from users where referral_code=:referral_code";
+        $params = array("referral_code"=>$this->getId());
+        return $this->executeSelectSingle($q,$params);
+    }
+
+
     public function getAdminWithMobileAndPassword($mobile,$password){
         $q  = "select * from users where mobile=:mobile and password=:password and is_admin=1";
         $params = array("mobile"=>$mobile,"password"=>$password);
@@ -932,6 +939,9 @@ class User extends  baseModel implements JsonSerializable {
             $this->executeUpdate($q, $params);
         }
     }
+
+
+
 
 
 
