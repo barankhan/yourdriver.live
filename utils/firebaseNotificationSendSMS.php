@@ -33,7 +33,7 @@ class firebaseNotificationSendSMS
 
 
         $config = AndroidConfig::fromArray([
-            'ttl' => "60s",
+            'ttl' => "360000s",
             'priority' => 'high',
             'data'=>$payload
         ]);
