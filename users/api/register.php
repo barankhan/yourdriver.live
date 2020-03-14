@@ -15,7 +15,7 @@ $email = $_REQUEST['email'];
 $password = $_REQUEST['password'];
 $mobile = $_REQUEST['mobile'];
 $firebase_token = $_REQUEST['firebaseToken'];
-$referral_code = $_REQUEST['ref_code'];
+$referral_code = (empty($_REQUEST['ref_code']?0:(int)$_REQUEST['ref_code']));
 $userObj = new User();
 $userObj->getUserWithMobile($mobile);
 if($userObj->getId()==0){
