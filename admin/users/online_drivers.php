@@ -35,7 +35,7 @@ if(isset($_REQUEST['msg'])){
             Name
         </td>
         <td >
-            Father
+            Vehicle Type
         </td>
         <td >
             Mobile
@@ -72,7 +72,7 @@ foreach ($drivers as $driver){
             <?php echo $userObj->getName(); ?>
         </td>
         <td >
-            <?php echo $userObj->getFather(); ?>
+            <?php echo $userObj->getVehicleType(); ?>
         </td>
         <td >
                 <?php echo $userObj->getMobile();?>
