@@ -8,6 +8,8 @@
 
 require_once __DIR__."/../partials/header.php";
 
+$vehicle_type = (empty($_REQUEST['vehicle_type'])?"Auto":$_REQUEST['vehicle_type']);
+
 $ridesObj = new ride();
 $page = (empty($_REQUEST['page'])?1:$_REQUEST['page']);
 $limit = (empty($_REQUEST['limit'])?10:$_REQUEST['limit']);
@@ -18,8 +20,8 @@ $search=(empty($_REQUEST['search'])?"":$_REQUEST['search']);
 ////    $where = ' where cnic like "%'.$search.'%" or mobile like "%'.$search.'%"  or  name like "%'.$search.'%"' ;
 //}
 
-$total_rows = $ridesObj->getUnAttendedAutoAutoRidesCount();
-$unattended_rides  = $ridesObj->getUnAttendedAutoAutoRides($page,$limit);
+$total_rows = $ridesObj->getUnAttendedRidesCount($vehicle_type);
+$unattended_rides  = $ridesObj->getUnAttendedRides($vehicle_type,$page,$limit);
 
 $total_pages = ceil($total_rows/$limit);
 
@@ -27,8 +29,8 @@ $total_pages = ceil($total_rows/$limit);
 
 $i=0;
 ?>
-
-    <div class="row align-content-center">
+    <h1>Unattended "<?php echo $vehicle_type; ?>"</h1>
+    <div class="row align-content-center" >
         <form method="get" >
             <input type="text" name="search" value="<?php echo $search ?>"/>
             <input type="hidden" name="page" value="<?php echo $page?>" />
@@ -108,7 +110,7 @@ foreach ($unattended_rides as $ride){
     <nav aria-label="Page navigation example">
         <ul class="pagination mt-2">
 
-            <li class="page-item"><a class="page-link" href="?page=1">First</a></li>
+            <li class="page-item"><a class="page-link" href="?page=1&vehicle_type=<?php echo $vehicle_type ?>">First</a></li>
 
             <li class="page-item"><a class="page-link" href="<?php if($page == 1){ echo '#'; } else { echo "?page=".($page-1); } ?>">Previous</a></li>
 
@@ -124,7 +126,7 @@ foreach ($unattended_rides as $ride){
                 }
                 ?>
 
-                <li class="page-item"><a class="page-link" href="?page=<?php echo $i; ?>"><?php echo $i ?></a></li>
+                <li class="page-item"><a class="page-link" href="?page=<?php echo $i; ?>&vehicle_type=<?php echo $vehicle_type ?>"><?php echo $i ?></a></li>
 
             <?php } ?>
 
@@ -141,15 +143,15 @@ foreach ($unattended_rides as $ride){
                 }
                 ?>
 
-                <li class="page-item"><a class="page-link" href="?page=<?php echo $i; ?>"><?php echo $i ?></a></li>
+                <li class="page-item"><a class="page-link" href="?page=<?php echo $i; ?>&vehicle_type=<?php echo $vehicle_type ?>"><?php echo $i ?></a></li>
 
             <?php }
             ?>
 
-            <li class="page-item"><a class="page-link" href="<?php if($page >= $total_pages){ echo '#'; } else { echo "?page=".($page + 1); } ?>">Next</a></li>
+            <li class="page-item"><a class="page-link" href="<?php if($page >= $total_pages){ echo '#'; } else { echo "?page=".($page + 1)."&vehicle_type=".$vehicle_type;  } ?>">Next</a></li>
 
 
-            <li class="page-item"><a class="page-link" href="?page=<?php echo $total_pages; ?>">Last</a></li>
+            <li class="page-item"><a class="page-link" href="?page=<?php echo $total_pages; ?>&vehicle_type=<?php echo $vehicle_type ?>">Last</a></li>
         </ul>
     </nav>
 

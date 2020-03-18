@@ -12,9 +12,12 @@ $rs = $userObj->getCurrentWeekRegistrationCounts();
 
 
 $rsUserCount = $userObj->getRegisterUsersCount();
-$rsDriverCount = $userObj->getRegisterDriversCount();
+$rsAutoDriverCount = $userObj->getRegisterDriversCount();
+$rsBikeDriverCount = $userObj->getRegisterDriversCount("Bike");
+$rsCarDriverCount = $userObj->getRegisterDriversCount("Car");
 $rsAutoOnlineDriversCount = $userObj->getOnlineDriversCount();
 $rsBikeOnlineDriversCount = $userObj->getOnlineDriversCount("Bike");
+$rsCarOnlineDriversCount = $userObj->getOnlineDriversCount("Car");
 
 
 
@@ -28,8 +31,9 @@ $rideRs = $rideObj->getEndedRidesCountInCurrentWeek();
 $passengerCancelledRs = $rideObj->getCancelledRidesInCurrentWeek(1);
 $driverCancelledRs = $rideObj->getCancelledRidesInCurrentWeek(2);
 
-$unAttendedAutoRides = $rideObj->getUnAttendedAutoAutoRidesCountInCurrentWeek();
-$unAttendedBikeRides = $rideObj->getUnAttendedBikeRidesCountInCurrentWeek();
+$unAttendedAutoRides = $rideObj->getUnAttendedRidesCountInCurrentWeek("Auto");
+$unAttendedBikeRides = $rideObj->getUnAttendedRidesCountInCurrentWeek("Bike");
+$unAttendedCarRides = $rideObj->getUnAttendedRidesCountInCurrentWeek("Car");
 
 
 
@@ -54,17 +58,29 @@ $unAttendedBikeRides = $rideObj->getUnAttendedBikeRidesCountInCurrentWeek();
                 Bike Online Drivers
                 <span class="badge badge-primary badge-pill"><?php echo $rsBikeOnlineDriversCount ?></span>
             </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                Car Online Drivers
+                <span class="badge badge-primary badge-pill"><?php echo $rsCarOnlineDriversCount ?></span>
+            </li>
 
             <li class="list-group-item d-flex justify-content-between align-items-center">
-                Register Passengers:
+                Registered Passengers:
                 <span class="badge badge-primary badge-pill"><?php echo $rsUserCount ?></span>
             </li>
 
             <li class="list-group-item d-flex justify-content-between align-items-center">
-                Register Drivers
-                <span class="badge badge-primary badge-pill"><?php echo $rsDriverCount ?></span>
+                Auto Registered Drivers
+                <span class="badge badge-primary badge-pill"><?php echo $rsAutoDriverCount ?></span>
             </li>
 
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                Bike Registered Drivers
+                <span class="badge badge-primary badge-pill"><?php echo $rsBikeDriverCount ?></span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                Car Registered Drivers
+                <span class="badge badge-primary badge-pill"><?php echo $rsCarDriverCount ?></span>
+            </li>
         </ul>
     </div>
 
@@ -142,6 +158,7 @@ $unAttendedBikeRides = $rideObj->getUnAttendedBikeRidesCountInCurrentWeek();
         </ul>
     </div>
 
+    <div class="clearfix"></div>
 
 
     <div class="card float-left  ml-2" style="width: 18rem;">
@@ -168,6 +185,23 @@ $unAttendedBikeRides = $rideObj->getUnAttendedBikeRidesCountInCurrentWeek();
         </div>
         <ul class="list-group">
             <?php foreach($unAttendedBikeRides as $r) { ?>
+
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <?php echo $r['created_at'] ?>
+                    <span class="badge badge-primary badge-pill"><?php echo $r['ct'] ?></span>
+                </li>
+
+
+            <?php } ?>
+        </ul>
+    </div>
+
+    <div class="card float-left  ml-2" style="width: 18rem;">
+        <div class="card-header">
+            Car Driver Not found
+        </div>
+        <ul class="list-group">
+            <?php foreach($unAttendedCarRides as $r) { ?>
 
                 <li class="list-group-item d-flex justify-content-between align-items-center">
                     <?php echo $r['created_at'] ?>

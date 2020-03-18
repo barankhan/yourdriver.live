@@ -41,19 +41,63 @@
         </li>
 
         <li>
-            <a href="#ridesSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Rides</a>
-            <ul class="list-unstyled" id="ridesSubmenu">
+            <a href="#autoridesSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Auto Rides</a>
+            <ul class="list-unstyled" id="autoridesSubmenu">
                 <li>
-                    <a href="<?php echo MY_HOST ?>admin/rides/unattended_auto_rides.php">Unattended Auto</a>
+                    <a href="<?php echo MY_HOST ?>admin/rides/unattended_rides.php?vehicle_type=Auto">Unattended</a>
+                </li>
+
+
+
+                <li>
+                    <a href="<?php echo MY_HOST ?>admin/rides/passenger_cancelled_rides.php?vehicle_type=Auto">Passenger Cancelled</a>
+                </li>
+
+
+                <li>
+                    <a href="<?php echo MY_HOST ?>admin/rides/driver_cancelled_rides.php?vehicle_type=Auto">Driver Cancelled</a>
+                </li>
+
+
+                <li>
+                    <a href="<?php echo MY_HOST ?>admin/rides/completed_rides.php?vehicle_type=Auto">Completed</a>
+                </li>
+
+
+
+            </ul>
+        </li>
+        <li>
+            <a href="#bikeridesSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Bike Rides</a>
+            <ul class="list-unstyled" id="bikeridesSubmenu">
+                <li>
+                    <a href="<?php echo MY_HOST ?>admin/rides/unattended_rides.php?vehicle_type=Bike">Unattended </a>
                 </li>
                 <li>
-                    <a href="<?php echo MY_HOST ?>admin/rides/passenger_cancelled_auto_rides.php">Passenger Cancelled Auto</a>
+                    <a href="<?php echo MY_HOST ?>admin/rides/passenger_cancelled_rides.php?vehicle_type=Bike">Passenger Cancelled </a>
                 </li>
                 <li>
-                    <a href="<?php echo MY_HOST ?>admin/rides/driver_cancelled_auto_rides.php">Driver Cancelled Auto</a>
+                    <a href="<?php echo MY_HOST ?>admin/rides/driver_cancelled_rides.php?vehicle_type=Bike">Driver Cancelled </a>
                 </li>
                 <li>
-                    <a href="<?php echo MY_HOST ?>admin/rides/completed_auto_rides.php">Completed Auto</a>
+                    <a href="<?php echo MY_HOST ?>admin/rides/completed_rides.php?vehicle_type=Bike">Completed </a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="#carridesSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Car Rides</a>
+            <ul class="list-unstyled" id="carridesSubmenu">
+                <li>
+                    <a href="<?php echo MY_HOST ?>admin/rides/unattended_rides.php?vehicle_type=Car">Unattended </a>
+                </li>
+                <li>
+                    <a href="<?php echo MY_HOST ?>admin/rides/passenger_cancelled_rides.php?vehicle_type=Car">Passenger Cancelled </a>
+                </li>
+                <li>
+                    <a href="<?php echo MY_HOST ?>admin/rides/driver_cancelled_rides.php?vehicle_type=Car">Driver Cancelled </a>
+                </li>
+                <li>
+                    <a href="<?php echo MY_HOST ?>admin/rides/completed_rides.php?vehicle_type=Car">Completed </a>
                 </li>
 
             </ul>

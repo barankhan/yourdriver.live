@@ -1030,9 +1030,10 @@ class User extends  baseModel implements JsonSerializable {
     }
 
 
-    public function getRegisterDriversCount(){
-        $q  = "select count(*) as ct from users where  is_verified=1 and is_deleted=0 and is_driver=1";
-        $rs =  $this->executeSelectSingle($q);
+    public function getRegisterDriversCount($vehicle_type='Auto'){
+        $q  = "select count(*) as ct from users where vehicle_type=:vehicle_type and is_verified=1 and is_deleted=0 and is_driver=1";
+        $params = array("vehicle_type"=>$vehicle_type);
+        $rs =  $this->executeSelectSingle($q,$params);
         return $rs['ct'];
     }
 

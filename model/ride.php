@@ -117,9 +117,10 @@ ride_ended_lng=:ride_ended_lng,arrival_code=:arrival_code
 
 
 
-    public function getUnAttendedAutoAutoRidesCountInCurrentWeek(){
-        $q = "SELECT date(created_at) as created_at ,count(*) ct FROM rides where vehicle_type='Auto' and created_at >= DATE(NOW()) - INTERVAL 7 DAY and cancelled_by_type_id=0 and is_ride_cancelled=1 group by date(created_at) order by date(created_at) desc limit 7;";
-        return $this->executeSelect($q);
+    public function getUnAttendedRidesCountInCurrentWeek($vehicle_type='Auto'){
+        $q = "SELECT date(created_at) as created_at ,count(*) ct FROM rides where vehicle_type=:vehicle_type and created_at >= DATE(NOW()) - INTERVAL 7 DAY and cancelled_by_type_id=0 and is_ride_cancelled=1 group by date(created_at) order by date(created_at) desc limit 7;";
+        $params = array("vehicle_type"=>$vehicle_type);
+        return $this->executeSelect($q,$params);
     }
 
     public function getUnAttendedBikeRidesCountInCurrentWeek(){
@@ -128,53 +129,61 @@ ride_ended_lng=:ride_ended_lng,arrival_code=:arrival_code
     }
 
 
-    public function getUnAttendedAutoAutoRidesCount(){
-        $q = "SELECT count(*) ct FROM rides where vehicle_type='Auto'  and cancelled_by_type_id=0 and is_ride_cancelled=1;";
-        $rs =  $this->executeSelectSingle($q);
+    public function getUnAttendedRidesCount($vehicle_type='Auto'){
+        $q = "SELECT count(*) ct FROM rides where vehicle_type=:vehicle_type  and cancelled_by_type_id=0 and is_ride_cancelled=1;";
+        $params = array("vehicle_type"=>$vehicle_type);
+        $rs =  $this->executeSelectSingle($q,$params);
         return $rs['ct'];
     }
 
 
 
-    public function getUnAttendedAutoAutoRides($page=1,$limit=10){
+    public function getUnAttendedRides($vehicle_type='Auto',$page=1,$limit=10){
 
-        $q  = "SELECT r.id,r.passenger_id,r.created_at,r.pickup_lat,r.pickup_lng,r.dropoff_lat,r.dropoff_lng,u.name,(select count(*) from ride_alerts where ride_id=r.id) as alert_count FROM rides r,users u where u.id=r.passenger_id and r.vehicle_type='Auto' and cancelled_by_type_id=0 and is_ride_cancelled=1 order by r.id desc limit  ".(($page-1)*$limit).",".$limit.";";
-        return $this->executeSelect($q);
+        $q  = "SELECT r.id,r.passenger_id,r.created_at,r.pickup_lat,r.pickup_lng,r.dropoff_lat,r.dropoff_lng,u.name,(select count(*) from ride_alerts where ride_id=r.id) as alert_count FROM rides r,users u where u.id=r.passenger_id and r.vehicle_type=:vehicle_type and cancelled_by_type_id=0 and is_ride_cancelled=1 order by r.id desc limit  ".(($page-1)*$limit).",".$limit.";";
+        $params = array("vehicle_type"=>$vehicle_type);
+        return $this->executeSelect($q,$params);
     }
 
 
-    public function getCancelledByPassengerAutoRidesCount(){
-        $q = "SELECT count(*) ct FROM rides where vehicle_type='Auto'  and cancelled_by_type_id=1 and is_ride_cancelled=1;";
-        $rs =  $this->executeSelectSingle($q);
+    public function getCancelledByPassengerRidesCount($vehicle_type='Auto'){
+        $q = "SELECT count(*) ct FROM rides where vehicle_type=:vehicle_type  and cancelled_by_type_id=1 and is_ride_cancelled=1;";
+        $params = array("vehicle_type"=>$vehicle_type);
+        $rs =  $this->executeSelectSingle($q,$params);
         return $rs['ct'];
     }
 
-    public function getCancelledByPassengerAutoRides($page=1,$limit=10){
-        $q  = "SELECT r.id,r.passenger_id,r.created_at,r.pickup_lat,r.pickup_lng,r.dropoff_lat,r.dropoff_lng,u.name,(select count(*) from ride_alerts where ride_id=r.id) as alert_count FROM rides r,users u where u.id=r.passenger_id and r.vehicle_type='Auto' and cancelled_by_type_id=1 and is_ride_cancelled=1 order by r.id desc limit  ".(($page-1)*$limit).",".$limit.";";
-        return $this->executeSelect($q);
+    public function getCancelledByPassengerRides($vehicle_type='Auto',$page=1,$limit=10){
+        $q  = "SELECT r.id,r.passenger_id,r.created_at,r.pickup_lat,r.pickup_lng,r.dropoff_lat,r.dropoff_lng,u.name,(select count(*) from ride_alerts where ride_id=r.id) as alert_count FROM rides r,users u where u.id=r.passenger_id and r.vehicle_type=:vehicle_type and cancelled_by_type_id=1 and is_ride_cancelled=1 order by r.id desc limit  ".(($page-1)*$limit).",".$limit.";";
+        $params = array("vehicle_type"=>$vehicle_type);
+        return $this->executeSelect($q,$params);
     }
 
-    public function getCancelledByDriverAutoRidesCount(){
-        $q = "SELECT count(*) ct FROM rides where vehicle_type='Auto'  and cancelled_by_type_id=2 and is_ride_cancelled=1;";
-        $rs =  $this->executeSelectSingle($q);
+    public function getCancelledByDriverRidesCount($vehicle_type='Auto'){
+        $q = "SELECT count(*) ct FROM rides where vehicle_type=:vehicle_type  and cancelled_by_type_id=2 and is_ride_cancelled=1;";
+        $params = array("vehicle_type"=>$vehicle_type);
+        $rs =  $this->executeSelectSingle($q,$params);
         return $rs['ct'];
     }
 
-    public function getCancelledByDriverAutoRides($page=1,$limit=10){
-        $q  = "SELECT r.id,r.passenger_id,r.driver_id,r.created_at,r.pickup_lat,r.pickup_lng,r.dropoff_lat,r.dropoff_lng,u.name,p.name as passenger_name,(select count(*) from ride_alerts where ride_id=r.id) as alert_count FROM rides r,users u,users p where p.id=r.passenger_id and u.id=r.driver_id and r.vehicle_type='Auto' and cancelled_by_type_id=2 and is_ride_cancelled=1 order by r.id desc limit  ".(($page-1)*$limit).",".$limit.";";
-        return $this->executeSelect($q);
+    public function getCancelledByDriverRides($vehicle_type='Auto',$page=1,$limit=10){
+        $q  = "SELECT r.id,r.passenger_id,r.driver_id,r.created_at,r.pickup_lat,r.pickup_lng,r.dropoff_lat,r.dropoff_lng,u.name,p.name as passenger_name,(select count(*) from ride_alerts where ride_id=r.id) as alert_count FROM rides r,users u,users p where p.id=r.passenger_id and u.id=r.driver_id and r.vehicle_type=:vehicle_type and cancelled_by_type_id=2 and is_ride_cancelled=1 order by r.id desc limit  ".(($page-1)*$limit).",".$limit.";";
+        $params = array("vehicle_type"=>$vehicle_type);
+        return $this->executeSelect($q,$params);
     }
 
 
-    public function getCompletedAutoRidesCount(){
-        $q = "SELECT count(*) ct FROM rides where vehicle_type='Auto'  and is_ride_ended=1;";
-        $rs =  $this->executeSelectSingle($q);
+    public function getCompletedRidesCount($vehicle_type='Auto'){
+        $q = "SELECT count(*) ct FROM rides where vehicle_type=:vehicle_type  and is_ride_ended=1;";
+        $params = array("vehicle_type"=>$vehicle_type);
+        $rs =  $this->executeSelectSingle($q,$params);
         return $rs['ct'];
     }
 
-    public function getCompletedAutoRides($page=1,$limit=10){
-        $q  = "SELECT r.id,r.passenger_id,r.driver_id,r.created_at,r.pickup_lat,r.pickup_lng,r.dropoff_lat,r.dropoff_lng,u.name,t.total_fare,t.amount_received,p.name as passenger_name,(select count(*) from ride_alerts where ride_id=r.id) as alert_count,concat(t.driver_initial_balance,' to ',t.driver_new_balance) as driver_balance,concat(t.passenger_initial_balance,' to ',t.passenger_new_balance) as passenger_balance FROM rides r,users u,users p,transactions t where t.ride_id=r.id and p.id=r.passenger_id and u.id=r.driver_id and r.vehicle_type='Auto' and is_ride_ended=1 order by r.id desc limit  ".(($page-1)*$limit).",".$limit.";";
-        return $this->executeSelect($q);
+    public function getCompletedRides($vehicle_type='Auto',$page=1,$limit=10){
+        $q  = "SELECT r.id,r.passenger_id,r.driver_id,r.created_at,r.pickup_lat,r.pickup_lng,r.dropoff_lat,r.dropoff_lng,u.name,t.total_fare,t.amount_received,p.name as passenger_name,(select count(*) from ride_alerts where ride_id=r.id) as alert_count,concat(t.driver_initial_balance,' to ',t.driver_new_balance) as driver_balance,concat(t.passenger_initial_balance,' to ',t.passenger_new_balance) as passenger_balance FROM rides r,users u,users p,transactions t where t.ride_id=r.id and p.id=r.passenger_id and u.id=r.driver_id and r.vehicle_type=:vehicle_type and is_ride_ended=1 order by r.id desc limit  ".(($page-1)*$limit).",".$limit.";";
+        $params = array("vehicle_type"=>$vehicle_type);
+        return $this->executeSelect($q,$params);
     }
 
     /**
