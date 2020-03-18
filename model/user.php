@@ -984,7 +984,7 @@ class User extends  baseModel implements JsonSerializable {
 
 
     public function getOnlineDrivers(){
-        $q  = "select * from users where is_driver=1 and is_driver_online=1 order by online_at";
+        $q  = "select * from users where is_driver=1 and is_driver_online=1 order by vehicle_type,online_at";
         return $this->executeSelect($q);
     }
 
