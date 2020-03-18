@@ -13,7 +13,8 @@ $rs = $userObj->getCurrentWeekRegistrationCounts();
 
 $rsUserCount = $userObj->getRegisterUsersCount();
 $rsDriverCount = $userObj->getRegisterDriversCount();
-$rsOnlineDriversCount = $userObj->getOnlineDriversCount();
+$rsAutoOnlineDriversCount = $userObj->getOnlineDriversCount();
+$rsBikeOnlineDriversCount = $userObj->getOnlineDriversCount("Bike");
 
 
 
@@ -26,7 +27,10 @@ $rideObj = new ride();
 $rideRs = $rideObj->getEndedRidesCountInCurrentWeek();
 $passengerCancelledRs = $rideObj->getCancelledRidesInCurrentWeek(1);
 $driverCancelledRs = $rideObj->getCancelledRidesInCurrentWeek(2);
+
 $unAttendedAutoRides = $rideObj->getUnAttendedAutoAutoRidesCountInCurrentWeek();
+$unAttendedBikeRides = $rideObj->getUnAttendedBikeRidesCountInCurrentWeek();
+
 
 
 
@@ -43,8 +47,12 @@ $unAttendedAutoRides = $rideObj->getUnAttendedAutoAutoRidesCountInCurrentWeek();
                 <span class="badge badge-primary badge-pill"><?php echo $supportTicketsRs['ct']==0?"Zero":$supportTicketsRs['ct']; ?></span>
             </li>
             <li class="list-group-item d-flex justify-content-between align-items-center">
-                Online Drivers
-                <span class="badge badge-primary badge-pill"><?php echo $rsOnlineDriversCount ?></span>
+                Auto Online Drivers
+                <span class="badge badge-primary badge-pill"><?php echo $rsAutoOnlineDriversCount ?></span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                Bike Online Drivers
+                <span class="badge badge-primary badge-pill"><?php echo $rsBikeOnlineDriversCount ?></span>
             </li>
 
             <li class="list-group-item d-flex justify-content-between align-items-center">
@@ -142,6 +150,24 @@ $unAttendedAutoRides = $rideObj->getUnAttendedAutoAutoRidesCountInCurrentWeek();
         </div>
         <ul class="list-group">
             <?php foreach($unAttendedAutoRides as $r) { ?>
+
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <?php echo $r['created_at'] ?>
+                    <span class="badge badge-primary badge-pill"><?php echo $r['ct'] ?></span>
+                </li>
+
+
+            <?php } ?>
+        </ul>
+    </div>
+
+
+    <div class="card float-left  ml-2" style="width: 18rem;">
+        <div class="card-header">
+            Bike Driver Not found
+        </div>
+        <ul class="list-group">
+            <?php foreach($unAttendedBikeRides as $r) { ?>
 
                 <li class="list-group-item d-flex justify-content-between align-items-center">
                     <?php echo $r['created_at'] ?>

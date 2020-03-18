@@ -122,6 +122,11 @@ ride_ended_lng=:ride_ended_lng,arrival_code=:arrival_code
         return $this->executeSelect($q);
     }
 
+    public function getUnAttendedBikeRidesCountInCurrentWeek(){
+        $q = "SELECT date(created_at) as created_at ,count(*) ct FROM rides where vehicle_type='Auto' and created_at >= DATE(NOW()) - INTERVAL 7 DAY and cancelled_by_type_id=0 and is_ride_cancelled=1 group by date(created_at) order by date(created_at) desc limit 7;";
+        return $this->executeSelect($q);
+    }
+
 
     public function getUnAttendedAutoAutoRidesCount(){
         $q = "SELECT count(*) ct FROM rides where vehicle_type='Auto'  and cancelled_by_type_id=0 and is_ride_cancelled=1;";
