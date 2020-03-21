@@ -49,14 +49,12 @@ $i=0;
         <td>
             Mobile
         </td>
-        <td>
-            Email
-        </td>
+
         <td>
             Vehicle Type
         </td>
         <td>
-            Registered At
+            Actions
         </td>
 
 
@@ -81,14 +79,12 @@ foreach ($drivers as $driver){
         <td >
             <?php echo $userObj->getMobile(); ?>
         </td>
-        <td>
-            <?php echo $userObj->getEmail(); ?>
-        </td>
+
         <td>
             <?php echo $userObj->getVehicleType(); ?>
         </td>
         <td >
-            <?php echo $userObj->getCreatedAt();?>
+            <?php echo "<a href='user_detail.php?id=".$userObj->getId()."' class='btn btn-primary'>Detail</a>"; ?>
         </td>
 
 
