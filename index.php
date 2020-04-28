@@ -1,25 +1,17 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: baran
- * Date: 2/1/20
- * Time: 11:27 AM
+ * Front to the WordPress application. This file doesn't do anything, but loads
+ * wp-blog-header.php which does and tells WordPress to load the theme.
+ *
+ * @package WordPress
  */
-require_once __DIR__."/partials/header.php";
-?>
-<div class="container-fluid">
-<div class="row align-content-center">
-    <div class="col-sm">
-        <img src="<?php echo MY_HOST;?>/bootstrap/full_logo.png" >
-    </div>
-</div>
-</div>
 
-<?php
-require_once __DIR__."/partials/footer.php";
+/**
+ * Tells WordPress to load the WordPress theme and output it.
+ *
+ * @var bool
+ */
+define( 'WP_USE_THEMES', true );
 
-
-
-
-
-
+/** Loads the WordPress Environment and Template */
+require __DIR__ . '/wp-blog-header.php';
