@@ -23,10 +23,10 @@
 define( 'DB_NAME', 'driver_wp' );
 
 /** MySQL database username */
-define( 'DB_USER', 'root' );
+define( 'DB_USER', 'driver_wp_user' );
 
 /** MySQL database password */
-define( 'DB_PASSWORD', 'password' );
+define( 'DB_PASSWORD', ')5Z{f3L9vXct6hs<' );
 
 /** MySQL hostname */
 define( 'DB_HOST', 'localhost' );
