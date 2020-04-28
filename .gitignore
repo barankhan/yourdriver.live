@@ -2,4 +2,4 @@
 model/baseModel.php
 model/env_constants.php
 cron/php_errors.log
-uploads/
+#uploads/
