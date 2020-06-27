@@ -120,29 +120,29 @@ $token = "dWJOYjnrpTI:APA91bGea09wpv9jA5nZr1C6dLMmooXGQFJNVevSwti3_2dWeLbpHMbZkE
 //foreach ($list_items as $item){
 //    echo "INSERT INTO `driver`.`list` ( `mobile`,`hustel`) VALUES ('".$item."',1); <br/>";
 //}
-
-$userObj = new User();
-$users = $userObj->getAllUsers("where coalesce(firebase_token,'')<>'' ",1,1500);
-//$users = $userObj->getAllUsers("where id in(1,2) ",1,1500);
-
-foreach ($users as $user){
-    $selectedUser = new User();
-    $selectedUser->setAllFields($user);
-    echo $selectedUser->getId().":";
-    echo $selectedUser->getName();
-    echo "\n";
-//    echo $selectedUser->getFirebaseToken();
-
-    try{
-        $fabseRes = $fbaseObj->sendPayloadOnly(1,$selectedUser->getFirebaseToken(),null,$notification,'high',180000,"users",$selectedUser->getId());
-        sleep(1);
-    }catch (Exception $e){
-        echo $e->getMessage()."\n";
-    }
-    echo "#############################\n";
-
-
-
-}
+//
+//$userObj = new User();
+//$users = $userObj->getAllUsers("where coalesce(firebase_token,'')<>'' ",1,1500);
+////$users = $userObj->getAllUsers("where id in(1,2) ",1,1500);
+//
+//foreach ($users as $user){
+//    $selectedUser = new User();
+//    $selectedUser->setAllFields($user);
+//    echo $selectedUser->getId().":";
+//    echo $selectedUser->getName();
+//    echo "\n";
+////    echo $selectedUser->getFirebaseToken();
+//
+//    try{
+//        $fabseRes = $fbaseObj->sendPayloadOnly(1,$selectedUser->getFirebaseToken(),null,$notification,'high',180000,"users",$selectedUser->getId());
+//        sleep(1);
+//    }catch (Exception $e){
+//        echo $e->getMessage()."\n";
+//    }
+//    echo "#############################\n";
+//
+//
+//
+//}
 
 
