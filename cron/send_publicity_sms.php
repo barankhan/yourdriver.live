@@ -8,7 +8,7 @@
 
 require_once __DIR__."/../vendor/autoload.php";
 
-echo $sender_id = $argv[1];
+$sender_id = $argv[1];
 
 $smsDevicesObj = new SmsDevices();
 $smsDevicesObj->getSMSSendingDevice($sender_id);
