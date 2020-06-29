@@ -72,7 +72,7 @@ class Contacts extends  baseModel implements JsonSerializable
     }
 
 
-    
+
 
     /**
      * @return mixed

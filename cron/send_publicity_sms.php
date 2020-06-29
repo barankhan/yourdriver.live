@@ -41,7 +41,7 @@ if($smsDevicesObj->getId()>0) {
                 ];
             } else {
                 $payload = [
-                    'message' => "Bahawalpur walo, find smart rides solution @ https://yourdriver.live/registration/",
+                    'message' => "Bhawalpur walo Careem ko bhool jao, Driver Bullao. Download app: @ https://yourdriver.live/download.php  & for vehicle registration https://yourdriver.live/bwp/",
                     'mobile_number' => $contactsObj->getContactNo(),
                     'log_id' => "" . $contactsLogObj->getId()
                 ];
