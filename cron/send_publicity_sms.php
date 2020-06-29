@@ -19,7 +19,7 @@ $contactsLogObj = new ContactsLog();
 if($smsDevicesObj->getId()>0) {
 
     $contactsLogObj->setSentBy($sender_id);
-    if ($contactsLogObj->getTodayCountOfSender() < 2000 && $contactsLogObj->getLast15MinutesCountOfSender() < 200) {
+    if ($contactsLogObj->getTodayCountOfSender() < 2900 && $contactsLogObj->getLast15MinutesCountOfSender() < 200) {
         $contactsObj = new Contacts();
         $contactsObj->setSentBy($sender_id);
         $contactsObj->getNumberToSendSMS(1);
