@@ -9,7 +9,7 @@ require_once __DIR__."/../vendor/autoload.php";
 class Contacts extends  baseModel implements JsonSerializable
 {
 
-    private $id=0,$contactNo, $sentBy,$sentCount=0,$createdAt,$updatedAt;
+    private $id=0,$contactNo, $sentBy,$sentCount=0,$createdAt,$updatedAt,$city;
 
 
 
