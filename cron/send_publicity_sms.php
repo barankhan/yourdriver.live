@@ -22,7 +22,7 @@ if($smsDevicesObj->getId()>0) {
     if ($contactsLogObj->getTodayCountOfSender() < 2000 && $contactsLogObj->getLast15MinutesCountOfSender() < 200) {
         $contactsObj = new Contacts();
         $contactsObj->setSentBy($sender_id);
-        $contactsObj->getNumberToSendSMS();
+        $contactsObj->getNumberToSendSMS(1);
         if ($contactsObj->getId() > 0) {
             $contactsObj->setSentBy($sender_id);
             $contactsObj->setSentCount($contactsObj->getSentCount() + 1);
@@ -34,13 +34,14 @@ if($smsDevicesObj->getId()>0) {
 
             if ($contactsObj->getSentCount() == 1) {
                 $payload = [
-                    'message' => "آٹو رکشہ نہایت سستے کرایہ پر بک کریں  https://yourdriver.live/download.php",
+//                    'message' => "آٹو رکشہ نہایت سستے کرایہ پر بک کریں  https://yourdriver.live/download.php",
+                    'message'=>"Bahawalpur walo, find smart rides solution @ https://yourdriver.live/registration/",
                     'mobile_number' => $contactsObj->getContactNo(),
                     'log_id' => "" . $contactsLogObj->getId()
                 ];
             } else {
                 $payload = [
-                    'message' => "Tired of heavy fares,peak rates or surge? Find us: https://yourdriver.live/download.php",
+                    'message' => "Bahawalpur walo, find smart rides solution @ https://yourdriver.live/registration/",
                     'mobile_number' => $contactsObj->getContactNo(),
                     'log_id' => "" . $contactsLogObj->getId()
                 ];

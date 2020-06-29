@@ -20,8 +20,8 @@ class Contacts extends  baseModel implements JsonSerializable
     }
 
 
-    public function getNumberToSendSMS(){
-        $q = "select * from contacts where sent_by=:sent_by and sent_count<2 limit 1";
+    public function getNumberToSendSMS($sent_count=2){
+        $q = "select * from contacts where sent_by=:sent_by and sent_count<$sent_count limit 1";
         $params = array("sent_by"=>$this->sentBy);
         $rs = $this->executeSelectSingle($q,$params);
         if($rs!=null){
