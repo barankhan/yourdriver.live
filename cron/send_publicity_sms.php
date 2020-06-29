@@ -35,13 +35,13 @@ if($smsDevicesObj->getId()>0) {
             if ($contactsObj->getSentCount() == 1) {
                 $payload = [
 //                    'message' => "آٹو رکشہ نہایت سستے کرایہ پر بک کریں  https://yourdriver.live/download.php",
-                    'message'=>"Bahawalpur walo, find smart rides solution @ https://yourdriver.live/registration/",
+                    'message'=>"Bhawalpur walo Careem ko bhool jao, Driver Bullao. DownloadApp https://yourdriver.live/app.php  & for vehicle registration https://yourdriver.live/bwp/",
                     'mobile_number' => $contactsObj->getContactNo(),
                     'log_id' => "" . $contactsLogObj->getId()
                 ];
             } else {
                 $payload = [
-                    'message' => "Bhawalpur walo Careem ko bhool jao, Driver Bullao. Download app: @ https://yourdriver.live/download.php  & for vehicle registration https://yourdriver.live/bwp/",
+                    'message' => "Bhawalpur walo Careem ko bhool jao, Driver Bullao. DownloadApp https://yourdriver.live/app.php  & for vehicle registration https://yourdriver.live/bwp/",
                     'mobile_number' => $contactsObj->getContactNo(),
                     'log_id' => "" . $contactsLogObj->getId()
                 ];
