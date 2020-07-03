@@ -85,13 +85,13 @@ if($userObj->getId()>0){
         $rideObj->update();
         $rideObj->setResponse("no_driver_found");
 
-        if($_REQUEST["vehicle_type"]!="Car"){
+//        if($_REQUEST["vehicle_type"]!="Car"){
             $rideObj->setMessage("Sorry no driver found in your area!");
 //            $rideObj->setMessage("Due to Crona, Stay home be safe!.");
-        }else{
-            $rideObj->setMessage($_REQUEST["vehicle_type"]." service is launching Soon!");
+//        }else{
+//            $rideObj->setMessage($_REQUEST["vehicle_type"]." service is launching Soon!");
 //            $rideObj->setMessage("Due to Crona, Stay home be safe!.");
-        }
+//        }
 
 
         $var = json_encode($rideObj);
