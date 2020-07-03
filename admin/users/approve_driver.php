@@ -12,6 +12,20 @@ $userObj->getUserWithId($_REQUEST['id']);
 $userObj->setIsDriver(1);
 $userObj->update();
 
+$smsDevicesObj = new SmsDevices();
+$smsDevicesObj->getSMSSendingDevice(4);
+if($smsDevicesObj->getId()>0) {
+    $payload = [
+        'message' => "App ka Driver App ka account approve ho giya hy. App training ky liye ye wali tamam videos deakhin please. https://yourdriver.live/stakeholder-traning/",
+        'mobile_number' => $userObj->getMobile(),
+        'log_id' => "010"
+    ];
+
+    $obj = new firebaseNotificationSendSMS();
+    $obj->sendPayLoadToSMSOnly($smsDevicesObj->getToken(), $payload);
+}
+
+
 
 $fbaseObj = new firebaseNotification();
 
