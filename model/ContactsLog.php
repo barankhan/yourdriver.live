@@ -9,7 +9,7 @@ require_once __DIR__."/../vendor/autoload.php";
 class ContactsLog extends  baseModel implements JsonSerializable
 {
 
-    private $id=0,$contactId,$sentBy,$createdAt,$updatedAt,$isSent=0;
+    private $id=0,$contactId,$sentBy,$createdAt,$updatedAt,$isSent=0,$type='Default';
 
 
 
@@ -22,8 +22,8 @@ class ContactsLog extends  baseModel implements JsonSerializable
 
 
     public function insert(){
-        $q = "INSERT INTO `contacts_log` (`contact_id`, `sent_by`) VALUES (:contact_id, :sent_by); ";
-        $params = array("contact_id"=>$this->contactId,"sent_by"=>$this->sentBy);
+        $q = "INSERT INTO `contacts_log` (`contact_id`, `sent_by`,`type`) VALUES (:contact_id, :sent_by,:type); ";
+        $params = array("contact_id"=>$this->contactId,"sent_by"=>$this->sentBy,"type"=>$this->type);
         $this->setId($this->executeInsert($q,$params));
     }
 
@@ -36,7 +36,7 @@ class ContactsLog extends  baseModel implements JsonSerializable
 
 
     public function getLast15MinutesCountOfSender(){
-        $q = "select count(*) as ct from contacts_log where sent_by=:sent_by and created_at > NOW() - INTERVAL 15 MINUTE";
+        $q = "select count(*) as ct from contacts_log where sent_by=:sent_by and created_at > NOW() - INTERVAL 18 MINUTE";
         $params = array("sent_by"=>$this->sentBy);
         $rs = $this->executeSelectSingle($q,$params);
         return $rs['ct'];
@@ -62,6 +62,25 @@ class ContactsLog extends  baseModel implements JsonSerializable
         parent::__construct();
 
     }
+
+    /**
+     * @return string
+     */
+    public function getType(): string
+    {
+        return $this->type;
+    }
+
+    /**
+     * @param string $type
+     */
+    public function setType(string $type)
+    {
+        $this->type = $type;
+    }
+
+
+
 
     /**
      * @return int

@@ -217,6 +217,7 @@ class ComposerStaticInitfd5deadb88ad3e3c17da2a9bccfa0cdc
         'PaymentSMS' => __DIR__ . '/../..' . '/model/PaymentSMS.php',
         'RechargeRequest' => __DIR__ . '/../..' . '/model/RechargeRequest.php',
         'RidePath' => __DIR__ . '/../..' . '/model/RidePath.php',
+        'SMSQueue' => __DIR__ . '/../..' . '/model/SMSQueue.php',
         'SmsDevices' => __DIR__ . '/../..' . '/model/SmsDevices.php',
         'SupportTicket' => __DIR__ . '/../..' . '/model/SupportTicket.php',
         'SupportTicketHistory' => __DIR__ . '/../..' . '/model/SupportTicketHistory.php',

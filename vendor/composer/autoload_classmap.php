@@ -22,6 +22,7 @@ return array(
     'PaymentSMS' => $baseDir . '/model/PaymentSMS.php',
     'RechargeRequest' => $baseDir . '/model/RechargeRequest.php',
     'RidePath' => $baseDir . '/model/RidePath.php',
+    'SMSQueue' => $baseDir . '/model/SMSQueue.php',
     'SmsDevices' => $baseDir . '/model/SmsDevices.php',
     'SupportTicket' => $baseDir . '/model/SupportTicket.php',
     'SupportTicketHistory' => $baseDir . '/model/SupportTicketHistory.php',
