@@ -71,6 +71,9 @@ $i=0;
             Amount Received
         </th>
         <th>
+            City
+        </th>
+        <th>
            Actions
         </th>
     </tr>
@@ -114,6 +117,9 @@ foreach ($unattended_rides as $ride){
             <?php echo $ride['amount_received'];?>
         </td>
 
+        <td>
+            <?php echo $ride['city'];?>
+        </td>
 
 
         <td>

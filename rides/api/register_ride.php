@@ -18,6 +18,7 @@ $userObj->update();
 
 
 $rideObj = new ride();
+
 $fabseRes="";
 if(!empty($_REQUEST["dropoff_lat_lng"])){
     $dropoff_lat_lng = explode(",",$_REQUEST["dropoff_lat_lng"]);
@@ -36,7 +37,7 @@ if($userObj->getId()>0){
     $rideObj->setVehicleType($_REQUEST["vehicle_type"]);
     $rideObj->setPassengerId($userObj->getId());
     $rideObj->setPickupAddress($_REQUEST['pickup_address']);
-
+    $rideObj->setCity(findRideCity::getCity($rideObj->getPickupLat(),$rideObj->getPickupLng()));
     $rideObj->insert();
 
     $drivers = $userObj->getAvailableDrivers($pickup_lat_lng[0],$pickup_lat_lng[1],$_REQUEST["vehicle_type"],1,3);

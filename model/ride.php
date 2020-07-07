@@ -13,14 +13,14 @@ class ride extends  baseModel implements JsonSerializable
     private $id=0,$passengerId,$driverId=0,$createdAt,$updatedAt,$pickupLat,$pickupLng,$vehicleType,$dropoffLat
     ,$dropoffLng,$response,$message,$isRideStarted=0,$isRideCancelled=0,$rideStartedAt,$rideCancelledAt,$driverLat,$driverLng,
         $cancelledByTypeId=0,$isDriverArrived=0,$isRideEnded=0,$rideEndedAt,$driverArrivedAt,$distance,$rating,$pickupAddress,$dropoffAddress
-    ,$rideEndedLat,$rideEndedLng,$arrivalCode=0
+    ,$rideEndedLat,$rideEndedLng,$arrivalCode=0,$city
 
     ;
     public function insert(){
         $q = "insert into rides(passenger_id,pickup_lat,pickup_lng,vehicle_type,dropoff_lat,dropoff_lng,pickup_address,dropoff_address)
-            values(:passenger_id,:pickup_lat,:pickup_lng,:vehicle_type,:dropoff_lat,:dropoff_lng,:pickup_address,:dropoff_address);";
+            values(:passenger_id,:pickup_lat,:pickup_lng,:vehicle_type,:dropoff_lat,:dropoff_lng,:pickup_address,:dropoff_address,:city);";
         $params = array("passenger_id"=>$this->passengerId,"pickup_lat"=>$this->pickupLat,"pickup_lng"=>$this->pickupLng
-        ,"vehicle_type"=>$this->vehicleType,"dropoff_lat"=>$this->dropoffLat,"dropoff_lng"=>$this->dropoffLng,"pickup_address"=>$this->pickupAddress,"dropoff_address"=>$this->dropoffAddress);
+        ,"vehicle_type"=>$this->vehicleType,"dropoff_lat"=>$this->dropoffLat,"dropoff_lng"=>$this->dropoffLng,"pickup_address"=>$this->pickupAddress,"dropoff_address"=>$this->dropoffAddress,"city"=>$this->city);
         $this->setId($this->executeInsert($q,$params));
     }
 
@@ -30,7 +30,7 @@ class ride extends  baseModel implements JsonSerializable
 ride_cancelled_at=:rideCancelledAt,driver_lat=:driverLat,driver_lng=:driverLng,cancelled_by_type_id=:cancelledByTypeId,
 is_driver_arrived=:isDriverArrived,driver_arrived_at=:driverArrivedAt,is_ride_ended=:isRideEnded,ride_ended_at=:rideEndedAt,
 distance=:distance,rating=:rating,pickup_address=:pickup_address,dropoff_address=:dropoff_address,ride_ended_lat=:ride_ended_lat,
-ride_ended_lng=:ride_ended_lng,arrival_code=:arrival_code
+ride_ended_lng=:ride_ended_lng,arrival_code=:arrival_code,city=:city
  
  where id=:id";
         $params = array("isRideStarted"=>$this->isRideStarted,"isRideCancelled"=>$this->isRideCancelled,
@@ -38,7 +38,7 @@ ride_ended_lng=:ride_ended_lng,arrival_code=:arrival_code
             "driverLat"=>$this->driverLat,"driverLng"=>$this->driverLng,"cancelledByTypeId"=>$this->cancelledByTypeId,
             "isDriverArrived"=>$this->isDriverArrived,"driverArrivedAt"=>$this->driverArrivedAt,"isRideEnded"=>$this->isRideEnded,
             "rideEndedAt"=>$this->rideEndedAt,"distance"=>$this->distance,"rating"=>$this->rating,"pickup_address"=>$this->pickupAddress,"dropoff_address"=>$this->dropoffAddress,
-            "ride_ended_lat"=>$this->rideEndedLat,"ride_ended_lng"=>$this->rideEndedLng,"arrival_code"=>$this->arrivalCode
+            "ride_ended_lat"=>$this->rideEndedLat,"ride_ended_lng"=>$this->rideEndedLng,"arrival_code"=>$this->arrivalCode,"city"=>$this->city
         );
 
         return $this->executeUpdate($q,$params);
@@ -140,7 +140,7 @@ ride_ended_lng=:ride_ended_lng,arrival_code=:arrival_code
 
     public function getUnAttendedRides($vehicle_type='Auto',$page=1,$limit=10){
 
-        $q  = "SELECT r.id,r.passenger_id,r.created_at,r.pickup_lat,r.pickup_lng,r.dropoff_lat,r.dropoff_lng,u.name,(select count(*) from ride_alerts where ride_id=r.id) as alert_count FROM rides r,users u where u.id=r.passenger_id and r.vehicle_type=:vehicle_type and cancelled_by_type_id=0 and is_ride_cancelled=1 order by r.id desc limit  ".(($page-1)*$limit).",".$limit.";";
+        $q  = "SELECT r.city,r.id,r.passenger_id,r.created_at,r.pickup_lat,r.pickup_lng,r.dropoff_lat,r.dropoff_lng,u.name,(select count(*) from ride_alerts where ride_id=r.id) as alert_count FROM rides r,users u where u.id=r.passenger_id and r.vehicle_type=:vehicle_type and cancelled_by_type_id=0 and is_ride_cancelled=1 order by r.id desc limit  ".(($page-1)*$limit).",".$limit.";";
         $params = array("vehicle_type"=>$vehicle_type);
         return $this->executeSelect($q,$params);
     }
@@ -154,7 +154,7 @@ ride_ended_lng=:ride_ended_lng,arrival_code=:arrival_code
     }
 
     public function getCancelledByPassengerRides($vehicle_type='Auto',$page=1,$limit=10){
-        $q  = "SELECT r.id,r.passenger_id,r.created_at,r.pickup_lat,r.pickup_lng,r.dropoff_lat,r.dropoff_lng,u.name,(select count(*) from ride_alerts where ride_id=r.id) as alert_count FROM rides r,users u where u.id=r.passenger_id and r.vehicle_type=:vehicle_type and cancelled_by_type_id=1 and is_ride_cancelled=1 order by r.id desc limit  ".(($page-1)*$limit).",".$limit.";";
+        $q  = "SELECT r.city,r.id,r.passenger_id,r.created_at,r.pickup_lat,r.pickup_lng,r.dropoff_lat,r.dropoff_lng,u.name,(select count(*) from ride_alerts where ride_id=r.id) as alert_count FROM rides r,users u where u.id=r.passenger_id and r.vehicle_type=:vehicle_type and cancelled_by_type_id=1 and is_ride_cancelled=1 order by r.id desc limit  ".(($page-1)*$limit).",".$limit.";";
         $params = array("vehicle_type"=>$vehicle_type);
         return $this->executeSelect($q,$params);
     }
@@ -167,7 +167,7 @@ ride_ended_lng=:ride_ended_lng,arrival_code=:arrival_code
     }
 
     public function getCancelledByDriverRides($vehicle_type='Auto',$page=1,$limit=10){
-        $q  = "SELECT r.id,r.passenger_id,r.driver_id,r.created_at,r.pickup_lat,r.pickup_lng,r.dropoff_lat,r.dropoff_lng,u.name,p.name as passenger_name,(select count(*) from ride_alerts where ride_id=r.id) as alert_count FROM rides r,users u,users p where p.id=r.passenger_id and u.id=r.driver_id and r.vehicle_type=:vehicle_type and cancelled_by_type_id=2 and is_ride_cancelled=1 order by r.id desc limit  ".(($page-1)*$limit).",".$limit.";";
+        $q  = "SELECT r.city,r.id,r.passenger_id,r.driver_id,r.created_at,r.pickup_lat,r.pickup_lng,r.dropoff_lat,r.dropoff_lng,u.name,p.name as passenger_name,(select count(*) from ride_alerts where ride_id=r.id) as alert_count FROM rides r,users u,users p where p.id=r.passenger_id and u.id=r.driver_id and r.vehicle_type=:vehicle_type and cancelled_by_type_id=2 and is_ride_cancelled=1 order by r.id desc limit  ".(($page-1)*$limit).",".$limit.";";
         $params = array("vehicle_type"=>$vehicle_type);
         return $this->executeSelect($q,$params);
     }
@@ -181,10 +181,29 @@ ride_ended_lng=:ride_ended_lng,arrival_code=:arrival_code
     }
 
     public function getCompletedRides($vehicle_type='Auto',$page=1,$limit=10){
-        $q  = "SELECT r.id,r.passenger_id,r.driver_id,r.created_at,r.pickup_lat,r.pickup_lng,r.dropoff_lat,r.dropoff_lng,u.name,t.total_fare,t.amount_received,p.name as passenger_name,(select count(*) from ride_alerts where ride_id=r.id) as alert_count,concat(t.driver_initial_balance,' to ',t.driver_new_balance) as driver_balance,concat(t.passenger_initial_balance,' to ',t.passenger_new_balance) as passenger_balance FROM rides r,users u,users p,transactions t where t.ride_id=r.id and p.id=r.passenger_id and u.id=r.driver_id and r.vehicle_type=:vehicle_type and is_ride_ended=1 order by r.id desc limit  ".(($page-1)*$limit).",".$limit.";";
+        $q  = "SELECT r.city,r.id,r.passenger_id,r.driver_id,r.created_at,r.pickup_lat,r.pickup_lng,r.dropoff_lat,r.dropoff_lng,u.name,t.total_fare,t.amount_received,p.name as passenger_name,(select count(*) from ride_alerts where ride_id=r.id) as alert_count,concat(t.driver_initial_balance,' to ',t.driver_new_balance) as driver_balance,concat(t.passenger_initial_balance,' to ',t.passenger_new_balance) as passenger_balance FROM rides r,users u,users p,transactions t where t.ride_id=r.id and p.id=r.passenger_id and u.id=r.driver_id and r.vehicle_type=:vehicle_type and is_ride_ended=1 order by r.id desc limit  ".(($page-1)*$limit).",".$limit.";";
         $params = array("vehicle_type"=>$vehicle_type);
         return $this->executeSelect($q,$params);
     }
+
+    /**
+     * @return mixed
+     */
+    public function getCity()
+    {
+        return $this->city;
+    }
+
+    /**
+     * @param mixed $city
+     */
+    public function setCity($city)
+    {
+        $this->city = $city;
+    }
+
+
+
 
     /**
      * @return mixed

@@ -60,6 +60,9 @@ $i=0;
             Alert Count
         </th>
         <th>
+            City
+        </th>
+        <th>
            Actions
         </th>
     </tr>
@@ -89,6 +92,9 @@ foreach ($unattended_rides as $ride){
             <?php if($ride['alert_count']>0){ ?>
             <a href="alert_details.php?ride_id=<?php  echo $ride['id'] ?> " class="btn btn-primary"><?php echo $ride['alert_count']; ?></a>
             <?php }else{ echo $ride['alert_count']; } ?>
+        </td>
+        <td>
+            <?php echo $ride['city'];?>
         </td>
         <td>
             <?php echo "<a target='_blank' href='https://www.google.com/maps/search/?api=1&query=". $ride['pickup_lat'].",".$ride['pickup_lng']."' class='btn btn-primary'>Pickup</a>"; ?>
