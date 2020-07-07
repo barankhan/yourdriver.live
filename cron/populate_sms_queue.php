@@ -26,7 +26,7 @@ foreach ($drivers as $driver){
     $smsQueueObj->insert();
     $smsQueueObj = new SMSQueue();
     $smsQueueObj->setNumber($newUserObj->getMobile());
-    $smsQueueObj->setMessage("Driver app per passenger ya driver refer karin or long term bonus paain ....https://yourdriver.live/referral/ ");
+    $smsQueueObj->setMessage("Driver app per passenger ya driver refer karin or long term bonus paain.. https://yourdriver.live/referral/ ");
     $smsQueueObj->setSendBy(4);
     $smsQueueObj->insert();
 }
