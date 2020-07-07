@@ -17,7 +17,7 @@ class ride extends  baseModel implements JsonSerializable
 
     ;
     public function insert(){
-        $q = "insert into rides(passenger_id,pickup_lat,pickup_lng,vehicle_type,dropoff_lat,dropoff_lng,pickup_address,dropoff_address)
+        $q = "insert into rides(passenger_id,pickup_lat,pickup_lng,vehicle_type,dropoff_lat,dropoff_lng,pickup_address,dropoff_address,city)
             values(:passenger_id,:pickup_lat,:pickup_lng,:vehicle_type,:dropoff_lat,:dropoff_lng,:pickup_address,:dropoff_address,:city);";
         $params = array("passenger_id"=>$this->passengerId,"pickup_lat"=>$this->pickupLat,"pickup_lng"=>$this->pickupLng
         ,"vehicle_type"=>$this->vehicleType,"dropoff_lat"=>$this->dropoffLat,"dropoff_lng"=>$this->dropoffLng,"pickup_address"=>$this->pickupAddress,"dropoff_address"=>$this->dropoffAddress,"city"=>$this->city);
