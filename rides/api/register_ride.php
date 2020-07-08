@@ -88,7 +88,7 @@ if($userObj->getId()>0){
 
 //        if($_REQUEST["vehicle_type"]!="Car"){
         if($rideObj->getCity()=="invalid_city"){
-            $rideObj->setMessage("Sorry, We only operate in Multan & Bahwalpur City");
+            $rideObj->setMessage("Sorry, We only operate in Multan & Bahwalpur City.");
         }else{
             $rideObj->setMessage("Sorry no driver found in your area!");
         }
