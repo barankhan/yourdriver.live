@@ -87,7 +87,12 @@ if($userObj->getId()>0){
         $rideObj->setResponse("no_driver_found");
 
 //        if($_REQUEST["vehicle_type"]!="Car"){
+        if($rideObj->getCity()=="invalid_city"){
+            $rideObj->setMessage("Sorry, We only operate in Multan & Bahwalpur City");
+        }else{
             $rideObj->setMessage("Sorry no driver found in your area!");
+        }
+
 //            $rideObj->setMessage("Due to Crona, Stay home be safe!.");
 //        }else{
 //            $rideObj->setMessage($_REQUEST["vehicle_type"]." service is launching Soon!");
