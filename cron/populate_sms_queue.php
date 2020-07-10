@@ -13,7 +13,7 @@ require_once __DIR__."/../vendor/autoload.php";
 
 
 $userObj = new User();
-$drivers = $userObj->getAllDrivers(null,1,500);
+$drivers = $userObj->getAllDrivers(" and vehicle_type<>'Auto' and is_driver_online=0",1,500);
 
 
 foreach ($drivers as $driver){
@@ -21,12 +21,7 @@ foreach ($drivers as $driver){
     $newUserObj->setAllFields($driver);
     $smsQueueObj = new SMSQueue();
     $smsQueueObj->setNumber($newUserObj->getMobile());
-    $smsQueueObj->setMessage("Dear ".$newUserObj->getName()." Ap sy guzarish hy ky Driver App per online howa karain. Ap ka bhot shukriya.");
-    $smsQueueObj->setSendBy(4);
-    $smsQueueObj->insert();
-    $smsQueueObj = new SMSQueue();
-    $smsQueueObj->setNumber($newUserObj->getMobile());
-    $smsQueueObj->setMessage("Driver app per passenger ya driver refer karin or long term bonus paain.. https://yourdriver.live/referral/ ");
+    $smsQueueObj->setMessage("Dear ".$newUserObj->getName()." apni location her waqt update rakhnay ky liye Application ki setting karin: https://yourdriver.live/bo/ shukriya. ");
     $smsQueueObj->setSendBy(4);
     $smsQueueObj->insert();
 }

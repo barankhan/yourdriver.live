@@ -16,7 +16,7 @@ $smsDevicesObj = new SmsDevices();
 $smsDevicesObj->getSMSSendingDevice(4);
 if($smsDevicesObj->getId()>0) {
     $payload = [
-        'message' => "App ka Driver App ka account approve ho giya hy. App training ky liye ye wali tamam videos deakhin please. https://yourdriver.live/stakeholder-traning/ or referral program ky liye https://yourdriver.live/referral/",
+        'message' => "App ka Driver App ka account approve ho giya hy. App training ky liye ye wali tamam videos deakhin please. https://yourdriver.live/stakeholder-traning/ or referral program ky liye https://yourdriver.live/referral/ or apni location her waqt update rakhnay ky liye Application ki setting karin: https://yourdriver.live/bo/",
         'mobile_number' => $userObj->getMobile(),
         'log_id' => "010"
     ];
