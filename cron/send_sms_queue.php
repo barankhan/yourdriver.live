@@ -36,6 +36,7 @@ if($smsDevicesObj->getId()>0) {
 //                    'message' => "آٹو رکشہ نہایت سستے کرایہ پر بک کریں  https://yourdriver.live/download.php",
                 'message'=>$smsQueueObj->getMessage(),
                 'mobile_number' => $smsQueueObj->getNumber(),
+                'sim'=>"".$smsQueueObj->getSimSlot(),
                 'log_id' => "" . $contactsLogObj->getId()
             ];
 

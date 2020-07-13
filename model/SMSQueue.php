@@ -9,12 +9,12 @@ require_once __DIR__."/../vendor/autoload.php";
 class SMSQueue extends  baseModel implements JsonSerializable
 {
 
-    private $id=0,$isSent=0, $message,$number,$createdAt,$updatedAt,$sentAt,$sendBy;
+    private $id=0,$isSent=0, $message,$number,$createdAt,$updatedAt,$sentAt,$sendBy,$simSlot=99;
 
 
     public function insert(){
-        $q = "INSERT INTO `driver`.`sms_queue`(`message`,`number`,`send_by`)VALUES(:message,:number,:send_by);";
-        $params = array("message"=>$this->message,"number"=>$this->number,"send_by"=>$this->sendBy);
+        $q = "INSERT INTO `driver`.`sms_queue`(`message`,`number`,`send_by`,`sim_slot`)VALUES(:message,:number,:send_by,:sim_slot);";
+        $params = array("message"=>$this->message,"number"=>$this->number,"send_by"=>$this->sendBy,"sim_slot"=>$this->simSlot);
         return $this->id = $this->executeInsert($q,$params);
     }
 
@@ -45,6 +45,25 @@ class SMSQueue extends  baseModel implements JsonSerializable
             $this->$key($val);
         }
     }
+
+    /**
+     * @return int
+     */
+    public function getSimSlot(): int
+    {
+        return $this->simSlot;
+    }
+
+    /**
+     * @param int $simSlot
+     */
+    public function setSimSlot(int $simSlot)
+    {
+        $this->simSlot = $simSlot;
+    }
+
+
+
 
     public function __construct()
     {
