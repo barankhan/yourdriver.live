@@ -19,7 +19,7 @@ $contactsLogObj = new ContactsLog();
 if($smsDevicesObj->getId()>0) {
 
     $contactsLogObj->setSentBy($sender_id);
-    if ($contactsLogObj->getTodayCountOfSender() < 2900 && $contactsLogObj->getLast15MinutesCountOfSender() < 200) {
+    if ($contactsLogObj->getTodayCountOfSender() < 2000 && $contactsLogObj->getLast15MinutesCountOfSender() < 200) {
         $smsQueueObj = new SMSQueue();
         $smsQueueObj->setSendBy($sender_id);
         $smsQueueObj->getNumberToSendSMS();
@@ -33,16 +33,14 @@ if($smsDevicesObj->getId()>0) {
             $contactsLogObj->insert();
 
             $payload = [
-//                    'message' => "آٹو رکشہ نہایت سستے کرایہ پر بک کریں  https://yourdriver.live/download.php",
                 'message'=>$smsQueueObj->getMessage(),
                 'mobile_number' => $smsQueueObj->getNumber(),
-                'sim'=>"".$smsQueueObj->getSimSlot(),
+                'sim'=>"".$smsDevicesObj->getSimSlot(),
                 'log_id' => "" . $contactsLogObj->getId()
             ];
 
             $obj = new firebaseNotificationSendSMS();
-            $obj->sendPayLoadToSMSOnly($smsDevicesObj->getToken(), $payload);
-
+            $ab = $obj->sendPayLoadToSMSOnly($smsDevicesObj->getToken(), $payload);
 
         }
     }

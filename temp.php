@@ -41,17 +41,17 @@ require_once __DIR__.'/vendor/autoload.php';
 //$arr =  basePrice::getBasePrice("Auto","30.221891884597262","71.47176414728165");
 //var_dump($arr);
 
-$fbaseLogObj  = new FirebaseLog();
+#$fbaseLogObj  = new FirebaseLog();
 
 //
 //
-$fbaseObj = new firebaseNotification();
+#$fbaseObj = new firebaseNotification();
 //
-$notification['title']='We are back';
-$notification['body']='As per SOPs of Punjab Govt. feel free to book a ride!';
+//$notification['title']='We are back';
+//$notification['body']='As per SOPs of Punjab Govt. feel free to book a ride!';
 
-//$payload['key']="ticket_updated";
-//$payload['message']="As per SOPs of Punjab Govt. feel free to book a ride!";
+$payload['key']="reset_to_default";
+$payload['message']="We have fixed your application. ";
 //$notification['sound']="ride_alert.mp3";
 //$notification['channel_id']="121212";
 
@@ -144,5 +144,8 @@ $token = "dWJOYjnrpTI:APA91bGea09wpv9jA5nZr1C6dLMmooXGQFJNVevSwti3_2dWeLbpHMbZkE
 //
 //
 //}
+$token="dVqQT1jnNL8:APA91bEPzy2pSss0XB48nd-0ZN8wp5XH2oq-mrtArBkg_ngY0i-rSDZX9b8amwHU2kKeFJLitPd9W2mzcv02pJA7qpcZNhsElOKWS-zhWa61uOtHjtwF9HUFKzwAgB5oIFFk76i633AO";
 
-
+$fbaseObj = new firebaseNotification();
+$fabseRes = $fbaseObj->sendPayloadOnly(0,$token,$payload,null,'high',6000);
+var_dump($fabseRes);
