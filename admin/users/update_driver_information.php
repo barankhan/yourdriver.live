@@ -85,7 +85,7 @@ $userObj->getUserWithId($userId);
     <div class="form-group">
         <select class="form-control" id="InputVehicleType" name="city">
             <option value=""></option>
-            <option value="Bahwalpur" <?php if($userObj->getCity()=='Bahwalpur'){echo "selected=selected";} ?>>Bahwalpur</option>
+            <option value="Bahawalpur" <?php if($userObj->getCity()=='Bahawalpur'){echo "selected=selected";} ?>>Bahawalpur</option>
             <option value="Multan" <?php if($userObj->getCity()=='Multan'){echo "selected=selected";} ?>>Multan</option>
             ion>
         </select>
