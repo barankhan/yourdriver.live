@@ -8,7 +8,7 @@
  */
 class findRideCity
 {
-    private static $cities = array("multan"=>array(30.0519792,71.3039295,30.3105332,71.64538709999999),"Bahwalpur"=>array(29.3088215, 71.5971945,29.44505909999999, 71.7828297));
+    private static $cities = array("multan"=>array(30.0519792,71.3039295,30.3105332,71.64538709999999),"Bahawalpur"=>array(29.3088215, 71.5971945,29.44505909999999, 71.7828297));
     public static function getCity($pickUpLat,$pickUpLng){
         foreach(self::$cities as $key=>$city){
             if(self::inBounds($pickUpLat,$pickUpLng,$city[2],$city[3],$city[0],$city[1])){
