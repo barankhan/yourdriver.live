@@ -21,7 +21,7 @@ foreach ($drivers as $driver){
     $newUserObj->setAllFields($driver);
     $smsQueueObj = new SMSQueue();
     $smsQueueObj->setNumber($newUserObj->getMobile());
-    $smsQueueObj->setMessage("Dear ".$newUserObj->getName()."آپ سےگزارش ہےبراۓمہربانی آنلائن رہیں.رائیڈمس ہورہی ہیں.انشاللہ جلد سواریاں زیادہ ملنا شروع ہو جائیں گی.");
+    $smsQueueObj->setMessage("Dear ".$newUserObj->getName()." Kindly online rahain..Rides miss ho rahi hain. Kuch doston ny ajj bhi Bahwalpur main rides complete ki hain. InshAllah jald kam barh jay ga.");
     $smsQueueObj->setSendBy(4);
     $smsQueueObj->insert();
 }
