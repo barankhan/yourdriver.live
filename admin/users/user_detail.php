@@ -23,6 +23,7 @@ $drivers = $userObj->getUserWithId($_REQUEST['id']);
         <td class="w-35"><?php echo $userObj->getName(); ?></td>
         <th class="w-15">Father:</th>
         <td class="w-35"><?php echo $userObj->getFather(); ?> </td>
+
     </tr>
     <tr>
         <th class="w-15"> CNIC:</th>
@@ -35,6 +36,10 @@ $drivers = $userObj->getUserWithId($_REQUEST['id']);
         <td class="w-35"><?php echo $userObj->getVehicleMade(); ?></td>
         <th class="w-15">Vehicle Color:</th>
         <td class="w-35"> <?php echo $userObj->getVehicleColor(); ?></td>
+    </tr>
+    <tr>
+        <th class="w-15">city:</th>
+        <td class="w-35"><?php echo $userObj->getCity(); ?> </td>
     </tr>
 </table>
 <div class="row">

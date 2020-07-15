@@ -54,6 +54,9 @@ $i=0;
             Vehicle Type
         </td>
         <td>
+            City
+        </td>
+        <td>
             Actions
         </td>
 
@@ -82,6 +85,9 @@ foreach ($drivers as $driver){
 
         <td>
             <?php echo $userObj->getVehicleType(); ?>
+        </td>
+        <td>
+            <?php echo $userObj->getCity(); ?>
         </td>
         <td >
             <?php echo "<a href='user_detail.php?id=".$userObj->getId()."' class='btn btn-primary'>Detail</a>"; ?>

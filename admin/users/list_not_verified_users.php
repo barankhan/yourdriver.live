@@ -48,6 +48,10 @@ $i=0;
             Registered At
         </td>
         <td >
+            City
+        </td>
+
+        <td >
             Actions
         </td>
 
@@ -76,6 +80,9 @@ foreach ($drivers as $driver){
         </td>
         <td>
             <?php echo $userObj->getCreatedAt();?>
+        </td>
+        <td>
+            <?php echo $userObj->getCity();?>
         </td>
         <td>
             <a class="btn btn-primary" href="actions/resend_sms.php?id=<?php echo $userObj->getId(); ?>">Resend SMS</a>

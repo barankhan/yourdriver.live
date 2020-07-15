@@ -19,6 +19,12 @@ class RidePath extends  baseModel implements JsonSerializable
 
     }
 
+    public function getLastKnownCoordinates(){
+        $q = "select * from ride_paths where driver_id=:driver_id order by id desc limit 1 ";
+        $params = array("driver_id"=>$this->driverId);
+        return $this->executeSelectSingle($q,$params);
+    }
+
 
     public function __construct()
     {

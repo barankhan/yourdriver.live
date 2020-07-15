@@ -55,6 +55,9 @@ $i=0;
         <td>
             Registered At
         </td>
+        <td>
+            City
+        </td>
 
 
 
@@ -83,6 +86,10 @@ foreach ($drivers as $driver){
         </td>
         <td >
             <?php echo $userObj->getCreatedAt();?>
+        </td>
+
+        <td >
+            <?php echo $userObj->getCity(); ?>
         </td>
 
 

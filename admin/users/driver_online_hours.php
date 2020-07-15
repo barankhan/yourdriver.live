@@ -40,6 +40,7 @@ $date = (empty($_REQUEST['date'])?date('Y-m-d'):$_REQUEST['date']);
         <th>Vehicle Type</th>
         <th>Date</th>
         <th>Duration(Hours)</th>
+        <th>City</th>
 
     </tr>
     </thead>
@@ -57,6 +58,7 @@ foreach($history as $his){
 <td><?php echo $userObj->getVehicleType(); ?></td>
 <td><?php echo $date; ?></td>
 <td><?php echo sprintf("%02s", intdiv($his['duration'], 60)).':'. sprintf("%02s",$his['duration'] % 60); ?></td>
+    <td><?php echo $userObj->getCity(); ?></td>
 
 </tr>
 <?php

@@ -144,8 +144,32 @@ $token = "dWJOYjnrpTI:APA91bGea09wpv9jA5nZr1C6dLMmooXGQFJNVevSwti3_2dWeLbpHMbZkE
 //
 //
 //}
-$token="dVqQT1jnNL8:APA91bEPzy2pSss0XB48nd-0ZN8wp5XH2oq-mrtArBkg_ngY0i-rSDZX9b8amwHU2kKeFJLitPd9W2mzcv02pJA7qpcZNhsElOKWS-zhWa61uOtHjtwF9HUFKzwAgB5oIFFk76i633AO";
+//$token="dVqQT1jnNL8:APA91bEPzy2pSss0XB48nd-0ZN8wp5XH2oq-mrtArBkg_ngY0i-rSDZX9b8amwHU2kKeFJLitPd9W2mzcv02pJA7qpcZNhsElOKWS-zhWa61uOtHjtwF9HUFKzwAgB5oIFFk76i633AO";
+//
+//$fbaseObj = new firebaseNotification();
+//$fabseRes = $fbaseObj->sendPayloadOnly(0,$token,$payload,null,'high',6000);
+//var_dump($fabseRes);
 
-$fbaseObj = new firebaseNotification();
-$fabseRes = $fbaseObj->sendPayloadOnly(0,$token,$payload,null,'high',6000);
-var_dump($fabseRes);
+
+$userObj = new User();
+$drivers = $userObj->getAllDrivers(null,1,1000);
+foreach($drivers as $driver){
+    $userObjNew = new User();
+    $userObjNew->setAllFields($driver);
+    $ridePathObj  = new RidePath();
+    $ridePathObj->setDriverId($userObjNew->getId());
+    $rs = $ridePathObj->getLastKnownCoordinates();
+    if($rs!=null){
+        $userObjNew->setCity(findRideCity::getCity($rs['lat'],$rs['lng']));
+        $userObjNew->update();
+    }
+
+}
+
+
+
+
+
+
+
+

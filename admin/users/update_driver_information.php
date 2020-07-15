@@ -82,6 +82,14 @@ $userObj->getUserWithId($userId);
     <div class="form-group">
         <input type="text" class="form-control" id="InputVehicleColor" placeholder="Vehicle Color" name="vehicle_color" value="<?php echo $userObj->getVehicleColor(); ?>">
     </div>
+    <div class="form-group">
+        <select class="form-control" id="InputVehicleType" name="city">
+            <option value=""></option>
+            <option value="Bahwalpur" <?php if($userObj->getCity()=='Bahwalpur'){echo "selected=selected";} ?>>Bahwalpur</option>
+            <option value="Multan" <?php if($userObj->getCity()=='Multan'){echo "selected=selected";} ?>>Multan</option>
+            ion>
+        </select>
+    </div>
     <button type="submit" class="btn btn-primary">Submit</button>
 
 </form>

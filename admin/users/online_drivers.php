@@ -47,6 +47,9 @@ if(isset($_REQUEST['msg'])){
             Online At
         </td>
         <td >
+            City
+        </td>
+        <td >
             Actions
         </td>
 
@@ -82,6 +85,9 @@ foreach ($drivers as $driver){
         </td>
         <td >
             <?php echo $userObj->getOnlineAt();?>
+        </td>
+        <td >
+            <?php echo $userObj->getCity();?>
         </td>
         <td >
             <?php echo "<a target='_blank' href='actions/driver_current_location.php?id=".$userObj->getId()."' class='btn btn-primary'>Current Location</a>"; ?>

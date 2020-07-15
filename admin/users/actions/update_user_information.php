@@ -21,6 +21,7 @@ if($userObj->getId()>0){
     $userObj->setVehicleType($_REQUEST['vehicle_type']);
     $userObj->setVehicleColor($_REQUEST['vehicle_color']);
     $userObj->setVehicleMade($_REQUEST['vehicle_made']);
+    $userObj->setCity($_REQUEST['city']);
     $userObj->update();
 }
 
