@@ -40,7 +40,7 @@ if($userObj->getId()>0){
     $rideObj->setCity(findRideCity::getCity($rideObj->getPickupLat(),$rideObj->getPickupLng()));
     $rideObj->insert();
 
-    $drivers = $userObj->getAvailableDrivers($pickup_lat_lng[0],$pickup_lat_lng[1],$_REQUEST["vehicle_type"],1,3);
+    $drivers = $userObj->getAvailableDrivers($pickup_lat_lng[0],$pickup_lat_lng[1],$_REQUEST["vehicle_type"],1,4);
 
     if(array_key_exists(0, $drivers)){
         $driver = new User();
