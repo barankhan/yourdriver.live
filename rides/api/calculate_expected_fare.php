@@ -20,7 +20,7 @@ $city = findRideCity::getCity( $_REQUEST['origin_lat'],$_REQUEST['origin_lng']);
 
 $driver_types = array("Auto","Car","Bike");
 
-if($city=='multan'){
+if($city=='multan' || $city=='Bahawalpur'){
     $origin      = $_REQUEST['origin_lat'].",".$_REQUEST['origin_lng'];
     $destination      = $_REQUEST['destination_lat'].",".$_REQUEST['destination_lng'];
     $key = "AIzaSyCCqsVyBepTZWwra2IdMy0o-6Hrp0ZJY_E";
