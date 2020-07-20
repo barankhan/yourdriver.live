@@ -8,6 +8,9 @@
 require_once __DIR__."/../partials/header.php";
 
 $ride_id = $_REQUEST['ride_id'];
+$rideObj =  new ride();
+$rideObj->setId($ride_id);
+$rideObj->findRideWithId();
 
 $rideAlertObject = new rideAlert();
 $alerts = $rideAlertObject->findAlertsWithDriverInfoByRideId($ride_id);
@@ -68,8 +71,12 @@ foreach ($alerts as $alert){
         <?php if($alert['driver_lat']>0) {  ?>
          <td>
             <?php echo "<a target='_blank' href='https://www.google.com/maps/search/?api=1&query=". $alert['driver_lat'].",".$alert['driver_lng']."' class='btn btn-primary'>Location</a>"; ?>
+             <a target="_blank" href="https://www.google.com/maps/dir/'<?php echo $rideObj->getPickupLat().",".$rideObj->getPickupLng() ?>'/<?php echo $alert['driver_lat'].",".$alert['driver_lng'] ?>" class='btn btn-primary'>Directions</a>
         </td>
         <?php } ?>
+
+
+
     </tr>
 
     <?php
