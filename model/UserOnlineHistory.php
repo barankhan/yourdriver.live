@@ -28,6 +28,27 @@ where h.user_id=u.id and date(h.created_at)=:ddate group by h.user_id  order by 
         return $this->executeSelect($q,$params);
     }
 
+
+    public function getUserReport($page,$limit=10){
+        $q = "select date(h.created_at) as created_date,sum(h.duration_in_minutes) as mins from users u , user_online_history h
+where u.id=h.user_id and u.id=:user_id group by date(h.created_at) order by date(created_at) desc limit ".(($page-1)*$limit).",".$limit.";";
+        $params = array("user_id"=>$this->userId);
+        return $this->executeSelect($q,$params);
+    }
+
+
+    public function getUserReportCount(){
+        $q = "select count(*) as ct from (select date(h.created_at),sum(h.duration_in_minutes) from users u , user_online_history h
+where u.id=h.user_id and u.id=:user_id group by date(h.created_at)) s;";
+        $params = array("user_id"=>$this->userId);
+        $rs =  $this->executeSelectSingle($q,$params);
+        return $rs['ct'];
+    }
+
+
+
+
+
     /**
      * @return mixed
      */

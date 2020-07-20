@@ -91,6 +91,7 @@ foreach ($drivers as $driver){
         </td>
         <td >
             <?php echo "<a href='user_detail.php?id=".$userObj->getId()."' class='btn btn-primary'>Detail</a>"; ?>
+            <?php echo "<a href='single_user_online_history.php?id=".$userObj->getId()."' class='btn btn-primary'>History</a>"; ?>
         </td>
 
 
