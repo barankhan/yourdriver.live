@@ -11,6 +11,14 @@ $userObj = new User();
 $drivers  = $userObj->getAllApprovalRequiredDrivers();
 ?>
 
+    <script type="text/javascript">
+        $(document).ready(function() {
+            jQuery('.confirmation').on('click', function () {
+                return confirm('Do you want to approve? '+jQuery(this).attr("driver_name"));
+            });
+        });
+    </script>
+
     <table class="table table-striped">
     <thead>
 
@@ -71,7 +79,7 @@ foreach ($drivers as $driver){
         </td>
         <td >
             <?php echo "<a href='user_detail.php?id=".$userObj->getId()."' class='btn btn-primary'>Detail</a>"; ?>
-            <?php echo "<a href='approve_driver.php?id=".$userObj->getId()."' class='btn btn-primary'>Approve</a>"; ?>
+            <?php echo "<a href='approve_driver.php?id=".$userObj->getId()."' class='btn btn-primary confirmation' driver_name='".$userObj->getId()."-".$userObj->getName()."'>Approve</a>"; ?>
         </td>
 
     </tr>
