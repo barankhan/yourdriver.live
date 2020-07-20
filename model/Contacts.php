@@ -9,13 +9,13 @@ require_once __DIR__."/../vendor/autoload.php";
 class Contacts extends  baseModel implements JsonSerializable
 {
 
-    private $id=0,$contactNo, $sentBy,$sentCount=0,$createdAt,$updatedAt,$city;
+    private $id=0,$contactNo, $sentBy,$sentCount=0,$createdAt,$updatedAt,$city,$firebaseRequestReceived=0;
 
 
 
     public function update(){
-        $q = "UPDATE `contacts` SET `contact_no` = :contact_no, `sent_by` = :sent_by, `sent_count` = :sent_count WHERE `id` = :id;";
-        $params = array("contact_no"=>$this->contactNo,"sent_by"=>$this->sentBy,"sent_count"=>$this->sentCount,"id"=>$this->id);
+        $q = "UPDATE `contacts` SET `contact_no` = :contact_no, `sent_by` = :sent_by, `sent_count` = :sent_count,firebase_request_received=:firebase_request_received WHERE `id` = :id;";
+        $params = array("contact_no"=>$this->contactNo,"sent_by"=>$this->sentBy,"sent_count"=>$this->sentCount,"id"=>$this->id,"firebase_request_received"=>$this->firebaseRequestReceived);
         return $this->executeUpdate($q,$params);
     }
 
@@ -38,6 +38,16 @@ class Contacts extends  baseModel implements JsonSerializable
     }
 
 
+    public function findById(){
+        $q = "select * from contacts where id=:id limit 1";
+        $params = array("id"=>$this->id);
+        $rs = $this->executeSelectSingle($q,$params);
+        if($rs!=null){
+            $this->setAllFields($rs);
+        }
+    }
+
+
 
     public function setAllFields($rs){
 
@@ -48,6 +58,25 @@ class Contacts extends  baseModel implements JsonSerializable
             $this->$key($val);
         }
     }
+
+    /**
+     * @return int
+     */
+    public function getFirebaseRequestReceived(): int
+    {
+        return $this->firebaseRequestReceived;
+    }
+
+    /**
+     * @param int $firebaseRequestReceived
+     */
+    public function setFirebaseRequestReceived(int $firebaseRequestReceived)
+    {
+        $this->firebaseRequestReceived = $firebaseRequestReceived;
+    }
+
+
+
 
     public function __construct()
     {

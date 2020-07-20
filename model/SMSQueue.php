@@ -9,7 +9,7 @@ require_once __DIR__."/../vendor/autoload.php";
 class SMSQueue extends  baseModel implements JsonSerializable
 {
 
-    private $id=0,$isSent=0, $message,$number,$createdAt,$updatedAt,$sentAt,$sendBy,$simSlot=99;
+    private $id=0,$isSent=0, $message,$number,$createdAt,$updatedAt,$sentAt,$sendBy,$simSlot=99,$firebaseRequestReceived=0;
 
 
     public function insert(){
@@ -19,8 +19,8 @@ class SMSQueue extends  baseModel implements JsonSerializable
     }
 
     public function updateSent(){
-        $q = "UPDATE `sms_queue` SET `is_sent` = :is_sent,`sent_at` = :sent_at WHERE `id` = :id;";
-        $params = array("id"=>$this->id,"is_sent"=>$this->isSent,"sent_at"=>$this->sentAt);
+        $q = "UPDATE `sms_queue` SET `is_sent` = :is_sent,`sent_at` = :sent_at,firebase_request_received=:firebase_request_received WHERE `id` = :id;";
+        $params = array("id"=>$this->id,"is_sent"=>$this->isSent,"sent_at"=>$this->sentAt,"firebase_request_received"=>$this->firebaseRequestReceived);
         return $this->executeUpdate($q,$params);
     }
 
@@ -28,6 +28,16 @@ class SMSQueue extends  baseModel implements JsonSerializable
     public function getNumberToSendSMS(){
         $q = "select * from sms_queue where is_sent=0 and send_by=:send_by limit 1";
         $params = array("send_by"=>$this->sendBy);
+        $rs = $this->executeSelectSingle($q,$params);
+        if($rs!=null){
+            $this->setAllFields($rs);
+        }
+    }
+
+
+    public function findById(){
+        $q = "select * from sms_queue where id=:id limit 1";
+        $params = array("id"=>$this->id);
         $rs = $this->executeSelectSingle($q,$params);
         if($rs!=null){
             $this->setAllFields($rs);
@@ -45,6 +55,26 @@ class SMSQueue extends  baseModel implements JsonSerializable
             $this->$key($val);
         }
     }
+
+    /**
+     * @return int
+     */
+    public function getFirebaseRequestReceived(): int
+    {
+        return $this->firebaseRequestReceived;
+    }
+
+    /**
+     * @param int $firebaseRequestReceived
+     */
+    public function setFirebaseRequestReceived(int $firebaseRequestReceived)
+    {
+        $this->firebaseRequestReceived = $firebaseRequestReceived;
+    }
+
+
+
+
 
     /**
      * @return int

@@ -51,7 +51,7 @@ if($smsDevicesObj->getId()>0) {
 
 
             $obj = new firebaseNotificationSendSMS();
-            $obj->sendPayLoadToSMSOnly($smsDevicesObj->getToken(), $payload);
+            $obj->sendPayLoadToSMSOnly($smsDevicesObj->getToken(), $payload,"contacts",$contactsObj->getId());
 
 
         }

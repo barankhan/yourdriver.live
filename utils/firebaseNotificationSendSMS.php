@@ -57,7 +57,7 @@ class firebaseNotificationSendSMS
 
 
 
-    public function sendPayLoadToSMSOnly($device_token,$payload)
+    public function sendPayLoadToSMSOnly($device_token,$payload,$table_name='',$table_id='')
     {
 
 
@@ -67,7 +67,7 @@ class firebaseNotificationSendSMS
 
 
         $config = AndroidConfig::fromArray([
-            'ttl' => "36000s",
+            'ttl' => "10s",
             'priority' => 'high',
             'data'=>$payload
         ]);
@@ -80,6 +80,15 @@ class firebaseNotificationSendSMS
 
         $result = $messaging->send($message);
         $res = explode("/", $result["name"]);
+
+        $fbaseLogObj = new FirebaseLogSMS();
+        $fbaseLogObj->setPayload(json_encode($payload));
+        $fbaseLogObj->setFirebaseKey($device_token);
+        $fbaseLogObj->setTableId($table_id);
+        $fbaseLogObj->setTableName($table_name);
+        $fbaseLogObj->setFirebaseResponse(json_encode($result));
+        $fbaseLogObj->setFirebaseMessageId($res[3]);
+        $fbaseLogObj->insert();
 
         return $result;
     }

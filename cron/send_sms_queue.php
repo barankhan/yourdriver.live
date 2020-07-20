@@ -40,7 +40,7 @@ if($smsDevicesObj->getId()>0) {
             ];
 
             $obj = new firebaseNotificationSendSMS();
-            $ab = $obj->sendPayLoadToSMSOnly($smsDevicesObj->getToken(), $payload);
+            $ab = $obj->sendPayLoadToSMSOnly($smsDevicesObj->getToken(), $payload,'sms_queue',$smsQueueObj->getId());
 
         }
     }

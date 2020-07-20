@@ -15,6 +15,7 @@ return array(
     'DriverConstants' => $baseDir . '/utils/DriverConstants.php',
     'DriverTransaction' => $baseDir . '/model/DriverTransaction.php',
     'FirebaseLog' => $baseDir . '/model/FirebaseLog.php',
+    'FirebaseLogSMS' => $baseDir . '/model/FirebaseLogSMS.php',
     'LogRequest' => $baseDir . '/model/LogRequest.php',
     'MarkedOffline' => $baseDir . '/model/MarkedOffline.php',
     'Misc' => $baseDir . '/utils/Misc.php',

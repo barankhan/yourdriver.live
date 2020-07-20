@@ -107,6 +107,17 @@
         </li>
 
         <li>
+            <a href="#SMSQueue" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">SMS QUEUE</a>
+            <ul class="collapse list-unstyled" id="SMSQueue">
+                <li>
+                    <a href="<?php echo MY_HOST ?>admin/sms/populate_sms_queue.php">Populate</a>
+                </li>
+
+            </ul>
+        </li>
+
+
+        <li>
             <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Pages</a>
             <ul class="collapse list-unstyled" id="pageSubmenu">
                 <li>

@@ -1,0 +1,11 @@
+[20-Jul-2020 12:51:57 Asia/Karachi] PHP Error:  Call to a member function prepare() on null in /var/www/html/driver/model/baseModel.php on line 56
+[20-Jul-2020 12:51:57 Asia/Karachi] PHP Stack trace:
+[20-Jul-2020 12:51:57 Asia/Karachi] PHP   1. {main}() /var/www/html/driver/cron/populate_sms_queue.php:0
+[20-Jul-2020 12:51:57 Asia/Karachi] PHP   2. SMSQueue->insert() /var/www/html/driver/cron/populate_sms_queue.php:26
+[20-Jul-2020 12:51:57 Asia/Karachi] PHP   3. SMSQueue->executeInsert() /var/www/html/driver/model/SMSQueue.php:18
+[20-Jul-2020 12:51:57 Asia/Karachi] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in /var/www/html/driver/model/baseModel.php:56
+Stack trace:
+#0 /var/www/html/driver/model/SMSQueue.php(18): baseModel->executeInsert('INSERT INTO `dr...', Array)
+#1 /var/www/html/driver/cron/populate_sms_queue.php(26): SMSQueue->insert()
+#2 {main}
+  thrown in /var/www/html/driver/model/baseModel.php on line 56
