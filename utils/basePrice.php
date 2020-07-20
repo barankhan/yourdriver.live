@@ -23,18 +23,18 @@ class basePrice
             case "car":
                 switch (findRideCity::getCity($pickupLat,$pickLng)){
                     case "multan":
-                        return array("driver_start_up_fare"=>65,"company_service_charges"=>0,"time_elapsed_rate"=>3.5,"km_travelled_rate"=>7);
+                        return array("driver_start_up_fare"=>75,"company_service_charges"=>0,"time_elapsed_rate"=>3.5,"km_travelled_rate"=>7);
                         break;
                     default:
-                        return array("driver_start_up_fare"=>65,"company_service_charges"=>0,"time_elapsed_rate"=>3.5,"km_travelled_rate"=>7);
+                        return array("driver_start_up_fare"=>75,"company_service_charges"=>0,"time_elapsed_rate"=>3.5,"km_travelled_rate"=>7);
                 }
             case "bike":
                 switch (findRideCity::getCity($pickupLat,$pickLng)){
                     case "multan":
-                        return array("driver_start_up_fare"=>20,"company_service_charges"=>0,"time_elapsed_rate"=>2,"km_travelled_rate"=>5);
+                        return array("driver_start_up_fare"=>25,"company_service_charges"=>0,"time_elapsed_rate"=>2,"km_travelled_rate"=>5);
                         break;
                     default:
-                        return array("driver_start_up_fare"=>20,"company_service_charges"=>0,"time_elapsed_rate"=>2,"km_travelled_rate"=>5);
+                        return array("driver_start_up_fare"=>25,"company_service_charges"=>0,"time_elapsed_rate"=>2,"km_travelled_rate"=>5);
                 }
             default:
                 return array("driver_start_up_fare"=>30,"company_service_charges"=>20,"time_elapsed_rate"=>4,"km_travelled_rate"=>5);
