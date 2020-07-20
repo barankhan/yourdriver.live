@@ -10,7 +10,7 @@ require_once "baseModel.php";
 
 class SmsDevices extends  baseModel {
 
-    private $id=0,$title,$token,$createdAt,$updatedAt,$simSlot;
+    private $id=0,$title,$token,$createdAt,$updatedAt,$simSlot,$deviceGroup;
 
     public function __construct(){
         parent::__construct();
@@ -59,6 +59,25 @@ class SmsDevices extends  baseModel {
             $this->$key($val);
         }
     }
+
+    /**
+     * @return mixed
+     */
+    public function getDeviceGroup()
+    {
+        return $this->deviceGroup;
+    }
+
+    /**
+     * @param mixed $deviceGroup
+     */
+    public function setDeviceGroup($deviceGroup)
+    {
+        $this->deviceGroup = $deviceGroup;
+    }
+
+
+    
 
     /**
      * @return mixed
