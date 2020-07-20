@@ -40,7 +40,18 @@ if($userObj->getId()>0){
     $rideObj->setCity(findRideCity::getCity($rideObj->getPickupLat(),$rideObj->getPickupLng()));
     $rideObj->insert();
 
-    $drivers = $userObj->getAvailableDrivers($pickup_lat_lng[0],$pickup_lat_lng[1],$_REQUEST["vehicle_type"],1,4);
+    $radius = 4;
+
+    if($rideObj->getCity()=='Bahawalpur' && $rideObj->getVehicleType()=='Bike'){
+        $radius = 6;
+    }
+
+    if($rideObj->getCity()=='Bahawalpur' && $rideObj->getVehicleType()=='Car'){
+        $radius = 5;
+    }
+
+
+    $drivers = $userObj->getAvailableDrivers($pickup_lat_lng[0],$pickup_lat_lng[1],$_REQUEST["vehicle_type"],1,$radius);
 
     if(array_key_exists(0, $drivers)){
         $driver = new User();
