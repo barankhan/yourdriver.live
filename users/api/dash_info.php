@@ -20,7 +20,7 @@ $transactionObj->getLastDaysEarning(1);
 $response = array("Balance"=>$userObj->getBalance(),"ReferralCode"=>$userObj->getId(),
     "ReferredDrivers"=>$rsReferredUsers['driver_referred'],"ReferredUsers"=>$rsReferredUsers['passenger_referred'],
     "DashTodayEarning"=>$transactionObj->getLastDaysEarning(1),"Last7DaysEarning"=>$transactionObj->getLastDaysEarning(7),
-    "Last30DaysEarning"=>$transactionObj->getLastDaysEarning(30)
+    "Last30DaysEarning"=>$transactionObj->getLastDaysEarning(30),"VehicleType"=>$userObj->getVehicleType()
 );
 
 echo json_encode($response);
