@@ -17,7 +17,7 @@ $drivers =  $userObj->getAllDrivers(" and city='Bahawalpur' and is_driver_online
     <table class="table table-striped">
         <thead>
         <tr    >
-            
+
             <td >
                 Name
             </td>
@@ -70,7 +70,7 @@ $drivers =  $userObj->getAllDrivers(" and city='Bahawalpur' and is_driver_online
                     <?php echo $userObj->getCity();?>
                 </td>
                 <td >
-                    <?php echo "<a target='_blank' href='actions/driver_current_location.php?id=".$userObj->getId()."' class='btn btn-primary'>Current Location</a>"; ?>
+                    <?php echo "<a target='_blank' href='driver_current_location.php?id=".$userObj->getId()."' class='btn btn-primary'>Current Location</a>"; ?>
                 </td>
             </tr>
 
