@@ -43,7 +43,7 @@ if($userObj->getId()>0){
     $radius = 4;
 
     if($rideObj->getCity()=='Bahawalpur' && $rideObj->getVehicleType()=='Bike'){
-        $radius = 6;
+        $radius = 8;
     }
 
     if($rideObj->getCity()=='Bahawalpur' && $rideObj->getVehicleType()=='Car'){
