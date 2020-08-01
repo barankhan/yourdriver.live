@@ -45,7 +45,7 @@ require_once __DIR__.'/vendor/autoload.php';
 
 //
 //
-#$fbaseObj = new firebaseNotification();
+$fbaseObj = new firebaseNotification();
 //
 $notification['title']='Eid Mubarak';
 $notification['body']='app ko or app ky ghar walon ko hamari traf sy eid mubarak.';
