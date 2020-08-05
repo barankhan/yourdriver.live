@@ -23,10 +23,10 @@ class basePrice
             case "car":
                 switch (findRideCity::getCity($pickupLat,$pickLng)){
                     case "multan":
-                        return array("driver_start_up_fare"=>75,"company_service_charges"=>0,"time_elapsed_rate"=>3.5,"km_travelled_rate"=>7);
+                        return array("driver_start_up_fare"=>85,"company_service_charges"=>0,"time_elapsed_rate"=>3.5,"km_travelled_rate"=>10);
                         break;
                     default:
-                        return array("driver_start_up_fare"=>75,"company_service_charges"=>0,"time_elapsed_rate"=>3.5,"km_travelled_rate"=>7);
+                        return array("driver_start_up_fare"=>85,"company_service_charges"=>0,"time_elapsed_rate"=>3.5,"km_travelled_rate"=>10);
                 }
             case "bike":
                 switch (findRideCity::getCity($pickupLat,$pickLng)){
