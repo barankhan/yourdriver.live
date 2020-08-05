@@ -45,13 +45,13 @@ require_once __DIR__.'/vendor/autoload.php';
 
 //
 //
-#$fbaseObj = new firebaseNotification();
+$fbaseObj = new firebaseNotification();
 //
-//$notification['title']='We are back';
-//$notification['body']='As per SOPs of Punjab Govt. feel free to book a ride!';
+$notification['title']='Eid Mubarak';
+$notification['body']='app ko or app ky ghar walon ko hamari traf sy eid mubarak.';
 
-$payload['key']="reset_to_default";
-$payload['message']="We have fixed your application. ";
+//$payload['key']="reset_to_default";
+//$payload['message']="We have fixed your application. ";
 //$notification['sound']="ride_alert.mp3";
 //$notification['channel_id']="121212";
 
@@ -121,29 +121,29 @@ $token = "dWJOYjnrpTI:APA91bGea09wpv9jA5nZr1C6dLMmooXGQFJNVevSwti3_2dWeLbpHMbZkE
 //    echo "INSERT INTO `driver`.`list` ( `mobile`,`hustel`) VALUES ('".$item."',1); <br/>";
 //}
 //
-//$userObj = new User();
-//$users = $userObj->getAllUsers("where coalesce(firebase_token,'')<>'' ",1,1500);
-////$users = $userObj->getAllUsers("where id in(1,2) ",1,1500);
+$userObj = new User();
+$users = $userObj->getAllUsers("where coalesce(firebase_token,'')<>'' ",1,5000);
+//$users = $userObj->getAllUsers("where id in(1,2) ",1,1500);
 //
-//foreach ($users as $user){
-//    $selectedUser = new User();
-//    $selectedUser->setAllFields($user);
-//    echo $selectedUser->getId().":";
-//    echo $selectedUser->getName();
-//    echo "\n";
-////    echo $selectedUser->getFirebaseToken();
-//
-//    try{
-//        $fabseRes = $fbaseObj->sendPayloadOnly(1,$selectedUser->getFirebaseToken(),null,$notification,'high',180000,"users",$selectedUser->getId());
-//        sleep(1);
-//    }catch (Exception $e){
-//        echo $e->getMessage()."\n";
-//    }
-//    echo "#############################\n";
-//
-//
-//
-//}
+foreach ($users as $user){
+    $selectedUser = new User();
+    $selectedUser->setAllFields($user);
+    echo $selectedUser->getId().":";
+    echo $selectedUser->getName();
+    echo "\n";
+//    echo $selectedUser->getFirebaseToken();
+
+    try{
+        $fabseRes = $fbaseObj->sendPayloadOnly(1,$selectedUser->getFirebaseToken(),null,$notification,'high',180000,"users",$selectedUser->getId());
+        sleep(1);
+    }catch (Exception $e){
+        echo $e->getMessage()."\n";
+    }
+    echo "#############################\n";
+
+
+
+}
 //$token="dVqQT1jnNL8:APA91bEPzy2pSss0XB48nd-0ZN8wp5XH2oq-mrtArBkg_ngY0i-rSDZX9b8amwHU2kKeFJLitPd9W2mzcv02pJA7qpcZNhsElOKWS-zhWa61uOtHjtwF9HUFKzwAgB5oIFFk76i633AO";
 //
 //$fbaseObj = new firebaseNotification();
@@ -151,20 +151,20 @@ $token = "dWJOYjnrpTI:APA91bGea09wpv9jA5nZr1C6dLMmooXGQFJNVevSwti3_2dWeLbpHMbZkE
 //var_dump($fabseRes);
 
 
-$userObj = new User();
-$drivers = $userObj->getAllDrivers(null,1,1000);
-foreach($drivers as $driver){
-    $userObjNew = new User();
-    $userObjNew->setAllFields($driver);
-    $ridePathObj  = new RidePath();
-    $ridePathObj->setDriverId($userObjNew->getId());
-    $rs = $ridePathObj->getLastKnownCoordinates();
-    if($rs!=null){
-        $userObjNew->setCity(findRideCity::getCity($rs['lat'],$rs['lng']));
-        $userObjNew->update();
-    }
+//$userObj = new User();
+//$drivers = $userObj->getAllDrivers(null,1,1000);
+//foreach($drivers as $driver){
+//    $userObjNew = new User();
+//    $userObjNew->setAllFields($driver);
+//    $ridePathObj  = new RidePath();
+//    $ridePathObj->setDriverId($userObjNew->getId());
+//    $rs = $ridePathObj->getLastKnownCoordinates();
+//    if($rs!=null){
+//        $userObjNew->setCity(findRideCity::getCity($rs['lat'],$rs['lng']));
+//        $userObjNew->update();
+//    }
 
-}
+//}
 
 
 
