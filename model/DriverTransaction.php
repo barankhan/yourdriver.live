@@ -604,11 +604,17 @@ $kmTravelled=0,$kmTravelledRate,$totalFare=0,$amountReceived=0,$createdAt,$updat
     }
 
     /**
-     * @param mixed $totalFare
+     * @param mixed $min_fare
+     *
      */
-    public function setTotalFare()
+    public function setTotalFare($min_fare=0)
     {
         $this->totalFare = round(bcdiv($this->companyServiceCharges+$this->driverStartUpFare+($this->timeElapsedMinutes*$this->timeElapsedRate)+($this->kmTravelled*$this->kmTravelledRate),1,2));
+        // if total fare is less than minimum fare, then update driver startup fare to meet minimum fare.
+        if($this->totalFare<$min_fare && $min_fare>0){
+            $this->driverStartUpFare = round(bcdiv($this->driverStartUpFare + ($min_fare-$this->totalFare),1,2));
+            $this->totalFare = round(bcdiv($this->companyServiceCharges+$this->driverStartUpFare+($this->timeElapsedMinutes*$this->timeElapsedRate)+($this->kmTravelled*$this->kmTravelledRate),1,2));
+        }
     }
 
     /**

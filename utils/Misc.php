@@ -107,7 +107,7 @@ class Misc
         $end = strtotime($rideObj->getRideEndedAt());
         $mins = ($end - $start) / 60;
         $tranObj->setTimeElapsedMinutes($mins);
-        $tranObj->setTotalFare();
+        $tranObj->setTotalFare(array_key_exists ("min_fare" ,  $basePrice )?$basePrice["min_fare"]:0);
 
         $driverObj->setBalance($driverObj->getBalance() - $tranObj->getCompanyServiceCharges());
         $paidCancels = array();
