@@ -47,11 +47,12 @@ require_once __DIR__.'/vendor/autoload.php';
 //
 $fbaseObj = new firebaseNotification();
 //
-$notification['title']='Eid Mubarak';
-$notification['body']='app ko or app ky ghar walon ko hamari traf sy eid mubarak.';
+//$notification['title']='Eid Mubarak';
+//$notification['body']='app ko or app ky ghar walon ko hamari traf sy eid mubarak.';
 
-//$payload['key']="reset_to_default";
-//$payload['message']="We have fixed your application. ";
+$payload['key']="reset_to_default";
+$payload['message']="We have fixed your application. ";
+
 //$notification['sound']="ride_alert.mp3";
 //$notification['channel_id']="121212";
 
@@ -86,6 +87,10 @@ $notification['body']='app ko or app ky ghar walon ko hamari traf sy eid mubarak
 $token = "c41h51hlpJc:APA91bGxeDW7vG7weanXEHYfS1rbUKHAi3nrxeqIw8w1x5NDTW3hAFFsyxD03w3wRn6tl39S47MbCO6xQXZqaBuDLEtlDwWafSAkSMj8GQoQsi9lQqeIkftpMVuj1ovijC3ZfO9_oSrH";
 $token = "ctHzkdCBVdE:APA91bFo8ZKQgi64f-NVjc9YK6SoH732StkJeXRnuztFnZbr8v6TvIOaAFz_pTBWWZmYofU-MVfZbxD6039dZGtzu9zl9XmWVh7Y234YMVXqIi2YpHwdchiwhFB9Y5DweVdS2OpX9dDe";
 $token = "dWJOYjnrpTI:APA91bGea09wpv9jA5nZr1C6dLMmooXGQFJNVevSwti3_2dWeLbpHMbZkEG4UOgt0yk8z05oTZgE30QY08HFqNqgmPzbQTBeIOkP0_WqDLEEV7jL23Bw30mT_BzC1DePR2T3w30APlHb";
+$token = "efdVTKnCzLk:APA91bEHDLiM_2GgNke3Fu8lMD4fQFB0m1WIODqryMhuspM9bOjg7Cdw7cYTruwo8CFR5Dptf0qCdDdsoNcgg2TsddgFdhgjdzqJv7dP_lKR1B1dvI6fldUFV8ZZuh_dC55HdFz5EocM";
+$fabseRes = $fbaseObj->sendPayloadOnly(1,$token,$payload,null,'high',180000);
+var_dump($fabseRes);
+die;
 //$token = "fs3cvzBZp0c:APA91bEkIbLxlHHFuF3bQzmpXODf_WnpBniPYhCZXd7-qmiPWdYcWERHaBdWgkrvMowpzJF_yvCohZKUqtWv5osNGT2AtugC3WbQMGveiC3By-8ZI9S-ikwfkWq6N80JPPt9W2K4uxLj";
 //$fbaseLogObj->setFirebaseKey($token);
 //$fbaseLogObj->insert();
