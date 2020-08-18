@@ -53,8 +53,7 @@ if($rideObj->getDriverId()==0){
     if($userObj->getIsDriver()==1){
         // Cancelled By Driver.
         $cancel_time = $rideObj->getDateTimeDiffInMinutes($rideObj->getDriverArrivedAt(),$rideObj->getRideCancelledAt());
-        if($rideObj->getIsDriverArrived()==1 &&
-            $cancel_time >=DRIVER_CANCELLED_WAIT_AFTER_ARRIVED){
+        if($rideObj->getIsDriverArrived()==1 ){ //&& $cancel_time >=DRIVER_CANCELLED_WAIT_AFTER_ARRIVED){
             $cancTransObj = Misc::generateCancelledTransaction($rideObj,$basePrice,$passengerObj,$driverObj);
 //            $passengerObj->setBalance($passengerObj->getBalance()-$cancTransObj->getTotalFare());
 //            $passengerObj->update();
