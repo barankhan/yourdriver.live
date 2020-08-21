@@ -44,6 +44,7 @@ if($_REQUEST['ride_id']!=''){
     if($rideObj->getIsRideStarted()==1){
         $ridePathObj = new RidePath();
         $ridePathObj->setRideId($rideObj->getId());
+        $ridePathObj->setDriverId($userObj->getId());
         $ridePathObj->setLat($_REQUEST['lat']);
         $ridePathObj->setLng($_REQUEST['lng']);
         $ridePathObj->insert();
