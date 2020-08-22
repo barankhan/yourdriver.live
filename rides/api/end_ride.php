@@ -19,6 +19,8 @@ if($rideObj->getIsRideEnded()==0) {
     $rideObj->setIsRideEnded(1);
     $rideObj->setRideEndedAt(date("Y-m-d H:i:s"));
     $rideObj->setDistance($_REQUEST['distance']);
+    $rideObj->setRideEndedLat($_REQUEST['end_lat']);
+    $rideObj->setRideEndedLng($_REQUEST['end_lng']);
     $rideObj->update();
 
     $passengerObj = new User();

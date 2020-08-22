@@ -7,7 +7,7 @@ class User extends  baseModel implements JsonSerializable {
         $father,$cnic,$cnicFront,$cnicRear,$picture,$licence,$vehicleFront,$vehicleRear,$registration,$route,
         $regAlphabet,$regYear,$regNo,$lat,$lng,$isDriverOnline=0,$vehicleType='Auto',$isDriverOnTrip=0,$distance,$balance,
     $totalRating=0,$totalRides=0,$rating=5,$totalRatedRides=0,$creditLimit,$message,$acceptancePoints,$vehicleMade,$vehicleColor
-    ,$onlineAt,$offlineAt,$isAdmin=0,$referralCode=0,$city;
+    ,$onlineAt,$offlineAt,$isAdmin=0,$referralCode=0,$city,$appVersion;
 
 
     public function update(){
@@ -18,7 +18,7 @@ class User extends  baseModel implements JsonSerializable {
         route=:route,reg_alphabet=:regAlphabet,reg_year=:regYear,reg_no=:regNo,lat=:lat,lng=:lng,is_driver_online=:is_driver_online
         ,vehicle_type=:vehicleType,is_driver_on_trip=:isDriverOnTrip,balance=:balance,firebase_token=:firebaseToken,
          total_rating=:totalRating,total_rides=:totalRides,rating=:rating,total_rated_rides=:totalRatedRides,credit_limit=:creditLimit,acceptance_points=:acceptancePoints,
-         vehicle_made=:vehicleMade,vehicle_color=:vehicleColor,online_at=:onlineAt,offline_at=:offlineAt,is_admin=:is_admin,referral_code=:referral_code,city=:city
+         vehicle_made=:vehicleMade,vehicle_color=:vehicleColor,online_at=:onlineAt,offline_at=:offlineAt,is_admin=:is_admin,referral_code=:referral_code,city=:city,app_version=:app_version
          
          where id=:id";
             $params = array("id" => $this->id, "driverSteps" => $this->driverSteps, "name" => $this->name, "email" => $this->email, "password" => $this->password,
@@ -31,7 +31,7 @@ class User extends  baseModel implements JsonSerializable {
                 "balance"=>$this->balance,"firebaseToken"=>$this->firebaseToken,"totalRating"=>$this->totalRating,"totalRides"=>$this->totalRides,
                 "rating"=>$this->rating,"totalRatedRides"=>$this->totalRatedRides,"creditLimit"=>$this->creditLimit,"acceptancePoints"=>$this->acceptancePoints,
                 "vehicleMade"=>$this->vehicleMade,"vehicleColor"=>$this->vehicleColor,"onlineAt"=>$this->onlineAt,"offlineAt"=>$this->offlineAt,"is_admin"=>$this->isAdmin,
-                "referral_code"=>$this->referralCode,"city"=>$this->city
+                "referral_code"=>$this->referralCode,"city"=>$this->city,"app_version"=>$this->appVersion
 
             );
             return $this->executeUpdate($q, $params);
@@ -62,6 +62,25 @@ class User extends  baseModel implements JsonSerializable {
         return $this->executeSelect($q);
 
     }
+
+    /**
+     * @return mixed
+     */
+    public function getAppVersion()
+    {
+        return $this->appVersion;
+    }
+
+    /**
+     * @param mixed $appVersion
+     */
+    public function setAppVersion($appVersion)
+    {
+        $this->appVersion = $appVersion;
+    }
+
+
+
 
     /**
      * @return mixed

@@ -16,6 +16,7 @@ $lr->setMobileNumber($_REQUEST['mobile']);
 $lr->insertLog();
 
 $flag = $_REQUEST['is_driver_online'];
+$app_version = $_REQUEST['app_version'];
 $userObj = new User();
 $userObj->getUserWithMobile($_REQUEST['mobile']);
 

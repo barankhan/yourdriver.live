@@ -13,7 +13,7 @@ class ride extends  baseModel implements JsonSerializable
     private $id=0,$passengerId,$driverId=0,$createdAt,$updatedAt,$pickupLat,$pickupLng,$vehicleType,$dropoffLat
     ,$dropoffLng,$response,$message,$isRideStarted=0,$isRideCancelled=0,$rideStartedAt,$rideCancelledAt,$driverLat,$driverLng,
         $cancelledByTypeId=0,$isDriverArrived=0,$isRideEnded=0,$rideEndedAt,$driverArrivedAt,$distance,$rating,$pickupAddress,$dropoffAddress
-    ,$rideEndedLat,$rideEndedLng,$arrivalCode=0,$city
+    ,$rideEndedLat,$rideEndedLng,$arrivalCode=0,$city,$rideStartedLat,$rideStartedLng
 
     ;
     public function insert(){
@@ -30,7 +30,8 @@ class ride extends  baseModel implements JsonSerializable
 ride_cancelled_at=:rideCancelledAt,driver_lat=:driverLat,driver_lng=:driverLng,cancelled_by_type_id=:cancelledByTypeId,
 is_driver_arrived=:isDriverArrived,driver_arrived_at=:driverArrivedAt,is_ride_ended=:isRideEnded,ride_ended_at=:rideEndedAt,
 distance=:distance,rating=:rating,pickup_address=:pickup_address,dropoff_address=:dropoff_address,ride_ended_lat=:ride_ended_lat,
-ride_ended_lng=:ride_ended_lng,arrival_code=:arrival_code,city=:city
+ride_ended_lng=:ride_ended_lng,arrival_code=:arrival_code,city=:city,ride_started_lat=:ride_started_lat,
+ride_started_lng=:ride_started_lng
  
  where id=:id";
         $params = array("isRideStarted"=>$this->isRideStarted,"isRideCancelled"=>$this->isRideCancelled,
@@ -38,7 +39,8 @@ ride_ended_lng=:ride_ended_lng,arrival_code=:arrival_code,city=:city
             "driverLat"=>$this->driverLat,"driverLng"=>$this->driverLng,"cancelledByTypeId"=>$this->cancelledByTypeId,
             "isDriverArrived"=>$this->isDriverArrived,"driverArrivedAt"=>$this->driverArrivedAt,"isRideEnded"=>$this->isRideEnded,
             "rideEndedAt"=>$this->rideEndedAt,"distance"=>$this->distance,"rating"=>$this->rating,"pickup_address"=>$this->pickupAddress,"dropoff_address"=>$this->dropoffAddress,
-            "ride_ended_lat"=>$this->rideEndedLat,"ride_ended_lng"=>$this->rideEndedLng,"arrival_code"=>$this->arrivalCode,"city"=>$this->city
+            "ride_ended_lat"=>$this->rideEndedLat,"ride_ended_lng"=>$this->rideEndedLng,"arrival_code"=>$this->arrivalCode,"city"=>$this->city,
+            "ride_started_lat"=>$this->rideStartedLat,"ride_started_lng"=>$this->rideStartedLng
         );
 
         return $this->executeUpdate($q,$params);
@@ -185,6 +187,42 @@ ride_ended_lng=:ride_ended_lng,arrival_code=:arrival_code,city=:city
         $params = array("vehicle_type"=>$vehicle_type);
         return $this->executeSelect($q,$params);
     }
+
+    /**
+     * @return mixed
+     */
+    public function getRideStartedLat()
+    {
+        return $this->rideStartedLat;
+    }
+
+    /**
+     * @param mixed $rideStartedLat
+     */
+    public function setRideStartedLat($rideStartedLat)
+    {
+        $this->rideStartedLat = $rideStartedLat;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getRideStartedLng()
+    {
+        return $this->rideStartedLng;
+    }
+
+    /**
+     * @param mixed $rideStartedLng
+     */
+    public function setRideStartedLng($rideStartedLng)
+    {
+        $this->rideStartedLng = $rideStartedLng;
+    }
+
+
+
+
 
     /**
      * @return mixed

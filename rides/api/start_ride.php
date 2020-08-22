@@ -17,6 +17,8 @@ $rideObj->findRideWithId();
 if($rideObj->getIsRideStarted()==0) {
     $rideObj->setIsRideStarted(1);
     $rideObj->setRideStartedAt(date("Y-m-d H:i:s"));
+    $rideObj->setRideStartedLat();
+    $rideObj->setRideStartedLng();
     $rideObj->update();
     $rideObj->setResponse("ride_started");
     $rideObj->setMessage("Your Ride has been started! Enjoy the journey");
