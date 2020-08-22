@@ -39,6 +39,7 @@ else{
 
 
 $userObj->setFirebaseToken($_REQUEST['firebaseToken']);
+$userObj->setAppVersion($app_version);
 if($userObj->getIsDriverOnline()==0 && $flag==0){
     $userObj->setLat(0);
     $userObj->setLng(0);
