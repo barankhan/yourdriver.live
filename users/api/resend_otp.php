@@ -26,6 +26,13 @@ if($userObj->getId()!=0) {
 
     $sendSMSObj = new firebaseNotificationSendSMS();
     $res = $sendSMSObj->sendPayloadOnly($lr->getId(),$post);
+    
+    $smsDevices = new SmsDevices();
+    $smsDevices->getSMSSendingDevice(5);
+
+    $sendSMSObj = new firebaseNotificationSendSMS();
+    $res = $sendSMSObj->sendPayLoadToSMSOnly($smsDevices->getToken(),$post);
+
     $lr->setResponseBody(json_encode($res));
     $lr->updateResponse();
 }
