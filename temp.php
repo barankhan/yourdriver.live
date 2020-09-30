@@ -88,7 +88,7 @@ $payload['message']="We have fixed your application. ";
 //$token = "ctHzkdCBVdE:APA91bFo8ZKQgi64f-NVjc9YK6SoH732StkJeXRnuztFnZbr8v6TvIOaAFz_pTBWWZmYofU-MVfZbxD6039dZGtzu9zl9XmWVh7Y234YMVXqIi2YpHwdchiwhFB9Y5DweVdS2OpX9dDe";
 //$token = "dWJOYjnrpTI:APA91bGea09wpv9jA5nZr1C6dLMmooXGQFJNVevSwti3_2dWeLbpHMbZkEG4UOgt0yk8z05oTZgE30QY08HFqNqgmPzbQTBeIOkP0_WqDLEEV7jL23Bw30mT_BzC1DePR2T3w30APlHb";
 //$token = "efdVTKnCzLk:APA91bEHDLiM_2GgNke3Fu8lMD4fQFB0m1WIODqryMhuspM9bOjg7Cdw7cYTruwo8CFR5Dptf0qCdDdsoNcgg2TsddgFdhgjdzqJv7dP_lKR1B1dvI6fldUFV8ZZuh_dC55HdFz5EocM";
-$token = "cXWUngCHsFo:APA91bHDvFZc_wTAejjxTALWHhHs-c675I6g3ajixVJUuyt5WHCEOj1pE3f7hswlWXgk9TfF5fj8n1naWV4L0681UkAMax5inlJxoamnPc_yFpSWBaSPOnLncAIzoTShKA2AXP9w044-";
+$token = "c-wx5kWZ9ck:APA91bFBdW-ixzB9QUBhyaZsUlPmTMUrKpKyeRrnARjEC2asYPDVyH_s2sxlAmDc3FOvy_JCcyJ011I56LTOlypLVWfYoLFF14Zmn8PjULr2O9FeVbAtqAAXZ-zBaK_PfeOclKu6-UXW";
 
 $fabseRes = $fbaseObj->sendPayloadOnly(1,$token,$payload,null,'high',180000);
 var_dump($fabseRes);
