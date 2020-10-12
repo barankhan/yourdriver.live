@@ -22,7 +22,7 @@ class UserOnlineHistory extends  baseModel implements JsonSerializable
 
 
     public function getDailyReport($date){
-        $q = "SELECT h.user_id as user_id,sum(duration_in_minutes) as duration FROM driver.user_online_history h,driver.users u
+        $q = "SELECT h.user_id as user_id,sum(duration_in_minutes) as duration FROM user_online_history h,users u
 where h.user_id=u.id and date(h.created_at)=:ddate group by h.user_id  order by duration desc;";
         $params = array("ddate"=>$date);
         return $this->executeSelect($q,$params);

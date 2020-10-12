@@ -21,7 +21,7 @@ class TransactionLiability  extends  baseModel implements JsonSerializable
 
 
     public function update(){
-        $q = "UPDATE `driver`.`transaction_liabilities` SET `liability_type_id` = :liability_type_id, `title` = :title, `amount` = :amount, `transaction_id` = :transaction_id WHERE `id` = :id;";
+        $q = "UPDATE `transaction_liabilities` SET `liability_type_id` = :liability_type_id, `title` = :title, `amount` = :amount, `transaction_id` = :transaction_id WHERE `id` = :id;";
         $params = array("liability_type_id"=>$this->liabilityTypeId, "title"=>$this->title,  "amount"=>$this->amount, "transaction_id"=>$this->transactionId,"id"=>$this->id);
         return $this->executeUpdate($q,$params);
     }

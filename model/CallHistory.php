@@ -13,14 +13,14 @@ class CallHistory extends  baseModel implements JsonSerializable
     private $id,$toUserId,$fromUserId,$rideId,$channel,$provider='agora',$isCallAttended=0,$createdAt,$updatedAt;
 
     public function insert(){
-        $q = "INSERT INTO `driver`.`call_history` (`to_user_id`, `from_user_id`, `ride_id`, `channel`, `provider`) VALUES (:to_user_id, :from_user_id,:ride_id, :channel, :provider); ";
+        $q = "INSERT INTO `call_history` (`to_user_id`, `from_user_id`, `ride_id`, `channel`, `provider`) VALUES (:to_user_id, :from_user_id,:ride_id, :channel, :provider); ";
         $params = array("to_user_id"=>$this->toUserId, "from_user_id"=>$this->fromUserId,"ride_id"=>$this->rideId, "channel"=>$this->channel, "provider"=>$this->provider);
         $this->setId($this->executeInsert($q,$params));
     }
 
 
     public function update(){
-        $q = "UPDATE `driver`.`call_history` SET `to_user_id` = :to_user_id, `from_user_id` = :from_user_id, `ride_id` = :ride_id, `channel` = :channel, `provider` = :provider, `is_call_attended` = :is_call_attended  WHERE `id` = :id; ";
+        $q = "UPDATE `call_history` SET `to_user_id` = :to_user_id, `from_user_id` = :from_user_id, `ride_id` = :ride_id, `channel` = :channel, `provider` = :provider, `is_call_attended` = :is_call_attended  WHERE `id` = :id; ";
         $params = array("to_user_id"=>$this->toUserId, "from_user_id"=>$this->fromUserId,"ride_id"=>$this->rideId, "channel"=>$this->channel, "provider"=>$this->provider,"is_call_attended"=>$this->isCallAttended,"id"=>$this->id);
         return $this->executeUpdate($q,$params);
     }

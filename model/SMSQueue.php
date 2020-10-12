@@ -13,7 +13,7 @@ class SMSQueue extends  baseModel implements JsonSerializable
 
 
     public function insert(){
-        $q = "INSERT INTO `driver`.`sms_queue`(`message`,`number`,`send_by`,`sim_slot`)VALUES(:message,:number,:send_by,:sim_slot);";
+        $q = "INSERT INTO `sms_queue`(`message`,`number`,`send_by`,`sim_slot`)VALUES(:message,:number,:send_by,:sim_slot);";
         $params = array("message"=>$this->message,"number"=>$this->number,"send_by"=>$this->sendBy,"sim_slot"=>$this->simSlot);
         return $this->id = $this->executeInsert($q,$params);
     }

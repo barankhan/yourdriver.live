@@ -12,13 +12,13 @@ $email = $_GET['email'];
 $password = $_GET['password'];
 $phone = $_GET['phone'];
 
-$query = "SELECT * FROM driver.users WHERE email = '$email'";
+$query = "SELECT * FROM users WHERE email = '$email'";
 $result = mysqli_query($conn, $query);
 
 if (mysqli_num_rows($result)>0){
     $status = "exists";
 }else{ // for non-registered user
-    $insert_query = "INSERT INTO driver.users(name, email, password, phone) VALUES('$name','$email','$password','$phone')";
+    $insert_query = "INSERT INTO users(name, email, password, phone) VALUES('$name','$email','$password','$phone')";
     if (mysqli_query($conn, $insert_query)){
         $status = "inserted";
     } else{
