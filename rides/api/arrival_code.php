@@ -22,7 +22,7 @@ $rideObj->setResponse("code_sent");
 $rideObj->setMessage("Code has been sent to the passenger!.");
 $var = json_encode($rideObj);
 echo $var;
-fastcgi_finish_request();
+//fastcgi_finish_request();
 
 $passengerObj = new User();
 $passengerObj->getUserWithId($rideObj->getPassengerId());

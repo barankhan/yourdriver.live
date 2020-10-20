@@ -96,7 +96,7 @@ $var = json_encode($res);
 $lr->setResponseBody($var);
 $lr->updateResponse();
 echo $var;
-fastcgi_finish_request();
+//fastcgi_finish_request();
 
 if($triggerFirebaseToPassenger){
 

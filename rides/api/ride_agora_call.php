@@ -21,7 +21,7 @@ $callObj->setChannel("ride_call_".$_REQUEST['ride_id']);
 $callObj->insert();
 $var = json_encode(array("message"=>"Calling to ".$toUserObj->getName(),"response"=>"calling"));
 echo $var;
-fastcgi_finish_request();
+//fastcgi_finish_request();
 
 
 $fbaseObj = new firebaseNotification();

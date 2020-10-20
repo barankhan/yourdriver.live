@@ -41,7 +41,7 @@ if($rideObj->getIsRideEnded()==0) {
     $transObj->setDriverBalance($driverObj->getBalance());
     $var = json_encode($transObj);
     echo $var;
-    fastcgi_finish_request();
+    //fastcgi_finish_request();
 
     $rideObj->setResponse("ride_Ended");
     $rideObj->setMessage("Thanks for the ride! We hope you have enjoyed the service.");

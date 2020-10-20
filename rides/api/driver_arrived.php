@@ -22,7 +22,7 @@ if($rideObj->getIsRideCancelled()==0){
     $rideObj->setMessage("Driver arrived at your location");
     $var = json_encode($rideObj);
     echo $var;
-    fastcgi_finish_request();
+    //fastcgi_finish_request();
 
     $passengerObj  = new User();
     $passengerObj->getUserWithId($rideObj->getPassengerId());

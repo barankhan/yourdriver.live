@@ -32,7 +32,7 @@ if($response=='driver_assigned'){
 
     $var = json_encode($res_array);
     echo $var;
-    fastcgi_finish_request();
+    //fastcgi_finish_request();
 
     $fbaseObj = new firebaseNotification();
     $payload['message']="Driver is coming at your pickup location.";

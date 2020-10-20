@@ -71,7 +71,7 @@ if($userObj->getId()>0){
         $rideObj->setMessage("waiting for driver to accept the ride");
         $var = json_encode($rideObj);
         echo $var;
-        #fastcgi_finish_request();
+        //fastcgi_finish_request();
 
         $fbaseObj = new firebaseNotification();
 

@@ -31,7 +31,7 @@ if($userObj->getId()==0){
         $userObj->setResponse("inserted");
         header('Content-Type: application/json');
         echo json_encode($userObj);
-        fastcgi_finish_request();
+        //fastcgi_finish_request();
 
 
 

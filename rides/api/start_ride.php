@@ -24,7 +24,7 @@ if($rideObj->getIsRideStarted()==0) {
     $rideObj->setMessage("Your Ride has been started! Enjoy the journey");
     $var = json_encode($rideObj);
     echo $var;
-    fastcgi_finish_request();
+    //fastcgi_finish_request();
 
     $passengerObj = new User();
     $passengerObj->getUserWithId($rideObj->getPassengerId());

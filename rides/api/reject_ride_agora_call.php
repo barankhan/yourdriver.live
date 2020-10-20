@@ -33,7 +33,7 @@ if($rideObj->getPassengerId()==$fromUserObj->getId()){
 
 $var = json_encode(array("message"=>"Call ended","response"=>"call_ended"));
 echo $var;
-fastcgi_finish_request();
+//fastcgi_finish_request();
 
 
 $fbaseObj = new firebaseNotification();
