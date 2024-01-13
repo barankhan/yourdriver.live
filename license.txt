@@ -1,3 +1,6 @@
+
+Your Driver.live source code is licensed under the [MIT License](LICENSE)
+
 WordPress - Web publishing software
 
 Copyright 2011-2020 by the contributors
